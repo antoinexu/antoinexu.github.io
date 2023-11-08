@@ -223,4 +223,15 @@ span{
     color: var(--text-color);
 }
 
+.social-icon {
+    font-size: 40px;
+    display: inline-block;
+    margin: 0 15px;
+    color: var(--main-color);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
 
+.social-icon:hover {
+    color: var(--text-color);
+    transform: scale(1.1);
+}
