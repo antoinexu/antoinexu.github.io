@@ -176,3 +176,51 @@ span{
     width: 100%;
 }
 
+.contact {
+    background: var(--second-bg-color);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10%;
+
+}
+
+.contact-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-content h2 {
+    font-size: 3.2rem;
+    color: var(--main-color);
+    margin-bottom: 2rem;
+}
+
+.contact-content p {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+}
+
+.contact-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-content li {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.contact-content a {
+    color: var(--main-color);
+    transition: color 0.3s ease;
+}
+
+.contact-content a:hover {
+    color: var(--text-color);
+}
+
+
