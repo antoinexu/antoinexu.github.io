@@ -287,3 +287,27 @@ span{
     font-size: 1.6rem;
     color: var(--text-color);
 }
+
+@media (max-width: 768px) {
+    .skill-icon {
+        font-size: 3rem;
+    }
+
+    .skill-icon span {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .skill-icon {
+        font-size: 2.5rem;
+    }
+
+    .skill-icon span {
+        font-size: 1.2rem;
+    }
+
+    .skills-icons {
+        gap: 1rem;
+    }
+}
