@@ -126,7 +126,6 @@ span{
     box-shadow: none;
 }
 
-
 .social-media{
     position: absolute;
     bottom: 40px;
@@ -234,4 +233,57 @@ span{
 .social-icon:hover {
     color: var(--text-color);
     transform: scale(1.1);
+}
+
+.skills {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.skills-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.skills-content h2 {
+    font-size: 3.2rem;
+    color: var(--main-color);
+    margin-bottom: 2rem;
+}
+
+.skills-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.skill-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    font-size: 4rem;
+    text-align: center;
+    color: var(--main-color);
+    transition: transform 0.3s ease;
+}
+
+.skill-icon i {
+    margin-bottom: 0.5rem;
+}
+
+.skill-icon:hover {
+    transform: scale(1.1);
+}
+
+.skill-icon span {
+    margin-top: 1rem;
+    font-size: 1.6rem;
+    color: var(--text-color);
 }
