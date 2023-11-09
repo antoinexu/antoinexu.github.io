@@ -1,0 +1,75 @@
+{
+  "en": {
+    "home": "Home",
+    "experiences": "Experiences",
+    "contact": "Contact",
+    "skills": "Skills",
+    "workExperienceTitle": "Work Experience",
+    "workExperiences": [
+      {
+        "title": "Web Full Stack Developer - Fuel Cell Store",
+        "period": "Aug 2023 - Present",
+        "description1": "Updating, maintaining, expanding, and scaling current websites and servers, and designing new company websites.",
+        "description2": "Consistently create well-designed, tested code using best practices for website development, including mobile and responsive site design.",
+        "description3": "Analyze web measurement data to make recommendations and implement improvements to further marketing objectives."
+      },
+      {
+        "title": "Back End Developer - Laplace Investment Management",
+        "period": "July 2023 - Aug 2023",
+        "description1": "Working closely with web designers and frontend developers to design and implement the company's website.",
+        "description2": "Used HTML, CSS, JavaScript, React.js to build the website and implement UI improvements.",
+        "description3": "Participated in daily stand-ups, sprint plannings, and code reviews."
+      },
+      {
+        "title": "Backend Developer Intern - Social Payme",
+        "period": "May 2023 - July 2023",
+        "description1": "Used React.js with Tailwind.css to render influencer’s personalized webpage according to a given API or JSON.",
+        "description2": "Created an article scraper to extract article data, ultimately got news articles relating to influencers.",
+        "description3": "Work collaboratively with the development team to design, develop, and maintain the back-end infrastructure for our social media platforms."
+      },
+      {
+        "title": "Software Engineer Intern - DigiFinex Global",
+        "period": "June 2022 - Aug 2022",
+        "description1": "Reviewed documentation and source code of Waves and Decred-Next and completed the integration of these tokens by operating Golang programming language.",
+        "description2": "Reviewed the Bitcoin and Ethereum source code, completed the private key to public key, the public key to address, calculated summary and generated a transaction, and broadcast.",
+        "description3": "Conducted development tests and code maintenance to prevent broadcast failure or query hash info failure."
+      }
+    ]
+  },
+  "zh": {
+    "home": "首页",
+    "experiences": "经验",
+    "contact": "联系方式",
+    "skills": "技能",
+    "workExperiences": [
+      {
+        "title": "全栈网站开发员 - Fuel Cell Store",
+        "period": "2023年8月 - 至今",
+        "description1": "更新、维护、扩展和提升现有网站及服务器的规模，并设计新的公司网站。",
+        "description2": "创建设计精良、经过测试的代码，使用网站开发的最佳实践，包括移动端和响应式网站设计。",
+        "description3": "分析网站数据，提出建议并实施改进，以进一步实现营销目标。"
+      },
+      {
+        "title": "后端开发工程师 - Laplace Investment Management",
+        "period": "2023年7月 - 2023年8月",
+        "description1": "与网页设计师和前端开发人员紧密合作，设计和实施公司网站。",
+        "description2": "使用HTML、CSS、JavaScript、React.js构建网站并实施UI改进。",
+        "description3": "参与日常会议、冲刺计划和代码审查。"
+      },
+      {
+        "title": "后端开发实习生 - Social Payme",
+        "period": "2023年5月 - 2023年7月",
+        "description1": "使用React.js和Tailwind.css根据给定的API或JSON渲染影响者的个性化网页。",
+        "description2": "创建文章抓取器提取文章数据，最终获取与影响者相关的新闻文章。",
+        "description3": "与开发团队合作设计、开发和维护社交媒体平台的后端基础设施。"
+      },
+      {
+        "title": "软件工程师实习生 - DigiFinex Global",
+        "period": "2022年6月 - 2022年8月",
+        "description1": "审查Waves和Decred-Next的文档和源码，并使用Golang编程语言完成这些代币的集成。",
+        "description2": "审查比特币和以太坊的源代码，完成私钥到公钥、公钥到地址的转换，计算总结并生成交易并广播。",
+        "description3": "进行开发测试和代码维护，以防止广播失败或查询哈希信息失败。"
+      }
+    ]
+  }
+}

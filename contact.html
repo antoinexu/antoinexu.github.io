@@ -21,6 +21,12 @@
         <a href="contact.html" class="active">Contact</a>
         <a href="skill.html">Skills</a>
     </nav>
+
+    <select id="language-selector" class="language-selector">
+        <option value="en">English</option>
+        <option value="zh">中文</option>
+    </select>
+
 </header>
 
 <section class="contact" id="contact">
@@ -35,3 +41,31 @@
 
 </body>
 </html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function changeLanguage(lang) {
+            fetch('translations_contact.json')
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('.navbar a[href="index.html"]').textContent = data[lang].home;
+                    document.querySelector('.navbar a[href="experience.html"]').textContent = data[lang].experiences;
+                    document.querySelector('.navbar a[href="contact.html"]').textContent = data[lang].contact;
+                    document.querySelector('.navbar a[href="skill.html"]').textContent = data[lang].skills;
+                    document.querySelector('.contact-content h2').textContent = data[lang].contact_info;
+                    document.querySelector('.contact-content p').textContent = data[lang].contact_blurb;
+                });
+        }
+
+        document.getElementById('language-selector').addEventListener('change', function(e) {
+            changeLanguage(this.value);
+            localStorage.setItem('selectedLanguage', this.value);
+        });
+
+        const storedLanguage = localStorage.getItem('selectedLanguage');
+        if (storedLanguage) {
+            document.getElementById('language-selector').value = storedLanguage;
+            changeLanguage(storedLanguage);
+        }
+    });
+</script>

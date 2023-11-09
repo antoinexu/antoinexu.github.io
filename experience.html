@@ -21,6 +21,11 @@
         <a href="contact.html">Contact</a>
         <a href="skill.html">Skills</a>
     </nav>
+
+    <select id="language-selector" class="language-selector">
+        <option value="en">English</option>
+        <option value="zh">中文</option>
+    </select>
 </header>
 
 <section class="experiences" id="experiences">
@@ -82,3 +87,40 @@
 
 </body>
 </html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function changeLanguage(lang) {
+            fetch('translations_experience.json')
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('.navbar a[href="index.html"]').textContent = data[lang].home;
+                    document.querySelector('.navbar a[href="experience.html"]').textContent = data[lang].experiences;
+                    document.querySelector('.navbar a[href="contact.html"]').textContent = data[lang].contact;
+                    document.querySelector('.navbar a[href="skill.html"]').textContent = data[lang].skills;
+
+                    document.querySelector('h2').textContent = data[lang].workExperienceTitle;
+
+                    data[lang].workExperiences.forEach((exp, index) => {
+                        let experienceItem = document.querySelector(`.experience-item:nth-child(${index + 1})`);
+                        experienceItem.querySelector('h3').textContent = exp.title;
+                        experienceItem.querySelector('span').textContent = exp.period;
+                        experienceItem.querySelectorAll('p')[0].textContent = exp.description1;
+                        experienceItem.querySelectorAll('p')[1].textContent = exp.description2;
+                        experienceItem.querySelectorAll('p')[2].textContent = exp.description3;
+                    });
+                });
+        }
+
+        document.getElementById('language-selector').addEventListener('change', function(e) {
+            changeLanguage(this.value);
+            localStorage.setItem('selectedLanguage', this.value);
+        });
+
+        const storedLanguage = localStorage.getItem('selectedLanguage');
+        if (storedLanguage) {
+            document.getElementById('language-selector').value = storedLanguage;
+            changeLanguage(storedLanguage);
+        }
+    });
+</script>

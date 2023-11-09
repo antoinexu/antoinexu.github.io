@@ -7,10 +7,8 @@
     <title>Personal Portfolio Website</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
 </head>
 <body>
-
      <header class="header">
          <a href="index.html" class="logo">Portfolio</a>
 
@@ -22,6 +20,11 @@
              <a href="contact.html">Contact</a>
              <a href="skill.html">Skills</a>
          </nav>
+
+         <select id="language-selector" class="language-selector">
+             <option value="en">English</option>
+             <option value="zh">中文</option>
+         </select>
      </header>
 
      <section class="home" id="home">
@@ -36,3 +39,34 @@
 
 </body>
 </html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function changeLanguage(lang) {
+            fetch('translations.json')
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('.navbar a[href="index.html"]').textContent = data[lang].home;
+                    document.querySelector('.navbar a[href="experience.html"]').textContent = data[lang].experiences;
+                    document.querySelector('.navbar a[href="contact.html"]').textContent = data[lang].contact;
+                    document.querySelector('.navbar a[href="skill.html"]').textContent = data[lang].skills;
+                    document.querySelector('.home-content h3').textContent = data[lang].greeting;
+                    document.querySelector('.home-content h1').textContent = data[lang].name;
+                    document.querySelector('.home-content h3:nth-of-type(2)').textContent = data[lang].title;
+                    document.querySelector('.home-content p').textContent = data[lang].bio;
+                    document.querySelector('.home-content .btn').textContent = data[lang].download_cv;
+                });
+        }
+
+        document.getElementById('language-selector').addEventListener('change', function(e) {
+            changeLanguage(this.value);
+            localStorage.setItem('selectedLanguage', this.value);
+        });
+
+        const storedLanguage = localStorage.getItem('selectedLanguage');
+        if (storedLanguage) {
+            document.getElementById('language-selector').value = storedLanguage;
+            changeLanguage(storedLanguage);
+        }
+    });
+</script>

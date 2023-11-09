@@ -21,6 +21,11 @@
         <a href="contact.html">Contact</a>
         <a href="skill.html" class="active">Skills</a>
     </nav>
+
+    <select id="language-selector" class="language-selector">
+        <option value="en">English</option>
+        <option value="zh">中文</option>
+    </select>
 </header>
 
 <section class="skills" id="skills">
@@ -31,6 +36,7 @@
             <a href="#" class="skill-icon"><i class='bx bxl-css3'></i><span>CSS3</span></a>
             <a href="#" class="skill-icon"><i class='bx bxl-javascript'></i><span>JavaScript</span></a>
             <a href="#" class="skill-icon"><i class='bx bxl-php'></i><span>PHP</span></a>
+            <a href="#" class="skill-icon"><i class='bx bxl-jquery'></i><span>JQuery</span></a>
             <a href="#" class="skill-icon"><i class='bx bxl-java'></i><span>Java</span></a>
             <a href="#" class="skill-icon"><i class='bx bxl-python'></i><span>Python</span></a>
             <a href="#" class="skill-icon"><i class='bx bxl-c-plus-plus'></i><span>C++</span></a>
@@ -60,3 +66,29 @@
 
 </body>
 </html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function changeLanguage(lang) {
+            fetch('translations_skill.json')
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('.navbar a[href="index.html"]').textContent = data[lang].home;
+                    document.querySelector('.navbar a[href="experience.html"]').textContent = data[lang].experiences;
+                    document.querySelector('.navbar a[href="contact.html"]').textContent = data[lang].contact;
+                    document.querySelector('.navbar a[href="skill.html"]').textContent = data[lang].skills;
+                });
+        }
+
+        document.getElementById('language-selector').addEventListener('change', function(e) {
+            changeLanguage(this.value);
+            localStorage.setItem('selectedLanguage', this.value);
+        });
+
+        const storedLanguage = localStorage.getItem('selectedLanguage');
+        if (storedLanguage) {
+            document.getElementById('language-selector').value = storedLanguage;
+            changeLanguage(storedLanguage);
+        }
+    });
+</script>
