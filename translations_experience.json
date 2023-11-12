@@ -41,6 +41,7 @@
     "experiences": "经历",
     "contact": "联系方式",
     "skills": "技能",
+    "workExperienceTitle": "工作和实习经历",
     "workExperiences": [
       {
         "title": "网页全栈工程师 - Fuel Cell Store",
