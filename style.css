@@ -11,6 +11,30 @@
     scroll-behavior: smooth;
 }
 
+@media only screen and (max-width: 600px) {
+    .header {
+        position: relative;
+        z-index: 1;
+    }
+
+    .home-content {
+        padding-top: 60px;
+    }
+
+    .experiences-content {
+        padding-top: 60px;
+    }
+
+    .skills-content{
+        padding-top: 60px;
+    }
+
+    .contact-content{
+        padding-top: 60px;
+    }
+}
+
+
 :root{
     --bg-color: #1f242d;
     --second-bg-color: #323946;
