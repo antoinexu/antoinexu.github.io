@@ -38,12 +38,12 @@
   },
   "zh": {
     "home": "首页",
-    "experiences": "经验",
+    "experiences": "经历",
     "contact": "联系方式",
     "skills": "技能",
     "workExperiences": [
       {
-        "title": "全栈网站开发员 - Fuel Cell Store",
+        "title": "网页全栈工程师 - Fuel Cell Store",
         "period": "2023年8月 - 至今",
         "description1": "更新、维护、扩展和提升现有网站及服务器的规模，并设计新的公司网站。",
         "description2": "创建设计精良、经过测试的代码，使用网站开发的最佳实践，包括移动端和响应式网站设计。",
@@ -53,7 +53,7 @@
         "title": "后端开发工程师 - Laplace Investment Management",
         "period": "2023年7月 - 2023年8月",
         "description1": "与网页设计师和前端开发人员紧密合作，设计和实施公司网站。",
-        "description2": "使用HTML、CSS、JavaScript、React.js构建网站并实施UI改进。",
+        "description2": "使用HTML、CSS、JavaScript、React.js构建网站并实施用户界面改进。",
         "description3": "参与日常会议、冲刺计划和代码审查。"
       },
       {
@@ -64,7 +64,7 @@
         "description3": "与开发团队合作设计、开发和维护社交媒体平台的后端基础设施。"
       },
       {
-        "title": "软件工程师实习生 - DigiFinex Global",
+        "title": "软件开发实习生 - DigiFinex Global",
         "period": "2022年6月 - 2022年8月",
         "description1": "审查Waves和Decred-Next的文档和源码，并使用Golang编程语言完成这些代币的集成。",
         "description2": "审查比特币和以太坊的源代码，完成私钥到公钥、公钥到地址的转换，计算总结并生成交易并广播。",
