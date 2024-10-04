@@ -1,0 +1,42 @@
+{
+  "en": {
+    "home": "Home",
+    "experiences": "Experiences",
+    "contact": "Contact",
+    "skills": "Skills",
+    "projects": "Projects",
+    "projects_title": "Projects",
+    "project_1_title": "OpenCart Upgrade Project - Fuel Cell Store",
+    "project_1_duration": "Mar 2024 - Sep 2024",
+    "project_1_desc1": "Upgraded the company’s e-commerce platform from OpenCart 1.5.6.4 to OpenCart 3.0.3.8, ensuring a seamless transition while preserving existing functionalities.",
+    "project_1_desc2": "Refactored the codebase to improve performance, strengthen security, and enhance scalability, addressing compatibility issues with third-party modules along the way.",
+    "project_1_desc3": "Integrated new features such as improved product management tools and an optimized checkout process, while also refining the frontend for better user experience and mobile responsiveness.",
+
+    "project_2_title": "Internal ERP (Enterprise Resource Planning) System - Fuel Cell Store",
+    "project_2_duration": "Sep 2023 - Feb 2024",
+    "project_2_desc1": "Built a comprehensive internal ERP system, 'Onyx,' designed to streamline business operations and improve efficiency across multiple departments.",
+    "project_2_desc2": "Developed a centralized dashboard for managing core processes, including order tracking, inventory control, and shipment monitoring, offering quick access to essential data.",
+    "project_2_desc3": "Implemented automated reporting and analytics, allowing for custom reports on inventory, order status, and audit trails, which supported data-driven decision-making.",
+    "project_2_desc4": "Implemented automated backups through cron jobs, ensuring data security and system reliability by reducing the need for manual processes."
+  },
+  "zh": {
+    "home": "主页",
+    "experiences": "经验",
+    "contact": "联系",
+    "skills": "技能",
+    "projects": "项目",
+    "projects_title": "项目",
+    "project_1_title": "OpenCart 升级项目 - 燃料电池商店",
+    "project_1_duration": "2024年3月 - 2024年9月",
+    "project_1_desc1": "将公司电子商务平台从 OpenCart 1.5.6.4 升级到 OpenCart 3.0.3.8，确保在保留现有功能的同时顺利过渡。",
+    "project_1_desc2": "重构代码库以提高性能、加强安全性并增强可扩展性，同时解决第三方模块的兼容性问题。",
+    "project_1_desc3": "集成了新的功能，如改进的产品管理工具和优化的结账流程，同时优化了前端以提升用户体验和移动端响应能力。",
+
+    "project_2_title": "内部 ERP（企业资源规划）系统 - 燃料电池商店",
+    "project_2_duration": "2023年9月 - 2024年2月",
+    "project_2_desc1": "构建了一个综合性的内部 ERP 系统 'Onyx'，旨在简化业务操作并提高多个部门的效率。",
+    "project_2_desc2": "开发了一个集中仪表板，用于管理核心流程，包括订单跟踪、库存控制和发货监控，提供快速访问关键数据。",
+    "project_2_desc3": "实现了自动化报告和分析，支持自定义库存、订单状态和审计报告，为数据驱动决策提供支持。",
+    "project_2_desc4": "通过 cron 任务实现了自动备份，确保数据安全并提高系统可靠性，减少手动流程的需求。"
+  }
+}

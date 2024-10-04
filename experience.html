@@ -20,6 +20,7 @@
         <a href="experience.html" class="active">Experiences</a>
         <a href="contact.html">Contact</a>
         <a href="skill.html">Skills</a>
+        <a href="project.html">Projects</a>
     </nav>
 
     <select id="language-selector" class="language-selector">
@@ -47,7 +48,7 @@
             </div>
 
             <div class="experience-item">
-                <a href="https://www.linkedin.com/company/laplace-investment-management-inc/" target="_blank">
+                <a href="https://www.laplaceinvestment.com/" target="_blank">
                     <img src="pics/laplace_investment_management_inc_logo.jpg" alt="Laplace Investment Management Logo"
                          class="company-logo">
                 </a>
@@ -98,6 +99,7 @@
                     document.querySelector('.navbar a[href="experience.html"]').textContent = data[lang].experiences;
                     document.querySelector('.navbar a[href="contact.html"]').textContent = data[lang].contact;
                     document.querySelector('.navbar a[href="skill.html"]').textContent = data[lang].skills;
+                    document.querySelector('.navbar a[href="project.html"]').textContent = data[lang].projects;
 
                     document.querySelector('h2').textContent = data[lang].workExperienceTitle;
 

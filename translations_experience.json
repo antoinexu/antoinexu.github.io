@@ -4,6 +4,7 @@
     "experiences": "Experiences",
     "contact": "Contact",
     "skills": "Skills",
+    "projects": "Projects",
     "workExperienceTitle": "Work Experience",
     "workExperiences": [
       {
@@ -41,6 +42,7 @@
     "experiences": "经历",
     "contact": "联系方式",
     "skills": "技能",
+    "projects": "项目",
     "workExperienceTitle": "工作和实习经历",
     "workExperiences": [
       {

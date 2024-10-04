@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Personal Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+<header class="header">
+    <a href="index.html" class="logo">Portfolio</a>
+
+    <i class="bx bx-menu" id="menu-icon"></i>
+
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="experience.html">Experiences</a>
+        <a href="contact.html">Contact</a>
+        <a href="skill.html">Skills</a>
+        <a href="project.html" class="active">Projects</a>
+    </nav>
+
+    <select id="language-selector" class="language-selector">
+        <option value="en">English</option>
+        <option value="zh">中文</option>
+    </select>
+</header>
+
+<section class="projects" id="projects">
+    <div class="projects-content">
+        <h2 id="projects-title">Projects</h2>
+        <div class="projects-grid">
+            <div class="project-item">
+                <a href="https://www.fuelcellstore.com" target="_blank">
+                    <img src="pics/main-logo.png" alt="Fuel Cell Store Logo" class="company-logo">
+                </a>
+                <h3 id="project-1-title">OpenCart Upgrade Project - Fuel Cell Store</h3>
+                <span id="project-1-duration">Mar 2024 - Sep 2024</span>
+                <p id="project-1-desc1">Upgraded the company’s e-commerce platform from OpenCart 1.5.6.4 to OpenCart 3.0.3.8, ensuring a seamless transition while preserving existing functionalities.</p>
+                <p id="project-1-desc2">Refactored the codebase to improve performance, strengthen security, and enhance scalability, addressing compatibility issues with third-party modules along the way.</p>
+                <p id="project-1-desc3">Integrated new features such as improved product management tools and an optimized checkout process, while also refining the frontend for better user experience and mobile responsiveness.</p>
+            </div>
+
+            <div class="project-item">
+                <h3 id="project-2-title">Internal ERP (Enterprise Resource Planning) System - Fuel Cell Store</h3>
+                <span id="project-2-duration">Sep 2023 - Feb 2024</span>
+                <p id="project-2-desc1">Built a comprehensive internal ERP system, "Onyx," designed to streamline business operations and improve efficiency across multiple departments.</p>
+                <p id="project-2-desc2">Developed a centralized dashboard for managing core processes, including order tracking, inventory control, and shipment monitoring, offering quick access to essential data.</p>
+                <p id="project-2-desc3">Implemented automated reporting and analytics, allowing for custom reports on inventory, order status, and audit trails, which supported data-driven decision-making.</p>
+                <p id="project-2-desc4">Implemented automated backups through cron jobs, ensuring data security and system reliability by reducing the need for manual processes.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function changeLanguage(lang) {
+            fetch('translations_projects.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to load translations.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const navbar = document.querySelector('.navbar');
+
+                    navbar.querySelector('a[href="index.html"]').textContent = data[lang].home;
+                    navbar.querySelector('a[href="experience.html"]').textContent = data[lang].experiences;
+                    navbar.querySelector('a[href="contact.html"]').textContent = data[lang].contact;
+                    navbar.querySelector('a[href="skill.html"]').textContent = data[lang].skills;
+                    document.querySelector('.navbar a[href="project.html"]').textContent = data[lang].projects;
+
+                    document.getElementById('projects-title').textContent = data[lang].projects_title;
+                    document.getElementById('project-1-title').textContent = data[lang].project_1_title;
+                    document.getElementById('project-1-duration').textContent = data[lang].project_1_duration;
+                    document.getElementById('project-1-desc1').textContent = data[lang].project_1_desc1;
+                    document.getElementById('project-1-desc2').textContent = data[lang].project_1_desc2;
+                    document.getElementById('project-1-desc3').textContent = data[lang].project_1_desc3;
+
+                    document.getElementById('project-2-title').textContent = data[lang].project_2_title;
+                    document.getElementById('project-2-duration').textContent = data[lang].project_2_duration;
+                    document.getElementById('project-2-desc1').textContent = data[lang].project_2_desc1;
+                    document.getElementById('project-2-desc2').textContent = data[lang].project_2_desc2;
+                    document.getElementById('project-2-desc3').textContent = data[lang].project_2_desc3;
+                    document.getElementById('project-2-desc4').textContent = data[lang].project_2_desc4;
+                })
+                .catch(error => {
+                    console.error('Error loading translations:', error);
+                    alert('Error loading translations. Please try again later.');
+                });
+        }
+
+        const languageSelector = document.getElementById('language-selector');
+        languageSelector.addEventListener('change', function() {
+            const selectedLanguage = this.value;
+            changeLanguage(selectedLanguage);
+            localStorage.setItem('selectedLanguage', selectedLanguage);
+        });
+
+        const storedLanguage = localStorage.getItem('selectedLanguage');
+        if (storedLanguage) {
+            languageSelector.value = storedLanguage;
+            changeLanguage(storedLanguage);
+        }
+    });
+</script>
+
+</body>
+</html>

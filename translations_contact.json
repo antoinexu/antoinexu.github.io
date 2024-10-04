@@ -4,6 +4,7 @@
     "experiences": "Experiences",
     "contact": "Contact",
     "skills": "Skills",
+    "projects": "Projects",
     "contact_info": "Contact Information",
     "contact_blurb": "If you would like to get in touch with me, you can reach out through the following channels:"
   },
@@ -12,6 +13,7 @@
     "experiences": "经历",
     "contact": "联系方式",
     "skills": "技能",
+    "projects": "项目",
     "contact_info": "联系信息",
     "contact_blurb": "如果您想联系我，您可以通过以下渠道:"
   }

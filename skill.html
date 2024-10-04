@@ -20,6 +20,7 @@
         <a href="experience.html">Experiences</a>
         <a href="contact.html">Contact</a>
         <a href="skill.html" class="active">Skills</a>
+        <a href="project.html">Projects</a>
     </nav>
 
     <select id="language-selector" class="language-selector">
@@ -77,6 +78,7 @@
                     document.querySelector('.navbar a[href="experience.html"]').textContent = data[lang].experiences;
                     document.querySelector('.navbar a[href="contact.html"]').textContent = data[lang].contact;
                     document.querySelector('.navbar a[href="skill.html"]').textContent = data[lang].skills;
+                    document.querySelector('.navbar a[href="project.html"]').textContent = data[lang].projects;
                 });
         }
 
