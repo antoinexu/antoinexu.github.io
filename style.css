@@ -503,3 +503,14 @@ span{
     }
 }
 
+@media (max-width: 768px) {
+    h2#projects-title {
+        display: block;
+        font-size: 24px;
+        margin-top: 20px;
+        text-align: center;
+    }
+    .projects-content {
+        padding: 10px;
+    }
+}
