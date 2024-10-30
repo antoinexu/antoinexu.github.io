@@ -17,7 +17,14 @@
     "project_2_desc1": "Built a comprehensive internal ERP system, 'Onyx,' designed to streamline business operations and improve efficiency across multiple departments.",
     "project_2_desc2": "Developed a centralized dashboard for managing core processes, including order tracking, inventory control, and shipment monitoring, offering quick access to essential data.",
     "project_2_desc3": "Implemented automated reporting and analytics, allowing for custom reports on inventory, order status, and audit trails, which supported data-driven decision-making.",
-    "project_2_desc4": "Implemented automated backups through cron jobs, ensuring data security and system reliability by reducing the need for manual processes."
+    "project_2_desc4": "Implemented automated backups through cron jobs, ensuring data security and system reliability by reducing the need for manual processes.",
+
+    "project_3_title": "Inventory System - Fuel Cell Store",
+    "project_3_duration": "Aug 2024 - Present",
+    "project_3_desc1": "Developed a robust inventory management system to efficiently track and manage stock levels, supplier details, and order fulfillment status.",
+    "project_3_desc2": "Designed an intuitive interface to enable quick stock adjustments, efficient stock audits, and minimize human errors in stock handling.",
+    "project_3_desc3": "Integrated real-time analytics and reporting features, providing insights into inventory turnover, stock aging, and demand forecasting.",
+    "project_3_desc4": "Automated reorder alerts and linked inventory levels with the ERP system, ensuring seamless operations and avoiding stockouts."
   },
   "zh": {
     "home": "主页",
@@ -37,6 +44,13 @@
     "project_2_desc1": "构建了一个综合性的内部 ERP 系统 'Onyx'，旨在简化业务操作并提高多个部门的效率。",
     "project_2_desc2": "开发了一个集中仪表板，用于管理核心流程，包括订单跟踪、库存控制和发货监控，提供快速访问关键数据。",
     "project_2_desc3": "实现了自动化报告和分析，支持自定义库存、订单状态和审计报告，为数据驱动决策提供支持。",
-    "project_2_desc4": "通过 cron 任务实现了自动备份，确保数据安全并提高系统可靠性，减少手动流程的需求。"
+    "project_2_desc4": "通过 cron 任务实现了自动备份，确保数据安全并提高系统可靠性，减少手动流程的需求。",
+
+    "project_3_title": "库存系统 - 燃料电池商店",
+    "project_3_duration": "2024年8月 - 至今",
+    "project_3_desc1": "开发了一个强大的库存管理系统，用于高效地跟踪和管理库存水平、供应商信息和订单履行状态。",
+    "project_3_desc2": "设计了直观的界面，使库存调整和审计更加高效，并最大限度地减少了库存操作中的人为错误。",
+    "project_3_desc3": "集成了实时分析和报告功能，提供库存周转率、库存老化和需求预测的洞察。",
+    "project_3_desc4": "自动化了补货提醒，并将库存水平与 ERP 系统连接，确保操作顺畅，避免缺货情况。"
   }
 }

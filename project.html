@@ -45,6 +45,9 @@
             </div>
 
             <div class="project-item">
+                <a href="https://www.fuelcellstore.com" target="_blank">
+                    <img src="pics/main-logo.png" alt="Fuel Cell Store Logo" class="company-logo">
+                </a>
                 <h3 id="project-2-title">Internal ERP (Enterprise Resource Planning) System - Fuel Cell Store</h3>
                 <span id="project-2-duration">Sep 2023 - Feb 2024</span>
                 <p id="project-2-desc1">Built a comprehensive internal ERP system, "Onyx," designed to streamline business operations and improve efficiency across multiple departments.</p>
@@ -52,6 +55,19 @@
                 <p id="project-2-desc3">Implemented automated reporting and analytics, allowing for custom reports on inventory, order status, and audit trails, which supported data-driven decision-making.</p>
                 <p id="project-2-desc4">Implemented automated backups through cron jobs, ensuring data security and system reliability by reducing the need for manual processes.</p>
             </div>
+
+            <div class="project-item">
+                <a href="https://www.fuelcellstore.com" target="_blank">
+                    <img src="pics/main-logo.png" alt="Fuel Cell Store Logo" class="company-logo">
+                </a>
+                <h3 id="project-3-title">Inventory System - Fuel Cell Store</h3>
+                <span id="project-3-duration">Aug 2024 - Present</span>
+                <p id="project-3-desc1">Developed a robust inventory management system to efficiently track and manage stock levels, supplier details, and order fulfillment status.</p>
+                <p id="project-3-desc2">Designed an intuitive interface to enable quick stock adjustments, efficient stock audits, and minimize human errors in stock handling.</p>
+                <p id="project-3-desc3">Integrated real-time analytics and reporting features, providing insights into inventory turnover, stock aging, and demand forecasting.</p>
+                <p id="project-3-desc4">Automated reorder alerts and linked inventory levels with the ERP system, ensuring seamless operations and avoiding stockouts.</p>
+            </div>
+
         </div>
     </div>
 </section>
@@ -88,6 +104,13 @@
                     document.getElementById('project-2-desc2').textContent = data[lang].project_2_desc2;
                     document.getElementById('project-2-desc3').textContent = data[lang].project_2_desc3;
                     document.getElementById('project-2-desc4').textContent = data[lang].project_2_desc4;
+
+                    document.getElementById('project-3-title').textContent = data[lang].project_3_title;
+                    document.getElementById('project-3-duration').textContent = data[lang].project_3_duration;
+                    document.getElementById('project-3-desc1').textContent = data[lang].project_3_desc1;
+                    document.getElementById('project-3-desc2').textContent = data[lang].project_3_desc2;
+                    document.getElementById('project-3-desc3').textContent = data[lang].project_3_desc3;
+                    document.getElementById('project-3-desc4').textContent = data[lang].project_3_desc4;
                 })
                 .catch(error => {
                     console.error('Error loading translations:', error);
