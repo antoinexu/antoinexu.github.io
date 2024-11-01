@@ -68,6 +68,17 @@
                 <p id="project-3-desc4">Automated reorder alerts and linked inventory levels with the ERP system, ensuring seamless operations and avoiding stockouts.</p>
             </div>
 
+            <div class="project-item">
+                <a href="https://laplaceinvestment.com" target="_blank">
+                    <img src="pics/laplace_investment_management_inc_logo.jpg" alt="Laplace Investment Logo" class="company-logo">
+                </a>
+                <h3 id="project-4-title">Website Design and Implementation - Laplace Investment</h3>
+                <span id="project-4-duration">July 2023 - Aug 2023</span>
+                <p id="project-4-desc1">Created a modern, responsive design optimized for both mobile and desktop, with a focus on a clean and professional aesthetic.</p>
+                <p id="project-4-desc2">Improved navigation flow and UI elements, enabling users to access key features and data with ease.</p>
+                <p id="project-4-desc3">Collaborated with stakeholders to align design elements with brand identity, ensuring a cohesive user experience across all interfaces.</p>
+            </div>
+
         </div>
     </div>
 </section>
@@ -111,6 +122,12 @@
                     document.getElementById('project-3-desc2').textContent = data[lang].project_3_desc2;
                     document.getElementById('project-3-desc3').textContent = data[lang].project_3_desc3;
                     document.getElementById('project-3-desc4').textContent = data[lang].project_3_desc4;
+
+                    document.getElementById('project-4-title').textContent = data[lang].project_4_title;
+                    document.getElementById('project-4-duration').textContent = data[lang].project_4_duration;
+                    document.getElementById('project-4-desc1').textContent = data[lang].project_4_desc1;
+                    document.getElementById('project-4-desc2').textContent = data[lang].project_4_desc2;
+                    document.getElementById('project-4-desc3').textContent = data[lang].project_4_desc3;
                 })
                 .catch(error => {
                     console.error('Error loading translations:', error);

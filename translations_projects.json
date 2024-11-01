@@ -24,7 +24,13 @@
     "project_3_desc1": "Developed a robust inventory management system to efficiently track and manage stock levels, supplier details, and order fulfillment status.",
     "project_3_desc2": "Designed an intuitive interface to enable quick stock adjustments, efficient stock audits, and minimize human errors in stock handling.",
     "project_3_desc3": "Integrated real-time analytics and reporting features, providing insights into inventory turnover, stock aging, and demand forecasting.",
-    "project_3_desc4": "Automated reorder alerts and linked inventory levels with the ERP system, ensuring seamless operations and avoiding stockouts."
+    "project_3_desc4": "Automated reorder alerts and linked inventory levels with the ERP system, ensuring seamless operations and avoiding stockouts.",
+
+    "project_4_title": "Website Design and Implementation - Laplace Investment",
+    "project_4_duration": "July 2023 - Aug 2023",
+    "project_4_desc1": "Created a modern, responsive design optimized for both mobile and desktop, with a focus on a clean and professional aesthetic.",
+    "project_4_desc2": "Improved navigation flow and UI elements, enabling users to access key features and data with ease.",
+    "project_4_desc3": "Collaborated with stakeholders to align design elements with brand identity, ensuring a cohesive user experience across all interfaces."
   },
   "zh": {
     "home": "主页",
@@ -51,6 +57,12 @@
     "project_3_desc1": "开发了一个强大的库存管理系统，用于高效地跟踪和管理库存水平、供应商信息和订单履行状态。",
     "project_3_desc2": "设计了直观的界面，使库存调整和审计更加高效，并最大限度地减少了库存操作中的人为错误。",
     "project_3_desc3": "集成了实时分析和报告功能，提供库存周转率、库存老化和需求预测的洞察。",
-    "project_3_desc4": "自动化了补货提醒，并将库存水平与 ERP 系统连接，确保操作顺畅，避免缺货情况。"
+    "project_3_desc4": "自动化了补货提醒，并将库存水平与 ERP 系统连接，确保操作顺畅，避免缺货情况。",
+
+    "project_4_title": "网站设计与实施 - Laplace Investment",
+    "project_4_duration": "2023年7月 - 2023年8月",
+    "project_4_desc1": "创建了现代、响应式设计，优化了移动和桌面体验，注重清晰且专业的美学。",
+    "project_4_desc2": "改善了导航流程和UI元素，使用户能够轻松访问关键功能和数据。",
+    "project_4_desc3": "与利益相关者合作，以品牌形象为导向，确保跨所有界面的统一用户体验。"
   }
 }
