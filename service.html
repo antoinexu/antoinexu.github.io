@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Contact - Personal Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+<header class="header">
+    <a href="index.html" class="logo">Portfolio</a>
+
+    <i class="bx bx-menu" id="menu-icon"></i>
+
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="experience.html">Experiences</a>
+        <a href="contact.html">Contact</a>
+        <a href="skill.html">Skills</a>
+        <a href="project.html">Projects</a>
+        <a href="service.html" class="active">Services</a>
+    </nav>
+
+    <select id="language-selector" class="language-selector">
+        <option value="en">English</option>
+        <option value="zh">中文</option>
+    </select>
+</header>
+
+<section id="services">
+    <h2>What I Offer</h2>
+
+    <div class="services-grid">
+        <div class="service">
+            <h3>Web Development</h3>
+            <p>From static websites to dynamic applications, I offer comprehensive web development services tailored to your needs.</p>
+            <ul>
+                <li>Responsive Web Design</li>
+                <li>Front-end Development: HTML, CSS, JavaScript, React.js</li>
+                <li>Content Management System Integration: WordPress, OpenCart</li>
+                <li>User Experience Optimization & Interface Design</li>
+                <li>Cross-browser Compatibility</li>
+                <li>SEO & Site Performance Optimization</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>Go Training</h3>
+            <p>As an experienced Go player and referee, I offer Go training sessions tailored to various skill levels.</p>
+            <ul>
+                <li>6-dan (AGA, USA) and 5-dan (China) level training</li>
+                <li>Certified National Second-Level Referee</li>
+                <li>Personalized training sessions for beginners to advanced players</li>
+                <li>Game reviews, strategy, and technique improvement</li>
+                <li>Flexible scheduling for online or in-person lessons</li>
+            </ul>
+            <p>Whether you're looking to start learning or improve your game, I can guide you with tailored lessons and insights. Contact me to schedule a training session!</p>
+        </div>
+
+        <div class="service">
+            <h3>Backend Development</h3>
+            <p>I provide high-performance, scalable backend development services, from simple APIs to complex architectures.</p>
+            <ul>
+                <li>Server-side Languages: PHP, Node.js, Java, Python</li>
+                <li>Database Management: MySQL, MongoDB, Microsoft SQL Server</li>
+                <li>RESTful API Design & Development</li>
+                <li>User Authentication & Authorization</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>Full-Stack Solutions</h3>
+            <p>Leveraging both front-end and back-end skills, I provide end-to-end solutions to ensure smooth project completion from design to deployment.</p>
+            <ul>
+                <li>End-to-end Web Application Development</li>
+                <li>Complete Project Lifecycle Support</li>
+                <li>Database Design & Optimization</li>
+                <li>Security Enhancements & Vulnerability Fixes</li>
+                <li>Real-time Data and Messaging Systems</li>
+                <li>Custom Development & Feature Extensions</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function loadTranslations(lang) {
+            fetch('translations_service.json')
+                .then(response => response.json())
+                .then(data => {
+                    const translations = data[lang];
+
+                    document.querySelector('.navbar a[href="index.html"]').textContent = translations.header.home;
+                    document.querySelector('.navbar a[href="experience.html"]').textContent = translations.header.experiences;
+                    document.querySelector('.navbar a[href="contact.html"]').textContent = translations.header.contact;
+                    document.querySelector('.navbar a[href="skill.html"]').textContent = translations.header.skills;
+                    document.querySelector('.navbar a[href="project.html"]').textContent = translations.header.projects;
+                    document.querySelector('.navbar a[href="service.html"]').textContent = translations.header.services;
+
+                    document.querySelector('#services h2').textContent = translations.services.title;
+
+                    const services = translations.services;
+                    document.querySelector('.service:nth-child(1) h3').textContent = services.web_development.title;
+                    document.querySelector('.service:nth-child(1) p').textContent = services.web_development.description;
+                    document.querySelectorAll('.service:nth-child(1) ul li').forEach((li, index) => {
+                        li.textContent = services.web_development.list[index];
+                    });
+
+                    document.querySelector('.service:nth-child(2) h3').textContent = services.go_training.title;
+                    document.querySelector('.service:nth-child(2) p').textContent = services.go_training.description;
+                    document.querySelectorAll('.service:nth-child(2) ul li').forEach((li, index) => {
+                        li.textContent = services.go_training.list[index];
+                    });
+                    document.querySelector('.service:nth-child(2) p:last-of-type').textContent = services.go_training.closing;
+
+                    document.querySelector('.service:nth-child(3) h3').textContent = services.backend_development.title;
+                    document.querySelector('.service:nth-child(3) p').textContent = services.backend_development.description;
+                    document.querySelectorAll('.service:nth-child(3) ul li').forEach((li, index) => {
+                        li.textContent = services.backend_development.list[index];
+                    });
+
+                    document.querySelector('.service:nth-child(4) h3').textContent = services.full_stack_solutions.title;
+                    document.querySelector('.service:nth-child(4) p').textContent = services.full_stack_solutions.description;
+                    document.querySelectorAll('.service:nth-child(4) ul li').forEach((li, index) => {
+                        li.textContent = services.full_stack_solutions.list[index];
+                    });
+
+                });
+        }
+
+        document.getElementById('language-selector').addEventListener('change', function() {
+            const selectedLang = this.value;
+            loadTranslations(selectedLang);
+            localStorage.setItem('selectedLanguage', selectedLang);
+        });
+
+        const storedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+        document.getElementById('language-selector').value = storedLanguage;
+        loadTranslations(storedLanguage);
+    });
+</script>
+
+</body>
+</html>

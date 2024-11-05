@@ -21,6 +21,7 @@
         <a href="contact.html">Contact</a>
         <a href="skill.html" class="active">Skills</a>
         <a href="project.html">Projects</a>
+        <a href="service.html">Services</a>
     </nav>
 
     <select id="language-selector" class="language-selector">
@@ -57,6 +58,10 @@
             <a href="#" class="skill-icon"><i class='bx bxl-react'></i><span>React.js</span></a>
             <a href="#" class="skill-icon"><i class='bx bxl-mongodb'></i><span>MongoDB</span></a>
             <a href="#" class="skill-icon"><i class='bx bxl-figma'></i><span>Figma</span></a>
+            <a href="#" class="skill-icon"><i class='bx bx-cart'></i><span>OpenCart</span></a>
+            <a href="#" class="skill-icon"><i class='bx bxl-wordpress'></i><span>WordPress</span></a>
+            <a href="#" class="skill-icon"><i class='bx bxs-business'></i><span>CRM</span></a>
+            <a href="#" class="skill-icon"><i class='bx bx-network-chart'></i><span>ERP System</span></a>
             <a href="https://www.usgo.org/content.aspx?page_id=22&club_id=454497&module_id=550340" class="skill-icon">
                 <i class='bx bx-brain'></i>
                 <span>Go - AGA ID: 30045</span>
@@ -79,6 +84,7 @@
                     document.querySelector('.navbar a[href="contact.html"]').textContent = data[lang].contact;
                     document.querySelector('.navbar a[href="skill.html"]').textContent = data[lang].skills;
                     document.querySelector('.navbar a[href="project.html"]').textContent = data[lang].projects;
+                    document.querySelector('.navbar a[href="service.html"]').textContent = data[lang].services;
                 });
         }
 

@@ -4,13 +4,15 @@
     "experiences": "Experiences",
     "contact": "Contact",
     "skills": "Skills",
-    "projects": "Projects"
+    "projects": "Projects",
+    "services": "Services"
   },
   "zh": {
     "home": "首页",
     "experiences": "经历",
     "contact": "联系方式",
     "skills": "技能",
-    "projects": "项目"
+    "projects": "项目",
+    "services": "服务"
   }
 }

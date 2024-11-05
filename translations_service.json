@@ -1,0 +1,120 @@
+{
+  "en": {
+    "header": {
+      "home": "Home",
+      "experiences": "Experiences",
+      "contact": "Contact",
+      "skills": "Skills",
+      "projects": "Projects",
+      "services": "Services"
+    },
+    "services": {
+      "title": "What I Offer",
+      "web_development": {
+        "title": "Web Development",
+        "description": "From static websites to dynamic applications, I offer comprehensive web development services tailored to your needs.",
+        "list": [
+          "Responsive Web Design",
+          "Front-end Development: HTML, CSS, JavaScript, React.js",
+          "Content Management System Integration: WordPress, OpenCart",
+          "User Experience Optimization & Interface Design",
+          "Cross-browser Compatibility",
+          "SEO & Site Performance Optimization"
+        ]
+      },
+      "backend_development": {
+        "title": "Backend Development",
+        "description": "I provide high-performance, scalable backend development services, from simple APIs to complex architectures.",
+        "list": [
+          "Server-side Languages: PHP, Node.js, Java, Python",
+          "Database Management: MySQL, MongoDB, Microsoft SQL Server",
+          "RESTful API Design & Development",
+          "User Authentication & Authorization"
+        ]
+      },
+      "full_stack_solutions": {
+        "title": "Full-Stack Solutions",
+        "description": "Leveraging both front-end and back-end skills, I provide end-to-end solutions to ensure smooth project completion from design to deployment.",
+        "list": [
+          "End-to-end Web Application Development",
+          "Complete Project Lifecycle Support",
+          "Database Design & Optimization",
+          "Security Enhancements & Vulnerability Fixes",
+          "Real-time Data and Messaging Systems",
+          "Custom Development & Feature Extensions"
+        ]
+      },
+      "go_training": {
+        "title": "Go Training",
+        "description": "As an experienced Go player and referee, I offer Go training sessions tailored to various skill levels.",
+        "list": [
+          "6-dan (AGA, USA) and 5-dan (China) level training",
+          "Certified National Second-Level Referee",
+          "Personalized training sessions for beginners to advanced players",
+          "Game reviews, strategy, and technique improvement",
+          "Flexible scheduling for online or in-person lessons"
+        ],
+        "closing": "Whether you're looking to start learning or improve your game, I can guide you with tailored lessons and insights. Contact me to schedule a training session!"
+      }
+    }
+  },
+  "zh": {
+    "header": {
+      "home": "首页",
+      "experiences": "经历",
+      "contact": "联系方式",
+      "skills": "技能",
+      "projects": "项目",
+      "services": "服务"
+    },
+    "services": {
+      "title": "我提供的服务",
+      "web_development": {
+        "title": "网页开发",
+        "description": "从静态网站到动态应用，我提供全面的网页开发服务，满足您的各种需求。",
+        "list": [
+          "响应式网页设计",
+          "前端开发：HTML、CSS、JavaScript、React.js",
+          "内容管理系统集成：WordPress、OpenCart",
+          "用户体验优化与界面设计",
+          "跨浏览器兼容性",
+          "SEO和网站性能优化"
+        ]
+      },
+      "backend_development": {
+        "title": "后端开发",
+        "description": "我提供高性能、可扩展的后端开发服务，从简单的API到复杂的架构。",
+        "list": [
+          "服务器端语言：PHP、Node.js、Java、Python",
+          "数据库管理：MySQL、MongoDB、Microsoft SQL Server",
+          "RESTful API设计与开发",
+          "用户身份验证与授权管理"
+        ]
+      },
+      "full_stack_solutions": {
+        "title": "全栈开发解决方案",
+        "description": "结合前端和后端开发技能，我提供端到端的解决方案，确保项目从设计到部署的顺利完成。",
+        "list": [
+          "端到端的Web应用开发",
+          "完整的项目生命周期支持",
+          "数据库设计与优化",
+          "安全性提升与漏洞修复",
+          "实时数据和消息传递系统",
+          "定制开发与功能扩展"
+        ]
+      },
+      "go_training": {
+        "title": "围棋培训",
+        "description": "作为一名有经验的围棋玩家和裁判员，我提供适合各个水平的围棋培训课程。",
+        "list": [
+          "6段（AGA，美国）和5段（中国）水平培训",
+          "国家二级裁判员认证",
+          "个性化的培训课程，适合初学者到高级玩家",
+          "对局复盘、战略和技巧提升",
+          "在线或面对面灵活安排课程"
+        ],
+        "closing": "无论您是想开始学习还是提升您的水平，我都可以通过量身定制的课程和见解来指导您。欢迎联系我预约课程！"
+      }
+    }
+  }
+}

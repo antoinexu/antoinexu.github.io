@@ -21,6 +21,7 @@
         <a href="contact.html">Contact</a>
         <a href="skill.html">Skills</a>
         <a href="project.html" class="active">Projects</a>
+        <a href="service.html">Services</a>
     </nav>
 
     <select id="language-selector" class="language-selector">
@@ -101,6 +102,7 @@
                     navbar.querySelector('a[href="contact.html"]').textContent = data[lang].contact;
                     navbar.querySelector('a[href="skill.html"]').textContent = data[lang].skills;
                     document.querySelector('.navbar a[href="project.html"]').textContent = data[lang].projects;
+                    document.querySelector('.navbar a[href="service.html"]').textContent = data[lang].services;
 
                     document.getElementById('projects-title').textContent = data[lang].projects_title;
                     document.getElementById('project-1-title').textContent = data[lang].project_1_title;
