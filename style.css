@@ -567,22 +567,6 @@ span{
     }
 }
 
-/* Tech stack tags */
-.tech-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 14px;
-}
-.tech-tag {
-    background: var(--bg-color);
-    color: var(--main-color);
-    font-size: 1.1rem;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 20px;
-}
-
 /* Scroll fade-in */
 .fade-in {
     opacity: 0;
