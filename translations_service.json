@@ -55,6 +55,17 @@
           "Flexible scheduling for online or in-person lessons"
         ],
         "closing": "Whether you're looking to start learning or improve your game, I can guide you with tailored lessons and insights. Contact me to schedule a training session!"
+      },
+      "ai_development": {
+        "title": "AI-Assisted Development",
+        "description": "I integrate cutting-edge AI tools into the development workflow to deliver faster, smarter, and higher-quality software solutions.",
+        "list": [
+          "AI-powered code generation and review using Claude Code & ChatGPT",
+          "Prompt engineering for development automation",
+          "Accelerated feature delivery through AI-assisted workflows",
+          "Debugging and code optimization with AI tooling",
+          "AI integration consulting for development teams"
+        ]
       }
     }
   },
@@ -114,6 +125,17 @@
           "在线或面对面灵活安排课程"
         ],
         "closing": "无论您是想开始学习还是提升您的水平，我都可以通过量身定制的课程和见解来指导您。欢迎联系我预约课程！"
+      },
+      "ai_development": {
+        "title": "AI 辅助开发",
+        "description": "将前沿AI工具融入开发流程，交付更快、更智能、更高质量的软件解决方案。",
+        "list": [
+          "运用 Claude Code 和 ChatGPT 进行AI辅助代码生成与审查",
+          "Prompt 工程驱动开发自动化",
+          "AI辅助工作流加速功能交付",
+          "利用AI工具进行调试与代码优化",
+          "面向开发团队的AI集成咨询"
+        ]
       }
     }
   }

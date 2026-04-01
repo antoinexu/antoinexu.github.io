@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Personal Portfolio Website</title>
+    <title>Bowei Xu - Full-Stack Software Developer</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -33,9 +33,10 @@
          <div class="home-content">
              <h3>Hi, It's Me</h3>
              <h1>Bowei Xu</h1>
-             <h3>And I'm a <span>Software Engineer</span></h3>
-             <p>Bowei Xu graduated from with a Master of Computer Science degree. He is looking for a software developer/engineer full time opportunities. He has strong computer skills and can fit in fast-pace work environment. Currently, Bowei is working as a Web Full Stack Developer at Fuel Cell Store. Bowei had three Software Engineer Intern experiences at Laplace Investment Management, Social Payme, and DigiFinex. Bowei possesses cross-cultural understanding, is fluent in Mandarin and advanced in English. He loves traveling, playing Go, hiking and so on. Bowei is a member of American Go Association and a second-level referee of Chinese Go. Bowei has achieved remarkable success, securing first place in the 2023 SLC Go Tournament, College Station Go Tournament, Houston Go Tournament and sixth place in the 2024 Chicago Open.</p>
-             <a href="Bowei_Xu_Resume.pdf" download="Bowei_Xu.pdf" class="btn">Download CV</a>
+             <h3>And I'm a <span>Full-Stack Software Developer</span></h3>
+             <p>Full-stack software developer with 3+ years of experience, currently working as a Software Developer at Fuel Cell Store where he independently architects and delivers enterprise-grade ERP/MES systems. Bowei holds a Master of Computer Science degree from the University of Southern California. He is skilled at combining modern AI-assisted development workflows (Claude Code, ChatGPT) with deep technical execution to ship faster and smarter. Bowei is fluent in Mandarin and proficient in English. Outside of work, he is a passionate Go player — a member of the American Go Association (AGA ID: 30045), Certified National Second-Level Referee, and 1st Place winner at the 2023 and 2025 Houston Go Tournaments.</p>
+             <a href="Bowei_Xu_Resume.pdf" download="Bowei_Xu.pdf" class="btn" id="download-en-cv">Download CV</a>
+             <a href="Bowei_Xu_Chinese_Resume.pdf" download="徐博伟_简历.pdf" class="btn">下载中文简历</a>
          </div>
      </section>
 
@@ -58,7 +59,7 @@
                     document.querySelector('.home-content h1').textContent = data[lang].name;
                     document.querySelector('.home-content h3:nth-of-type(2)').textContent = data[lang].title;
                     document.querySelector('.home-content p').textContent = data[lang].bio;
-                    document.querySelector('.home-content .btn').textContent = data[lang].download_cv;
+                    document.querySelector('#download-en-cv').textContent = data[lang].download_cv;
                 });
         }
 

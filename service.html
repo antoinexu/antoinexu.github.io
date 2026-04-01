@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Contact - Personal Portfolio Website</title>
+    <title>Services - Bowei Xu</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -84,6 +84,18 @@
             </ul>
         </div>
 
+        <div class="service">
+            <h3>AI-Assisted Development</h3>
+            <p>I integrate cutting-edge AI tools into the development workflow to deliver faster, smarter, and higher-quality software solutions.</p>
+            <ul>
+                <li>AI-powered code generation and review using Claude Code & ChatGPT</li>
+                <li>Prompt engineering for development automation</li>
+                <li>Accelerated feature delivery through AI-assisted workflows</li>
+                <li>Debugging and code optimization with AI tooling</li>
+                <li>AI integration consulting for development teams</li>
+            </ul>
+        </div>
+
     </div>
 </section>
 
@@ -128,6 +140,12 @@
                     document.querySelector('.service:nth-child(4) p').textContent = services.full_stack_solutions.description;
                     document.querySelectorAll('.service:nth-child(4) ul li').forEach((li, index) => {
                         li.textContent = services.full_stack_solutions.list[index];
+                    });
+
+                    document.querySelector('.service:nth-child(5) h3').textContent = services.ai_development.title;
+                    document.querySelector('.service:nth-child(5) p').textContent = services.ai_development.description;
+                    document.querySelectorAll('.service:nth-child(5) ul li').forEach((li, index) => {
+                        li.textContent = services.ai_development.list[index];
                     });
 
                 });

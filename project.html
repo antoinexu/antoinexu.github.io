@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Personal Portfolio Website</title>
+    <title>Projects - Bowei Xu</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -39,11 +39,11 @@
                     <img src="pics/main-logo.png" alt="Fuel Cell Store Logo" class="company-logo">
                 </a>
                 <h3 id="project-3-title">Inventory System - Fuel Cell Store</h3>
-                <span id="project-3-duration">Oct 2024 - Present</span>
-                <p id="project-3-desc1">Developed a robust inventory management system to efficiently track and manage stock levels, supplier details, and order fulfillment status.</p>
-                <p id="project-3-desc2">Designed an intuitive interface to enable quick stock adjustments, efficient stock audits, and minimize human errors in stock handling.</p>
-                <p id="project-3-desc3">Integrated real-time analytics and reporting features, providing insights into inventory turnover, stock aging, and demand forecasting.</p>
-                <p id="project-3-desc4">Automated reorder alerts and linked inventory levels with the ERP system, ensuring seamless operations and avoiding stockouts.</p>
+                <span id="project-3-duration">Oct 2024 - Dec 2025</span>
+                <p id="project-3-desc1">Independently designed and built a full-stack inventory management system from scratch, covering stock level tracking, supplier management, and full purchase order lifecycle management to support daily business operations.</p>
+                <p id="project-3-desc2">Designed a multi-dimensional real-time analytics dashboard integrating inventory turnover, stock aging, and demand forecasting metrics to provide management with data-driven replenishment decisions.</p>
+                <p id="project-3-desc3">Implemented intelligent reorder alert mechanisms triggered by historical sales data and safety stock thresholds.</p>
+                <p id="project-3-desc4">Deeply integrated with the ERP system for real-time inventory data sync, reducing stockout rate to near zero.</p>
             </div>
 
             <div class="project-item">
@@ -52,9 +52,9 @@
                 </a>
                 <h3 id="project-1-title">OpenCart Upgrade Project - Fuel Cell Store</h3>
                 <span id="project-1-duration">Mar 2024 - Sep 2024</span>
-                <p id="project-1-desc1">Upgraded the company’s e-commerce platform from OpenCart 1.5.6.4 to OpenCart 3.0.3.8, ensuring a seamless transition while preserving existing functionalities.</p>
-                <p id="project-1-desc2">Refactored the codebase to improve performance, strengthen security, and enhance scalability, addressing compatibility issues with third-party modules along the way.</p>
-                <p id="project-1-desc3">Integrated new features such as improved product management tools and an optimized checkout process, while also refining the frontend for better user experience and mobile responsiveness.</p>
+                <p id="project-1-desc1">Led the migration of the company’s e-commerce platform from OpenCart 1.5.6.4 to 3.0.3.8, covering 2,000+ SKUs and 70,000+ historical orders with zero data loss and zero business interruption.</p>
+                <p id="project-1-desc2">Independently wrote complex SQL migration scripts to handle data cleaning, field mapping, and relationship rebuilding across version differences, ensuring historical data integrity and consistency.</p>
+                <p id="project-1-desc3">Refactored frontend code architecture to improve page load performance and mobile responsiveness; resolved multiple third-party module compatibility issues, significantly improving system stability and user conversion rate.</p>
             </div>
 
             <div class="project-item">
@@ -62,20 +62,11 @@
                     <img src="pics/main-logo.png" alt="Fuel Cell Store Logo" class="company-logo">
                 </a>
                 <h3 id="project-2-title">Internal ERP (Enterprise Resource Planning) System - Fuel Cell Store</h3>
-                <span id="project-2-duration">Sep 2023 - Feb 2024</span>
-                <p id="project-2-desc1">Built a comprehensive internal ERP system, "Onyx," designed to streamline business operations and improve efficiency across multiple departments.</p>
-                <p id="project-2-desc2">Developed a centralized dashboard for managing core processes, including order tracking, inventory control, and shipment monitoring, offering quick access to essential data.</p>
-                <p id="project-2-desc3">Implemented automated reporting and analytics, allowing for custom reports on inventory, order status, and audit trails, which supported data-driven decision-making.</p>
-                <p id="project-2-desc4">Implemented automated backups through cron jobs, ensuring data security and system reliability by reducing the need for manual processes.</p>
-            </div>
-
-            <div class="project-item">
-                <img src="pics/laplace_investment_management_inc_logo.jpg" alt="Laplace Investment Logo" class="company-logo">
-                <h3 id="project-4-title">Website Design and Implementation - Laplace Investment</h3>
-                <span id="project-4-duration">July 2023 - Aug 2023</span>
-                <p id="project-4-desc1">Created a modern, responsive design optimized for both mobile and desktop, with a focus on a clean and professional aesthetic.</p>
-                <p id="project-4-desc2">Improved navigation flow and UI elements, enabling users to access key features and data with ease.</p>
-                <p id="project-4-desc3">Collaborated with stakeholders to align design elements with brand identity, ensuring a cohesive user experience across all interfaces.</p>
+                <span id="project-2-duration">Aug 2023 - Feb 2024</span>
+                <p id="project-2-desc1">Independently designed and developed a comprehensive internal ERP system covering order tracking, shipment monitoring, inventory management, and multi-dimensional business reporting to support cross-department daily operations.</p>
+                <p id="project-2-desc2">Built a unified data dashboard integrating orders, inventory, and shipment data to enable one-stop business metrics visualization, significantly improving management decision-making efficiency.</p>
+                <p id="project-2-desc3">Implemented fully automated report generation and scheduled analytics tasks, reducing manual reporting workload by approximately 80%.</p>
+                <p id="project-2-desc4">Ensured data security through cron-based automated backup mechanisms, with system recovery time reduced to minutes.</p>
             </div>
 
         </div>
@@ -123,11 +114,6 @@
                     document.getElementById('project-3-desc3').textContent = data[lang].project_3_desc3;
                     document.getElementById('project-3-desc4').textContent = data[lang].project_3_desc4;
 
-                    document.getElementById('project-4-title').textContent = data[lang].project_4_title;
-                    document.getElementById('project-4-duration').textContent = data[lang].project_4_duration;
-                    document.getElementById('project-4-desc1').textContent = data[lang].project_4_desc1;
-                    document.getElementById('project-4-desc2').textContent = data[lang].project_4_desc2;
-                    document.getElementById('project-4-desc3').textContent = data[lang].project_4_desc3;
                 })
                 .catch(error => {
                     console.error('Error loading translations:', error);

@@ -8,8 +8,8 @@
     "services": "Services",
     "greeting": "Hi, It's Me",
     "name": "Bowei Xu",
-    "title": "And I'm a Software Engineer",
-    "bio": "Bowei Xu graduated from University of Southern California with a Master of Computer Science degree. He is looking for a software developer/engineer full time opportunities. He has strong computer skills and can fit in fast-pace work environment. Currently, Bowei is working as a Web Full Stack Developer at Fuel Cell Store. Bowei had three Software Engineer Intern experiences at Laplace Investment Management, Social Payme, and DigiFinex. Bowei possesses cross-cultural understanding, is fluent in Mandarin and advanced in English. He loves traveling, playing Go, hiking and so on. Bowei is a member of American Go Association and a second-level referee of Chinese Go. Bowei has achieved remarkable success, securing first place in the 2023 SLC Go Tournament, College Station Go Tournament, Houston Go Tournament and sixth place in the 2024 Chicago Open.",
+    "title": "And I'm a Full-Stack Software Developer",
+    "bio": "Full-stack software developer with 3+ years of experience, currently working as a Software Developer at Fuel Cell Store where he independently architects and delivers enterprise-grade ERP/MES systems. Bowei holds a Master of Computer Science degree from the University of Southern California. He is skilled at combining modern AI-assisted development workflows (Claude Code, ChatGPT) with deep technical execution to ship faster and smarter. Bowei is fluent in Mandarin and proficient in English. Outside of work, he is a passionate Go player — a member of the American Go Association (AGA ID: 30045), Certified National Second-Level Referee, and 1st Place winner at the 2023 and 2025 Houston Go Tournaments.",
     "download_cv": "Download CV"
   },
   "zh": {
@@ -21,8 +21,8 @@
     "services": "服务",
     "greeting": "你好, 我是",
     "name": "徐博伟",
-    "title": "我是一名软件工程师",
-    "bio": "徐博伟从南加州大学毕业，获得了计算机科学硕士学位。他正在寻找软件开发/工程师的全职工作机会。他具备强大的计算机技能，能够适应快节奏的工作环境。目前，徐博伟在Fuel Cell Store担任网页全栈工程师。他曾在Laplace Investment Management、Social Payme和DigiFinex担任软件工程师实习生。徐博伟具有跨文化理解能力，普通话流利，英语水平高。他喜欢旅行、下围棋、远足等活动。徐博伟是美国围棋协会的成员，也是中国围棋的二级裁判员。徐博伟取得了骄人的成绩，在2023年盐湖城围棋锦标赛、大学城围棋锦标赛、休斯顿围棋锦标赛中获得第一名, 在2024年芝加哥公开赛中获得第六名。",
+    "title": "我是一名全栈软件开发工程师",
+    "bio": "全栈软件开发工程师，拥有3年以上工作经验，目前在燃料电池商店担任软件开发工程师，独立架构并交付企业级ERP/MES系统。毕业于南加州大学，获计算机科学硕士学位。擅长运用AI辅助开发工具链（Claude Code、ChatGPT）提升开发效率。普通话母语，英语流利。业余热爱围棋，为美国围棋协会会员（AGA ID: 30045）及国家二级裁判员，曾于2023年及2025年休斯顿围棋锦标赛中荣获冠军。",
     "download_cv": "下载简历"
   }
 }
