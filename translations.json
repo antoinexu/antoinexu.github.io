@@ -8,6 +8,7 @@
     "services": "Services",
     "greeting": "Hi, I'm",
     "name": "Bowei Xu",
+    "role_prefix": "And I'm a ",
     "title": "And I'm a Full-Stack Software Developer",
     "bio": "Full-stack software developer with 3+ years of experience, currently working as a Software Developer at Fuel Cell Store where he independently architects and delivers enterprise-grade ERP/MES systems. Bowei holds a Master of Computer Science degree from the University of Southern California. He is skilled at combining modern AI-assisted development workflows (Claude Code, ChatGPT) with deep technical execution to ship faster and smarter. Bowei is fluent in Mandarin and proficient in English. Outside of work, he is a passionate Go player — a member of the American Go Association (AGA ID: 30045), Certified National Second-Level Referee, and 1st Place winner at the 2023 and 2025 Houston Go Tournaments.",
     "download_cv": "Download CV"
@@ -21,6 +22,7 @@
     "services": "服务",
     "greeting": "你好, 我是",
     "name": "徐博伟",
+    "role_prefix": "我是一名",
     "title": "我是一名全栈软件开发工程师",
     "bio": "全栈软件开发工程师，拥有3年以上工作经验，目前在燃料电池商店担任软件开发工程师，独立架构并交付企业级ERP/MES系统。毕业于南加州大学，获计算机科学硕士学位。擅长运用AI辅助开发工具链（Claude Code、ChatGPT）提升开发效率。普通话母语，英语流利。业余热爱围棋，为美国围棋协会会员（AGA ID: 30045）及国家二级裁判员，曾于2023年及2025年休斯顿围棋锦标赛中荣获冠军。",
     "download_cv": "下载简历"

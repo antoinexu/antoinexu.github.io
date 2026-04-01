@@ -34,7 +34,7 @@
          <div class="home-content">
              <h3>Hi, I'm</h3>
              <h1>Bowei Xu</h1>
-             <h3>And I'm a <span>Full-Stack Software Developer</span></h3>
+             <h3><span id="role-prefix">And I'm a </span><span id="typed-role"></span><span class="cursor">|</span></h3>
              <p>Full-stack software developer with 3+ years of experience, currently working as a Software Developer at Fuel Cell Store where he independently architects and delivers enterprise-grade ERP/MES systems. Bowei holds a Master of Computer Science degree from the University of Southern California. He is skilled at combining modern AI-assisted development workflows (Claude Code, ChatGPT) with deep technical execution to ship faster and smarter. Bowei is fluent in Mandarin and proficient in English. Outside of work, he is a passionate Go player — a member of the American Go Association (AGA ID: 30045), Certified National Second-Level Referee, and 1st Place winner at the 2023 and 2025 Houston Go Tournaments.</p>
              <a href="Bowei_Xu_Resume.pdf" download="Bowei_Xu.pdf" class="btn" id="download-en-cv">Download CV</a>
              <a href="Bowei_Xu_Chinese_Resume.pdf" download="徐博伟_简历.pdf" class="btn">下载中文简历</a>
@@ -44,7 +44,46 @@
 </body>
 </html>
 
+<script src="animations.js"></script>
 <script>
+    const rolesMap = {
+        en: ['Full-Stack Software Developer', 'ERP / MES Systems Developer', 'AI-Assisted Developer'],
+        zh: ['全栈软件开发工程师', 'ERP / MES 系统开发工程师', 'AI 辅助开发工程师']
+    };
+    let currentLang = 'en', roleIndex = 0, charIndex = 0, isDeleting = false, typingTimer = null;
+
+    function startTyping(lang) {
+        currentLang = lang || 'en';
+        clearTimeout(typingTimer);
+        roleIndex = 0; charIndex = 0; isDeleting = false;
+        type();
+    }
+
+    function type() {
+        const el = document.getElementById('typed-role');
+        if (!el) return;
+        const roles = rolesMap[currentLang];
+        const current = roles[roleIndex];
+        el.textContent = isDeleting
+            ? current.substring(0, charIndex - 1)
+            : current.substring(0, charIndex + 1);
+        isDeleting ? charIndex-- : charIndex++;
+
+        let speed = isDeleting ? 50 : 100;
+        if (!isDeleting && charIndex === current.length) {
+            speed = 2000; isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            speed = 400;
+        }
+        typingTimer = setTimeout(type, speed);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        startTyping('en');
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
         function changeLanguage(lang) {
             fetch('translations.json')
@@ -58,7 +97,8 @@
                     document.querySelector('.navbar a[href="service.html"]').textContent = data[lang].services;
                     document.querySelector('.home-content h3').textContent = data[lang].greeting;
                     document.querySelector('.home-content h1').textContent = data[lang].name;
-                    document.querySelector('.home-content h3:nth-of-type(2)').textContent = data[lang].title;
+                    document.getElementById('role-prefix').textContent = data[lang].role_prefix;
+                    startTyping(lang);
                     document.querySelector('.home-content p').textContent = data[lang].bio;
                     document.querySelector('#download-en-cv').textContent = data[lang].download_cv;
                 });

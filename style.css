@@ -567,4 +567,24 @@ span{
     }
 }
 
+/* Scroll fade-in */
+.fade-in {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
+/* Typing cursor */
+.cursor {
+    display: inline-block;
+    color: var(--main-color);
+    font-weight: 300;
+    animation: blink 0.7s step-end infinite;
+}
+@keyframes blink {
+    50% { opacity: 0; }
+}
