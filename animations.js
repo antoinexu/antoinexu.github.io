@@ -1,4 +1,22 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Mobile hamburger menu toggle
+    const menuIcon = document.getElementById('menu-icon');
+    const navbar = document.querySelector('.navbar');
+    if (menuIcon && navbar) {
+        menuIcon.addEventListener('click', function () {
+            navbar.classList.toggle('active');
+            menuIcon.classList.toggle('bx-x');
+        });
+
+        // Close menu after clicking a nav link
+        navbar.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                navbar.classList.remove('active');
+                menuIcon.classList.remove('bx-x');
+            });
+        });
+    }
+
     const targets = document.querySelectorAll(
         '.experience-item, .project-item, .skill-icon, .service'
     );
