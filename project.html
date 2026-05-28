@@ -83,6 +83,7 @@
     </div>
 </section>
 
+<script src="i18n.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         function setTags(projectNumber, tags) {
@@ -105,15 +106,9 @@
                 })
                 .then(data => {
                     const t = data[lang];
-                    const navbar = document.querySelector('.navbar');
 
-                    navbar.querySelector('a[href="index.html"]').textContent = t.home;
-                    navbar.querySelector('a[href="experience.html"]').textContent = t.experiences;
-                    navbar.querySelector('a[href="project.html"]').textContent = t.projects;
-                    navbar.querySelector('a[href="skill.html"]').textContent = t.skills;
-                    navbar.querySelector('a[href="service.html"]').textContent = t.services;
-                    navbar.querySelector('a[href="contact.html"]').textContent = t.contact;
-                    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+                    translateNav(t);
+                    setDocumentLanguage(lang);
 
                     document.getElementById('projects-title').textContent = t.projects_title;
                     [1, 2, 3].forEach(projectNumber => {
@@ -134,15 +129,7 @@
                 });
         }
 
-        const languageSelector = document.getElementById('language-selector');
-        languageSelector.addEventListener('change', function() {
-            changeLanguage(this.value);
-            localStorage.setItem('selectedLanguage', this.value);
-        });
-
-        const storedLanguage = localStorage.getItem('selectedLanguage') || 'en';
-        languageSelector.value = storedLanguage;
-        changeLanguage(storedLanguage);
+        setupLanguageSelector(changeLanguage);
     });
 </script>
 

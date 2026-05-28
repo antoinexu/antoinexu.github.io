@@ -100,6 +100,7 @@
     </div>
 </section>
 
+<script src="i18n.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         function loadTranslations(lang) {
@@ -108,13 +109,8 @@
                 .then(data => {
                     const translations = data[lang];
 
-                    document.querySelector('.navbar a[href="index.html"]').textContent = translations.header.home;
-                    document.querySelector('.navbar a[href="experience.html"]').textContent = translations.header.experiences;
-                    document.querySelector('.navbar a[href="project.html"]').textContent = translations.header.projects;
-                    document.querySelector('.navbar a[href="skill.html"]').textContent = translations.header.skills;
-                    document.querySelector('.navbar a[href="service.html"]').textContent = translations.header.services;
-                    document.querySelector('.navbar a[href="contact.html"]').textContent = translations.header.contact;
-                    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+                    translateNav(translations.header);
+                    setDocumentLanguage(lang);
 
                     document.querySelector('#services h2').textContent = translations.services.title;
 
@@ -152,15 +148,7 @@
                 });
         }
 
-        document.getElementById('language-selector').addEventListener('change', function() {
-            const selectedLang = this.value;
-            loadTranslations(selectedLang);
-            localStorage.setItem('selectedLanguage', selectedLang);
-        });
-
-        const storedLanguage = localStorage.getItem('selectedLanguage') || 'en';
-        document.getElementById('language-selector').value = storedLanguage;
-        loadTranslations(storedLanguage);
+        setupLanguageSelector(loadTranslations);
     });
 </script>
 

@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const targets = document.querySelectorAll(
-        '.experience-item, .project-item, .skill-icon, .skill-category, .metric-card, .service'
+        '.experience-item, .experience-tags, .project-item, .skill-icon, .skill-category, .metric-card, .service'
     );
 
     targets.forEach(el => el.classList.add('fade-in'));

@@ -61,6 +61,7 @@
      </section>
 
 <script src="animations.js"></script>
+<script src="i18n.js"></script>
 <script>
     const rolesMap = {
         en: ['Full-Stack Software Developer', 'ERP / MES Systems Developer', 'AI-Assisted Developer'],
@@ -105,12 +106,7 @@
                 .then(response => response.json())
                 .then(data => {
                     const t = data[lang];
-                    document.querySelector('.navbar a[href="index.html"]').textContent = t.home;
-                    document.querySelector('.navbar a[href="experience.html"]').textContent = t.experiences;
-                    document.querySelector('.navbar a[href="project.html"]').textContent = t.projects;
-                    document.querySelector('.navbar a[href="skill.html"]').textContent = t.skills;
-                    document.querySelector('.navbar a[href="service.html"]').textContent = t.services;
-                    document.querySelector('.navbar a[href="contact.html"]').textContent = t.contact;
+                    translateNav(t);
                     document.querySelector('.home-content h3').textContent = t.greeting;
                     document.querySelector('.home-content h1').textContent = t.name;
                     document.getElementById('role-prefix').textContent = t.role_prefix;
@@ -122,18 +118,11 @@
                         document.getElementById(`metric-${index + 1}-value`).textContent = metric.value;
                         document.getElementById(`metric-${index + 1}-label`).textContent = metric.label;
                     });
-                    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+                    setDocumentLanguage(lang);
                 });
         }
 
-        document.getElementById('language-selector').addEventListener('change', function() {
-            changeLanguage(this.value);
-            localStorage.setItem('selectedLanguage', this.value);
-        });
-
-        const storedLanguage = localStorage.getItem('selectedLanguage') || 'en';
-        document.getElementById('language-selector').value = storedLanguage;
-        changeLanguage(storedLanguage);
+        setupLanguageSelector(changeLanguage);
     });
 </script>
 </body>

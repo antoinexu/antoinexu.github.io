@@ -42,6 +42,9 @@
                 </a>
                 <h3>Software Developer - Fuel Cell Store</h3>
                 <span>Aug 2023 - Present</span>
+                <div class="experience-tags" data-experience-tags="1">
+                    <span>ERP/MES</span><span>SQL</span><span>REST API</span><span>Production Systems</span>
+                </div>
                 <p>Sole developer for an end-to-end ERP/MES-style platform, independently architecting a 50+ table relational database schema and 100,000+ line codebase supporting order processing, lot-level material traceability, and fuel cell manufacturing workflows.</p>
                 <p>Led the live OpenCart 1.5 to 3.0 e-commerce migration for 2,000+ products and 70,000+ historical orders, including custom SQL migration scripts, UI redesign, and zero data loss.</p>
                 <p>Built and maintained REST APIs, optimized SQL and reporting workflows, stabilized production systems, and used AI-assisted development tools to shorten delivery cycles.</p>
@@ -53,6 +56,9 @@
                 </a>
                 <h3>Software Engineering Intern - DigiFinex</h3>
                 <span>Jun 2022 - Aug 2022</span>
+                <div class="experience-tags" data-experience-tags="2">
+                    <span>Trading Platform</span><span>API Integration</span><span>Frontend/Backend</span>
+                </div>
                 <p>Collaborated with product managers and senior engineers to design, analyze, and implement system features aligned with business requirements.</p>
                 <p>Contributed to interface protocols, technical documentation, and API integrations for trading-platform workflows.</p>
                 <p>Developed and tested frontend and backend components to improve system reliability and performance.</p>
@@ -62,25 +68,33 @@
 </section>
 
 <script src="animations.js"></script>
+<script src="i18n.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        function setTags(experienceNumber, tags) {
+            const container = document.querySelector(`[data-experience-tags="${experienceNumber}"]`);
+            container.innerHTML = '';
+            tags.forEach(tag => {
+                const span = document.createElement('span');
+                span.textContent = tag;
+                container.appendChild(span);
+            });
+        }
+
         function changeLanguage(lang) {
             fetch('translations_experience.json')
                 .then(response => response.json())
                 .then(data => {
-                    document.querySelector('.navbar a[href="index.html"]').textContent = data[lang].home;
-                    document.querySelector('.navbar a[href="experience.html"]').textContent = data[lang].experiences;
-                    document.querySelector('.navbar a[href="project.html"]').textContent = data[lang].projects;
-                    document.querySelector('.navbar a[href="skill.html"]').textContent = data[lang].skills;
-                    document.querySelector('.navbar a[href="service.html"]').textContent = data[lang].services;
-                    document.querySelector('.navbar a[href="contact.html"]').textContent = data[lang].contact;
-                    document.querySelector('h2').textContent = data[lang].workExperienceTitle;
-                    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+                    const t = data[lang];
+                    translateNav(t);
+                    document.querySelector('h2').textContent = t.workExperienceTitle;
+                    setDocumentLanguage(lang);
 
-                    data[lang].workExperiences.forEach((exp, index) => {
+                    t.workExperiences.forEach((exp, index) => {
                         const experienceItem = document.querySelector(`.experience-item:nth-child(${index + 1})`);
                         experienceItem.querySelector('h3').textContent = exp.title;
                         experienceItem.querySelector('span').textContent = exp.period;
+                        setTags(index + 1, exp.tags);
                         experienceItem.querySelectorAll('p')[0].textContent = exp.description1;
                         experienceItem.querySelectorAll('p')[1].textContent = exp.description2;
                         experienceItem.querySelectorAll('p')[2].textContent = exp.description3;
@@ -88,14 +102,7 @@
                 });
         }
 
-        document.getElementById('language-selector').addEventListener('change', function() {
-            changeLanguage(this.value);
-            localStorage.setItem('selectedLanguage', this.value);
-        });
-
-        const storedLanguage = localStorage.getItem('selectedLanguage') || 'en';
-        document.getElementById('language-selector').value = storedLanguage;
-        changeLanguage(storedLanguage);
+        setupLanguageSelector(changeLanguage);
     });
 </script>
 </body>

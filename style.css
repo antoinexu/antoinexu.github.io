@@ -331,7 +331,8 @@ section {
 }
 
 .skill-pills span,
-.project-tags span {
+.project-tags span,
+.experience-tags span {
     display: inline-flex;
     align-items: center;
     border-radius: 999px;
@@ -424,7 +425,15 @@ section {
     margin: 1.2rem 0 .6rem;
 }
 
-.project-tags span {
+.experience-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+    margin: 1.2rem 0 .6rem;
+}
+
+.project-tags span,
+.experience-tags span {
     background: rgba(243, 181, 98, 0.18);
     color: #7a4d10;
 }
@@ -548,7 +557,20 @@ section {
     }
 
     .language-selector {
+        order: 2;
         margin-left: auto;
+        max-width: 96px;
+        padding: 7px 8px;
+        font-size: 1.2rem;
+    }
+
+    #menu-icon {
+        order: 3;
+        margin-left: .4rem;
+    }
+
+    .logo {
+        order: 1;
     }
 
     .home-content {
@@ -618,6 +640,15 @@ section {
 @media only screen and (max-width: 480px) {
     .home-content h1 {
         font-size: 28px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .language-selector {
+        max-width: 82px;
+        padding: 6px;
     }
 
     .home-content h3 {
