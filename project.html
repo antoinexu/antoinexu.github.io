@@ -4,28 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Selected software projects by Bowei Xu, including ERP, inventory, and e-commerce systems.">
     <title>Projects - Bowei Xu</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
 
 <header class="header">
-    <a href="index.html" class="logo">Portfolio</a>
+    <a href="index.html" class="logo">Bowei Xu</a>
 
-    <i class="bx bx-menu" id="menu-icon"></i>
+    <i class="bx bx-menu" id="menu-icon" aria-label="Open navigation"></i>
 
     <nav class="navbar">
         <a href="index.html">Home</a>
         <a href="experience.html">Experiences</a>
-        <a href="contact.html">Contact</a>
-        <a href="skill.html">Skills</a>
         <a href="project.html" class="active">Projects</a>
+        <a href="skill.html">Skills</a>
         <a href="service.html">Services</a>
+        <a href="contact.html">Contact</a>
     </nav>
 
-    <select id="language-selector" class="language-selector">
+    <select id="language-selector" class="language-selector" aria-label="Select language">
         <option value="en">English</option>
         <option value="zh">中文</option>
     </select>
@@ -36,46 +37,64 @@
         <h2 id="projects-title">Projects</h2>
         <div class="projects-grid">
             <div class="project-item">
-                <a href="https://www.fuelcellstore.com" target="_blank">
+                <a href="https://www.fuelcellstore.com" target="_blank" rel="noopener noreferrer">
                     <img src="pics/main-logo.png" alt="Fuel Cell Store Logo" class="company-logo">
                 </a>
                 <h3 id="project-3-title">Inventory System - Fuel Cell Store</h3>
                 <span id="project-3-duration">Oct 2024 - Dec 2025</span>
-                <p id="project-3-desc1">Independently designed and built a full-stack inventory management system from scratch, covering stock level tracking, supplier management, and full purchase order lifecycle management to support daily business operations.</p>
-                <p id="project-3-desc2">Designed a multi-dimensional real-time analytics dashboard integrating inventory turnover, stock aging, and demand forecasting metrics to provide management with data-driven replenishment decisions.</p>
-                <p id="project-3-desc3">Implemented intelligent reorder alert mechanisms triggered by historical sales data and safety stock thresholds.</p>
-                <p id="project-3-desc4">Deeply integrated with the ERP system for real-time inventory data sync, reducing stockout rate to near zero.</p>
+                <div class="project-tags" data-project-tags="3">
+                    <span>Inventory</span><span>ERP Integration</span><span>Analytics</span>
+                </div>
+                <p id="project-3-desc1">Designed and built a full-stack inventory management system covering stock tracking, supplier management, and purchase order lifecycle workflows.</p>
+                <p id="project-3-desc2">Created real-time analytics for inventory turnover, stock aging, and demand signals to support replenishment decisions.</p>
+                <p id="project-3-desc3">Implemented reorder alerts based on historical sales data and safety-stock thresholds.</p>
+                <p id="project-3-desc4">Integrated inventory data with the ERP system for real-time synchronization and reduced stockout risk.</p>
             </div>
 
             <div class="project-item">
-                <a href="https://www.fuelcellstore.com" target="_blank">
+                <a href="https://www.fuelcellstore.com" target="_blank" rel="noopener noreferrer">
                     <img src="pics/main-logo.png" alt="Fuel Cell Store Logo" class="company-logo">
                 </a>
-                <h3 id="project-1-title">OpenCart Upgrade Project - Fuel Cell Store</h3>
+                <h3 id="project-1-title">OpenCart Upgrade - Fuel Cell Store</h3>
                 <span id="project-1-duration">Mar 2024 - Sep 2024</span>
-                <p id="project-1-desc1">Led the migration of the company’s e-commerce platform from OpenCart 1.5.6.4 to 3.0.3.8, covering 2,000+ SKUs and 70,000+ historical orders with zero data loss and zero business interruption.</p>
-                <p id="project-1-desc2">Independently wrote complex SQL migration scripts to handle data cleaning, field mapping, and relationship rebuilding across version differences, ensuring historical data integrity and consistency.</p>
-                <p id="project-1-desc3">Refactored frontend code architecture to improve page load performance and mobile responsiveness; resolved multiple third-party module compatibility issues, significantly improving system stability and user conversion rate.</p>
+                <div class="project-tags" data-project-tags="1">
+                    <span>OpenCart</span><span>SQL Migration</span><span>Zero Data Loss</span>
+                </div>
+                <p id="project-1-desc1">Led the company's e-commerce migration from OpenCart 1.5.6.4 to 3.0.3.8, covering 2,000+ SKUs and 70,000+ historical orders with zero data loss and no business interruption.</p>
+                <p id="project-1-desc2">Wrote SQL migration scripts for data cleaning, field mapping, and relationship rebuilding across major version differences.</p>
+                <p id="project-1-desc3">Refactored frontend code, improved mobile responsiveness, and resolved third-party module compatibility issues to improve stability.</p>
             </div>
 
             <div class="project-item">
-                <a href="https://www.fuelcellstore.com" target="_blank">
+                <a href="https://www.fuelcellstore.com" target="_blank" rel="noopener noreferrer">
                     <img src="pics/main-logo.png" alt="Fuel Cell Store Logo" class="company-logo">
                 </a>
-                <h3 id="project-2-title">Internal ERP (Enterprise Resource Planning) System - Fuel Cell Store</h3>
+                <h3 id="project-2-title">Internal ERP System - Fuel Cell Store</h3>
                 <span id="project-2-duration">Aug 2023 - Feb 2024</span>
-                <p id="project-2-desc1">Independently designed and developed a comprehensive internal ERP system covering order tracking, shipment monitoring, inventory management, and multi-dimensional business reporting to support cross-department daily operations.</p>
-                <p id="project-2-desc2">Built a unified data dashboard integrating orders, inventory, and shipment data to enable one-stop business metrics visualization, significantly improving management decision-making efficiency.</p>
-                <p id="project-2-desc3">Implemented fully automated report generation and scheduled analytics tasks, reducing manual reporting workload by approximately 80%.</p>
-                <p id="project-2-desc4">Ensured data security through cron-based automated backup mechanisms, with system recovery time reduced to minutes.</p>
+                <div class="project-tags" data-project-tags="2">
+                    <span>ERP</span><span>Reporting</span><span>Automation</span>
+                </div>
+                <p id="project-2-desc1">Designed and developed an internal ERP system for order tracking, shipment monitoring, inventory management, and business reporting.</p>
+                <p id="project-2-desc2">Built dashboards that combine order, inventory, and shipment data to support faster operational decisions.</p>
+                <p id="project-2-desc3">Automated recurring report generation and scheduled analytics tasks, reducing manual reporting workload by about 80%.</p>
+                <p id="project-2-desc4">Implemented scheduled backups and recovery workflows to reduce system recovery time to minutes.</p>
             </div>
-
         </div>
     </div>
 </section>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        function setTags(projectNumber, tags) {
+            const container = document.querySelector(`[data-project-tags="${projectNumber}"]`);
+            container.innerHTML = '';
+            tags.forEach(tag => {
+                const span = document.createElement('span');
+                span.textContent = tag;
+                container.appendChild(span);
+            });
+        }
+
         function changeLanguage(lang) {
             fetch('translations_projects.json')
                 .then(response => {
@@ -85,55 +104,45 @@
                     return response.json();
                 })
                 .then(data => {
+                    const t = data[lang];
                     const navbar = document.querySelector('.navbar');
 
-                    navbar.querySelector('a[href="index.html"]').textContent = data[lang].home;
-                    navbar.querySelector('a[href="experience.html"]').textContent = data[lang].experiences;
-                    navbar.querySelector('a[href="contact.html"]').textContent = data[lang].contact;
-                    navbar.querySelector('a[href="skill.html"]').textContent = data[lang].skills;
-                    document.querySelector('.navbar a[href="project.html"]').textContent = data[lang].projects;
-                    document.querySelector('.navbar a[href="service.html"]').textContent = data[lang].services;
+                    navbar.querySelector('a[href="index.html"]').textContent = t.home;
+                    navbar.querySelector('a[href="experience.html"]').textContent = t.experiences;
+                    navbar.querySelector('a[href="project.html"]').textContent = t.projects;
+                    navbar.querySelector('a[href="skill.html"]').textContent = t.skills;
+                    navbar.querySelector('a[href="service.html"]').textContent = t.services;
+                    navbar.querySelector('a[href="contact.html"]').textContent = t.contact;
+                    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
 
-                    document.getElementById('projects-title').textContent = data[lang].projects_title;
-                    document.getElementById('project-1-title').textContent = data[lang].project_1_title;
-                    document.getElementById('project-1-duration').textContent = data[lang].project_1_duration;
-                    document.getElementById('project-1-desc1').textContent = data[lang].project_1_desc1;
-                    document.getElementById('project-1-desc2').textContent = data[lang].project_1_desc2;
-                    document.getElementById('project-1-desc3').textContent = data[lang].project_1_desc3;
-
-                    document.getElementById('project-2-title').textContent = data[lang].project_2_title;
-                    document.getElementById('project-2-duration').textContent = data[lang].project_2_duration;
-                    document.getElementById('project-2-desc1').textContent = data[lang].project_2_desc1;
-                    document.getElementById('project-2-desc2').textContent = data[lang].project_2_desc2;
-                    document.getElementById('project-2-desc3').textContent = data[lang].project_2_desc3;
-                    document.getElementById('project-2-desc4').textContent = data[lang].project_2_desc4;
-
-                    document.getElementById('project-3-title').textContent = data[lang].project_3_title;
-                    document.getElementById('project-3-duration').textContent = data[lang].project_3_duration;
-                    document.getElementById('project-3-desc1').textContent = data[lang].project_3_desc1;
-                    document.getElementById('project-3-desc2').textContent = data[lang].project_3_desc2;
-                    document.getElementById('project-3-desc3').textContent = data[lang].project_3_desc3;
-                    document.getElementById('project-3-desc4').textContent = data[lang].project_3_desc4;
-
+                    document.getElementById('projects-title').textContent = t.projects_title;
+                    [1, 2, 3].forEach(projectNumber => {
+                        document.getElementById(`project-${projectNumber}-title`).textContent = t[`project_${projectNumber}_title`];
+                        document.getElementById(`project-${projectNumber}-duration`).textContent = t[`project_${projectNumber}_duration`];
+                        document.getElementById(`project-${projectNumber}-desc1`).textContent = t[`project_${projectNumber}_desc1`];
+                        document.getElementById(`project-${projectNumber}-desc2`).textContent = t[`project_${projectNumber}_desc2`];
+                        document.getElementById(`project-${projectNumber}-desc3`).textContent = t[`project_${projectNumber}_desc3`];
+                        const desc4 = document.getElementById(`project-${projectNumber}-desc4`);
+                        if (desc4) {
+                            desc4.textContent = t[`project_${projectNumber}_desc4`];
+                        }
+                        setTags(projectNumber, t[`project_${projectNumber}_tags`]);
+                    });
                 })
                 .catch(error => {
                     console.error('Error loading translations:', error);
-                    alert('Error loading translations. Please try again later.');
                 });
         }
 
         const languageSelector = document.getElementById('language-selector');
         languageSelector.addEventListener('change', function() {
-            const selectedLanguage = this.value;
-            changeLanguage(selectedLanguage);
-            localStorage.setItem('selectedLanguage', selectedLanguage);
+            changeLanguage(this.value);
+            localStorage.setItem('selectedLanguage', this.value);
         });
 
-        const storedLanguage = localStorage.getItem('selectedLanguage');
-        if (storedLanguage) {
-            languageSelector.value = storedLanguage;
-            changeLanguage(storedLanguage);
-        }
+        const storedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+        languageSelector.value = storedLanguage;
+        changeLanguage(storedLanguage);
     });
 </script>
 

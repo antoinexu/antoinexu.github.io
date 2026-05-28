@@ -1,6 +1,6 @@
-# Bowei Xu — Personal Portfolio
+# Bowei Xu - Personal Portfolio
 
-A bilingual (English / Chinese) personal portfolio website built with vanilla HTML, CSS, and JavaScript. Hosted on GitHub Pages.
+A bilingual English / Chinese personal portfolio website built with vanilla HTML, CSS, and JavaScript. Hosted on GitHub Pages.
 
 ## Live Site
 
@@ -10,26 +10,26 @@ A bilingual (English / Chinese) personal portfolio website built with vanilla HT
 
 | Page | Description |
 |------|-------------|
-| Home | Introduction, bio, and resume downloads (EN & ZH) |
+| Home | Short professional introduction and resume downloads |
 | Experience | Work history at Fuel Cell Store and DigiFinex |
-| Projects | ERP system, e-commerce platform upgrade, inventory system |
-| Skills | Tech stack — PHP, JavaScript, React.js, Node.js, MySQL, AWS, and more |
-| Services | Web development, backend development, full-stack solutions, AI-assisted development, Go training |
-| Contact | Email, GitHub, LinkedIn |
+| Projects | ERP system, e-commerce platform upgrade, and inventory system |
+| Skills | Technical stack, cloud tools, and Go background |
+| Services | Web development, backend development, full-stack solutions, AI-assisted development, and Go training |
+| Contact | Email, GitHub, and LinkedIn |
 
 ## Features
 
-- Bilingual support (English / Chinese) with localStorage language persistence
-- Typing animation on home page cycling through role titles
-- Scroll fade-in animations on all pages
-- Downloadable resumes in both English and Chinese
-- Fully responsive design
+- Bilingual support with localStorage language persistence
+- Typing animation on the home page
+- Scroll fade-in animations across pages
+- Downloadable English and Chinese resumes
+- Responsive layout for desktop and mobile
 
 ## Tech Stack
 
 - HTML5, CSS3, Vanilla JavaScript
 - Boxicons for icons
-- Google Fonts (Poppins)
+- Google Fonts
 - GitHub Pages for hosting
 
 ## Contact

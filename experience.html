@@ -4,28 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Work experience for Bowei Xu, full-stack software developer.">
     <title>Experience - Bowei Xu</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
 
 <header class="header">
-    <a href="index.html" class="logo">Portfolio</a>
+    <a href="index.html" class="logo">Bowei Xu</a>
 
-    <i class="bx bx-menu" id="menu-icon"></i>
+    <i class="bx bx-menu" id="menu-icon" aria-label="Open navigation"></i>
 
     <nav class="navbar">
         <a href="index.html">Home</a>
         <a href="experience.html" class="active">Experiences</a>
-        <a href="contact.html">Contact</a>
-        <a href="skill.html">Skills</a>
         <a href="project.html">Projects</a>
+        <a href="skill.html">Skills</a>
         <a href="service.html">Services</a>
+        <a href="contact.html">Contact</a>
     </nav>
 
-    <select id="language-selector" class="language-selector">
+    <select id="language-selector" class="language-selector" aria-label="Select language">
         <option value="en">English</option>
         <option value="zh">中文</option>
     </select>
@@ -36,25 +37,25 @@
         <h2>Work Experience</h2>
         <div class="experiences-grid">
             <div class="experience-item">
-                <a href="https://www.fuelcellstore.com" target="_blank">
+                <a href="https://www.fuelcellstore.com" target="_blank" rel="noopener noreferrer">
                     <img src="pics/fuel_cell_store_logo.jpg" alt="Fuel Cell Store Logo" class="company-logo">
                 </a>
                 <h3>Software Developer - Fuel Cell Store</h3>
                 <span>Aug 2023 - Present</span>
-                <p>Sole developer for an end-to-end ERP/MES-style platform — independently architected a 50+ table relational database schema and 100,000+ line codebase supporting order processing, lot-level material traceability, and fuel cell manufacturing workflows.</p>
-                <p>Led migration of a live e-commerce platform (OpenCart 1.5 → 3.0) with 2,000+ products and 70,000+ historical orders, including custom SQL migration scripts, full UI redesign, and zero data loss. Designed and optimized complex SQL queries and database schemas to support reporting and system performance.</p>
-                <p>Developed and maintained REST APIs to integrate internal tools; maintained and stabilized production systems by diagnosing issues and improving reliability. Leveraged Claude Code and AI-assisted workflows to accelerate feature delivery and reduce development cycle time.</p>
+                <p>Sole developer for an end-to-end ERP/MES-style platform, independently architecting a 50+ table relational database schema and 100,000+ line codebase supporting order processing, lot-level material traceability, and fuel cell manufacturing workflows.</p>
+                <p>Led the live OpenCart 1.5 to 3.0 e-commerce migration for 2,000+ products and 70,000+ historical orders, including custom SQL migration scripts, UI redesign, and zero data loss.</p>
+                <p>Built and maintained REST APIs, optimized SQL and reporting workflows, stabilized production systems, and used AI-assisted development tools to shorten delivery cycles.</p>
             </div>
 
             <div class="experience-item">
-                <a href="https://www.digifinex.com/en-ww/n/" target="_blank">
+                <a href="https://www.digifinex.com/en-ww/n/" target="_blank" rel="noopener noreferrer">
                     <img src="pics/digifinex_global_logo.jpg" alt="DigiFinex Logo" class="company-logo">
                 </a>
                 <h3>Software Engineering Intern - DigiFinex</h3>
-                <span>June 2022 - Aug 2022</span>
-                <p>Collaborated with product managers and senior engineers to design, analyze, and implement system features in line with business requirements.</p>
-                <p>Participated in developing interface protocols, documentation, and API integrations for the trading platform.</p>
-                <p>Developed and tested frontend and backend components to ensure system reliability and performance.</p>
+                <span>Jun 2022 - Aug 2022</span>
+                <p>Collaborated with product managers and senior engineers to design, analyze, and implement system features aligned with business requirements.</p>
+                <p>Contributed to interface protocols, technical documentation, and API integrations for trading-platform workflows.</p>
+                <p>Developed and tested frontend and backend components to improve system reliability and performance.</p>
             </div>
         </div>
     </div>
@@ -69,15 +70,15 @@
                 .then(data => {
                     document.querySelector('.navbar a[href="index.html"]').textContent = data[lang].home;
                     document.querySelector('.navbar a[href="experience.html"]').textContent = data[lang].experiences;
-                    document.querySelector('.navbar a[href="contact.html"]').textContent = data[lang].contact;
-                    document.querySelector('.navbar a[href="skill.html"]').textContent = data[lang].skills;
                     document.querySelector('.navbar a[href="project.html"]').textContent = data[lang].projects;
+                    document.querySelector('.navbar a[href="skill.html"]').textContent = data[lang].skills;
                     document.querySelector('.navbar a[href="service.html"]').textContent = data[lang].services;
-
+                    document.querySelector('.navbar a[href="contact.html"]').textContent = data[lang].contact;
                     document.querySelector('h2').textContent = data[lang].workExperienceTitle;
+                    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
 
                     data[lang].workExperiences.forEach((exp, index) => {
-                        let experienceItem = document.querySelector(`.experience-item:nth-child(${index + 1})`);
+                        const experienceItem = document.querySelector(`.experience-item:nth-child(${index + 1})`);
                         experienceItem.querySelector('h3').textContent = exp.title;
                         experienceItem.querySelector('span').textContent = exp.period;
                         experienceItem.querySelectorAll('p')[0].textContent = exp.description1;
@@ -87,16 +88,14 @@
                 });
         }
 
-        document.getElementById('language-selector').addEventListener('change', function(e) {
+        document.getElementById('language-selector').addEventListener('change', function() {
             changeLanguage(this.value);
             localStorage.setItem('selectedLanguage', this.value);
         });
 
-        const storedLanguage = localStorage.getItem('selectedLanguage');
-        if (storedLanguage) {
-            document.getElementById('language-selector').value = storedLanguage;
-            changeLanguage(storedLanguage);
-        }
+        const storedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+        document.getElementById('language-selector').value = storedLanguage;
+        changeLanguage(storedLanguage);
     });
 </script>
 </body>

@@ -4,28 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="Contact Bowei Xu for software development work, collaboration, or Go training.">
     <title>Contact - Bowei Xu</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
 
 <header class="header">
-    <a href="index.html" class="logo">Portfolio</a>
+    <a href="index.html" class="logo">Bowei Xu</a>
 
-    <i class="bx bx-menu" id="menu-icon"></i>
+    <i class="bx bx-menu" id="menu-icon" aria-label="Open navigation"></i>
 
     <nav class="navbar">
         <a href="index.html">Home</a>
         <a href="experience.html">Experiences</a>
-        <a href="contact.html" class="active">Contact</a>
-        <a href="skill.html">Skills</a>
         <a href="project.html">Projects</a>
+        <a href="skill.html">Skills</a>
         <a href="service.html">Services</a>
+        <a href="contact.html" class="active">Contact</a>
     </nav>
 
-    <select id="language-selector" class="language-selector">
+    <select id="language-selector" class="language-selector" aria-label="Select language">
         <option value="en">English</option>
         <option value="zh">中文</option>
     </select>
@@ -34,11 +35,11 @@
 
 <section class="contact" id="contact">
     <div class="contact-content">
-        <h2>Contact Information</h2>
-        <p>If you would like to get in touch with me, you can reach out through the following channels:</p>
-        <a href="mailto:bowei_xu@outlook.com" class="social-icon"><i class='bx bx-envelope'></i></a>
-        <a href="https://github.com/antoinexu" target="_blank" class="social-icon"><i class='bx bxl-github'></i></a>
-        <a href="https://www.linkedin.com/in/bowei-xu-132a3b1b9/" class="social-icon"><i class='bx bxl-linkedin'></i></a>
+        <h2>Contact</h2>
+        <p>For software development work, collaboration, or Go training, reach me through any of the channels below.</p>
+        <a href="mailto:bowei_xu@outlook.com" class="social-icon" aria-label="Email Bowei Xu"><i class="bx bx-envelope"></i></a>
+        <a href="https://github.com/antoinexu" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Bowei Xu on GitHub"><i class="bx bxl-github"></i></a>
+        <a href="https://www.linkedin.com/in/bowei-xu-132a3b1b9/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Bowei Xu on LinkedIn"><i class="bx bxl-linkedin"></i></a>
     </div>
 </section>
 
@@ -51,25 +52,24 @@
                 .then(data => {
                     document.querySelector('.navbar a[href="index.html"]').textContent = data[lang].home;
                     document.querySelector('.navbar a[href="experience.html"]').textContent = data[lang].experiences;
-                    document.querySelector('.navbar a[href="contact.html"]').textContent = data[lang].contact;
-                    document.querySelector('.navbar a[href="skill.html"]').textContent = data[lang].skills;
                     document.querySelector('.navbar a[href="project.html"]').textContent = data[lang].projects;
+                    document.querySelector('.navbar a[href="skill.html"]').textContent = data[lang].skills;
                     document.querySelector('.navbar a[href="service.html"]').textContent = data[lang].services;
+                    document.querySelector('.navbar a[href="contact.html"]').textContent = data[lang].contact;
                     document.querySelector('.contact-content h2').textContent = data[lang].contact_info;
                     document.querySelector('.contact-content p').textContent = data[lang].contact_blurb;
+                    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
                 });
         }
 
-        document.getElementById('language-selector').addEventListener('change', function(e) {
+        document.getElementById('language-selector').addEventListener('change', function() {
             changeLanguage(this.value);
             localStorage.setItem('selectedLanguage', this.value);
         });
 
-        const storedLanguage = localStorage.getItem('selectedLanguage');
-        if (storedLanguage) {
-            document.getElementById('language-selector').value = storedLanguage;
-            changeLanguage(storedLanguage);
-        }
+        const storedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+        document.getElementById('language-selector').value = storedLanguage;
+        changeLanguage(storedLanguage);
     });
 </script>
 </body>

@@ -2,17 +2,33 @@
   "en": {
     "home": "Home",
     "experiences": "Experiences",
-    "contact": "Contact",
-    "skills": "Skills",
     "projects": "Projects",
-    "services": "Services"
+    "skills": "Skills",
+    "services": "Services",
+    "contact": "Contact",
+    "skills_title": "Skills",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "data_systems": "Data & Systems",
+    "cloud_tools": "Cloud & Tools",
+    "go": "Go",
+    "go_desc": "AGA 6-dan, China 5-dan, Certified National Second-Level Referee, AGA ID: 30045.",
+    "go_link": "AGA Profile"
   },
   "zh": {
     "home": "首页",
     "experiences": "经历",
-    "contact": "联系方式",
-    "skills": "技能",
     "projects": "项目",
-    "services": "服务"
+    "skills": "技能",
+    "services": "服务",
+    "contact": "联系",
+    "skills_title": "技能",
+    "frontend": "前端",
+    "backend": "后端",
+    "data_systems": "数据与业务系统",
+    "cloud_tools": "云平台与工具",
+    "go": "围棋",
+    "go_desc": "AGA 6 段，中国 5 段，国家二级裁判员，AGA ID: 30045。",
+    "go_link": "AGA 资料"
   }
 }

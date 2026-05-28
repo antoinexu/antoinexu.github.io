@@ -2,29 +2,59 @@
   "en": {
     "home": "Home",
     "experiences": "Experiences",
-    "contact": "Contact",
-    "skills": "Skills",
     "projects": "Projects",
+    "skills": "Skills",
     "services": "Services",
+    "contact": "Contact",
     "greeting": "Hi, I'm",
     "name": "Bowei Xu",
     "role_prefix": "And I'm a ",
     "title": "And I'm a Full-Stack Software Developer",
-    "bio": "Full-stack software developer with 3+ years of experience, currently working as a Software Developer at Fuel Cell Store where he independently architects and delivers enterprise-grade ERP/MES systems. Bowei holds a Master of Computer Science degree from the University of Southern California. He is skilled at combining modern AI-assisted development workflows (Claude Code, ChatGPT) with deep technical execution to ship faster and smarter. Bowei is fluent in Mandarin and proficient in English. Outside of work, he is a passionate Go player — a member of the American Go Association (AGA ID: 30045), Certified National Second-Level Referee, and 1st Place winner at the 2023 and 2025 Houston Go Tournaments.",
-    "download_cv": "Download CV"
+    "bio": "Full-stack software developer focused on ERP, MES, e-commerce, and data-driven business systems. I build production software end to end, from database design and backend APIs to responsive interfaces and operational dashboards.",
+    "metrics": [
+      {
+        "value": "100K+",
+        "label": "lines of production code"
+      },
+      {
+        "value": "70K+",
+        "label": "orders migrated"
+      },
+      {
+        "value": "50+",
+        "label": "database tables designed"
+      }
+    ],
+    "download_cv": "Download CV",
+    "download_zh_cv": "Chinese Resume"
   },
   "zh": {
     "home": "首页",
     "experiences": "经历",
-    "contact": "联系方式",
-    "skills": "技能",
     "projects": "项目",
+    "skills": "技能",
     "services": "服务",
-    "greeting": "你好, 我是",
+    "contact": "联系",
+    "greeting": "你好，我是",
     "name": "徐博伟",
     "role_prefix": "我是一名",
     "title": "我是一名全栈软件开发工程师",
-    "bio": "全栈软件开发工程师，拥有3年以上工作经验，目前在燃料电池商店担任软件开发工程师，独立架构并交付企业级ERP/MES系统。毕业于南加州大学，获计算机科学硕士学位。擅长运用AI辅助开发工具链（Claude Code、ChatGPT）提升开发效率。普通话母语，英语流利。业余热爱围棋，为美国围棋协会会员（AGA ID: 30045）及国家二级裁判员，曾于2023年及2025年休斯顿围棋锦标赛中荣获冠军。",
-    "download_cv": "下载简历"
+    "bio": "全栈软件开发工程师，专注于 ERP、MES、电商平台和数据驱动的业务系统。我能够从数据库设计、后端 API 到响应式界面和运营看板，端到端交付可落地的生产级软件。",
+    "metrics": [
+      {
+        "value": "10万+",
+        "label": "生产级代码"
+      },
+      {
+        "value": "7万+",
+        "label": "历史订单迁移"
+      },
+      {
+        "value": "50+",
+        "label": "数据库表设计"
+      }
+    ],
+    "download_cv": "下载英文简历",
+    "download_zh_cv": "下载中文简历"
   }
 }

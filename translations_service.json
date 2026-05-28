@@ -3,68 +3,68 @@
     "header": {
       "home": "Home",
       "experiences": "Experiences",
-      "contact": "Contact",
-      "skills": "Skills",
       "projects": "Projects",
-      "services": "Services"
+      "skills": "Skills",
+      "services": "Services",
+      "contact": "Contact"
     },
     "services": {
-      "title": "What I Offer",
+      "title": "Services",
       "web_development": {
         "title": "Web Development",
-        "description": "From static websites to dynamic applications, I offer comprehensive web development services tailored to your needs.",
+        "description": "Responsive websites and practical web applications for small businesses, professional services, and internal teams.",
         "list": [
-          "Responsive Web Design",
-          "Front-end Development: HTML, CSS, JavaScript, React.js",
-          "Content Management System Integration: WordPress, OpenCart",
-          "User Experience Optimization & Interface Design",
-          "Cross-browser Compatibility",
-          "SEO & Site Performance Optimization"
+          "Responsive website design",
+          "Front-end development with HTML, CSS, JavaScript, and React",
+          "CMS and e-commerce integration with WordPress and OpenCart",
+          "UX cleanup and interface refinement",
+          "Cross-browser compatibility",
+          "SEO and performance optimization"
         ]
       },
       "backend_development": {
         "title": "Backend Development",
-        "description": "I provide high-performance, scalable backend development services, from simple APIs to complex architectures.",
+        "description": "Reliable backend systems for APIs, data workflows, authentication, and business operations.",
         "list": [
-          "Server-side Languages: PHP, Node.js, Java, Python",
-          "Database Management: MySQL, MongoDB, Microsoft SQL Server",
-          "RESTful API Design & Development",
-          "User Authentication & Authorization"
+          "Server-side development with PHP, Node.js, Java, and Python",
+          "Database design for MySQL, MongoDB, and Microsoft SQL Server",
+          "REST API design and implementation",
+          "Authentication and authorization workflows"
         ]
       },
       "full_stack_solutions": {
         "title": "Full-Stack Solutions",
-        "description": "Leveraging both front-end and back-end skills, I provide end-to-end solutions to ensure smooth project completion from design to deployment.",
+        "description": "End-to-end delivery for business applications that need both clean interfaces and solid backend logic.",
         "list": [
-          "End-to-end Web Application Development",
-          "Complete Project Lifecycle Support",
-          "Database Design & Optimization",
-          "Security Enhancements & Vulnerability Fixes",
-          "Real-time Data and Messaging Systems",
-          "Custom Development & Feature Extensions"
+          "Custom web application development",
+          "Project planning, implementation, and deployment support",
+          "Database design and query optimization",
+          "Security improvements and bug fixes",
+          "Real-time data and messaging features",
+          "Custom feature extensions for existing systems"
         ]
       },
       "go_training": {
         "title": "Go Training",
-        "description": "As an experienced Go player and referee, I offer Go training sessions tailored to various skill levels.",
+        "description": "Structured Go lessons for players who want practical improvement through review, fundamentals, and game planning.",
         "list": [
-          "6-dan (AGA, USA) and 5-dan (China) level training",
+          "6-dan AGA and 5-dan China level training",
           "Certified National Second-Level Referee",
-          "Personalized training sessions for beginners to advanced players",
+          "Personalized sessions from beginner to advanced level",
           "Game reviews, strategy, and technique improvement",
-          "Flexible scheduling for online or in-person lessons"
+          "Online or in-person scheduling"
         ],
-        "closing": "Whether you're looking to start learning or improve your game, I can guide you with tailored lessons and insights. Contact me to schedule a training session!"
+        "closing": "Lessons can focus on fundamentals, tournament preparation, reviewing your games, or building a long-term study plan."
       },
       "ai_development": {
         "title": "AI-Assisted Development",
-        "description": "I integrate cutting-edge AI tools into the development workflow to deliver faster, smarter, and higher-quality software solutions.",
+        "description": "Development workflows that use AI tools carefully to move faster while keeping code review and engineering judgment in the loop.",
         "list": [
-          "AI-powered code generation and review using Claude Code & ChatGPT",
-          "Prompt engineering for development automation",
-          "Accelerated feature delivery through AI-assisted workflows",
+          "AI-assisted implementation and review with Claude Code and ChatGPT",
+          "Prompt workflows for repetitive development tasks",
+          "Faster feature delivery with structured AI support",
           "Debugging and code optimization with AI tooling",
-          "AI integration consulting for development teams"
+          "AI workflow consulting for development teams"
         ]
       }
     }
@@ -73,68 +73,68 @@
     "header": {
       "home": "首页",
       "experiences": "经历",
-      "contact": "联系方式",
-      "skills": "技能",
       "projects": "项目",
-      "services": "服务"
+      "skills": "技能",
+      "services": "服务",
+      "contact": "联系"
     },
     "services": {
-      "title": "我提供的服务",
+      "title": "服务",
       "web_development": {
-        "title": "网页开发",
-        "description": "从静态网站到动态应用，我提供全面的网页开发服务，满足您的各种需求。",
+        "title": "网站与前端开发",
+        "description": "为小型企业、专业服务团队和内部业务场景开发响应式网站与实用型 Web 应用。",
         "list": [
-          "响应式网页设计",
-          "前端开发：HTML、CSS、JavaScript、React.js",
-          "内容管理系统集成：WordPress、OpenCart",
-          "用户体验优化与界面设计",
-          "跨浏览器兼容性",
-          "SEO和网站性能优化"
+          "响应式网站设计",
+          "使用 HTML、CSS、JavaScript 和 React 进行前端开发",
+          "WordPress 与 OpenCart 等 CMS / 电商系统集成",
+          "用户体验梳理与界面优化",
+          "跨浏览器兼容性处理",
+          "SEO 与页面性能优化"
         ]
       },
       "backend_development": {
         "title": "后端开发",
-        "description": "我提供高性能、可扩展的后端开发服务，从简单的API到复杂的架构。",
+        "description": "构建可靠的后端系统，覆盖 API、数据流程、身份认证和业务逻辑。",
         "list": [
-          "服务器端语言：PHP、Node.js、Java、Python",
-          "数据库管理：MySQL、MongoDB、Microsoft SQL Server",
-          "RESTful API设计与开发",
-          "用户身份验证与授权管理"
+          "使用 PHP、Node.js、Java 和 Python 进行服务端开发",
+          "MySQL、MongoDB 和 Microsoft SQL Server 数据库设计",
+          "REST API 设计与实现",
+          "用户认证与权限控制流程"
         ]
       },
       "full_stack_solutions": {
-        "title": "全栈开发解决方案",
-        "description": "结合前端和后端开发技能，我提供端到端的解决方案，确保项目从设计到部署的顺利完成。",
+        "title": "全栈解决方案",
+        "description": "为需要界面、后端和数据能力协同工作的业务应用提供端到端交付。",
         "list": [
-          "端到端的Web应用开发",
-          "完整的项目生命周期支持",
-          "数据库设计与优化",
-          "安全性提升与漏洞修复",
-          "实时数据和消息传递系统",
-          "定制开发与功能扩展"
+          "定制 Web 应用开发",
+          "项目规划、实现与部署支持",
+          "数据库设计与查询优化",
+          "安全性改进与问题修复",
+          "实时数据与消息功能",
+          "既有系统的定制功能扩展"
         ]
       },
       "go_training": {
         "title": "围棋培训",
-        "description": "作为一名有经验的围棋玩家和裁判员，我提供适合各个水平的围棋培训课程。",
+        "description": "通过复盘、基础训练和对局规划，为希望稳定提升的棋手提供结构化围棋课程。",
         "list": [
-          "6段（AGA，美国）和5段（中国）水平培训",
+          "AGA 6 段、中国 5 段水平训练",
           "国家二级裁判员认证",
-          "个性化的培训课程，适合初学者到高级玩家",
-          "对局复盘、战略和技巧提升",
-          "在线或面对面灵活安排课程"
+          "面向初学者到高段棋手的个性化课程",
+          "对局复盘、战略思维和技术提升",
+          "支持线上或线下课程安排"
         ],
-        "closing": "无论您是想开始学习还是提升您的水平，我都可以通过量身定制的课程和见解来指导您。欢迎联系我预约课程！"
+        "closing": "课程可围绕基础训练、比赛准备、个人棋谱复盘或长期学习计划展开。"
       },
       "ai_development": {
         "title": "AI 辅助开发",
-        "description": "将前沿AI工具融入开发流程，交付更快、更智能、更高质量的软件解决方案。",
+        "description": "将 AI 工具谨慎融入开发流程，在保留代码审查和工程判断的前提下提升交付效率。",
         "list": [
-          "运用 Claude Code 和 ChatGPT 进行AI辅助代码生成与审查",
-          "Prompt 工程驱动开发自动化",
-          "AI辅助工作流加速功能交付",
-          "利用AI工具进行调试与代码优化",
-          "面向开发团队的AI集成咨询"
+          "使用 Claude Code 和 ChatGPT 辅助实现与代码审查",
+          "为重复开发任务设计 Prompt 工作流",
+          "通过结构化 AI 支持加速功能交付",
+          "利用 AI 工具进行调试与代码优化",
+          "为开发团队提供 AI 工作流咨询"
         ]
       }
     }

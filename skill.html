@@ -4,28 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="Technical skills and Go background for Bowei Xu.">
     <title>Skills - Bowei Xu</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
 
 <header class="header">
-    <a href="index.html" class="logo">Portfolio</a>
+    <a href="index.html" class="logo">Bowei Xu</a>
 
-    <i class="bx bx-menu" id="menu-icon"></i>
+    <i class="bx bx-menu" id="menu-icon" aria-label="Open navigation"></i>
 
     <nav class="navbar">
         <a href="index.html">Home</a>
         <a href="experience.html">Experiences</a>
-        <a href="contact.html">Contact</a>
-        <a href="skill.html" class="active">Skills</a>
         <a href="project.html">Projects</a>
+        <a href="skill.html" class="active">Skills</a>
         <a href="service.html">Services</a>
+        <a href="contact.html">Contact</a>
     </nav>
 
-    <select id="language-selector" class="language-selector">
+    <select id="language-selector" class="language-selector" aria-label="Select language">
         <option value="en">English</option>
         <option value="zh">中文</option>
     </select>
@@ -33,30 +34,56 @@
 
 <section class="skills" id="skills">
     <div class="skills-content">
-        <h2>My Skills</h2>
-        <div class="skills-icons">
-            <span class="skill-icon"><i class='bx bxl-html5'></i><span>HTML5</span></span>
-            <span class="skill-icon"><i class='bx bxl-css3'></i><span>CSS3</span></span>
-            <span class="skill-icon"><i class='bx bxl-javascript'></i><span>JavaScript</span></span>
-            <span class="skill-icon"><i class='bx bxl-php'></i><span>PHP</span></span>
-            <span class="skill-icon"><i class='bx bxl-java'></i><span>Java</span></span>
-            <span class="skill-icon"><i class='bx bxl-python'></i><span>Python</span></span>
-            <span class="skill-icon"><i class='bx bxs-data'></i><span>Microsoft SQL Server</span></span>
-            <span class="skill-icon"><i class='bx bxs-data'></i><span>MySQL</span></span>
-            <span class="skill-icon"><i class='bx bx-server'></i><span>Node.js</span></span>
-            <span class="skill-icon"><i class='bx bx-code-curly'></i><span>Express.js</span></span>
-            <span class="skill-icon"><i class='bx bxl-react'></i><span>React.js</span></span>
-            <span class="skill-icon"><i class='bx bxl-git'></i><span>Git</span></span>
-            <span class="skill-icon"><i class='bx bxl-aws'></i><span>AWS</span></span>
-            <span class="skill-icon"><i class='bx bxl-microsoft'></i><span>Azure</span></span>
-            <span class="skill-icon"><i class='bx bx-terminal'></i><span>Linux</span></span>
-            <span class="skill-icon"><i class='bx bxl-docker'></i><span>Docker</span></span>
-            <span class="skill-icon"><i class='bx bx-cart'></i><span>OpenCart</span></span>
-            <span class="skill-icon"><i class='bx bx-network-chart'></i><span>ERP System</span></span>
-            <a href="https://www.usgo.org/content.aspx?page_id=22&club_id=454497&module_id=550340" class="skill-icon">
-                <i class='bx bx-brain'></i>
-                <span>Go - AGA ID: 30045</span>
-            </a>
+        <h2 id="skills-title">Skills</h2>
+        <div class="skill-category-grid">
+            <article class="skill-category">
+                <div class="skill-category-heading">
+                    <i class="bx bx-code-alt"></i>
+                    <h3 id="frontend-title">Frontend</h3>
+                </div>
+                <div class="skill-pills">
+                    <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>React.js</span><span>Responsive UI</span>
+                </div>
+            </article>
+
+            <article class="skill-category">
+                <div class="skill-category-heading">
+                    <i class="bx bx-server"></i>
+                    <h3 id="backend-title">Backend</h3>
+                </div>
+                <div class="skill-pills">
+                    <span>PHP</span><span>Node.js</span><span>Express.js</span><span>Java</span><span>Python</span><span>REST API</span>
+                </div>
+            </article>
+
+            <article class="skill-category">
+                <div class="skill-category-heading">
+                    <i class="bx bxs-data"></i>
+                    <h3 id="data-title">Data & Systems</h3>
+                </div>
+                <div class="skill-pills">
+                    <span>MySQL</span><span>Microsoft SQL Server</span><span>MongoDB</span><span>ERP</span><span>MES</span><span>OpenCart</span>
+                </div>
+            </article>
+
+            <article class="skill-category">
+                <div class="skill-category-heading">
+                    <i class="bx bx-cloud"></i>
+                    <h3 id="platform-title">Cloud & Tools</h3>
+                </div>
+                <div class="skill-pills">
+                    <span>AWS</span><span>Azure</span><span>Docker</span><span>Linux</span><span>Git</span><span>AI-assisted development</span>
+                </div>
+            </article>
+
+            <article class="skill-category skill-category-wide">
+                <div class="skill-category-heading">
+                    <i class="bx bx-brain"></i>
+                    <h3 id="go-title">Go</h3>
+                </div>
+                <p id="go-desc">AGA 6-dan, China 5-dan, Certified National Second-Level Referee, AGA ID: 30045.</p>
+                <a href="https://www.usgo.org/content.aspx?page_id=22&club_id=454497&module_id=550340" target="_blank" rel="noopener noreferrer" id="go-link">AGA Profile</a>
+            </article>
         </div>
     </div>
 </section>
@@ -68,25 +95,33 @@
             fetch('translations_skill.json')
                 .then(response => response.json())
                 .then(data => {
-                    document.querySelector('.navbar a[href="index.html"]').textContent = data[lang].home;
-                    document.querySelector('.navbar a[href="experience.html"]').textContent = data[lang].experiences;
-                    document.querySelector('.navbar a[href="contact.html"]').textContent = data[lang].contact;
-                    document.querySelector('.navbar a[href="skill.html"]').textContent = data[lang].skills;
-                    document.querySelector('.navbar a[href="project.html"]').textContent = data[lang].projects;
-                    document.querySelector('.navbar a[href="service.html"]').textContent = data[lang].services;
+                    const t = data[lang];
+                    document.querySelector('.navbar a[href="index.html"]').textContent = t.home;
+                    document.querySelector('.navbar a[href="experience.html"]').textContent = t.experiences;
+                    document.querySelector('.navbar a[href="project.html"]').textContent = t.projects;
+                    document.querySelector('.navbar a[href="skill.html"]').textContent = t.skills;
+                    document.querySelector('.navbar a[href="service.html"]').textContent = t.services;
+                    document.querySelector('.navbar a[href="contact.html"]').textContent = t.contact;
+                    document.getElementById('skills-title').textContent = t.skills_title;
+                    document.getElementById('frontend-title').textContent = t.frontend;
+                    document.getElementById('backend-title').textContent = t.backend;
+                    document.getElementById('data-title').textContent = t.data_systems;
+                    document.getElementById('platform-title').textContent = t.cloud_tools;
+                    document.getElementById('go-title').textContent = t.go;
+                    document.getElementById('go-desc').textContent = t.go_desc;
+                    document.getElementById('go-link').textContent = t.go_link;
+                    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
                 });
         }
 
-        document.getElementById('language-selector').addEventListener('change', function(e) {
+        document.getElementById('language-selector').addEventListener('change', function() {
             changeLanguage(this.value);
             localStorage.setItem('selectedLanguage', this.value);
         });
 
-        const storedLanguage = localStorage.getItem('selectedLanguage');
-        if (storedLanguage) {
-            document.getElementById('language-selector').value = storedLanguage;
-            changeLanguage(storedLanguage);
-        }
+        const storedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+        document.getElementById('language-selector').value = storedLanguage;
+        changeLanguage(storedLanguage);
     });
 </script>
 </body>
