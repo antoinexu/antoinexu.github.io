@@ -1,0 +1,160 @@
+{
+  "en": {
+    "home": "Home",
+    "experiences": "Experiences",
+    "projects": "Projects",
+    "skills": "Skills",
+    "services": "Services",
+    "contact": "Contact",
+    "back": "Back to Projects",
+    "title": "E-Commerce Platform Upgrade (OpenCart 1.5 to 3.0)",
+    "disclaimer": "A sanitized write-up of an e-commerce platform upgrade I led as the sole developer for a manufacturing and e-commerce company. Company names, product details, and proprietary code are omitted. It describes the approach and engineering decisions only.",
+    "sections": [
+      {
+        "heading": "Context",
+        "paragraphs": [
+          "The online store ran on a years-old release of OpenCart, two major versions behind current, with no supported upgrade path. Custom modules and theme changes had accumulated on top of the core over several years, no documentation existed, and the original developers had left, so the behavior of much of the custom functionality was effectively undocumented.",
+          "As the sole developer, I led the upgrade from 1.5.6.4 to 3.0.3.8, covering 2,000+ products and 70,000+ historical orders, with zero data loss and no business interruption. With no documentation and no reliable automated path across that version gap, the project combined reverse engineering, data migration, and the rebuilding of custom functionality in roughly equal measure."
+        ]
+      },
+      {
+        "heading": "Scope",
+        "list": [
+          "Reverse engineering the legacy store: reading the legacy code to determine how each custom feature behaved, as nothing was documented",
+          "Data migration: moving 2,000+ products and 70,000+ orders across two major schema versions",
+          "Custom functionality: adopting maintained extensions where they existed and building custom ones where they did not",
+          "Frontend: rebuilding the theme on the new template system and improving mobile responsiveness",
+          "Backend: re-implementing admin customizations and resolving third-party module compatibility",
+          "Validation: reconciling migrated data against the source to confirm nothing was lost"
+        ]
+      },
+      {
+        "heading": "Approach",
+        "paragraphs": [
+          "The two versions differ in database schema, templating, and module systems, so a direct in-place upgrade was not viable. I approached it as a rebuild on the new version paired with a controlled data migration, developed and rehearsed on a staging copy before any production cutover."
+        ],
+        "list": [
+          "Set up a clean target-version installation on staging",
+          "Audit the legacy store feature by feature, directly from its code",
+          "For each feature, adopt a maintained extension or build a custom one",
+          "Write SQL scripts to clean and remap the legacy data into the new schema",
+          "Rebuild the theme and re-implement admin customizations",
+          "Reconcile the migrated data, then cut over to production"
+        ]
+      },
+      {
+        "heading": "Engineering decisions worth highlighting",
+        "subsections": [
+          {
+            "title": "1. Reverse engineering features with no documentation",
+            "body": "The store carried years of undocumented customization, and the original developers were no longer available. I read the legacy controllers, models, and template overrides to reconstruct what each feature actually did before deciding how to rebuild it. This ensured that behavior the business depended on was not inadvertently lost."
+          },
+          {
+            "title": "2. Adopt or build, without editing the core",
+            "body": "For each legacy module I made an explicit decision: adopt a maintained extension where a reliable one existed, or build a custom one where it did not. In both cases the changes were applied through the platform's modification system rather than by editing core files, so customizations sit on top of the core and the store remains upgradeable rather than being locked to a single version again."
+          },
+          {
+            "title": "3. Cross-version data migration in hand-written SQL",
+            "body": "The two schemas differ in table layout and relationships, so I wrote SQL scripts to clean, map, and rebuild the data rather than relying on an automated importer. Relational data such as product accessories, SEO URLs, and zone-to-geo-zone mappings had to be remapped table by table to fit the new structure."
+          },
+          {
+            "title": "4. Staging-first, validated cutover",
+            "body": "The entire migration was built and rehearsed on a staging copy of the live store. I reconciled migrated record counts and spot-checked data against the source before switching over, so the production cutover was completed with zero data loss and no business downtime."
+          },
+          {
+            "title": "5. Frontend and backend rebuild",
+            "body": "The storefront theme was rebuilt on the new template engine, with mobile responsiveness improved in the process. On the admin side, customizations and third-party module compatibility were re-implemented and resolved so the team's daily workflows continued without interruption."
+          }
+        ]
+      },
+      {
+        "heading": "Results",
+        "list": [
+          "Upgraded the store from 1.5.6.4 to 3.0.3.8 across 2,000+ products and 70,000+ historical orders, with zero data loss and no business interruption",
+          "Reconstructed and re-implemented years of undocumented custom functionality by reading the legacy code",
+          "Migrated customizations onto the modification system, so the store no longer depends on edited core files and can be updated more safely",
+          "Improved mobile responsiveness and resolved third-party module compatibility issues"
+        ]
+      }
+    ]
+  },
+  "zh": {
+    "home": "首页",
+    "experiences": "经历",
+    "projects": "项目",
+    "skills": "技能",
+    "services": "服务",
+    "contact": "联系",
+    "back": "返回项目",
+    "title": "电商平台升级（OpenCart 1.5 到 3.0）",
+    "disclaimer": "这是一份脱敏的案例分析。我作为唯一开发者，为一家制造和电商公司主导了这次电商平台升级。公司名称、产品细节和专有代码均已省略，此处仅描述思路与工程决策。",
+    "sections": [
+      {
+        "heading": "背景",
+        "paragraphs": [
+          "在线商城运行在一个数年前的 OpenCart 版本上，落后当前两个大版本，且没有受支持的升级路径。多年间，自定义模块和主题改动持续叠加在核心之上，没有任何文档，最初的开发者也均已离开，因此大量自定义功能的具体实现已无文档可循。",
+          "作为唯一开发者，我主导了从 1.5.6.4 到 3.0.3.8 的升级，覆盖 2,000+ 商品和 70,000+ 历史订单，实现零数据丢失、业务不中断。在既无文档、跨大版本又无可靠自动化路径的情况下，这项工作主要由逆向分析、数据迁移和重建自定义功能三部分大致均衡地构成。"
+        ]
+      },
+      {
+        "heading": "范围",
+        "list": [
+          "逆向分析旧商城：在没有任何文档的情况下，通过阅读旧代码厘清每个自定义功能的实现",
+          "数据迁移：将 2,000+ 商品和 70,000+ 订单跨两个大版本的库结构迁移过去",
+          "自定义功能：已有成熟扩展则直接采用，没有则自行实现",
+          "前端：在新模板体系上重建主题，并提升移动端适配",
+          "后端：重做后台自定义功能，解决第三方模块兼容问题",
+          "校验：将迁移后的数据与源数据对账，确认无任何丢失"
+        ]
+      },
+      {
+        "heading": "迁移思路",
+        "paragraphs": [
+          "两个版本在数据库结构、模板体系和模块机制上均不相同，原地直接升级并不可行。我将其作为在新版本上的重建来处理，并配以一套受控的数据迁移，全部先在 staging 副本上搭建与演练，确认无误后再切至生产。"
+        ],
+        "list": [
+          "在 staging 上搭建一个干净的目标版本环境",
+          "对照旧代码，逐一梳理旧商城的各项功能",
+          "对每个功能，采用成熟扩展或自行实现",
+          "编写 SQL 脚本，清洗并将旧数据重映射到新库结构",
+          "重建主题，重做后台自定义功能",
+          "对账迁移后的数据，再切换至生产"
+        ]
+      },
+      {
+        "heading": "值得一提的工程决策",
+        "subsections": [
+          {
+            "title": "1. 在无文档情况下逆向功能",
+            "body": "商城积累了多年的自定义改动，没有文档，最初的开发者也均已离开。我通过阅读旧的控制器、模型和模板覆盖，先还原每个功能的实际行为，再决定如何重建，以确保不会遗漏业务实际依赖的功能。"
+          },
+          {
+            "title": "2. 采用或自建，但均不改动核心",
+            "body": "对每个旧模块，我都做出明确取舍：有可靠的成熟扩展则采用，否则自行实现。两种情况下，改动都通过平台的修改机制叠加，而非直接修改核心文件，因此自定义改动叠加在核心之上，商城保持可升级，而不会再次被锁定在某个特定版本。"
+          },
+          {
+            "title": "3. 以手写 SQL 完成跨版本数据迁移",
+            "body": "新旧两套库在表结构和关联关系上均不相同，因此我编写 SQL 脚本来清洗、映射并重建数据，而非依赖自动导入工具。商品配件、SEO URL、区域到地理区域映射等关联数据，需逐表重新映射，才能适配新结构。"
+          },
+          {
+            "title": "4. 以 staging 为先，经校验后再切换",
+            "body": "整个迁移都在生产商城的 staging 副本上搭建与演练。切换前，我将迁移后的记录数与源数据对账并抽查，因此切换至生产时实现了零数据丢失、业务零停机。"
+          },
+          {
+            "title": "5. 前端与后端重建",
+            "body": "店面主题在新的模板引擎上重建，并同步提升了移动端适配。后台方面，自定义功能与第三方模块兼容性均经过重做和修复，使团队的日常流程得以不中断地继续运转。"
+          }
+        ]
+      },
+      {
+        "heading": "成果",
+        "list": [
+          "将商城从 1.5.6.4 升级至 3.0.3.8，覆盖 2,000+ 商品和 70,000+ 历史订单，实现零数据丢失、业务不中断",
+          "通过阅读旧代码，还原并重做了多年积累的、无文档的自定义功能",
+          "将自定义改动迁移至修改机制之上，商城不再依赖被修改的核心文件，今后可更安全地升级",
+          "提升了移动端适配，解决了多个第三方模块的兼容问题"
+        ]
+      }
+    ]
+  }
+}

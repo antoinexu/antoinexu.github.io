@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sanitized case study of an OpenCart 1.5 to 3.0 e-commerce platform upgrade led by Bowei Xu.">
+    <title>Case Study: OpenCart Upgrade - Bowei Xu</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <a href="index.html" class="logo">Bowei Xu</a>
+
+    <i class="bx bx-menu" id="menu-icon" aria-label="Open navigation"></i>
+
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="experience.html">Experiences</a>
+        <a href="project.html" class="active">Projects</a>
+        <a href="skill.html">Skills</a>
+        <a href="service.html">Services</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <select id="language-selector" class="language-selector" aria-label="Select language">
+        <option value="en">English</option>
+        <option value="zh">中文</option>
+    </select>
+</header>
+
+<section class="case-study" id="case-study">
+    <div class="case-study-content">
+        <a href="project.html" class="case-study-back" id="cs-back">Back to Projects</a>
+        <h1 id="cs-title"></h1>
+        <p class="case-study-disclaimer" id="cs-disclaimer"></p>
+        <div id="cs-body"></div>
+    </div>
+</section>
+
+<script src="i18n.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function el(tag, text) {
+            const node = document.createElement(tag);
+            if (text !== undefined) node.textContent = text;
+            return node;
+        }
+
+        function renderBody(sections) {
+            const body = document.getElementById('cs-body');
+            body.innerHTML = '';
+
+            sections.forEach(section => {
+                const wrap = el('div');
+                wrap.className = 'cs-section';
+                wrap.appendChild(el('h2', section.heading));
+
+                (section.paragraphs || []).forEach(p => wrap.appendChild(el('p', p)));
+
+                if (section.code) {
+                    const pre = el('pre');
+                    pre.appendChild(el('code', section.code));
+                    wrap.appendChild(pre);
+                }
+
+                (section.paragraphs_after || []).forEach(p => wrap.appendChild(el('p', p)));
+
+                if (section.list) {
+                    const ul = el('ul');
+                    section.list.forEach(item => ul.appendChild(el('li', item)));
+                    wrap.appendChild(ul);
+                }
+
+                (section.subsections || []).forEach(sub => {
+                    wrap.appendChild(el('h3', sub.title));
+                    wrap.appendChild(el('p', sub.body));
+                });
+
+                body.appendChild(wrap);
+            });
+        }
+
+        function changeLanguage(lang) {
+            fetch('translations_case_study_opencart.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to load translations.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const t = data[lang];
+                    translateNav(t);
+                    setDocumentLanguage(lang);
+
+                    document.getElementById('cs-back').textContent = t.back;
+                    document.getElementById('cs-title').textContent = t.title;
+                    document.getElementById('cs-disclaimer').textContent = t.disclaimer;
+                    renderBody(t.sections);
+                })
+                .catch(error => {
+                    console.error('Error loading translations:', error);
+                });
+        }
+
+        setupLanguageSelector(changeLanguage);
+    });
+</script>
+
+<script src="animations.js"></script>
+</body>
+</html>

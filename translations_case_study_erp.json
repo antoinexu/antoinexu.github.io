@@ -1,0 +1,154 @@
+{
+  "en": {
+    "home": "Home",
+    "experiences": "Experiences",
+    "projects": "Projects",
+    "skills": "Skills",
+    "services": "Services",
+    "contact": "Contact",
+    "back": "Back to Projects",
+    "title": "Internal Operations Platform (ERP / MES)",
+    "disclaimer": "A sanitized write-up of a production internal operations system I designed and built as the sole developer for a manufacturing and e-commerce company. Company names, product details, and proprietary code are omitted. It describes the architecture and engineering decisions only.",
+    "sections": [
+      {
+        "heading": "Context",
+        "paragraphs": [
+          "The company already had an internal system, but it was slow: common queries and reports could take a long time to run, and it covered only part of the operational workflow, so significant gaps were still filled with spreadsheets and manual data entry. There was also no reliable record of who changed what.",
+          "As the sole developer, I designed and built a replacement platform that was both more complete and substantially faster. It covers the full order-to-shipment lifecycle, and over time grew into a codebase of roughly 100,000 lines backed by a 50+ table relational schema."
+        ]
+      },
+      {
+        "heading": "Scope",
+        "list": [
+          "Order management: order entry, line items, and a status flow from open to picked to built to shipped",
+          "Inventory: finished-goods stock levels, valuation, incoming supplier deliveries, and manual adjustments",
+          "Materials: raw-material procurement, lot-number tracking, consumption logging, and allocation by order",
+          "Builds and work orders: production fulfillment tied to order line items",
+          "Shipments: carrier and tracking, packing slips, commercial invoices, and customs documents",
+          "Reporting and analytics: 40+ reports across orders, inventory, materials, shipping, and sales",
+          "Admin: user and role management, bulk imports, audit log, and work-in-progress tracking"
+        ]
+      },
+      {
+        "heading": "Architecture",
+        "paragraphs": [
+          "A deliberately monolithic, three-tier design. The application layer renders the UI and holds the business logic, with SQL Server as the single source of truth and the local filesystem for attachments."
+        ],
+        "code": "[Browser]\n   | HTTP\n[Web Server]   auth, business logic, rendering\n   | parameterized queries\n[SQL Server]   all business data\n   |\n[File System]  order attachments",
+        "paragraphs_after": [
+          "Why a monolith rather than microservices? A small internal user base, a one-person team, and no strict uptime SLA. Microservices would have added operational overhead with no payoff at this scale. The guiding principle was to optimize for development speed and maintainability, while remaining clear on which parts would need to change first as the system grows."
+        ]
+      },
+      {
+        "heading": "Engineering decisions worth highlighting",
+        "subsections": [
+          {
+            "title": "1. Concurrency control via pessimistic locking",
+            "body": "Two operators editing the same work order would silently overwrite each other's changes. I introduced a lock table: opening an order checks for an existing lock and acquires one if it is free, and the save releases it. A scheduled job clears stale locks left by abandoned sessions. Pessimistic locking is the appropriate choice when conflicts are costly, whereas optimistic version-number locking suits low-conflict, higher-throughput scenarios."
+          },
+          {
+            "title": "2. Unified audit trail",
+            "body": "Internal operations require full traceability. Every create, update, and delete writes to a single audit table capturing actor, timestamp, object type, object ID, and a human-readable note. A single table across all modules makes cross-module \"who changed this record\" queries straightforward. The trade-off is that a high write volume will eventually make a single table a bottleneck; the scale path is asynchronous audit writes or monthly partitioning."
+          },
+          {
+            "title": "3. Real-time reporting without extra infrastructure",
+            "body": "Reports query SQL Server directly and render with a client-side charting library from server-emitted JSON. This is real-time and requires no additional infrastructure, at the cost of heavy report queries competing with live operations. The scale path is a read replica for reporting and asynchronous generation for the heaviest reports."
+          },
+          {
+            "title": "4. Role-based access control",
+            "body": "Two roles, Admin and normal user, enforced at the top of every page via server-side sessions. The model is simple, fast, and easy to reason about. Its limitation is that it cannot express per-record rules; the upgrade path is attribute-based access control with a centralized session store for a multi-server deployment."
+          },
+          {
+            "title": "5. Data-integrity discipline",
+            "body": "All queries are parameterized rather than built from concatenated strings, which prevents SQL injection. Lot-number duplicate detection, negative-stock alerts, and reconciliation reports catch operational data errors before they compound."
+          }
+        ]
+      },
+      {
+        "heading": "Results",
+        "list": [
+          "Replaced a slow, feature-incomplete legacy internal system with one platform covering the full order-to-shipment lifecycle across orders, inventory, materials, builds, and shipments",
+          "Restructured queries and schema so reports and lookups that previously ran slowly now return quickly",
+          "Gave the business end-to-end order traceability and a complete audit trail it had not had before",
+          "Built, maintained, and extended single-handedly in production"
+        ]
+      }
+    ]
+  },
+  "zh": {
+    "home": "首页",
+    "experiences": "经历",
+    "projects": "项目",
+    "skills": "技能",
+    "services": "服务",
+    "contact": "联系",
+    "back": "返回项目",
+    "title": "企业内部运营平台（ERP / MES）",
+    "disclaimer": "这是一份脱敏的案例分析。我作为唯一开发者，为一家制造和电商公司设计并构建了这套生产环境内部运营系统。公司名称、产品细节和专有代码均已省略，此处仅描述架构与工程决策。",
+    "sections": [
+      {
+        "heading": "背景",
+        "paragraphs": [
+          "公司原本已有一套内部系统，但它运行缓慢：常用的查询和报表往往需要很长时间，而且只覆盖了部分业务流程，大量环节仍需依靠电子表格和人工录入来弥补。此外，也没有可靠的记录说明谁修改了哪些数据。",
+          "作为唯一开发者，我设计并构建了一套替代平台，既功能更完整，又明显更快。它覆盖从下单到发货的完整流程，并随时间发展为一个约 10 万行代码、由 50+ 张关系型数据表支撑的系统。"
+        ]
+      },
+      {
+        "heading": "范围",
+        "list": [
+          "订单管理：订单录入、明细行，以及从开单到拣货、生产、发货的状态流转",
+          "库存：成品库存、估值、供应商到货入库和人工调整",
+          "物料：原材料采购、批号追踪、消耗记录和按订单分配",
+          "生产工单：与订单明细行关联的生产履约",
+          "发货：承运商与跟踪号、装箱单、商业发票和报关单据",
+          "报表与分析：覆盖订单、库存、物料、发货和销售的 40+ 份报表",
+          "管理：用户与角色管理、批量导入、审计日志和在制品跟踪"
+        ]
+      },
+      {
+        "heading": "架构",
+        "paragraphs": [
+          "一个有意设计的单体、三层架构。应用层负责渲染界面并承载业务逻辑，SQL Server 作为唯一数据源，本地文件系统存放附件。"
+        ],
+        "code": "[浏览器]\n   | HTTP\n[Web 服务器]  鉴权、业务逻辑、渲染\n   | 参数化查询\n[SQL Server]  全部业务数据\n   |\n[文件系统]    订单附件",
+        "paragraphs_after": [
+          "为什么选择单体而非微服务？用户量小、一人团队、没有严格的可用性 SLA。在这个规模下，微服务只会带来额外的运维负担而没有回报。核心原则是为开发效率和可维护性而优化，同时清楚随着系统增长，哪些部分需要最先改造。"
+        ]
+      },
+      {
+        "heading": "值得一提的工程决策",
+        "subsections": [
+          {
+            "title": "1. 以悲观锁实现并发控制",
+            "body": "两名操作员同时编辑同一张工单时，会静默地覆盖彼此的改动。我引入了一张锁表：打开订单时检查是否已存在锁，空闲则加锁，保存时释放。一个定时任务会清理被弃置会话遗留的过期锁。冲突代价较高时，悲观锁是合适的选择；而低冲突、高吞吐的场景则更适合基于版本号的乐观锁。"
+          },
+          {
+            "title": "2. 统一的审计记录",
+            "body": "内部运营需要完整的可追溯性。每一次新增、更新、删除都写入同一张审计表，记录操作者、时间戳、对象类型、对象 ID 和一条可读备注。全模块共用一张表，使跨模块的“谁修改过此记录”查询变得简单。其代价是高写入量最终会使单表成为瓶颈，扩展路径是异步写入或按月分区。"
+          },
+          {
+            "title": "3. 无需额外基础设施的实时报表",
+            "body": "报表直接查询 SQL Server，并由服务端输出的 JSON 驱动前端图表库渲染。这样既实时又无需额外基础设施，代价是重型报表查询会与线上操作争用资源。扩展路径是报表走只读副本，最重的报表改为异步生成。"
+          },
+          {
+            "title": "4. 基于角色的访问控制",
+            "body": "两个角色，管理员和普通用户，通过服务端会话在每个页面顶部强制校验。该模型简单、快速、易于理解。其局限在于无法表达逐记录的权限规则；升级路径是基于属性的访问控制，以及多服务器部署下的集中式会话存储。"
+          },
+          {
+            "title": "5. 数据完整性纪律",
+            "body": "所有查询均采用参数化，而非拼接字符串，以此防止 SQL 注入。批号重复检测、负库存告警和对账报表，可在数据错误扩散之前将其捕捉。"
+          }
+        ]
+      },
+      {
+        "heading": "成果",
+        "list": [
+          "用一套覆盖从下单到发货完整流程的平台，取代了原先缓慢、功能不全的老内部系统，贯通订单、库存、物料、生产和发货",
+          "通过重构查询和表结构，使原本运行缓慢的报表和查询能够快速返回",
+          "为业务提供了此前从未有过的端到端订单可追溯性和完整审计记录",
+          "由单人在生产环境中独立构建、维护和迭代"
+        ]
+      }
+    ]
+  }
+}

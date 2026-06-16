@@ -1,0 +1,156 @@
+{
+  "en": {
+    "home": "Home",
+    "experiences": "Experiences",
+    "projects": "Projects",
+    "skills": "Skills",
+    "services": "Services",
+    "contact": "Contact",
+    "back": "Back to Projects",
+    "title": "Inventory Management System",
+    "disclaimer": "A sanitized write-up of a production inventory management system I designed and built as the sole developer for a manufacturing and e-commerce company. Company names, product details, and proprietary code are omitted. It describes the architecture and engineering decisions only.",
+    "sections": [
+      {
+        "heading": "Context",
+        "paragraphs": [
+          "Manufacturing operations needed accurate, real-time inventory that the storefront and accounting tools could not provide. Stock counts drifted, and there was no reliable record of who pulled what against which work order. The materials themselves also varied widely, from items that record cleanly by discrete lot to harder-to-measure stock such as roll goods and liquids.",
+          "As the sole developer, I built the inventory system in two parts. The first is a comprehensive tracking application covering everyday stock, receiving, builds, waste, and physical counts. The second is a dedicated subsystem for one category of materials that records cleanly by lot number and exact quantity; it is a ground-up rebuild of an older system that had become unreliable and hard to maintain. Both run on a single internal server and integrate directly with the in-house ERP."
+        ]
+      },
+      {
+        "heading": "Scope",
+        "list": [
+          "Stock and SKUs: real-time quantities, pulling against work orders, and manual adjustments",
+          "Receiving: purchase orders with a pending, partially-arrived, and arrived status flow that feeds stock on arrival",
+          "Builds and bill-of-materials: assembly tracking and per-build material consumption",
+          "Physical inventory checks: QR-scanned counts compared against the database, with discrepancy reporting",
+          "Waste tracking: scrap recorded against stock with its own audit",
+          "Lot-tracked materials subsystem: lot-level inventory, weekly snapshots, and threshold alerts",
+          "Reporting and analytics: stock trends, purchase-versus-usage, low-stock and reconciliation reports",
+          "QR code subsystem: bulk QR generation and shop-floor scanning for stock, lots, and operator badges"
+        ]
+      },
+      {
+        "heading": "Architecture",
+        "paragraphs": [
+          "Two vanilla-PHP applications backed by Microsoft SQL Server, each a single-file-per-feature design where every page is either a server-rendered UI or a JSON endpoint. The main inventory system shares its database directly with the ERP, while the lot-tracked-materials subsystem has its own database on the same server."
+        ],
+        "code": "[Browser]   jQuery, Chart.js, QR scanner\n   | HTTP over the internal network\n[PHP Web Server]   UI pages, JSON endpoints, cron jobs\n   |\n[SQL Server]\n   |- main database, shared with the ERP\n   |- materials database, owned by the subsystem",
+        "paragraphs_after": [
+          "Why two systems rather than one? The main system grew alongside the ERP and shares its tables, so reads and writes are immediate with no API layer. The lot-tracked-materials subsystem was rebuilt from the ground up as a clean, separate system because that data requires tighter access control, lot-level precision, and its own alerting; isolating it also allowed me to replace the legacy version without destabilizing the live inventory system."
+        ]
+      },
+      {
+        "heading": "Engineering decisions worth highlighting",
+        "subsections": [
+          {
+            "title": "1. Cross-system work order locking",
+            "body": "Two operators pulling against the same work order simultaneously would corrupt stock counts, and the ERP could also check out the same order. Scanning a work order acquires a short-lived lock in a shared table. The save releases it, navigating away from the page releases it, and a scheduled job clears any lock older than five minutes. Because the lock table is shared, the ERP refuses to check out a work order that inventory has locked, which resolves the conflict across both systems."
+          },
+          {
+            "title": "2. Shop-floor workflows driven by scanning",
+            "body": "Operators work by scanning rather than typing. A scanned badge identifies the operator, a scanned work order validates and locks it, and scanned codes identify SKUs and material lots. This supports both a hardware barcode scanner, which enters values directly into the focused field, and camera-based scanning in the browser. It keeps data entry fast and accurate in a warehouse environment where typing is error-prone."
+          },
+          {
+            "title": "3. Two material sources, reconciled rather than auto-synced",
+            "body": "Usage of these lot-tracked materials can be recorded from two places: the materials subsystem and the build-itemization flow in the main system. Rather than have each write to the other automatically, I kept a single owner for the actual quantity deduction and treated the other as read-only reference, matched on a normalized work-order-and-lot key. Reconciliation reports surface rows that exist in one source but not the other. Automatic dual writes were deliberately avoided: without a clear owner, they conceal quantity drift rather than correcting it, so any future synchronization requires an explicit reviewer decision."
+          },
+          {
+            "title": "4. Discrepancy lock to stop drift",
+            "body": "When a physical count does not match the database, the SKU is flagged and pulling against it is blocked until the variance is resolved. This prevents a known-incorrect quantity from drifting further while it is investigated, and it notifies the admins automatically when the discrepancy is filed."
+          },
+          {
+            "title": "5. Audit trail and historical snapshots",
+            "body": "Every state-changing operation records who performed it, what changed, and the before and after values in one audit table. A scheduled job also snapshots all stock levels at a fixed interval into a separate table, which powers inventory trend charts without slowing down live operations."
+          }
+        ]
+      },
+      {
+        "heading": "Results",
+        "list": [
+          "Replaced drifting spreadsheet counts with real-time inventory across stock, receiving, builds, waste, and lot-tracked materials",
+          "Gave the shop floor a scan-driven workflow for pulling, receiving, and counting, with a full audit trail of every movement",
+          "Prevented concurrent-edit and cross-system conflicts through work-order locking shared with the ERP",
+          "Built and shipped two coordinated systems single-handedly, and kept them running in production"
+        ]
+      }
+    ]
+  },
+  "zh": {
+    "home": "首页",
+    "experiences": "经历",
+    "projects": "项目",
+    "skills": "技能",
+    "services": "服务",
+    "contact": "联系",
+    "back": "返回项目",
+    "title": "库存管理系统",
+    "disclaimer": "这是一份脱敏的案例分析。我作为唯一开发者，为一家制造和电商公司设计并构建了这套生产环境库存管理系统。公司名称、产品细节和专有代码均已省略，此处仅描述架构与工程决策。",
+    "sections": [
+      {
+        "heading": "背景",
+        "paragraphs": [
+          "制造环节需要准确的实时库存，而商城和财务工具无法提供。库存数据经常对不上，也没有可靠的记录说明谁针对哪张工单领用了什么。物料本身的差别也很大，有的可以按离散批号清晰记录，有的则像卷材、液体那样不易精确计量。",
+          "作为唯一开发者，我将库存系统分为两部分来构建。第一部分是一套完整的追踪应用，覆盖日常库存、收货、装配、报废和实物盘点。第二部分是一套专门的子系统，用于处理其中一类能按批号和精确数量清晰记录的物料；它是对一套老系统的彻底重做，那套旧系统已变得不可靠且难以维护。两者运行在同一台内部服务器上，并与自研 ERP 直接集成。"
+        ]
+      },
+      {
+        "heading": "范围",
+        "list": [
+          "库存与 SKU：实时数量、按工单领料、人工调整",
+          "收货：采购订单具有待到货、部分到货、已到货的状态流转，到货时自动计入库存",
+          "装配与物料清单：装配追踪和每个装配的物料消耗",
+          "实物盘点：用 QR 扫描盘点并与数据库比对，记录差异",
+          "报废追踪：报废计入库存并单独留痕",
+          "物料子系统：按批号管理库存、每周快照、阈值告警",
+          "报表与分析：库存趋势、采购对比用量、低库存与对账报表",
+          "QR 码子系统：批量生成 QR 码，并在车间扫描库存、批号和操作员工牌"
+        ]
+      },
+      {
+        "heading": "架构",
+        "paragraphs": [
+          "两套纯 PHP 应用，后端均为 Microsoft SQL Server，都采用单文件即一个功能的设计，每个页面要么是服务端渲染的界面，要么是一个 JSON 接口。主库存系统直接与 ERP 共用数据库，物料子系统则在同一台服务器上拥有自己的独立数据库。"
+        ],
+        "code": "[浏览器]   jQuery、Chart.js、QR 扫描\n   | HTTP，仅限内部网络\n[PHP Web 服务器]   界面页面、JSON 接口、定时任务\n   |\n[SQL Server]\n   |- 主数据库，与 ERP 共用\n   |- 物料数据库，由子系统独占",
+        "paragraphs_after": [
+          "为什么采用两套系统而非一套？主系统是伴随 ERP 一同发展起来的，与其共用数据表，因此读写都是即时的，无需 API 层。物料子系统则从头彻底重做为一套干净、独立的新系统，因为这类数据需要更严格的权限、批号级精度和独立的告警；将其隔离，也使我能够在不影响线上库存系统的前提下替换旧版本。"
+        ]
+      },
+      {
+        "heading": "值得一提的工程决策",
+        "subsections": [
+          {
+            "title": "1. 跨系统的工单锁",
+            "body": "两名操作员同时针对同一张工单领料会扰乱库存数量，ERP 也可能同时签出同一张工单。扫描工单时会在一张共享表中获取一把短时锁，保存时释放，离开页面时也会释放，定时任务则清理任何超过五分钟的锁。由于锁表是共享的，ERP 会拒绝签出库存已锁定的工单，从而在两套系统之间消除了冲突。"
+          },
+          {
+            "title": "2. 以扫码驱动的车间流程",
+            "body": "操作员通过扫码而非打字来完成操作。扫工牌识别操作员，扫工单完成校验并加锁，扫码识别 SKU 和物料批号。它同时支持硬件条码枪，即直接将内容输入到聚焦的输入框，以及浏览器中的摄像头扫描。在打字容易出错的仓库环境中，这使数据录入既快速又准确。"
+          },
+          {
+            "title": "3. 两个物料来源，用对账而非自动同步",
+            "body": "这类物料的用量可以从两个地方记录：物料子系统和主系统中的装配拆料流程。我没有让两边相互自动写入，而是让真正的数量扣减只有一个归属方，另一方作为只读参考，按归一化后的工单加批号作为匹配键。对账报表会找出只在其中一个来源中存在的记录。自动双写是我有意回避的：缺少明确归属方时，它会掩盖数量漂移而非纠正，因此未来任何同步都必须由人显式确认。"
+          },
+          {
+            "title": "4. 用差异锁阻止漂移",
+            "body": "当实物盘点与数据库不一致时，该 SKU 会被标记，并在差异解决前禁止对其领料。这可在调查期间阻止一个已知错误的数量继续漂移，并在差异提交时自动通知管理员。"
+          },
+          {
+            "title": "5. 审计记录与历史快照",
+            "body": "每一次改变状态的操作都会在同一张审计表中记录操作者、变更内容以及变更前后的值。一个定时任务还会按固定周期把所有库存水平快照到单独的表中，从而在不拖慢线上操作的前提下支撑库存趋势图表。"
+          }
+        ]
+      },
+      {
+        "heading": "成果",
+        "list": [
+          "用实时库存取代了不断漂移的表格数字，覆盖库存、收货、装配、报废和按批号管理的物料",
+          "为车间提供了以扫码驱动的领料、收货和盘点流程，每一次库存变动都有完整留痕",
+          "通过与 ERP 共享工单锁，避免了并发编辑和跨系统冲突",
+          "由单人独立构建并交付两套相互协作的系统，并使其在生产环境持续运行"
+        ]
+      }
+    ]
+  }
+}

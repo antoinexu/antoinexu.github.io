@@ -41,7 +41,7 @@
                     <img src="pics/main-logo.png" alt="Fuel Cell Store Logo" class="company-logo">
                 </a>
                 <h3 id="project-3-title">Inventory System - Fuel Cell Store</h3>
-                <span id="project-3-duration">Oct 2024 - Dec 2025</span>
+                <span id="project-3-duration">Oct 2024 - Jul 2026</span>
                 <div class="project-tags" data-project-tags="3">
                     <span>Inventory</span><span>ERP Integration</span><span>Analytics</span>
                 </div>
@@ -49,6 +49,7 @@
                 <p id="project-3-desc2">Created real-time analytics for inventory turnover, stock aging, and demand signals to support replenishment decisions.</p>
                 <p id="project-3-desc3">Implemented reorder alerts based on historical sales data and safety-stock thresholds.</p>
                 <p id="project-3-desc4">Integrated inventory data with the ERP system for real-time synchronization and reduced stockout risk.</p>
+                <a href="case-study-inventory.html" class="case-study-link" id="project-3-casestudy">Read case study</a>
             </div>
 
             <div class="project-item">
@@ -63,6 +64,7 @@
                 <p id="project-1-desc1">Led the company's e-commerce migration from OpenCart 1.5.6.4 to 3.0.3.8, covering 2,000+ SKUs and 70,000+ historical orders with zero data loss and no business interruption.</p>
                 <p id="project-1-desc2">Wrote SQL migration scripts for data cleaning, field mapping, and relationship rebuilding across major version differences.</p>
                 <p id="project-1-desc3">Refactored frontend code, improved mobile responsiveness, and resolved third-party module compatibility issues to improve stability.</p>
+                <a href="case-study-opencart.html" class="case-study-link" id="project-1-casestudy">Read case study</a>
             </div>
 
             <div class="project-item">
@@ -78,6 +80,7 @@
                 <p id="project-2-desc2">Built dashboards that combine order, inventory, and shipment data to support faster operational decisions.</p>
                 <p id="project-2-desc3">Automated recurring report generation and scheduled analytics tasks, reducing manual reporting workload by about 80%.</p>
                 <p id="project-2-desc4">Implemented scheduled backups and recovery workflows to reduce system recovery time to minutes.</p>
+                <a href="case-study-erp.html" class="case-study-link" id="project-2-casestudy">Read case study</a>
             </div>
         </div>
     </div>
@@ -123,6 +126,10 @@
                         }
                         setTags(projectNumber, t[`project_${projectNumber}_tags`]);
                     });
+
+                    document.getElementById('project-1-casestudy').textContent = t.read_case_study;
+                    document.getElementById('project-2-casestudy').textContent = t.read_case_study;
+                    document.getElementById('project-3-casestudy').textContent = t.read_case_study;
                 })
                 .catch(error => {
                     console.error('Error loading translations:', error);
