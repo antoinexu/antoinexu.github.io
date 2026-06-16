@@ -14,7 +14,7 @@
         "heading": "Context",
         "paragraphs": [
           "Manufacturing operations needed accurate, real-time inventory that the storefront and accounting tools could not provide. Stock counts drifted, and there was no reliable record of who pulled what against which work order. The materials themselves also varied widely, from items that record cleanly by discrete lot to harder-to-measure stock such as roll goods and liquids.",
-          "As the sole developer, I built the inventory system in two parts. The first is a comprehensive tracking application covering everyday stock, receiving, builds, waste, and physical counts. The second is a dedicated subsystem for one category of materials that records cleanly by lot number and exact quantity; it is a ground-up rebuild of an older system that had become unreliable and hard to maintain. Both run on a single internal server and integrate directly with the in-house ERP."
+          "As the sole developer, I built the inventory system in two parts. The first is a comprehensive tracking application covering everyday stock, receiving, builds, waste, and physical counts. The second is a dedicated subsystem for one category of materials that records cleanly by lot number and exact quantity; it is a ground-up rebuild of an older system that had become unreliable and hard to maintain. Both run on a single internal Ubuntu Linux server and integrate directly with the in-house ERP."
         ]
       },
       {
@@ -35,7 +35,16 @@
         "paragraphs": [
           "Two vanilla-PHP applications backed by Microsoft SQL Server, each a single-file-per-feature design where every page is either a server-rendered UI or a JSON endpoint. The main inventory system shares its database directly with the ERP, while the lot-tracked-materials subsystem has its own database on the same server."
         ],
-        "code": "[Browser]   jQuery, Chart.js, QR scanner\n   | HTTP over the internal network\n[PHP Web Server]   UI pages, JSON endpoints, cron jobs\n   |\n[SQL Server]\n   |- main database, shared with the ERP\n   |- materials database, owned by the subsystem",
+        "architecture": {
+          "client": { "label": "Browser", "desc": "server-rendered pages, QR scanning" },
+          "link": "HTTP over the internal network",
+          "host": "single Ubuntu Linux server",
+          "tiers": [
+            { "label": "PHP", "desc": "UI pages, JSON endpoints, cron jobs" },
+            { "label": "SQL Server", "items": ["main database, shared with the ERP", "materials database, owned by the subsystem"] }
+          ],
+          "aria": "Architecture diagram: the browser talks over the internal network to a single Ubuntu Linux server running PHP and SQL Server."
+        },
         "paragraphs_after": [
           "Why two systems rather than one? The main system grew alongside the ERP and shares its tables, so reads and writes are immediate with no API layer. The lot-tracked-materials subsystem was rebuilt from the ground up as a clean, separate system because that data requires tighter access control, lot-level precision, and its own alerting; isolating it also allowed me to replace the legacy version without destabilizing the live inventory system."
         ]
@@ -91,7 +100,7 @@
         "heading": "背景",
         "paragraphs": [
           "制造环节需要准确的实时库存，而商城和财务工具无法提供。库存数据经常对不上，也没有可靠的记录说明谁针对哪张工单领用了什么。物料本身的差别也很大，有的可以按离散批号清晰记录，有的则像卷材、液体那样不易精确计量。",
-          "作为唯一开发者，我将库存系统分为两部分来构建。第一部分是一套完整的追踪应用，覆盖日常库存、收货、装配、报废和实物盘点。第二部分是一套专门的子系统，用于处理其中一类能按批号和精确数量清晰记录的物料；它是对一套老系统的彻底重做，那套旧系统已变得不可靠且难以维护。两者运行在同一台内部服务器上，并与自研 ERP 直接集成。"
+          "作为唯一开发者，我将库存系统分为两部分来构建。第一部分是一套完整的追踪应用，覆盖日常库存、收货、装配、报废和实物盘点。第二部分是一套专门的子系统，用于处理其中一类能按批号和精确数量清晰记录的物料；它是对一套老系统的彻底重做，那套旧系统已变得不可靠且难以维护。两者运行在同一台内部 Ubuntu Linux 服务器上，并与自研 ERP 直接集成。"
         ]
       },
       {
@@ -112,7 +121,16 @@
         "paragraphs": [
           "两套纯 PHP 应用，后端均为 Microsoft SQL Server，都采用单文件即一个功能的设计，每个页面要么是服务端渲染的界面，要么是一个 JSON 接口。主库存系统直接与 ERP 共用数据库，物料子系统则在同一台服务器上拥有自己的独立数据库。"
         ],
-        "code": "[浏览器]   jQuery、Chart.js、QR 扫描\n   | HTTP，仅限内部网络\n[PHP Web 服务器]   界面页面、JSON 接口、定时任务\n   |\n[SQL Server]\n   |- 主数据库，与 ERP 共用\n   |- 物料数据库，由子系统独占",
+        "architecture": {
+          "client": { "label": "浏览器", "desc": "服务端渲染页面、QR 扫描" },
+          "link": "HTTP，仅限内部网络",
+          "host": "单台 Ubuntu Linux 服务器",
+          "tiers": [
+            { "label": "PHP", "desc": "界面页面、JSON 接口、定时任务" },
+            { "label": "SQL Server", "items": ["主数据库，与 ERP 共用", "物料数据库，由子系统独占"] }
+          ],
+          "aria": "架构图：浏览器通过内部网络访问单台 Ubuntu Linux 服务器，服务器上运行 PHP 与 SQL Server。"
+        },
         "paragraphs_after": [
           "为什么采用两套系统而非一套？主系统是伴随 ERP 一同发展起来的，与其共用数据表，因此读写都是即时的，无需 API 层。物料子系统则从头彻底重做为一套干净、独立的新系统，因为这类数据需要更严格的权限、批号级精度和独立的告警；将其隔离，也使我能够在不影响线上库存系统的前提下替换旧版本。"
         ]

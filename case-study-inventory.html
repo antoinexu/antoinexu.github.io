@@ -52,6 +52,7 @@
 </section>
 
 <script src="i18n.js"></script>
+<script src="architecture.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         function el(tag, text) {
@@ -71,7 +72,12 @@
 
                 (section.paragraphs || []).forEach(p => wrap.appendChild(el('p', p)));
 
-                if (section.code) {
+                if (section.architecture && window.buildArchitectureSVG) {
+                    const fig = el('div');
+                    fig.className = 'arch-figure';
+                    fig.appendChild(window.buildArchitectureSVG(section.architecture));
+                    wrap.appendChild(fig);
+                } else if (section.code) {
                     const pre = el('pre');
                     pre.appendChild(el('code', section.code));
                     wrap.appendChild(pre);
