@@ -93,6 +93,10 @@ section {
     font-size: 3.6rem;
     color: var(--text-color);
     display: none;
+    background: none;
+    border: none;
+    padding: 0;
+    line-height: 1;
 }
 
 .home,
@@ -101,7 +105,7 @@ section {
 .experiences,
 .projects,
 .case-study,
-#services {
+.about {
     padding-top: 100px;
     background: var(--second-bg-color);
     height: auto;

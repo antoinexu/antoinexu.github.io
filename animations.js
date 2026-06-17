@@ -4,8 +4,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const navbar = document.querySelector('.navbar');
     if (menuIcon && navbar) {
         menuIcon.addEventListener('click', function () {
-            navbar.classList.toggle('active');
+            const isOpen = navbar.classList.toggle('active');
             menuIcon.classList.toggle('bx-x');
+            menuIcon.setAttribute('aria-expanded', String(isOpen));
         });
 
         // Close menu after clicking a nav link
@@ -13,12 +14,13 @@ document.addEventListener('DOMContentLoaded', function () {
             link.addEventListener('click', function () {
                 navbar.classList.remove('active');
                 menuIcon.classList.remove('bx-x');
+                menuIcon.setAttribute('aria-expanded', 'false');
             });
         });
     }
 
     const targets = document.querySelectorAll(
-        '.experience-item, .experience-tags, .project-item, .skill-icon, .skill-category, .metric-card, .service'
+        '.experience-item, .experience-tags, .project-item, .skill-icon, .skill-category, .metric-card'
     );
 
     targets.forEach(el => el.classList.add('fade-in'));

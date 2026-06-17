@@ -1,0 +1,42 @@
+{
+  "en": {
+    "home": "Home",
+    "experiences": "Experiences",
+    "projects": "Projects",
+    "skills": "Skills",
+    "about": "About",
+    "contact": "Contact",
+    "about_title": "About",
+    "intro_1": "I'm Bowei Xu, a full-stack software developer based in College Station, Texas, with 3+ years of experience independently designing and shipping enterprise-grade business systems. At Fuel Cell Store I'm the sole developer behind an end-to-end ERP/MES platform - a 50+ table database schema and 100,000+ line codebase - translating real manufacturing and operations requirements into production software.",
+    "intro_2": "I work end to end: database design, backend APIs, responsive interfaces, and the operational dashboards that tie them together. I lean on modern AI-assisted development workflows to ship faster without giving up engineering judgment or code review.",
+    "looking_title": "What I'm Looking For",
+    "looking_body": "Open to full-stack and backend software engineering roles. I'm at my best owning systems end to end and turning messy operational problems into reliable software.",
+    "education_title": "Education",
+    "edu_1_school": "University of Southern California",
+    "edu_1_detail": "M.S. in Computer Science · Los Angeles, CA · 2020-2022",
+    "edu_2_school": "Henan University",
+    "edu_2_detail": "B.Eng. in Computer Science and Technology · Kaifeng, China · 2016-2020",
+    "beyond_title": "Beyond Code",
+    "beyond_body": "Outside of work I'm a competitive Go player (AGA 6-dan) and two-time 1st-place winner of the Houston Go Tournament. The game keeps my pattern recognition and long-term planning sharp."
+  },
+  "zh": {
+    "home": "首页",
+    "experiences": "经历",
+    "projects": "项目",
+    "skills": "技能",
+    "about": "关于",
+    "contact": "联系",
+    "about_title": "关于",
+    "intro_1": "我是徐博伟，一名常驻美国德州 College Station 的全栈软件开发工程师，拥有 3 年以上独立设计并交付企业级业务系统的经验。在 Fuel Cell Store，我作为唯一开发者从零搭建了端到端的 ERP/MES 平台——50+ 张表的数据库架构、10 万行以上代码——将真实的制造与运营需求转化为生产级软件。",
+    "intro_2": "我能端到端地完成工作：数据库设计、后端 API、响应式界面，以及把它们串联起来的运营看板。我借助现代 AI 辅助开发流程更快交付，同时不放弃工程判断与代码审查。",
+    "looking_title": "求职方向",
+    "looking_body": "正在寻找全栈 / 后端软件工程师的机会。我最擅长端到端地负责整个系统，把繁杂的运营问题转化为可靠的软件。",
+    "education_title": "教育背景",
+    "edu_1_school": "南加州大学（USC）",
+    "edu_1_detail": "计算机科学硕士 · 洛杉矶，加州 · 2020-2022",
+    "edu_2_school": "河南大学",
+    "edu_2_detail": "计算机科学与技术 工学学士 · 开封，中国 · 2016-2020",
+    "beyond_title": "代码之外",
+    "beyond_body": "工作之外，我是一名竞技围棋手（AGA 6 段），两度夺得休斯顿围棋公开赛冠军。围棋让我的模式识别和长线规划能力保持敏锐。"
+  }
+}

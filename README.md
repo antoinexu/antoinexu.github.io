@@ -14,7 +14,7 @@ A bilingual English / Chinese personal portfolio website built with vanilla HTML
 | Experience | Work history at Fuel Cell Store and DigiFinex |
 | Projects | ERP system, e-commerce platform upgrade, and inventory system |
 | Skills | Technical stack, cloud tools, and Go background |
-| Services | Web development, backend development, full-stack solutions, AI-assisted development, and Go training |
+| About | Background, education, what I'm looking for, and a note on Go |
 | Contact | Email, GitHub, and LinkedIn |
 
 ## Features

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="About Bowei Xu - full-stack software developer based in Texas, with an M.S. in Computer Science and 3+ years building enterprise ERP, MES, and e-commerce systems.">
+    <title>About - Bowei Xu</title>
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Bowei Xu">
+    <meta property="og:title" content="About - Bowei Xu">
+    <meta property="og:description" content="About Bowei Xu - full-stack software developer based in Texas, with an M.S. in Computer Science and 3+ years building enterprise ERP, MES, and e-commerce systems.">
+    <meta property="og:url" content="https://antoinexu.github.io/about.html">
+    <meta property="og:image" content="https://antoinexu.github.io/pics/main-logo.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="About - Bowei Xu">
+    <meta name="twitter:description" content="About Bowei Xu - full-stack software developer based in Texas, with an M.S. in Computer Science and 3+ years building enterprise ERP, MES, and e-commerce systems.">
+    <meta name="twitter:image" content="https://antoinexu.github.io/pics/main-logo.png">
+    <link rel="canonical" href="https://antoinexu.github.io/about.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <a href="index.html" class="logo">Bowei Xu</a>
+
+    <button class="bx bx-menu" id="menu-icon" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-nav"></button>
+
+    <nav class="navbar" id="primary-nav">
+        <a href="index.html">Home</a>
+        <a href="experience.html">Experiences</a>
+        <a href="project.html">Projects</a>
+        <a href="skill.html">Skills</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <select id="language-selector" class="language-selector" aria-label="Select language">
+        <option value="en">English</option>
+        <option value="zh">中文</option>
+    </select>
+</header>
+
+<section class="about" id="about">
+    <div class="case-study-content">
+        <h1 id="about-title">About</h1>
+
+        <div class="cs-section">
+            <p id="about-intro-1">I'm Bowei Xu, a full-stack software developer based in College Station, Texas, with 3+ years of experience independently designing and shipping enterprise-grade business systems. At Fuel Cell Store I'm the sole developer behind an end-to-end ERP/MES platform - a 50+ table database schema and 100,000+ line codebase - translating real manufacturing and operations requirements into production software.</p>
+            <p id="about-intro-2">I work end to end: database design, backend APIs, responsive interfaces, and the operational dashboards that tie them together. I lean on modern AI-assisted development workflows to ship faster without giving up engineering judgment or code review.</p>
+        </div>
+
+        <div class="cs-section">
+            <h2 id="looking-title">What I'm Looking For</h2>
+            <p id="looking-body">Open to full-stack and backend software engineering roles. I'm at my best owning systems end to end and turning messy operational problems into reliable software.</p>
+        </div>
+
+        <div class="cs-section">
+            <h2 id="education-title">Education</h2>
+            <h3 id="edu-1-school">University of Southern California</h3>
+            <p id="edu-1-detail">M.S. in Computer Science &middot; Los Angeles, CA &middot; 2020-2022</p>
+            <h3 id="edu-2-school">Henan University</h3>
+            <p id="edu-2-detail">B.Eng. in Computer Science and Technology &middot; Kaifeng, China &middot; 2016-2020</p>
+        </div>
+
+        <div class="cs-section">
+            <h2 id="beyond-title">Beyond Code</h2>
+            <p id="beyond-body">Outside of work I'm a competitive Go player (AGA 6-dan) and two-time 1st-place winner of the Houston Go Tournament. The game keeps my pattern recognition and long-term planning sharp.</p>
+        </div>
+    </div>
+</section>
+
+<script src="animations.js"></script>
+<script src="i18n.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function changeLanguage(lang) {
+            fetch('translations_about.json')
+                .then(response => response.json())
+                .then(data => {
+                    const t = data[lang];
+                    translateNav(t);
+                    setDocumentLanguage(lang);
+
+                    document.getElementById('about-title').textContent = t.about_title;
+                    document.getElementById('about-intro-1').textContent = t.intro_1;
+                    document.getElementById('about-intro-2').textContent = t.intro_2;
+                    document.getElementById('looking-title').textContent = t.looking_title;
+                    document.getElementById('looking-body').textContent = t.looking_body;
+                    document.getElementById('education-title').textContent = t.education_title;
+                    document.getElementById('edu-1-school').textContent = t.edu_1_school;
+                    document.getElementById('edu-1-detail').textContent = t.edu_1_detail;
+                    document.getElementById('edu-2-school').textContent = t.edu_2_school;
+                    document.getElementById('edu-2-detail').textContent = t.edu_2_detail;
+                    document.getElementById('beyond-title').textContent = t.beyond_title;
+                    document.getElementById('beyond-body').textContent = t.beyond_body;
+                });
+        }
+
+        setupLanguageSelector(changeLanguage);
+    });
+</script>
+</body>
+</html>
