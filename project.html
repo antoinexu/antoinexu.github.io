@@ -51,6 +51,20 @@
                 <a href="https://www.fuelcellstore.com" target="_blank" rel="noopener noreferrer">
                     <img src="pics/main-logo.png" alt="Fuel Cell Store Logo" class="company-logo">
                 </a>
+                <h3 id="project-4-title">AI ERP Assistant - Fuel Cell Store</h3>
+                <span id="project-4-duration">Jul 2026 - Present</span>
+                <div class="project-tags" data-project-tags="4">
+                    <span>LLM Tool Calling</span><span>RBAC</span><span>Forecasting</span>
+                </div>
+                <p id="project-4-desc1">Built an AI-powered ERP assistant that answers natural-language questions over inventory, orders, suppliers, and purchase orders using LLM tool calling backed by secure server-side APIs.</p>
+                <p id="project-4-desc2">Implemented role-based access control, audit logging, read-only query validation, and predefined business tools to prevent unauthorized data access and unsafe database operations.</p>
+                <p id="project-4-desc3">Developed inventory forecasting logic using sales velocity, supplier lead time, safety stock, and reorder-point calculations to flag stockout risk and recommend purchase quantities.</p>
+            </div>
+
+            <div class="project-item">
+                <a href="https://www.fuelcellstore.com" target="_blank" rel="noopener noreferrer">
+                    <img src="pics/main-logo.png" alt="Fuel Cell Store Logo" class="company-logo">
+                </a>
                 <h3 id="project-3-title">Inventory System - Fuel Cell Store</h3>
                 <span id="project-3-duration">Oct 2024 - Jul 2026</span>
                 <div class="project-tags" data-project-tags="3">
@@ -125,7 +139,7 @@
                     setDocumentLanguage(lang);
 
                     document.getElementById('projects-title').textContent = t.projects_title;
-                    [1, 2, 3].forEach(projectNumber => {
+                    [1, 2, 3, 4].forEach(projectNumber => {
                         document.getElementById(`project-${projectNumber}-title`).textContent = t[`project_${projectNumber}_title`];
                         document.getElementById(`project-${projectNumber}-duration`).textContent = t[`project_${projectNumber}_duration`];
                         document.getElementById(`project-${projectNumber}-desc1`).textContent = t[`project_${projectNumber}_desc1`];

@@ -27,7 +27,13 @@
     "project_3_desc1": "Designed and built a full-stack inventory management system covering stock tracking, supplier management, and purchase order lifecycle workflows.",
     "project_3_desc2": "Created real-time analytics for inventory turnover, stock aging, and demand signals to support replenishment decisions.",
     "project_3_desc3": "Implemented reorder alerts based on historical sales data and safety-stock thresholds.",
-    "project_3_desc4": "Integrated inventory data with the ERP system for real-time synchronization and reduced stockout risk."
+    "project_3_desc4": "Integrated inventory data with the ERP system for real-time synchronization and reduced stockout risk.",
+    "project_4_title": "AI ERP Assistant - Fuel Cell Store",
+    "project_4_duration": "Jul 2026 - Present",
+    "project_4_tags": ["LLM Tool Calling", "RBAC", "Forecasting"],
+    "project_4_desc1": "Built an AI-powered ERP assistant that answers natural-language questions over inventory, orders, suppliers, and purchase orders using LLM tool calling backed by secure server-side APIs.",
+    "project_4_desc2": "Implemented role-based access control, audit logging, read-only query validation, and predefined business tools to prevent unauthorized data access and unsafe database operations.",
+    "project_4_desc3": "Developed inventory forecasting logic using sales velocity, supplier lead time, safety stock, and reorder-point calculations to flag stockout risk and recommend purchase quantities."
   },
   "zh": {
     "home": "首页",
@@ -57,6 +63,12 @@
     "project_3_desc1": "设计并实现全栈库存管理系统，覆盖库存追踪、供应商管理和采购订单全生命周期流程。",
     "project_3_desc2": "构建实时分析能力，整合库存周转、库龄和需求信号，为补货决策提供依据。",
     "project_3_desc3": "基于历史销售数据和安全库存阈值，实现智能补货提醒。",
-    "project_3_desc4": "与 ERP 系统集成，实现库存数据实时同步，降低缺货风险。"
+    "project_3_desc4": "与 ERP 系统集成，实现库存数据实时同步，降低缺货风险。",
+    "project_4_title": "AI ERP 智能助手 - Fuel Cell Store",
+    "project_4_duration": "2026年7月 - 至今",
+    "project_4_tags": ["LLM 工具调用", "RBAC 权限", "需求预测"],
+    "project_4_desc1": "构建 AI 驱动的 ERP 智能助手，基于 LLM 工具调用和安全的服务端 API，以自然语言回答关于库存、订单、供应商和采购订单的问题。",
+    "project_4_desc2": "实现基于角色的访问控制、审计日志、只读查询校验和预定义业务工具，防止越权访问数据和不安全的数据库操作。",
+    "project_4_desc3": "开发库存预测逻辑，结合销售速度、供货周期、安全库存和再订货点计算，识别缺货风险并推荐采购数量。"
   }
 }
