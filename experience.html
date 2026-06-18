@@ -12,7 +12,7 @@
     <meta property="og:description" content="Work experience for Bowei Xu, full-stack software developer.">
     <meta property="og:url" content="https://antoinexu.github.io/experience.html">
     <meta property="og:image" content="https://antoinexu.github.io/pics/main-logo.png">
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Experience - Bowei Xu">
     <meta name="twitter:description" content="Work experience for Bowei Xu, full-stack software developer.">
     <meta name="twitter:image" content="https://antoinexu.github.io/pics/main-logo.png">
@@ -45,7 +45,7 @@
 
 <section class="experiences" id="experiences">
     <div class="experiences-content">
-        <h2>Work Experience</h2>
+        <h1>Work Experience</h1>
         <div class="experiences-grid">
             <div class="experience-item">
                 <a href="https://www.fuelcellstore.com" target="_blank" rel="noopener noreferrer">
@@ -98,7 +98,7 @@
                 .then(data => {
                     const t = data[lang];
                     translateNav(t);
-                    document.querySelector('h2').textContent = t.workExperienceTitle;
+                    document.querySelector('h1').textContent = t.workExperienceTitle;
                     setDocumentLanguage(lang);
 
                     t.workExperiences.forEach((exp, index) => {

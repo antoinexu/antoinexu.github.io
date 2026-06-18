@@ -12,7 +12,7 @@
     <meta property="og:description" content="Contact Bowei Xu for software development work, collaboration, or Go training.">
     <meta property="og:url" content="https://antoinexu.github.io/contact.html">
     <meta property="og:image" content="https://antoinexu.github.io/pics/main-logo.png">
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Contact - Bowei Xu">
     <meta name="twitter:description" content="Contact Bowei Xu for software development work, collaboration, or Go training.">
     <meta name="twitter:image" content="https://antoinexu.github.io/pics/main-logo.png">
@@ -46,7 +46,7 @@
 
 <section class="contact" id="contact">
     <div class="contact-content">
-        <h2>Contact</h2>
+        <h1>Contact</h1>
         <p>For software development work, collaboration, or Go training, reach me through any of the channels below.</p>
         <a href="mailto:bowei_xu@outlook.com" class="social-icon" aria-label="Email Bowei Xu"><i class="bx bx-envelope"></i></a>
         <a href="https://github.com/antoinexu" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Bowei Xu on GitHub"><i class="bx bxl-github"></i></a>
@@ -64,7 +64,7 @@
                 .then(data => {
                     const t = data[lang];
                     translateNav(t);
-                    document.querySelector('.contact-content h2').textContent = t.contact_info;
+                    document.querySelector('.contact-content h1').textContent = t.contact_info;
                     document.querySelector('.contact-content p').textContent = t.contact_blurb;
                     setDocumentLanguage(lang);
                 });

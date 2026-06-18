@@ -19,6 +19,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Honor reduced-motion: leave content fully visible, skip scroll reveals
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+    }
+
     const targets = document.querySelectorAll(
         '.experience-item, .experience-tags, .project-item, .skill-icon, .skill-category, .metric-card'
     );

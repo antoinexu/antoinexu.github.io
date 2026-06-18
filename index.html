@@ -12,7 +12,7 @@
     <meta property="og:description" content="Bowei Xu is a full-stack software developer focused on ERP, MES, e-commerce, and data-driven business systems.">
     <meta property="og:url" content="https://antoinexu.github.io/">
     <meta property="og:image" content="https://antoinexu.github.io/pics/main-logo.png">
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Bowei Xu - Full-Stack Software Developer">
     <meta name="twitter:description" content="Bowei Xu is a full-stack software developer focused on ERP, MES, e-commerce, and data-driven business systems.">
     <meta name="twitter:image" content="https://antoinexu.github.io/pics/main-logo.png">
@@ -79,6 +79,7 @@
         zh: ['全栈软件开发工程师', 'ERP / MES 系统开发工程师', 'AI 辅助开发工程师']
     };
     let currentLang = 'en', roleIndex = 0, charIndex = 0, isDeleting = false, typingTimer = null;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function startTyping(lang) {
         currentLang = lang || 'en';
@@ -86,6 +87,11 @@
         roleIndex = 0;
         charIndex = 0;
         isDeleting = false;
+        if (prefersReducedMotion) {
+            const el = document.getElementById('typed-role');
+            if (el) el.textContent = rolesMap[currentLang][0];
+            return;
+        }
         type();
     }
 
