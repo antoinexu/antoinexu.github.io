@@ -33,7 +33,7 @@ function renderSkipLink(lang) {
 
 const footerStrings = {
     en: {
-        tagline: 'Full-stack developer building ERP, MES, and e-commerce systems.',
+        tagline: 'Business systems and backend engineer building ERP, MES, and e-commerce platforms.',
         links_heading: 'Explore',
         home: 'Home',
         experiences: 'Experiences',
@@ -48,7 +48,7 @@ const footerStrings = {
         rights: 'All rights reserved.'
     },
     zh: {
-        tagline: '全栈开发者，专注 ERP、MES 与电商系统。',
+        tagline: '业务系统与后端工程师，专注 ERP、MES 与电商平台。',
         links_heading: '导航',
         home: '首页',
         experiences: '经历',
