@@ -1,12 +1,18 @@
 /* Local subset of Boxicons 2.1.4 - only the 9 icons this site uses. */
 /* Rendered as CSS masks so `font-size` and `color` keep working as before. */
 
+/* Mirrors the metrics of the Boxicons webfont rule so line boxes keep their
+   original height: a 1em inline-block on the baseline, no vertical-align. */
+.bx {
+    display: inline-block;
+    line-height: 1;
+}
+
 .bx::before {
     content: "";
-    display: inline-block;
+    display: block;
     width: 1em;
     height: 1em;
-    vertical-align: middle;
     background-color: currentColor;
     -webkit-mask: var(--bx-icon) no-repeat center;
     mask: var(--bx-icon) no-repeat center;
