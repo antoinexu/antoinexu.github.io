@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+/* Poppins is loaded by fonts.css, linked ahead of this file in each page head.
+   Keeping it out of an @import avoids a serialized round trip before render. */
 
 * {
     margin: 0;
