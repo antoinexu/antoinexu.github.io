@@ -222,10 +222,6 @@ section {
     transition: color 0.3s ease;
 }
 
-.home-cases a::after {
-    content: ' \2192';
-}
-
 .home-cases a:hover {
     color: var(--text-color);
 }
