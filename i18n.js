@@ -1,11 +1,45 @@
+const SUPPORTED_LANGUAGES = ['en', 'zh'];
+
+// localStorage throws when the page is sandboxed or storage is blocked, and an
+// unrecognised value would leave every page script dereferencing data[lang].
 function getStoredLanguage() {
-    return localStorage.getItem('selectedLanguage') || 'en';
+    let stored = null;
+    try {
+        stored = localStorage.getItem('selectedLanguage');
+    } catch (error) {
+        return 'en';
+    }
+    return SUPPORTED_LANGUAGES.indexOf(stored) === -1 ? 'en' : stored;
 }
 
-function setDocumentLanguage(lang) {
+function storeLanguage(lang) {
+    try {
+        localStorage.setItem('selectedLanguage', lang);
+    } catch (error) {
+        /* Language still applies for this page view; it just will not persist. */
+    }
+}
+
+function setDocumentLanguage(lang, strings) {
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    applyPageMeta(strings);
     renderSkipLink(lang);
     renderFooter(lang);
+}
+
+// Keeps the tab title and description in step with the selected language.
+// Crawlers read the static markup, so the English tags in the HTML stay authoritative.
+function applyPageMeta(strings) {
+    if (!strings) return;
+
+    if (strings.page_title) {
+        document.title = strings.page_title;
+    }
+
+    const description = document.querySelector('meta[name="description"]');
+    if (description && strings.page_description) {
+        description.setAttribute('content', strings.page_description);
+    }
 }
 
 function renderSkipLink(lang) {
@@ -79,17 +113,17 @@ function renderFooter(lang) {
     footer.innerHTML = `
         <div class="footer-inner">
             <div class="footer-brand">
-                <a href="index.html" class="footer-logo">Bowei Xu</a>
+                <a href="/index.html" class="footer-logo">Bowei Xu</a>
                 <p class="footer-tagline">${t.tagline}</p>
             </div>
             <nav class="footer-col" aria-label="${t.links_heading}">
                 <h4>${t.links_heading}</h4>
-                <a href="index.html">${t.home}</a>
-                <a href="experience.html">${t.experiences}</a>
-                <a href="project.html">${t.projects}</a>
-                <a href="skill.html">${t.skills}</a>
-                <a href="about.html">${t.about}</a>
-                <a href="contact.html">${t.contact}</a>
+                <a href="/index.html">${t.home}</a>
+                <a href="/experience.html">${t.experiences}</a>
+                <a href="/project.html">${t.projects}</a>
+                <a href="/skill.html">${t.skills}</a>
+                <a href="/about.html">${t.about}</a>
+                <a href="/contact.html">${t.contact}</a>
             </nav>
             <div class="footer-col">
                 <h4>${t.connect_heading}</h4>
@@ -116,8 +150,10 @@ function translateNav(labels) {
         'contact.html': labels.contact
     };
 
+    // Suffix match so this also covers 404.html, which needs root-absolute
+    // hrefs because it is served for unknown paths at any depth.
     Object.entries(navMap).forEach(([href, text]) => {
-        const link = document.querySelector(`.navbar a[href="${href}"]`);
+        const link = document.querySelector(`.navbar a[href$="${href}"]`);
         if (link && text) {
             link.textContent = text;
         }
@@ -132,7 +168,7 @@ function setupLanguageSelector(onChange) {
     selector.value = initialLanguage;
 
     selector.addEventListener('change', function() {
-        localStorage.setItem('selectedLanguage', this.value);
+        storeLanguage(this.value);
         onChange(this.value);
     });
 

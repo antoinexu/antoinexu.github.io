@@ -8,7 +8,6 @@
     font-family: 'Poppins', sans-serif;
     text-decoration: none;
     border: none;
-    outline: none;
     scroll-behavior: smooth;
 }
 
@@ -29,6 +28,22 @@ html {
 body {
     background: var(--bg-color);
     color: var(--text-color);
+}
+
+/* Keyboard focus ring. The reset above deliberately does not clear outlines —
+   :focus-visible keeps mouse clicks clean while keyboard users keep an indicator.
+   White reads against the dark page background, and the offset puts the ring
+   outside the element so it stays visible on the teal and amber buttons too. */
+:focus-visible {
+    outline: 2px solid var(--text-color);
+    outline-offset: 3px;
+}
+
+/* The white ring disappears on the light cards, so darken it there */
+.skill-category :focus-visible,
+.experience-item :focus-visible,
+.project-item :focus-visible {
+    outline-color: #7a4d10;
 }
 
 section {
@@ -106,6 +121,7 @@ section {
 .experiences,
 .projects,
 .case-study,
+.not-found,
 .about {
     padding-top: 100px;
     background: var(--second-bg-color);
@@ -920,6 +936,68 @@ section {
     .footer-inner {
         grid-template-columns: 1fr;
         gap: 2.4rem;
+    }
+}
+
+/* 404 page (served by GitHub Pages for any unknown path) */
+.not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.not-found-content {
+    max-width: 640px;
+}
+
+.not-found-code {
+    font-size: 8rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--main-color);
+    opacity: .35;
+}
+
+.not-found-content h1 {
+    font-size: 3.2rem;
+    color: var(--text-color);
+    margin: 1rem 0 1.4rem;
+}
+
+.not-found-content > p:not(.not-found-code) {
+    font-size: 1.6rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.78);
+    margin-bottom: 2.4rem;
+}
+
+.not-found-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.6rem;
+    margin-bottom: 2.8rem;
+}
+
+.not-found-links a {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--main-color);
+    transition: color 0.3s ease;
+}
+
+.not-found-links a:hover {
+    color: var(--text-color);
+}
+
+@media only screen and (max-width: 480px) {
+    .not-found-code {
+        font-size: 6rem;
+    }
+
+    .not-found-content h1 {
+        font-size: 2.4rem;
     }
 }
 

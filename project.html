@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Selected software projects by Bowei Xu, including ERP, inventory, and e-commerce systems.">
-    <title>Projects - Bowei Xu</title>
+    <meta name="description" content="Software projects by Bowei Xu: an AI-powered ERP assistant, a manufacturing inventory system, an internal ERP/MES platform, and an OpenCart 1.5 to 3.0 upgrade.">
+    <title>ERP, Inventory &amp; E-Commerce Projects - Bowei Xu</title>
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Bowei Xu">
-    <meta property="og:title" content="Projects - Bowei Xu">
-    <meta property="og:description" content="Selected software projects by Bowei Xu, including ERP, inventory, and e-commerce systems.">
+    <meta property="og:title" content="ERP, Inventory &amp; E-Commerce Projects - Bowei Xu">
+    <meta property="og:description" content="Software projects by Bowei Xu: an AI-powered ERP assistant, a manufacturing inventory system, an internal ERP/MES platform, and an OpenCart 1.5 to 3.0 upgrade.">
     <meta property="og:url" content="https://antoinexu.github.io/project.html">
     <meta property="og:image" content="https://antoinexu.github.io/pics/main-logo.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Projects - Bowei Xu">
-    <meta name="twitter:description" content="Selected software projects by Bowei Xu, including ERP, inventory, and e-commerce systems.">
+    <meta name="twitter:title" content="ERP, Inventory &amp; E-Commerce Projects - Bowei Xu">
+    <meta name="twitter:description" content="Software projects by Bowei Xu: an AI-powered ERP assistant, a manufacturing inventory system, an internal ERP/MES platform, and an OpenCart 1.5 to 3.0 upgrade.">
     <meta name="twitter:image" content="https://antoinexu.github.io/pics/main-logo.png">
     <link rel="canonical" href="https://antoinexu.github.io/project.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -29,8 +29,8 @@
                 "@type": "CollectionPage",
                 "@id": "https://antoinexu.github.io/project.html#webpage",
                 "url": "https://antoinexu.github.io/project.html",
-                "name": "Projects - Bowei Xu",
-                "description": "Selected software projects by Bowei Xu, including ERP, inventory, and e-commerce systems.",
+                "name": "ERP, Inventory & E-Commerce Projects - Bowei Xu",
+                "description": "Software projects by Bowei Xu: an AI-powered ERP assistant, a manufacturing inventory system, an internal ERP/MES platform, and an OpenCart 1.5 to 3.0 upgrade.",
                 "isPartOf": {
                     "@id": "https://antoinexu.github.io/#website"
                 },
@@ -88,7 +88,7 @@
         <div class="projects-grid">
             <div class="project-item">
                 <a href="https://www.fuelcellstore.com" target="_blank" rel="noopener noreferrer">
-                    <img src="pics/main-logo.png" alt="Fuel Cell Store Logo" class="company-logo">
+                    <img src="pics/main-logo-200.png" alt="Fuel Cell Store Logo" class="company-logo" width="200" height="113">
                 </a>
                 <h3 id="project-4-title">AI ERP Assistant - Fuel Cell Store</h3>
                 <div class="project-tags" data-project-tags="4">
@@ -101,7 +101,7 @@
 
             <div class="project-item">
                 <a href="https://www.fuelcellstore.com" target="_blank" rel="noopener noreferrer">
-                    <img src="pics/main-logo.png" alt="Fuel Cell Store Logo" class="company-logo">
+                    <img src="pics/main-logo-200.png" alt="Fuel Cell Store Logo" class="company-logo" width="200" height="113">
                 </a>
                 <h3 id="project-3-title">Inventory System - Fuel Cell Store</h3>
                 <span id="project-3-duration">Oct 2024 - Jul 2026</span>
@@ -117,7 +117,7 @@
 
             <div class="project-item">
                 <a href="https://www.fuelcellstore.com" target="_blank" rel="noopener noreferrer">
-                    <img src="pics/main-logo.png" alt="Fuel Cell Store Logo" class="company-logo">
+                    <img src="pics/main-logo-200.png" alt="Fuel Cell Store Logo" class="company-logo" width="200" height="113">
                 </a>
                 <h3 id="project-1-title">OpenCart Upgrade - Fuel Cell Store</h3>
                 <span id="project-1-duration">Mar 2024 - Sep 2024</span>
@@ -132,7 +132,7 @@
 
             <div class="project-item">
                 <a href="https://www.fuelcellstore.com" target="_blank" rel="noopener noreferrer">
-                    <img src="pics/main-logo.png" alt="Fuel Cell Store Logo" class="company-logo">
+                    <img src="pics/main-logo-200.png" alt="Fuel Cell Store Logo" class="company-logo" width="200" height="113">
                 </a>
                 <h3 id="project-2-title">Internal ERP System - Fuel Cell Store</h3>
                 <span id="project-2-duration">Aug 2023 - Feb 2024</span>
@@ -174,7 +174,7 @@
                     const t = data[lang];
 
                     translateNav(t);
-                    setDocumentLanguage(lang);
+                    setDocumentLanguage(lang, t);
 
                     document.getElementById('projects-title').textContent = t.projects_title;
                     [1, 2, 3, 4].forEach(projectNumber => {

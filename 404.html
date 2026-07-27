@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="That page could not be found on Bowei Xu's portfolio. Browse the experience, projects, skills, about, and contact pages instead.">
+    <title>Page Not Found - Bowei Xu</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/fonts.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/icons.css">
+</head>
+<body>
+
+<header class="header">
+    <a href="/index.html" class="logo">Bowei Xu</a>
+
+    <button class="bx bx-menu" id="menu-icon" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-nav"></button>
+
+    <nav class="navbar" id="primary-nav">
+        <a href="/index.html">Home</a>
+        <a href="/experience.html">Experiences</a>
+        <a href="/project.html">Projects</a>
+        <a href="/skill.html">Skills</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+    </nav>
+
+    <select id="language-selector" class="language-selector" aria-label="Select language">
+        <option value="en">English</option>
+        <option value="zh">中文</option>
+    </select>
+</header>
+
+<section class="not-found" id="not-found">
+    <div class="not-found-content">
+        <p class="not-found-code">404</p>
+        <h1 id="nf-title">Page Not Found</h1>
+        <p id="nf-body">The page you were looking for does not exist or has moved. Here is what is on the site instead.</p>
+        <div class="not-found-links">
+            <a href="/project.html" id="nf-projects">Projects</a>
+            <a href="/experience.html" id="nf-experience">Experience</a>
+            <a href="/skill.html" id="nf-skills">Skills</a>
+            <a href="/about.html" id="nf-about">About</a>
+            <a href="/contact.html" id="nf-contact">Contact</a>
+        </div>
+        <a href="/index.html" class="btn" id="nf-home">Back to Home</a>
+    </div>
+</section>
+
+<script src="/animations.js"></script>
+<script src="/i18n.js"></script>
+<script>
+    // Served for any unknown path, so this page carries its own strings rather
+    // than fetching a JSON file from a directory that may not exist.
+    const notFoundStrings = {
+        en: {
+            home: 'Home', experiences: 'Experiences', projects: 'Projects',
+            skills: 'Skills', about: 'About', contact: 'Contact',
+            page_title: 'Page Not Found - Bowei Xu',
+            title: 'Page Not Found',
+            body: 'The page you were looking for does not exist or has moved. Here is what is on the site instead.',
+            back: 'Back to Home'
+        },
+        zh: {
+            home: '首页', experiences: '经历', projects: '项目',
+            skills: '技能', about: '关于', contact: '联系',
+            page_title: '页面未找到 - 徐博伟',
+            title: '页面未找到',
+            body: '你访问的页面不存在或已经迁移。可以从下面这些页面继续浏览。',
+            back: '返回首页'
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+        function changeLanguage(lang) {
+            const t = notFoundStrings[lang] || notFoundStrings.en;
+            translateNav(t);
+            setDocumentLanguage(lang, t);
+
+            document.getElementById('nf-title').textContent = t.title;
+            document.getElementById('nf-body').textContent = t.body;
+            document.getElementById('nf-home').textContent = t.back;
+            document.getElementById('nf-projects').textContent = t.projects;
+            document.getElementById('nf-experience').textContent = t.experiences;
+            document.getElementById('nf-skills').textContent = t.skills;
+            document.getElementById('nf-about').textContent = t.about;
+            document.getElementById('nf-contact').textContent = t.contact;
+        }
+
+        setupLanguageSelector(changeLanguage);
+    });
+</script>
+</body>
+</html>

@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sanitized case study of an internal ERP/MES operations platform designed and built by Bowei Xu.">
-    <title>Case Study: Internal ERP/MES - Bowei Xu</title>
+    <meta name="description" content="How I designed and built an internal ERP/MES platform as sole developer: a 50+ table schema, order tracking, material traceability, and automated reporting.">
+    <title>Case Study: Internal ERP/MES Platform - Bowei Xu</title>
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Bowei Xu">
-    <meta property="og:title" content="Case Study: Internal ERP/MES - Bowei Xu">
-    <meta property="og:description" content="Sanitized case study of an internal ERP/MES operations platform designed and built by Bowei Xu.">
+    <meta property="og:title" content="Case Study: Internal ERP/MES Platform - Bowei Xu">
+    <meta property="og:description" content="How I designed and built an internal ERP/MES platform as sole developer: a 50+ table schema, order tracking, material traceability, and automated reporting.">
     <meta property="og:url" content="https://antoinexu.github.io/case-study-erp.html">
     <meta property="og:image" content="https://antoinexu.github.io/pics/main-logo.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Case Study: Internal ERP/MES - Bowei Xu">
-    <meta name="twitter:description" content="Sanitized case study of an internal ERP/MES operations platform designed and built by Bowei Xu.">
+    <meta name="twitter:title" content="Case Study: Internal ERP/MES Platform - Bowei Xu">
+    <meta name="twitter:description" content="How I designed and built an internal ERP/MES platform as sole developer: a 50+ table schema, order tracking, material traceability, and automated reporting.">
     <meta name="twitter:image" content="https://antoinexu.github.io/pics/main-logo.png">
     <link rel="canonical" href="https://antoinexu.github.io/case-study-erp.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -28,8 +28,8 @@
             {
                 "@type": "Article",
                 "@id": "https://antoinexu.github.io/case-study-erp.html#article",
-                "headline": "Case Study: Internal ERP/MES",
-                "description": "Sanitized case study of an internal ERP/MES operations platform designed and built by Bowei Xu.",
+                "headline": "Internal Operations Platform (ERP / MES)",
+                "description": "How I designed and built an internal ERP/MES platform as sole developer: a 50+ table schema, order tracking, material traceability, and automated reporting.",
                 "url": "https://antoinexu.github.io/case-study-erp.html",
                 "author": {
                     "@id": "https://antoinexu.github.io/#person"
@@ -95,9 +95,59 @@
 <section class="case-study" id="case-study">
     <div class="case-study-content">
         <a href="project.html" class="case-study-back" id="cs-back">Back to Projects</a>
-        <h1 id="cs-title"></h1>
-        <p class="case-study-disclaimer" id="cs-disclaimer"></p>
-        <div id="cs-body"></div>
+        <h1 id="cs-title">Internal Operations Platform (ERP / MES)</h1>
+        <p class="case-study-disclaimer" id="cs-disclaimer">A sanitized write-up of a production internal operations system I designed and built as the sole developer for a manufacturing and e-commerce company. Company names, product details, and proprietary code are omitted. It describes the architecture and engineering decisions only.</p>
+        <!-- English body is rendered statically so crawlers and non-JS clients
+             see it. translations_case_study_*.json stays the source of truth and
+             the page script re-renders this on load / language switch.
+             Regenerate with tools/render-case-studies.py after editing the JSON. -->
+        <div id="cs-body">
+            <div class="cs-section">
+                <h2>Context</h2>
+                <p>The company already had an internal system, but it was slow: common queries and reports could take a long time to run, and it covered only part of the operational workflow, so significant gaps were still filled with spreadsheets and manual data entry. There was also no reliable record of who changed what.</p>
+                <p>As the sole developer, I designed and built a replacement platform that was both more complete and substantially faster. It covers the full order-to-shipment lifecycle, and over time grew into a codebase of roughly 100,000 lines backed by a 50+ table relational schema.</p>
+            </div>
+            <div class="cs-section">
+                <h2>Scope</h2>
+                <ul>
+                    <li>Order management: order entry, line items, and a status flow from open to picked to built to shipped</li>
+                    <li>Inventory: finished-goods stock levels, valuation, incoming supplier deliveries, and manual adjustments</li>
+                    <li>Materials: raw-material procurement, lot-number tracking, consumption logging, and allocation by order</li>
+                    <li>Builds and work orders: production fulfillment tied to order line items</li>
+                    <li>Shipments: carrier and tracking, packing slips, commercial invoices, and customs documents</li>
+                    <li>Reporting and analytics: 40+ reports across orders, inventory, materials, shipping, and sales</li>
+                    <li>Admin: user and role management, bulk imports, audit log, and work-in-progress tracking</li>
+                </ul>
+            </div>
+            <div class="cs-section">
+                <h2>Architecture</h2>
+                <p>A deliberately monolithic, three-tier design. The application layer renders the UI and holds the business logic, with SQL Server as the single source of truth and the local filesystem for attachments.</p>
+                <div class="arch-figure"><svg class="arch-svg" viewBox="0 0 540 458" role="img" preserveAspectRatio="xMidYMid meet" aria-label="Architecture diagram: the browser talks over HTTP to a single Ubuntu Linux server running PHP, SQL Server, and local file storage."><rect class="arch-host" x="56" y="112" width="428" height="330" rx="14"></rect><text class="arch-host-title" x="270" y="138">single Ubuntu Linux server</text><rect class="arch-node" x="78" y="16" width="384" height="46" rx="10"></rect><text class="arch-node-title" x="96" y="44">Browser</text><line class="arch-line" x1="270" y1="62" x2="270" y2="105"></line><polygon class="arch-arrow" points="265,104 275,104 270,112"></polygon><text class="arch-edge-label" x="270" y="91">HTTP</text><rect class="arch-node" x="78" y="154" width="384" height="64" rx="10"></rect><text class="arch-node-title" x="96" y="182">PHP</text><text class="arch-node-desc" x="96" y="203">auth, business logic, rendering, cron jobs</text><line class="arch-line" x1="270" y1="218" x2="270" y2="257"></line><polygon class="arch-arrow" points="265,256 275,256 270,264"></polygon><text class="arch-edge-label" x="270" y="245">parameterized queries</text><rect class="arch-node" x="78" y="264" width="384" height="64" rx="10"></rect><text class="arch-node-title" x="96" y="292">SQL Server</text><text class="arch-node-desc" x="96" y="313">all business data</text><line class="arch-line" x1="270" y1="328" x2="270" y2="353"></line><polygon class="arch-arrow" points="265,352 275,352 270,360"></polygon><rect class="arch-node" x="78" y="360" width="384" height="64" rx="10"></rect><text class="arch-node-title" x="96" y="388">File System</text><text class="arch-node-desc" x="96" y="409">order attachments</text></svg></div>
+                <p>Why a monolith rather than microservices? A small internal user base, a one-person team, and no strict uptime SLA. Microservices would have added operational overhead with no payoff at this scale. The guiding principle was to optimize for development speed and maintainability, while remaining clear on which parts would need to change first as the system grows.</p>
+            </div>
+            <div class="cs-section">
+                <h2>Engineering decisions worth highlighting</h2>
+                <h3>1. Concurrency control via pessimistic locking</h3>
+                <p>Two operators editing the same work order would silently overwrite each other's changes. I introduced a lock table: opening an order checks for an existing lock and acquires one if it is free, and the save releases it. A scheduled job clears stale locks left by abandoned sessions. Pessimistic locking is the appropriate choice when conflicts are costly, whereas optimistic version-number locking suits low-conflict, higher-throughput scenarios.</p>
+                <h3>2. Unified audit trail</h3>
+                <p>Internal operations require full traceability. Every create, update, and delete writes to a single audit table capturing actor, timestamp, object type, object ID, and a human-readable note. A single table across all modules makes cross-module "who changed this record" queries straightforward. The trade-off is that a high write volume will eventually make a single table a bottleneck; the scale path is asynchronous audit writes or monthly partitioning.</p>
+                <h3>3. Real-time reporting without extra infrastructure</h3>
+                <p>Reports query SQL Server directly and render charts in the browser from server-emitted JSON. This is real-time and requires no additional infrastructure, at the cost of heavy report queries competing with live operations. The scale path is a read replica for reporting and asynchronous generation for the heaviest reports.</p>
+                <h3>4. Role-based access control</h3>
+                <p>Two roles, Admin and normal user, enforced at the top of every page via server-side sessions. The model is simple, fast, and easy to reason about. Its limitation is that it cannot express per-record rules; the upgrade path is attribute-based access control with a centralized session store for a multi-server deployment.</p>
+                <h3>5. Data-integrity discipline</h3>
+                <p>All queries are parameterized rather than built from concatenated strings, which prevents SQL injection. Lot-number duplicate detection, negative-stock alerts, and reconciliation reports catch operational data errors before they compound.</p>
+            </div>
+            <div class="cs-section">
+                <h2>Results</h2>
+                <ul>
+                    <li>Replaced a slow, feature-incomplete legacy internal system with one platform covering the full order-to-shipment lifecycle across orders, inventory, materials, builds, and shipments</li>
+                    <li>Restructured queries and schema so reports and lookups that previously ran slowly now return quickly</li>
+                    <li>Gave the business end-to-end order traceability and a complete audit trail it had not had before</li>
+                    <li>Built, maintained, and extended single-handedly in production</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -161,7 +211,7 @@
                 .then(data => {
                     const t = data[lang];
                     translateNav(t);
-                    setDocumentLanguage(lang);
+                    setDocumentLanguage(lang, t);
 
                     document.getElementById('cs-back').textContent = t.back;
                     document.getElementById('cs-title').textContent = t.title;

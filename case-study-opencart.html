@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sanitized case study of an OpenCart 1.5 to 3.0 e-commerce platform upgrade led by Bowei Xu.">
-    <title>Case Study: OpenCart Upgrade - Bowei Xu</title>
+    <meta name="description" content="How I migrated a live store from OpenCart 1.5.6.4 to 3.0.3.8: 2,000+ products and 70,000+ orders with zero data loss and no business interruption.">
+    <title>Case Study: OpenCart 1.5 to 3.0 Migration - Bowei Xu</title>
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Bowei Xu">
-    <meta property="og:title" content="Case Study: OpenCart Upgrade - Bowei Xu">
-    <meta property="og:description" content="Sanitized case study of an OpenCart 1.5 to 3.0 e-commerce platform upgrade led by Bowei Xu.">
+    <meta property="og:title" content="Case Study: OpenCart 1.5 to 3.0 Migration - Bowei Xu">
+    <meta property="og:description" content="How I migrated a live store from OpenCart 1.5.6.4 to 3.0.3.8: 2,000+ products and 70,000+ orders with zero data loss and no business interruption.">
     <meta property="og:url" content="https://antoinexu.github.io/case-study-opencart.html">
     <meta property="og:image" content="https://antoinexu.github.io/pics/main-logo.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Case Study: OpenCart Upgrade - Bowei Xu">
-    <meta name="twitter:description" content="Sanitized case study of an OpenCart 1.5 to 3.0 e-commerce platform upgrade led by Bowei Xu.">
+    <meta name="twitter:title" content="Case Study: OpenCart 1.5 to 3.0 Migration - Bowei Xu">
+    <meta name="twitter:description" content="How I migrated a live store from OpenCart 1.5.6.4 to 3.0.3.8: 2,000+ products and 70,000+ orders with zero data loss and no business interruption.">
     <meta name="twitter:image" content="https://antoinexu.github.io/pics/main-logo.png">
     <link rel="canonical" href="https://antoinexu.github.io/case-study-opencart.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -28,8 +28,8 @@
             {
                 "@type": "Article",
                 "@id": "https://antoinexu.github.io/case-study-opencart.html#article",
-                "headline": "Case Study: OpenCart Upgrade",
-                "description": "Sanitized case study of an OpenCart 1.5 to 3.0 e-commerce platform upgrade led by Bowei Xu.",
+                "headline": "E-Commerce Platform Upgrade (OpenCart 1.5 to 3.0)",
+                "description": "How I migrated a live store from OpenCart 1.5.6.4 to 3.0.3.8: 2,000+ products and 70,000+ orders with zero data loss and no business interruption.",
                 "url": "https://antoinexu.github.io/case-study-opencart.html",
                 "author": {
                     "@id": "https://antoinexu.github.io/#person"
@@ -95,9 +95,64 @@
 <section class="case-study" id="case-study">
     <div class="case-study-content">
         <a href="project.html" class="case-study-back" id="cs-back">Back to Projects</a>
-        <h1 id="cs-title"></h1>
-        <p class="case-study-disclaimer" id="cs-disclaimer"></p>
-        <div id="cs-body"></div>
+        <h1 id="cs-title">E-Commerce Platform Upgrade (OpenCart 1.5 to 3.0)</h1>
+        <p class="case-study-disclaimer" id="cs-disclaimer">A sanitized write-up of an e-commerce platform upgrade I led as the sole developer for a manufacturing and e-commerce company. Company names, product details, and proprietary code are omitted. It describes the approach and engineering decisions only.</p>
+        <!-- English body is rendered statically so crawlers and non-JS clients
+             see it. translations_case_study_*.json stays the source of truth and
+             the page script re-renders this on load / language switch.
+             Regenerate with tools/render-case-studies.py after editing the JSON. -->
+        <div id="cs-body">
+            <div class="cs-section">
+                <h2>Context</h2>
+                <p>The online store ran on a years-old release of OpenCart, two major versions behind current, with no supported upgrade path. Custom modules and theme changes had accumulated on top of the core over several years, no documentation existed, and the original developers had left, so the behavior of much of the custom functionality was effectively undocumented.</p>
+                <p>As the sole developer, I led the upgrade from 1.5.6.4 to 3.0.3.8, covering 2,000+ products and 70,000+ historical orders, with zero data loss and no business interruption. With no documentation and no reliable automated path across that version gap, the project combined reverse engineering, data migration, and the rebuilding of custom functionality in roughly equal measure.</p>
+            </div>
+            <div class="cs-section">
+                <h2>Scope</h2>
+                <ul>
+                    <li>Reverse engineering the legacy store: reading the legacy code to determine how each custom feature behaved, as nothing was documented</li>
+                    <li>Data migration: moving 2,000+ products and 70,000+ orders across two major schema versions</li>
+                    <li>Custom functionality: adopting maintained extensions where they existed and building custom ones where they did not</li>
+                    <li>Frontend: rebuilding the theme on the new template system and improving mobile responsiveness</li>
+                    <li>Backend: re-implementing admin customizations and resolving third-party module compatibility</li>
+                    <li>Validation: reconciling migrated data against the source to confirm nothing was lost</li>
+                </ul>
+            </div>
+            <div class="cs-section">
+                <h2>Approach</h2>
+                <p>The two versions differ in database schema, templating, and module systems, so a direct in-place upgrade was not viable. I approached it as a rebuild on the new version paired with a controlled data migration, developed and rehearsed on a staging copy before any production cutover.</p>
+                <ul>
+                    <li>Set up a clean target-version installation on staging</li>
+                    <li>Audit the legacy store feature by feature, directly from its code</li>
+                    <li>For each feature, adopt a maintained extension or build a custom one</li>
+                    <li>Write SQL scripts to clean and remap the legacy data into the new schema</li>
+                    <li>Rebuild the theme and re-implement admin customizations</li>
+                    <li>Reconcile the migrated data, then cut over to production</li>
+                </ul>
+            </div>
+            <div class="cs-section">
+                <h2>Engineering decisions worth highlighting</h2>
+                <h3>1. Reverse engineering features with no documentation</h3>
+                <p>The store carried years of undocumented customization, and the original developers were no longer available. I read the legacy controllers, models, and template overrides to reconstruct what each feature actually did before deciding how to rebuild it. This ensured that behavior the business depended on was not inadvertently lost.</p>
+                <h3>2. Adopt or build, without editing the core</h3>
+                <p>For each legacy module I made an explicit decision: adopt a maintained extension where a reliable one existed, or build a custom one where it did not. In both cases the changes were applied through the platform's modification system rather than by editing core files, so customizations sit on top of the core and the store remains upgradeable rather than being locked to a single version again.</p>
+                <h3>3. Cross-version data migration in hand-written SQL</h3>
+                <p>The two schemas differ in table layout and relationships, so I wrote SQL scripts to clean, map, and rebuild the data rather than relying on an automated importer. Relational data such as product accessories, SEO URLs, and zone-to-geo-zone mappings had to be remapped table by table to fit the new structure.</p>
+                <h3>4. Staging-first, validated cutover</h3>
+                <p>The entire migration was built and rehearsed on a staging copy of the live store. I reconciled migrated record counts and spot-checked data against the source before switching over, so the production cutover was completed with zero data loss and no business downtime.</p>
+                <h3>5. Frontend and backend rebuild</h3>
+                <p>The storefront theme was rebuilt on the new template engine, with mobile responsiveness improved in the process. On the admin side, customizations and third-party module compatibility were re-implemented and resolved so the team's daily workflows continued without interruption.</p>
+            </div>
+            <div class="cs-section">
+                <h2>Results</h2>
+                <ul>
+                    <li>Upgraded the store from 1.5.6.4 to 3.0.3.8 across 2,000+ products and 70,000+ historical orders, with zero data loss and no business interruption</li>
+                    <li>Reconstructed and re-implemented years of undocumented custom functionality by reading the legacy code</li>
+                    <li>Migrated customizations onto the modification system, so the store no longer depends on edited core files and can be updated more safely</li>
+                    <li>Improved mobile responsiveness and resolved third-party module compatibility issues</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -155,7 +210,7 @@
                 .then(data => {
                     const t = data[lang];
                     translateNav(t);
-                    setDocumentLanguage(lang);
+                    setDocumentLanguage(lang, t);
 
                     document.getElementById('cs-back').textContent = t.back;
                     document.getElementById('cs-title').textContent = t.title;

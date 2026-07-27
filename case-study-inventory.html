@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sanitized case study of a manufacturing inventory management system designed and built by Bowei Xu.">
+    <meta name="description" content="How I built a manufacturing inventory system: stock tracking, purchase order workflows, turnover analytics, and reorder alerts driven by sales history.">
     <title>Case Study: Inventory Management System - Bowei Xu</title>
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Bowei Xu">
     <meta property="og:title" content="Case Study: Inventory Management System - Bowei Xu">
-    <meta property="og:description" content="Sanitized case study of a manufacturing inventory management system designed and built by Bowei Xu.">
+    <meta property="og:description" content="How I built a manufacturing inventory system: stock tracking, purchase order workflows, turnover analytics, and reorder alerts driven by sales history.">
     <meta property="og:url" content="https://antoinexu.github.io/case-study-inventory.html">
     <meta property="og:image" content="https://antoinexu.github.io/pics/main-logo.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Case Study: Inventory Management System - Bowei Xu">
-    <meta name="twitter:description" content="Sanitized case study of a manufacturing inventory management system designed and built by Bowei Xu.">
+    <meta name="twitter:description" content="How I built a manufacturing inventory system: stock tracking, purchase order workflows, turnover analytics, and reorder alerts driven by sales history.">
     <meta name="twitter:image" content="https://antoinexu.github.io/pics/main-logo.png">
     <link rel="canonical" href="https://antoinexu.github.io/case-study-inventory.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -28,8 +28,8 @@
             {
                 "@type": "Article",
                 "@id": "https://antoinexu.github.io/case-study-inventory.html#article",
-                "headline": "Case Study: Inventory Management System",
-                "description": "Sanitized case study of a manufacturing inventory management system designed and built by Bowei Xu.",
+                "headline": "Inventory Management System",
+                "description": "How I built a manufacturing inventory system: stock tracking, purchase order workflows, turnover analytics, and reorder alerts driven by sales history.",
                 "url": "https://antoinexu.github.io/case-study-inventory.html",
                 "author": {
                     "@id": "https://antoinexu.github.io/#person"
@@ -95,9 +95,60 @@
 <section class="case-study" id="case-study">
     <div class="case-study-content">
         <a href="project.html" class="case-study-back" id="cs-back">Back to Projects</a>
-        <h1 id="cs-title"></h1>
-        <p class="case-study-disclaimer" id="cs-disclaimer"></p>
-        <div id="cs-body"></div>
+        <h1 id="cs-title">Inventory Management System</h1>
+        <p class="case-study-disclaimer" id="cs-disclaimer">A sanitized write-up of a production inventory management system I designed and built as the sole developer for a manufacturing and e-commerce company. Company names, product details, and proprietary code are omitted. It describes the architecture and engineering decisions only.</p>
+        <!-- English body is rendered statically so crawlers and non-JS clients
+             see it. translations_case_study_*.json stays the source of truth and
+             the page script re-renders this on load / language switch.
+             Regenerate with tools/render-case-studies.py after editing the JSON. -->
+        <div id="cs-body">
+            <div class="cs-section">
+                <h2>Context</h2>
+                <p>Manufacturing operations needed accurate, real-time inventory that the storefront and accounting tools could not provide. Stock counts drifted, and there was no reliable record of who pulled what against which work order. The materials themselves also varied widely, from items that record cleanly by discrete lot to harder-to-measure stock such as roll goods and liquids.</p>
+                <p>As the sole developer, I built the inventory system in two parts. The first is a comprehensive tracking application covering everyday stock, receiving, builds, waste, and physical counts. The second is a dedicated subsystem for one category of materials that records cleanly by lot number and exact quantity; it is a ground-up rebuild of an older system that had become unreliable and hard to maintain. Both run on a single internal Ubuntu Linux server and integrate directly with the in-house ERP.</p>
+            </div>
+            <div class="cs-section">
+                <h2>Scope</h2>
+                <ul>
+                    <li>Stock and SKUs: real-time quantities, pulling against work orders, and manual adjustments</li>
+                    <li>Receiving: purchase orders with a pending, partially-arrived, and arrived status flow that feeds stock on arrival</li>
+                    <li>Builds and bill-of-materials: assembly tracking and per-build material consumption</li>
+                    <li>Physical inventory checks: QR-scanned counts compared against the database, with discrepancy reporting</li>
+                    <li>Waste tracking: scrap recorded against stock with its own audit</li>
+                    <li>Lot-tracked materials subsystem: lot-level inventory, weekly snapshots, and threshold alerts</li>
+                    <li>Reporting and analytics: stock trends, purchase-versus-usage, low-stock and reconciliation reports</li>
+                    <li>QR code subsystem: bulk QR generation and shop-floor scanning for stock, lots, and operator badges</li>
+                </ul>
+            </div>
+            <div class="cs-section">
+                <h2>Architecture</h2>
+                <p>Two vanilla-PHP applications backed by Microsoft SQL Server, each a single-file-per-feature design where every page is either a server-rendered UI or a JSON endpoint. The main inventory system shares its database directly with the ERP, while the lot-tracked-materials subsystem has its own database on the same server.</p>
+                <div class="arch-figure"><svg class="arch-svg" viewBox="0 0 540 398" role="img" preserveAspectRatio="xMidYMid meet" aria-label="Architecture diagram: the browser talks over the internal network to a single Ubuntu Linux server running PHP and SQL Server."><rect class="arch-host" x="56" y="130" width="428" height="252" rx="14"></rect><text class="arch-host-title" x="270" y="156">single Ubuntu Linux server</text><rect class="arch-node" x="78" y="16" width="384" height="64" rx="10"></rect><text class="arch-node-title" x="96" y="44">Browser</text><text class="arch-node-desc" x="96" y="65">server-rendered pages, QR scanning</text><line class="arch-line" x1="270" y1="80" x2="270" y2="123"></line><polygon class="arch-arrow" points="265,122 275,122 270,130"></polygon><text class="arch-edge-label" x="270" y="109">HTTP over the internal network</text><rect class="arch-node" x="78" y="172" width="384" height="64" rx="10"></rect><text class="arch-node-title" x="96" y="200">PHP</text><text class="arch-node-desc" x="96" y="221">UI pages, JSON endpoints, cron jobs</text><line class="arch-line" x1="270" y1="236" x2="270" y2="261"></line><polygon class="arch-arrow" points="265,260 275,260 270,268"></polygon><rect class="arch-node" x="78" y="268" width="384" height="96" rx="10"></rect><text class="arch-node-title" x="96" y="296">SQL Server</text><text class="arch-node-item" x="96" y="316">•  main database, shared with the ERP</text><text class="arch-node-item" x="96" y="338">•  materials database, owned by the subsystem</text></svg></div>
+                <p>Why two systems rather than one? The main system grew alongside the ERP and shares its tables, so reads and writes are immediate with no API layer. The lot-tracked-materials subsystem was rebuilt from the ground up as a clean, separate system because that data requires tighter access control, lot-level precision, and its own alerting; isolating it also allowed me to replace the legacy version without destabilizing the live inventory system.</p>
+            </div>
+            <div class="cs-section">
+                <h2>Engineering decisions worth highlighting</h2>
+                <h3>1. Cross-system work order locking</h3>
+                <p>Two operators pulling against the same work order simultaneously would corrupt stock counts, and the ERP could also check out the same order. Scanning a work order acquires a short-lived lock in a shared table. The save releases it, navigating away from the page releases it, and a scheduled job clears any lock older than five minutes. Because the lock table is shared, the ERP refuses to check out a work order that inventory has locked, which resolves the conflict across both systems.</p>
+                <h3>2. Shop-floor workflows driven by scanning</h3>
+                <p>Operators work by scanning rather than typing. A scanned badge identifies the operator, a scanned work order validates and locks it, and scanned codes identify SKUs and material lots. This supports both a hardware barcode scanner, which enters values directly into the focused field, and camera-based scanning in the browser. It keeps data entry fast and accurate in a warehouse environment where typing is error-prone.</p>
+                <h3>3. Two material sources, reconciled rather than auto-synced</h3>
+                <p>Usage of these lot-tracked materials can be recorded from two places: the materials subsystem and the build-itemization flow in the main system. Rather than have each write to the other automatically, I kept a single owner for the actual quantity deduction and treated the other as read-only reference, matched on a normalized work-order-and-lot key. Reconciliation reports surface rows that exist in one source but not the other. Automatic dual writes were deliberately avoided: without a clear owner, they conceal quantity drift rather than correcting it, so any future synchronization requires an explicit reviewer decision.</p>
+                <h3>4. Discrepancy lock to stop drift</h3>
+                <p>When a physical count does not match the database, the SKU is flagged and pulling against it is blocked until the variance is resolved. This prevents a known-incorrect quantity from drifting further while it is investigated, and it notifies the admins automatically when the discrepancy is filed.</p>
+                <h3>5. Audit trail and historical snapshots</h3>
+                <p>Every state-changing operation records who performed it, what changed, and the before and after values in one audit table. A scheduled job also snapshots all stock levels at a fixed interval into a separate table, which powers inventory trend charts without slowing down live operations.</p>
+            </div>
+            <div class="cs-section">
+                <h2>Results</h2>
+                <ul>
+                    <li>Replaced drifting spreadsheet counts with real-time inventory across stock, receiving, builds, waste, and lot-tracked materials</li>
+                    <li>Gave the shop floor a scan-driven workflow for pulling, receiving, and counting, with a full audit trail of every movement</li>
+                    <li>Prevented concurrent-edit and cross-system conflicts through work-order locking shared with the ERP</li>
+                    <li>Built and shipped two coordinated systems single-handedly, and kept them running in production</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -161,7 +212,7 @@
                 .then(data => {
                     const t = data[lang];
                     translateNav(t);
-                    setDocumentLanguage(lang);
+                    setDocumentLanguage(lang, t);
 
                     document.getElementById('cs-back').textContent = t.back;
                     document.getElementById('cs-title').textContent = t.title;

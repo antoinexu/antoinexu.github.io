@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Work experience for Bowei Xu, business systems and backend engineer.">
-    <title>Experience - Bowei Xu</title>
+    <meta name="description" content="Work experience of Bowei Xu: sole developer of an ERP/MES platform and e-commerce migration at Fuel Cell Store, and trading-platform engineering at DigiFinex.">
+    <title>ERP &amp; Backend Engineering Experience - Bowei Xu</title>
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Bowei Xu">
-    <meta property="og:title" content="Experience - Bowei Xu">
-    <meta property="og:description" content="Work experience for Bowei Xu, business systems and backend engineer.">
+    <meta property="og:title" content="ERP &amp; Backend Engineering Experience - Bowei Xu">
+    <meta property="og:description" content="Work experience of Bowei Xu: sole developer of an ERP/MES platform and e-commerce migration at Fuel Cell Store, and trading-platform engineering at DigiFinex.">
     <meta property="og:url" content="https://antoinexu.github.io/experience.html">
     <meta property="og:image" content="https://antoinexu.github.io/pics/main-logo.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Experience - Bowei Xu">
-    <meta name="twitter:description" content="Work experience for Bowei Xu, business systems and backend engineer.">
+    <meta name="twitter:title" content="ERP &amp; Backend Engineering Experience - Bowei Xu">
+    <meta name="twitter:description" content="Work experience of Bowei Xu: sole developer of an ERP/MES platform and e-commerce migration at Fuel Cell Store, and trading-platform engineering at DigiFinex.">
     <meta name="twitter:image" content="https://antoinexu.github.io/pics/main-logo.png">
     <link rel="canonical" href="https://antoinexu.github.io/experience.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -29,8 +29,8 @@
                 "@type": "WebPage",
                 "@id": "https://antoinexu.github.io/experience.html#webpage",
                 "url": "https://antoinexu.github.io/experience.html",
-                "name": "Experience - Bowei Xu",
-                "description": "Work experience for Bowei Xu, business systems and backend engineer.",
+                "name": "ERP & Backend Engineering Experience - Bowei Xu",
+                "description": "Work experience of Bowei Xu: sole developer of an ERP/MES platform and e-commerce migration at Fuel Cell Store, and trading-platform engineering at DigiFinex.",
                 "isPartOf": {
                     "@id": "https://antoinexu.github.io/#website"
                 },
@@ -88,7 +88,7 @@
         <div class="experiences-grid">
             <div class="experience-item">
                 <a href="https://www.fuelcellstore.com" target="_blank" rel="noopener noreferrer">
-                    <img src="pics/fuel_cell_store_logo.jpg" alt="Fuel Cell Store Logo" class="company-logo">
+                    <img src="pics/fuel_cell_store_logo.jpg" alt="Fuel Cell Store Logo" class="company-logo" width="200" height="200">
                 </a>
                 <h3>Software Developer - Fuel Cell Store</h3>
                 <span>Aug 2023 - Present</span>
@@ -102,7 +102,7 @@
 
             <div class="experience-item">
                 <a href="https://www.digifinex.com/en-ww/n/" target="_blank" rel="noopener noreferrer">
-                    <img src="pics/digifinex_global_logo.jpg" alt="DigiFinex Logo" class="company-logo">
+                    <img src="pics/digifinex_global_logo.jpg" alt="DigiFinex Logo" class="company-logo" width="200" height="200">
                 </a>
                 <h3>Software Engineering Intern - DigiFinex</h3>
                 <span>Jun 2022 - Aug 2022</span>
@@ -138,7 +138,7 @@
                     const t = data[lang];
                     translateNav(t);
                     document.querySelector('h1').textContent = t.workExperienceTitle;
-                    setDocumentLanguage(lang);
+                    setDocumentLanguage(lang, t);
 
                     t.workExperiences.forEach((exp, index) => {
                         const experienceItem = document.querySelector(`.experience-item:nth-child(${index + 1})`);
