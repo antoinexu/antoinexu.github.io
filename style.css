@@ -25,9 +25,14 @@ html {
     overflow-x: hidden;
 }
 
+/* Column layout so the injected footer sits at the bottom of the viewport on
+   short pages instead of leaving the page background exposed beneath it. */
 body {
     background: var(--bg-color);
     color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Keyboard focus ring. The reset above deliberately does not clear outlines —
@@ -46,8 +51,10 @@ body {
     outline-color: #7a4d10;
 }
 
+/* Grows to fill the viewport but is never forced past its own content, so a
+   short page no longer reserves a screenful of empty space below the text. */
 section {
-    min-height: 100vh;
+    flex: 1 0 auto;
     padding: 10rem 9% 2rem;
 }
 
@@ -128,7 +135,12 @@ section {
     height: auto;
 }
 
-.home {
+/* Sparse pages centre their block in whatever height is left over. The section
+   can never be shorter than its content, so tall pages are unaffected and
+   nothing is pushed out of reach above the scroll area. */
+.home,
+.contact,
+.skills {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -855,6 +867,7 @@ section {
     background: var(--bg-color);
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     padding: 4rem 8% 2rem;
+    flex-shrink: 0;
 }
 
 .footer-inner {
