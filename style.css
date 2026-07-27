@@ -692,7 +692,8 @@ section {
         left: 0;
         width: 100%;
         padding: 1rem 3%;
-        background: rgba(29, 35, 41, 0.97);
+        /* Opaque: at 0.97 the white hero type ghosted through the open menu */
+        background: var(--bg-color);
         border-top: .1rem solid rgba(0, 0, 0, .2);
         box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .4);
         display: none;
@@ -1023,13 +1024,46 @@ section {
     margin-bottom: 1.2rem;
 }
 
+/* 54rem is 1:1 with the 540-unit viewBox, so labels render at their authored
+   size instead of being scaled down to ~10px. */
 .arch-svg {
     display: block;
     width: 100%;
-    max-width: 46rem;
+    max-width: 54rem;
     height: auto;
     margin: 0 auto;
     font-family: 'Poppins', sans-serif;
+}
+
+/* Narrow screens would shrink the diagram until its labels hit 6-7px. Keep it
+   at full size and scroll it inside the figure instead — the page itself must
+   never scroll sideways. */
+@media only screen and (max-width: 600px) {
+    .arch-figure {
+        overflow-x: auto;
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+        /* Edge shadows marking that the diagram continues off-screen. The two
+           `local` layers travel with the content and mask the shadow once that
+           end is reached; the `scroll` layers stay pinned to the container.
+           The solid colour matches rgba(0,0,0,.28) over --second-bg-color so
+           the figure looks unchanged. */
+        background-color: #20252c;
+        background-image:
+            linear-gradient(to right, #20252c 40%, rgba(32, 37, 44, 0)),
+            linear-gradient(to left, #20252c 40%, rgba(32, 37, 44, 0)),
+            radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0)),
+            radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
+        background-position: left center, right center, left center, right center;
+        background-repeat: no-repeat;
+        background-size: 3.5rem 100%, 3.5rem 100%, 2.2rem 100%, 2.2rem 100%;
+        background-attachment: local, local, scroll, scroll;
+    }
+
+    .arch-svg {
+        min-width: 54rem;
+        margin: 0;
+    }
 }
 
 .arch-node {
