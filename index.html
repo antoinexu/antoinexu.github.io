@@ -153,6 +153,15 @@
                  <a href="Bowei_Xu_Resume.pdf" download="Bowei_Xu.pdf" class="btn" id="download-en-cv">Download CV</a>
                  <a href="Bowei_Xu_Chinese_Resume.pdf" download="徐博伟_简历.pdf" class="btn btn-secondary" id="download-zh-cv">下载中文简历</a>
              </div>
+
+             <nav class="home-cases" aria-labelledby="cases-heading">
+                 <h2 id="cases-heading">Selected case studies</h2>
+                 <ul>
+                     <li><a href="case-study-erp.html" id="case-link-erp">Internal Operations Platform (ERP / MES)</a></li>
+                     <li><a href="case-study-inventory.html" id="case-link-inventory">Inventory Management System</a></li>
+                     <li><a href="case-study-opencart.html" id="case-link-opencart">E-Commerce Platform Upgrade (OpenCart 1.5 to 3.0)</a></li>
+                 </ul>
+             </nav>
          </div>
      </section>
 
@@ -220,6 +229,10 @@
                         document.getElementById(`metric-${index + 1}-value`).textContent = metric.value;
                         document.getElementById(`metric-${index + 1}-label`).textContent = metric.label;
                     });
+                    document.getElementById('cases-heading').textContent = t.cases_heading;
+                    document.getElementById('case-link-erp').textContent = t.case_erp;
+                    document.getElementById('case-link-inventory').textContent = t.case_inventory;
+                    document.getElementById('case-link-opencart').textContent = t.case_opencart;
                     setDocumentLanguage(lang, t);
                 });
         }

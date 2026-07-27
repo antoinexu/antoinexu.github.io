@@ -27,7 +27,11 @@
       }
     ],
     "download_cv": "Download CV",
-    "download_zh_cv": "Chinese Resume"
+    "download_zh_cv": "Chinese Resume",
+    "cases_heading": "Selected case studies",
+    "case_erp": "Internal Operations Platform (ERP / MES)",
+    "case_inventory": "Inventory Management System",
+    "case_opencart": "E-Commerce Platform Upgrade (OpenCart 1.5 to 3.0)"
   },
   "zh": {
     "home": "首页",
@@ -57,6 +61,10 @@
       }
     ],
     "download_cv": "下载英文简历",
-    "download_zh_cv": "下载中文简历"
+    "download_zh_cv": "下载中文简历",
+    "cases_heading": "精选案例研究",
+    "case_erp": "企业内部运营平台（ERP / MES）",
+    "case_inventory": "库存管理系统",
+    "case_opencart": "电商平台升级（OpenCart 1.5 到 3.0）"
   }
 }

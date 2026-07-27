@@ -16,6 +16,7 @@
     --second-bg-color: #2c343d;
     --text-color: #fff;
     --main-color: #12d6c8;
+    --main-color-on-light: #1f5d59;
     --accent-color: #f3b562;
     --card-text-color: #4f5965;
 }
@@ -189,6 +190,44 @@ section {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.2rem;
     margin: 2.4rem 0;
+}
+
+/* Surfaces the case studies from the landing page — they are the deepest
+   content on the site and were otherwise two clicks down under Projects. */
+.home-cases {
+    margin-top: 3rem;
+    padding-top: 2.4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.home-cases h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.62);
+    margin-bottom: 1.2rem;
+}
+
+.home-cases ul {
+    list-style: none;
+}
+
+.home-cases a {
+    display: inline-block;
+    padding: .5rem 0;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--main-color);
+    transition: color 0.3s ease;
+}
+
+.home-cases a::after {
+    content: ' \2192';
+}
+
+.home-cases a:hover {
+    color: var(--text-color);
 }
 
 .metric-card {
@@ -377,7 +416,7 @@ section {
     align-items: center;
     border-radius: 999px;
     background: rgba(18, 214, 200, 0.12);
-    color: #1f5d59;
+    color: var(--main-color-on-light);
     font-size: 1.3rem;
     font-weight: 600;
     line-height: 1.2;
@@ -392,7 +431,7 @@ section {
 }
 
 .skill-category a {
-    color: var(--main-color);
+    color: var(--main-color-on-light);
     font-size: 1.5rem;
     font-weight: 600;
 }
@@ -437,12 +476,15 @@ section {
     transition: transform 0.3s ease;
 }
 
+/* --main-color only reaches 1.83:1 on the white cards. --main-color-on-light
+   is the same hue darkened to clear WCAG AA, and is what the tags and
+   case-study links on these cards already use. */
 .experience-item h3,
 .project-item h3 {
     clear: both;
     margin-top: 1.2rem;
     font-size: 1.8rem;
-    color: var(--main-color);
+    color: var(--main-color-on-light);
 }
 
 .service h3 {
@@ -535,7 +577,7 @@ section {
 .case-study-link {
     display: inline-block;
     margin-top: 1.4rem;
-    color: #1f5d59;
+    color: var(--main-color-on-light);
     font-size: 1.4rem;
     font-weight: 600;
     transition: color 0.3s ease;
@@ -939,7 +981,8 @@ section {
 
 .footer-bottom p {
     font-size: 1.3rem;
-    color: rgba(255, 255, 255, 0.45);
+    /* 0.45 landed at 4.33:1, just under the 4.5 AA threshold */
+    color: rgba(255, 255, 255, 0.52);
 }
 
 @media only screen and (max-width: 768px) {
