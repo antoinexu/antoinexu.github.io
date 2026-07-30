@@ -1,7 +1,7 @@
 {
   "en": {
     "home": "Home",
-    "experiences": "Experiences",
+    "experiences": "Experience",
     "projects": "Projects",
     "skills": "Skills",
     "about": "About",
@@ -10,7 +10,7 @@
     "page_description": "Bowei Xu is a business systems and backend engineer focused on ERP, MES, e-commerce, and data-driven platforms, building production software end to end.",
     "greeting": "Hi, I'm",
     "name": "Bowei Xu",
-    "role_prefix": "And I'm a ",
+    "role_prefix": "And I'm ",
     "bio": "Business systems and backend engineer focused on ERP, MES, e-commerce, and data-driven platforms. I build production software end to end, from database design and backend APIs to responsive interfaces and operational dashboards.",
     "metrics": [
       {
@@ -27,7 +27,7 @@
       }
     ],
     "download_cv": "Download CV",
-    "download_zh_cv": "Chinese Resume",
+    "download_zh_cv": "Chinese CV",
     "cases_heading": "Selected case studies",
     "case_erp": "Internal Operations Platform (ERP / MES)",
     "case_inventory": "Inventory Management System",
@@ -49,7 +49,7 @@
     "metrics": [
       {
         "value": "10万+",
-        "label": "生产级代码"
+        "label": "行生产级代码"
       },
       {
         "value": "7万+",

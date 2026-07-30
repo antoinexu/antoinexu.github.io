@@ -1,7 +1,7 @@
 {
   "en": {
     "home": "Home",
-    "experiences": "Experiences",
+    "experiences": "Experience",
     "projects": "Projects",
     "skills": "Skills",
     "about": "About",
@@ -13,8 +13,8 @@
     "backend": "Backend",
     "data_systems": "Data & Systems",
     "cloud_tools": "Cloud & Tools",
-    "go": "Go",
-    "go_desc": "AGA 6-dan, China 5-dan, Certified National Second-Level Referee, AGA ID: 30045.",
+    "go": "Go (Weiqi/Baduk)",
+    "go_desc": "AGA 6-dan, Chinese 5-dan, certified national referee (China, Level 2), AGA ID: 30045.",
     "go_link": "AGA Profile"
   },
   "zh": {

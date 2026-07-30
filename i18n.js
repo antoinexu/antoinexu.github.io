@@ -70,7 +70,7 @@ const footerStrings = {
         tagline: 'Business systems and backend engineer building ERP, MES, and e-commerce platforms.',
         links_heading: 'Explore',
         home: 'Home',
-        experiences: 'Experiences',
+        experiences: 'Experience',
         projects: 'Projects',
         skills: 'Skills',
         about: 'About',

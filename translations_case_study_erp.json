@@ -1,7 +1,7 @@
 {
   "en": {
     "home": "Home",
-    "experiences": "Experiences",
+    "experiences": "Experience",
     "projects": "Projects",
     "skills": "Skills",
     "about": "About",
@@ -82,7 +82,7 @@
           "Replaced a slow, feature-incomplete legacy internal system with one platform covering the full order-to-shipment lifecycle across orders, inventory, materials, builds, and shipments",
           "Restructured queries and schema so reports and lookups that previously ran slowly now return quickly",
           "Gave the business end-to-end order traceability and a complete audit trail it had not had before",
-          "Built, maintained, and extended single-handedly in production"
+          "Built, maintained, and extended the platform single-handedly in production"
         ]
       }
     ]
