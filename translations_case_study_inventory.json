@@ -6,17 +6,18 @@
     "skills": "Skills",
     "about": "About",
     "contact": "Contact",
-    "page_title": "Case Study: Inventory Management System - Bowei Xu",
-    "page_description": "How I built a manufacturing inventory system: stock tracking, purchase order workflows, turnover analytics, and reorder alerts driven by sales history.",
+    "page_title": "Case Study: Warehouse & Inventory Subsystem (WMS) - Bowei Xu",
+    "page_description": "How I built the warehouse half of an internal operations platform: shared-schema stock tracking, receiving workflows, lot-level traceability, and scan-driven shop-floor counts.",
     "back": "Back to Projects",
-    "title": "Inventory Management System",
-    "disclaimer": "A sanitized write-up of a production inventory management system I designed and built as the sole developer for a manufacturing and e-commerce company. Company names, product details, and proprietary code are omitted. It describes the architecture and engineering decisions only.",
+    "title": "Warehouse & Inventory Subsystem (WMS)",
+    "disclaimer": "A sanitized write-up of the warehouse and shop-floor half of a production internal operations platform I designed and built as the sole developer for a manufacturing and e-commerce company. It runs on the same database as the order-to-shipment half, which has its own write-up. Company names, product details, and proprietary code are omitted. It describes the architecture and engineering decisions only.",
+    "related": "Read the order-to-shipment half of this platform",
     "sections": [
       {
         "heading": "Context",
         "paragraphs": [
           "Manufacturing operations needed accurate, real-time inventory that the storefront and accounting tools could not provide. Stock counts drifted, and there was no reliable record of who pulled what against which work order. The materials themselves also varied widely, from items that record cleanly by discrete lot to harder-to-measure stock such as roll goods and liquids.",
-          "As the sole developer, I built the inventory system in two parts. The first is a comprehensive tracking application covering everyday stock, receiving, builds, waste, and physical counts. The second is a dedicated subsystem for one category of materials that records cleanly by lot number and exact quantity; it is a ground-up rebuild of an older system that had become unreliable and hard to maintain. Both run on a single internal Ubuntu Linux server and integrate directly with the in-house ERP."
+          "As the sole developer, I built the warehouse side of the platform in two parts. The first is a comprehensive tracking application covering everyday stock, receiving, builds, waste, and physical counts. The second is a dedicated subsystem for one category of materials that records cleanly by lot number and exact quantity; it is a ground-up rebuild of an older system that had become unreliable and hard to maintain. Both run on the same internal Ubuntu Linux server as the rest of the platform, and the main one reads and writes the platform's own schema directly rather than syncing across an API."
         ]
       },
       {
@@ -94,17 +95,18 @@
     "skills": "技能",
     "about": "关于",
     "contact": "联系",
-    "page_title": "案例研究：库存管理系统 - 徐博伟",
-    "page_description": "我如何构建制造业库存管理系统：库存跟踪、采购订单流程、周转率分析，以及基于历史销售数据的补货预警。",
+    "page_title": "案例研究：仓储与库存子系统（WMS） - 徐博伟",
+    "page_description": "我如何构建企业内部运营平台的仓储一侧：共库共表的库存跟踪、收货流程、批次级物料追溯，以及扫码驱动的车间盘点。",
     "back": "返回项目",
-    "title": "库存管理系统",
-    "disclaimer": "这是一份脱敏的案例分析。我作为唯一开发者，为一家制造和电商公司设计并构建了这套生产环境库存管理系统。公司名称、产品细节和专有代码均已省略，此处仅描述架构与工程决策。",
+    "title": "仓储与库存子系统（WMS）",
+    "disclaimer": "这是一份脱敏的案例分析。我作为唯一开发者，为一家制造和电商公司设计并构建了内部运营平台中仓储与车间的这一半。它与从下单到发货的另一半运行在同一个数据库上，那一半另有独立的案例分析。公司名称、产品细节和专有代码均已省略，此处仅描述架构与工程决策。",
+    "related": "查看这套平台从下单到发货的部分",
     "sections": [
       {
         "heading": "背景",
         "paragraphs": [
           "制造环节需要准确的实时库存，而商城和财务工具无法提供。库存数据经常对不上，也没有可靠的记录说明谁针对哪张工单领用了什么。物料本身的差别也很大，有的可以按离散批号清晰记录，有的则像卷材、液体那样不易精确计量。",
-          "作为唯一开发者，我将库存系统分为两部分来构建。第一部分是一套完整的追踪应用，覆盖日常库存、收货、装配、报废和实物盘点。第二部分是一套专门的子系统，用于处理其中一类能按批号和精确数量清晰记录的物料；它是对一套老系统的彻底重做，那套旧系统已变得不可靠且难以维护。两者运行在同一台内部 Ubuntu Linux 服务器上，并与自研 ERP 直接集成。"
+          "作为唯一开发者，我将平台的仓储一侧分为两部分来构建。第一部分是一套完整的追踪应用，覆盖日常库存、收货、装配、报废和实物盘点。第二部分是一套专门的子系统，用于处理其中一类能按批号和精确数量清晰记录的物料；它是对一套老系统的彻底重做，那套旧系统已变得不可靠且难以维护。两者与平台其余部分运行在同一台内部 Ubuntu Linux 服务器上，其中主系统直接读写平台自身的数据表，而不是通过 API 做同步。"
         ]
       },
       {

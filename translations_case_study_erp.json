@@ -6,24 +6,26 @@
     "skills": "Skills",
     "about": "About",
     "contact": "Contact",
-    "page_title": "Case Study: Internal ERP/MES Platform - Bowei Xu",
-    "page_description": "How I designed and built an internal ERP/MES platform as sole developer: a 50+ table schema, order tracking, material traceability, and automated reporting.",
+    "page_title": "Case Study: Internal ERP / WMS / MES Platform - Bowei Xu",
+    "page_description": "How I designed and built an internal operations platform (ERP/WMS/MES) as sole developer: a 50+ table schema, order tracking, material traceability, and automated reporting.",
     "back": "Back to Projects",
-    "title": "Internal Operations Platform (ERP / MES)",
-    "disclaimer": "A sanitized write-up of a production internal operations system I designed and built as the sole developer for a manufacturing and e-commerce company. Company names, product details, and proprietary code are omitted. It describes the architecture and engineering decisions only.",
+    "title": "Internal Operations Platform (ERP / WMS / MES)",
+    "disclaimer": "A sanitized write-up of a production internal operations system I designed and built as the sole developer for a manufacturing and e-commerce company. This covers the order-to-shipment half of the platform; the warehouse and shop-floor half runs on the same database and has its own write-up. Company names, product details, and proprietary code are omitted. It describes the architecture and engineering decisions only.",
+    "related": "Read the warehouse and materials half of this platform",
     "sections": [
       {
         "heading": "Context",
         "paragraphs": [
           "The company already had an internal system, but it was slow: common queries and reports could take a long time to run, and it covered only part of the operational workflow, so significant gaps were still filled with spreadsheets and manual data entry. There was also no reliable record of who changed what.",
-          "As the sole developer, I designed and built a replacement platform that was both more complete and substantially faster. It covers the full order-to-shipment lifecycle, and over time grew into a codebase of roughly 100,000 lines backed by a 50+ table relational schema."
+          "As the sole developer, I designed and built a replacement platform that was both more complete and substantially faster. It covers the full order-to-shipment lifecycle, and over time grew into a codebase of roughly 100,000 lines backed by a 50+ table relational schema.",
+          "The platform has two halves. This write-up covers the order-to-shipment side: orders, builds, shipments, and reporting. The warehouse and shop-floor side - receiving, scan-driven picking, physical counts, and lot-level material traceability - is built on this same schema and is covered in a separate write-up."
         ]
       },
       {
         "heading": "Scope",
         "list": [
           "Order management: order entry, line items, and a status flow from open to picked to built to shipped",
-          "Inventory: finished-goods stock levels, valuation, incoming supplier deliveries, and manual adjustments",
+          "Inventory: finished-goods stock levels, valuation, and manual adjustments, on the same schema the warehouse subsystem writes to",
           "Materials: raw-material procurement, lot-number tracking, consumption logging, and allocation by order",
           "Builds and work orders: production fulfillment tied to order line items",
           "Shipments: carrier and tracking, packing slips, commercial invoices, and customs documents",
@@ -94,24 +96,26 @@
     "skills": "技能",
     "about": "关于",
     "contact": "联系",
-    "page_title": "案例研究：内部 ERP/MES 平台 - 徐博伟",
-    "page_description": "作为唯一开发者，我如何设计并构建内部 ERP/MES 平台：50 多张表的数据库架构、订单跟踪、物料追溯与自动化报表。",
+    "page_title": "案例研究：内部 ERP / WMS / MES 平台 - 徐博伟",
+    "page_description": "作为唯一开发者，我如何设计并构建企业内部运营平台（ERP/WMS/MES）：50 多张表的数据库架构、订单跟踪、物料追溯与自动化报表。",
     "back": "返回项目",
-    "title": "企业内部运营平台（ERP / MES）",
-    "disclaimer": "这是一份脱敏的案例分析。我作为唯一开发者，为一家制造和电商公司设计并构建了这套生产环境内部运营系统。公司名称、产品细节和专有代码均已省略，此处仅描述架构与工程决策。",
+    "title": "企业内部运营平台（ERP / WMS / MES）",
+    "disclaimer": "这是一份脱敏的案例分析。我作为唯一开发者，为一家制造和电商公司设计并构建了这套生产环境内部运营系统。本文覆盖平台中从下单到发货的这一半；仓储与车间那一半运行在同一个数据库上，另有独立的案例分析。公司名称、产品细节和专有代码均已省略，此处仅描述架构与工程决策。",
+    "related": "查看这套平台的仓储与物料部分",
     "sections": [
       {
         "heading": "背景",
         "paragraphs": [
           "公司原本已有一套内部系统，但它运行缓慢：常用的查询和报表往往需要很长时间，而且只覆盖了部分业务流程，大量环节仍需依靠电子表格和人工录入来弥补。此外，也没有可靠的记录说明谁修改了哪些数据。",
-          "作为唯一开发者，我设计并构建了一套替代平台，既功能更完整，又明显更快。它覆盖从下单到发货的完整流程，并随时间发展为一个约 10 万行代码、由 50+ 张关系型数据表支撑的系统。"
+          "作为唯一开发者，我设计并构建了一套替代平台，既功能更完整，又明显更快。它覆盖从下单到发货的完整流程，并随时间发展为一个约 10 万行代码、由 50+ 张关系型数据表支撑的系统。",
+          "这套平台分为两半。本文覆盖从下单到发货的一侧：订单、生产、发货与报表。仓储与车间的一侧——收货、扫码拣货、盘点和批次级物料追溯——建立在同一套数据库架构之上，另有独立的案例分析。"
         ]
       },
       {
         "heading": "范围",
         "list": [
           "订单管理：订单录入、明细行，以及从开单到拣货、生产、发货的状态流转",
-          "库存：成品库存、估值、供应商到货入库和人工调整",
+          "库存：成品库存、估值和人工调整，与仓储子系统写入的是同一套数据表",
           "物料：原材料采购、批号追踪、消耗记录和按订单分配",
           "生产工单：与订单明细行关联的生产履约",
           "发货：承运商与跟踪号、装箱单、商业发票和报关单据",

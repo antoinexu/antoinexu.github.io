@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="How I built a manufacturing inventory system: stock tracking, purchase order workflows, turnover analytics, and reorder alerts driven by sales history.">
-    <title>Case Study: Inventory Management System - Bowei Xu</title>
+    <meta name="description" content="How I built the warehouse half of an internal operations platform: shared-schema stock tracking, receiving workflows, lot-level traceability, and scan-driven shop-floor counts.">
+    <title>Case Study: Warehouse &amp; Inventory Subsystem (WMS) - Bowei Xu</title>
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Bowei Xu">
-    <meta property="og:title" content="Case Study: Inventory Management System - Bowei Xu">
-    <meta property="og:description" content="How I built a manufacturing inventory system: stock tracking, purchase order workflows, turnover analytics, and reorder alerts driven by sales history.">
+    <meta property="og:title" content="Case Study: Warehouse &amp; Inventory Subsystem (WMS) - Bowei Xu">
+    <meta property="og:description" content="How I built the warehouse half of an internal operations platform: shared-schema stock tracking, receiving workflows, lot-level traceability, and scan-driven shop-floor counts.">
     <meta property="og:url" content="https://antoinexu.github.io/case-study-inventory.html">
     <meta property="og:image" content="https://antoinexu.github.io/pics/main-logo.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Case Study: Inventory Management System - Bowei Xu">
-    <meta name="twitter:description" content="How I built a manufacturing inventory system: stock tracking, purchase order workflows, turnover analytics, and reorder alerts driven by sales history.">
+    <meta name="twitter:title" content="Case Study: Warehouse &amp; Inventory Subsystem (WMS) - Bowei Xu">
+    <meta name="twitter:description" content="How I built the warehouse half of an internal operations platform: shared-schema stock tracking, receiving workflows, lot-level traceability, and scan-driven shop-floor counts.">
     <meta name="twitter:image" content="https://antoinexu.github.io/pics/main-logo.png">
     <link rel="canonical" href="https://antoinexu.github.io/case-study-inventory.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -28,8 +28,8 @@
             {
                 "@type": "Article",
                 "@id": "https://antoinexu.github.io/case-study-inventory.html#article",
-                "headline": "Inventory Management System",
-                "description": "How I built a manufacturing inventory system: stock tracking, purchase order workflows, turnover analytics, and reorder alerts driven by sales history.",
+                "headline": "Warehouse & Inventory Subsystem (WMS)",
+                "description": "How I built the warehouse half of an internal operations platform: shared-schema stock tracking, receiving workflows, lot-level traceability, and scan-driven shop-floor counts.",
                 "url": "https://antoinexu.github.io/case-study-inventory.html",
                 "author": {
                     "@id": "https://antoinexu.github.io/#person"
@@ -39,7 +39,7 @@
                 },
                 "image": "https://antoinexu.github.io/pics/main-logo.png",
                 "datePublished": "2026-06-16",
-                "dateModified": "2026-06-18",
+                "dateModified": "2026-07-31",
                 "mainEntityOfPage": "https://antoinexu.github.io/case-study-inventory.html",
                 "inLanguage": "en"
             },
@@ -61,7 +61,7 @@
                     {
                         "@type": "ListItem",
                         "position": 3,
-                        "name": "Case Study: Inventory Management System",
+                        "name": "Case Study: Warehouse & Inventory Subsystem (WMS)",
                         "item": "https://antoinexu.github.io/case-study-inventory.html"
                     }
                 ]
@@ -69,9 +69,6 @@
         ]
     }
     </script>
-    <!-- Both controls are inert without JS: the hamburger cannot open the nav
-         (the static footer carries the links instead) and the language
-         selector cannot swap any text. -->
     <noscript><style>#menu-icon,.language-selector{display:none!important}</style></noscript>
 </head>
 <body>
@@ -99,17 +96,13 @@
 <section class="case-study" id="case-study">
     <div class="case-study-content">
         <a href="project.html" class="case-study-back" id="cs-back">Back to Projects</a>
-        <h1 id="cs-title">Inventory Management System</h1>
-        <p class="case-study-disclaimer" id="cs-disclaimer">A sanitized write-up of a production inventory management system I designed and built as the sole developer for a manufacturing and e-commerce company. Company names, product details, and proprietary code are omitted. It describes the architecture and engineering decisions only.</p>
-        <!-- English body is rendered statically so crawlers and non-JS clients
-             see it. translations_case_study_*.json stays the source of truth and
-             the page script re-renders this on load / language switch.
-             Regenerate with tools/render-case-studies.py after editing the JSON. -->
+        <h1 id="cs-title">Warehouse &amp; Inventory Subsystem (WMS)</h1>
+        <p class="case-study-disclaimer" id="cs-disclaimer">A sanitized write-up of the warehouse and shop-floor half of a production internal operations platform I designed and built as the sole developer for a manufacturing and e-commerce company. It runs on the same database as the order-to-shipment half, which has its own write-up. Company names, product details, and proprietary code are omitted. It describes the architecture and engineering decisions only.</p>
         <div id="cs-body">
             <div class="cs-section">
                 <h2>Context</h2>
                 <p>Manufacturing operations needed accurate, real-time inventory that the storefront and accounting tools could not provide. Stock counts drifted, and there was no reliable record of who pulled what against which work order. The materials themselves also varied widely, from items that record cleanly by discrete lot to harder-to-measure stock such as roll goods and liquids.</p>
-                <p>As the sole developer, I built the inventory system in two parts. The first is a comprehensive tracking application covering everyday stock, receiving, builds, waste, and physical counts. The second is a dedicated subsystem for one category of materials that records cleanly by lot number and exact quantity; it is a ground-up rebuild of an older system that had become unreliable and hard to maintain. Both run on a single internal Ubuntu Linux server and integrate directly with the in-house ERP.</p>
+                <p>As the sole developer, I built the warehouse side of the platform in two parts. The first is a comprehensive tracking application covering everyday stock, receiving, builds, waste, and physical counts. The second is a dedicated subsystem for one category of materials that records cleanly by lot number and exact quantity; it is a ground-up rebuild of an older system that had become unreliable and hard to maintain. Both run on the same internal Ubuntu Linux server as the rest of the platform, and the main one reads and writes the platform's own schema directly rather than syncing across an API.</p>
             </div>
             <div class="cs-section">
                 <h2>Scope</h2>
@@ -153,12 +146,10 @@
                 </ul>
             </div>
         </div>
+        <a href="case-study-erp.html" class="case-study-related" id="cs-related">Read the order-to-shipment half of this platform</a>
     </div>
 </section>
 
-<!-- Static so navigation survives without JS (the mobile header nav collapses
-     behind the hamburger). i18n.js swaps the text in place; it no longer owns a
-     copy of this markup, so the two cannot drift. -->
 <footer id="site-footer" class="site-footer">
     <div class="footer-inner">
         <div class="footer-brand">
@@ -253,6 +244,7 @@
                     document.getElementById('cs-back').textContent = t.back;
                     document.getElementById('cs-title').textContent = t.title;
                     document.getElementById('cs-disclaimer').textContent = t.disclaimer;
+                    document.getElementById('cs-related').textContent = t.related;
                     renderBody(t.sections);
                 })
                 .catch(error => {

@@ -1,7 +1,5 @@
 const SUPPORTED_LANGUAGES = ['en', 'zh'];
 
-// localStorage throws when the page is sandboxed or storage is blocked, and an
-// unrecognised value would leave every page script dereferencing data[lang].
 function getStoredLanguage() {
     let stored = null;
     try {
@@ -16,7 +14,6 @@ function storeLanguage(lang) {
     try {
         localStorage.setItem('selectedLanguage', lang);
     } catch (error) {
-        /* Language still applies for this page view; it just will not persist. */
     }
 }
 
@@ -27,8 +24,6 @@ function setDocumentLanguage(lang, strings) {
     renderFooter(lang);
 }
 
-// Keeps the tab title and description in step with the selected language.
-// Crawlers read the static markup, so the English tags in the HTML stay authoritative.
 function applyPageMeta(strings) {
     if (!strings) return;
 
@@ -98,8 +93,6 @@ const footerStrings = {
     }
 };
 
-// The footer markup is static in every page so navigation works without JS.
-// This only swaps the text, so there is no second copy of the markup to drift.
 function renderFooter(lang) {
     const t = footerStrings[lang] || footerStrings.en;
     const footer = document.getElementById('site-footer');
@@ -137,8 +130,6 @@ function translateNav(labels) {
         'contact.html': labels.contact
     };
 
-    // Suffix match so this also covers 404.html, which needs root-absolute
-    // hrefs because it is served for unknown paths at any depth.
     Object.entries(navMap).forEach(([href, text]) => {
         const link = document.querySelector(`.navbar a[href$="${href}"]`);
         if (link && text) {

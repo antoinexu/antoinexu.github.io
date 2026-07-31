@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="How I designed and built an internal ERP/MES platform as sole developer: a 50+ table schema, order tracking, material traceability, and automated reporting.">
-    <title>Case Study: Internal ERP/MES Platform - Bowei Xu</title>
+    <meta name="description" content="How I designed and built an internal operations platform (ERP/WMS/MES) as sole developer: a 50+ table schema, order tracking, material traceability, and automated reporting.">
+    <title>Case Study: Internal ERP / WMS / MES Platform - Bowei Xu</title>
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Bowei Xu">
-    <meta property="og:title" content="Case Study: Internal ERP/MES Platform - Bowei Xu">
-    <meta property="og:description" content="How I designed and built an internal ERP/MES platform as sole developer: a 50+ table schema, order tracking, material traceability, and automated reporting.">
+    <meta property="og:title" content="Case Study: Internal ERP / WMS / MES Platform - Bowei Xu">
+    <meta property="og:description" content="How I designed and built an internal operations platform (ERP/WMS/MES) as sole developer: a 50+ table schema, order tracking, material traceability, and automated reporting.">
     <meta property="og:url" content="https://antoinexu.github.io/case-study-erp.html">
     <meta property="og:image" content="https://antoinexu.github.io/pics/main-logo.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Case Study: Internal ERP/MES Platform - Bowei Xu">
-    <meta name="twitter:description" content="How I designed and built an internal ERP/MES platform as sole developer: a 50+ table schema, order tracking, material traceability, and automated reporting.">
+    <meta name="twitter:title" content="Case Study: Internal ERP / WMS / MES Platform - Bowei Xu">
+    <meta name="twitter:description" content="How I designed and built an internal operations platform (ERP/WMS/MES) as sole developer: a 50+ table schema, order tracking, material traceability, and automated reporting.">
     <meta name="twitter:image" content="https://antoinexu.github.io/pics/main-logo.png">
     <link rel="canonical" href="https://antoinexu.github.io/case-study-erp.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -28,8 +28,8 @@
             {
                 "@type": "Article",
                 "@id": "https://antoinexu.github.io/case-study-erp.html#article",
-                "headline": "Internal Operations Platform (ERP / MES)",
-                "description": "How I designed and built an internal ERP/MES platform as sole developer: a 50+ table schema, order tracking, material traceability, and automated reporting.",
+                "headline": "Internal Operations Platform (ERP / WMS / MES)",
+                "description": "How I designed and built an internal operations platform (ERP/WMS/MES) as sole developer: a 50+ table schema, order tracking, material traceability, and automated reporting.",
                 "url": "https://antoinexu.github.io/case-study-erp.html",
                 "author": {
                     "@id": "https://antoinexu.github.io/#person"
@@ -39,7 +39,7 @@
                 },
                 "image": "https://antoinexu.github.io/pics/main-logo.png",
                 "datePublished": "2026-06-16",
-                "dateModified": "2026-06-18",
+                "dateModified": "2026-07-31",
                 "mainEntityOfPage": "https://antoinexu.github.io/case-study-erp.html",
                 "inLanguage": "en"
             },
@@ -61,7 +61,7 @@
                     {
                         "@type": "ListItem",
                         "position": 3,
-                        "name": "Case Study: Internal ERP/MES",
+                        "name": "Case Study: Internal ERP / WMS / MES",
                         "item": "https://antoinexu.github.io/case-study-erp.html"
                     }
                 ]
@@ -69,9 +69,6 @@
         ]
     }
     </script>
-    <!-- Both controls are inert without JS: the hamburger cannot open the nav
-         (the static footer carries the links instead) and the language
-         selector cannot swap any text. -->
     <noscript><style>#menu-icon,.language-selector{display:none!important}</style></noscript>
 </head>
 <body>
@@ -99,23 +96,20 @@
 <section class="case-study" id="case-study">
     <div class="case-study-content">
         <a href="project.html" class="case-study-back" id="cs-back">Back to Projects</a>
-        <h1 id="cs-title">Internal Operations Platform (ERP / MES)</h1>
-        <p class="case-study-disclaimer" id="cs-disclaimer">A sanitized write-up of a production internal operations system I designed and built as the sole developer for a manufacturing and e-commerce company. Company names, product details, and proprietary code are omitted. It describes the architecture and engineering decisions only.</p>
-        <!-- English body is rendered statically so crawlers and non-JS clients
-             see it. translations_case_study_*.json stays the source of truth and
-             the page script re-renders this on load / language switch.
-             Regenerate with tools/render-case-studies.py after editing the JSON. -->
+        <h1 id="cs-title">Internal Operations Platform (ERP / WMS / MES)</h1>
+        <p class="case-study-disclaimer" id="cs-disclaimer">A sanitized write-up of a production internal operations system I designed and built as the sole developer for a manufacturing and e-commerce company. This covers the order-to-shipment half of the platform; the warehouse and shop-floor half runs on the same database and has its own write-up. Company names, product details, and proprietary code are omitted. It describes the architecture and engineering decisions only.</p>
         <div id="cs-body">
             <div class="cs-section">
                 <h2>Context</h2>
                 <p>The company already had an internal system, but it was slow: common queries and reports could take a long time to run, and it covered only part of the operational workflow, so significant gaps were still filled with spreadsheets and manual data entry. There was also no reliable record of who changed what.</p>
                 <p>As the sole developer, I designed and built a replacement platform that was both more complete and substantially faster. It covers the full order-to-shipment lifecycle, and over time grew into a codebase of roughly 100,000 lines backed by a 50+ table relational schema.</p>
+                <p>The platform has two halves. This write-up covers the order-to-shipment side: orders, builds, shipments, and reporting. The warehouse and shop-floor side - receiving, scan-driven picking, physical counts, and lot-level material traceability - is built on this same schema and is covered in a separate write-up.</p>
             </div>
             <div class="cs-section">
                 <h2>Scope</h2>
                 <ul>
                     <li>Order management: order entry, line items, and a status flow from open to picked to built to shipped</li>
-                    <li>Inventory: finished-goods stock levels, valuation, incoming supplier deliveries, and manual adjustments</li>
+                    <li>Inventory: finished-goods stock levels, valuation, and manual adjustments, on the same schema the warehouse subsystem writes to</li>
                     <li>Materials: raw-material procurement, lot-number tracking, consumption logging, and allocation by order</li>
                     <li>Builds and work orders: production fulfillment tied to order line items</li>
                     <li>Shipments: carrier and tracking, packing slips, commercial invoices, and customs documents</li>
@@ -152,12 +146,10 @@
                 </ul>
             </div>
         </div>
+        <a href="case-study-inventory.html" class="case-study-related" id="cs-related">Read the warehouse and materials half of this platform</a>
     </div>
 </section>
 
-<!-- Static so navigation survives without JS (the mobile header nav collapses
-     behind the hamburger). i18n.js swaps the text in place; it no longer owns a
-     copy of this markup, so the two cannot drift. -->
 <footer id="site-footer" class="site-footer">
     <div class="footer-inner">
         <div class="footer-brand">
@@ -252,6 +244,7 @@
                     document.getElementById('cs-back').textContent = t.back;
                     document.getElementById('cs-title').textContent = t.title;
                     document.getElementById('cs-disclaimer').textContent = t.disclaimer;
+                    document.getElementById('cs-related').textContent = t.related;
                     renderBody(t.sections);
                 })
                 .catch(error => {

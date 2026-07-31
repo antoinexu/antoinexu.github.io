@@ -104,10 +104,6 @@ def main():
             '        <a href="project.html" class="case-study-back" id="cs-back">%s</a>\n'
             '        <h1 id="cs-title">%s</h1>\n'
             '        <p class="case-study-disclaimer" id="cs-disclaimer">%s</p>\n'
-            '        <!-- English body is rendered statically so crawlers and non-JS clients\n'
-            '             see it. translations_case_study_*.json stays the source of truth and\n'
-            '             the page script re-renders this on load / language switch.\n'
-            '             Regenerate with tools/render-case-studies.py after editing the JSON. -->\n'
             '        <div id="cs-body">\n%s\n        </div>'
             % (escape(data["back"]), escape(data["title"]), escape(data["disclaimer"]),
                render_body(data["sections"], svgs[name]))

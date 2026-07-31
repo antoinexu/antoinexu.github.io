@@ -1,6 +1,3 @@
-// Renders a case-study architecture diagram as an inline SVG from structured
-// data, so the same shape works in both English and Chinese and stays in sync
-// with the site theme (colors come from CSS in style.css).
 (function () {
     const NS = 'http://www.w3.org/2000/svg';
 

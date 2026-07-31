@@ -69,9 +69,6 @@
         ]
     }
     </script>
-    <!-- Both controls are inert without JS: the hamburger cannot open the nav
-         (the static footer carries the links instead) and the language
-         selector cannot swap any text. -->
     <noscript><style>#menu-icon,.language-selector{display:none!important}</style></noscript>
 </head>
 <body>
@@ -101,10 +98,6 @@
         <a href="project.html" class="case-study-back" id="cs-back">Back to Projects</a>
         <h1 id="cs-title">E-Commerce Platform Upgrade (OpenCart 1.5 to 3.0)</h1>
         <p class="case-study-disclaimer" id="cs-disclaimer">A sanitized write-up of an e-commerce platform upgrade I led as the sole developer for a manufacturing and e-commerce company. Company names, product details, and proprietary code are omitted. It describes the approach and engineering decisions only.</p>
-        <!-- English body is rendered statically so crawlers and non-JS clients
-             see it. translations_case_study_*.json stays the source of truth and
-             the page script re-renders this on load / language switch.
-             Regenerate with tools/render-case-studies.py after editing the JSON. -->
         <div id="cs-body">
             <div class="cs-section">
                 <h2>Context</h2>
@@ -160,9 +153,6 @@
     </div>
 </section>
 
-<!-- Static so navigation survives without JS (the mobile header nav collapses
-     behind the hamburger). i18n.js swaps the text in place; it no longer owns a
-     copy of this markup, so the two cannot drift. -->
 <footer id="site-footer" class="site-footer">
     <div class="footer-inner">
         <div class="footer-brand">

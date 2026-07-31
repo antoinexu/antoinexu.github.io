@@ -59,9 +59,6 @@
         ]
     }
     </script>
-    <!-- Both controls are inert without JS: the hamburger cannot open the nav
-         (the static footer carries the links instead) and the language
-         selector cannot swap any text. -->
     <noscript><style>#menu-icon,.language-selector{display:none!important}</style></noscript>
 </head>
 <body>
@@ -116,7 +113,7 @@
                     <h2 id="data-title">Data & Systems</h2>
                 </div>
                 <div class="skill-pills">
-                    <span>MySQL</span><span>Microsoft SQL Server</span><span>MongoDB</span><span>ERP</span><span>MES</span><span>OpenCart</span>
+                    <span>MySQL</span><span>Microsoft SQL Server</span><span>MongoDB</span><span>ERP</span><span>WMS</span><span>MES</span><span>OpenCart</span>
                 </div>
             </article>
 
@@ -142,9 +139,6 @@
     </div>
 </section>
 
-<!-- Static so navigation survives without JS (the mobile header nav collapses
-     behind the hamburger). i18n.js swaps the text in place; it no longer owns a
-     copy of this markup, so the two cannot drift. -->
 <footer id="site-footer" class="site-footer">
     <div class="footer-inner">
         <div class="footer-brand">

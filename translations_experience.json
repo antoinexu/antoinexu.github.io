@@ -7,14 +7,14 @@
     "about": "About",
     "contact": "Contact",
     "page_title": "ERP & Backend Engineering Experience - Bowei Xu",
-    "page_description": "Work experience of Bowei Xu: sole developer of an ERP/MES platform and e-commerce migration at Fuel Cell Store, and trading-platform engineering at DigiFinex.",
+    "page_description": "Work experience of Bowei Xu: sole developer of an internal ERP/WMS/MES platform and e-commerce migration at Fuel Cell Store, and trading-platform engineering at DigiFinex.",
     "workExperienceTitle": "Work Experience",
     "workExperiences": [
       {
         "title": "Software Developer - Fuel Cell Store",
         "period": "Aug 2023 - Present",
-        "tags": ["ERP/MES", "SQL", "REST API", "Production Systems"],
-        "description1": "Sole developer for an end-to-end ERP/MES-style platform, independently architecting a 50+ table relational database schema and 100,000+ line codebase supporting order processing, lot-level material traceability, and fuel cell manufacturing workflows.",
+        "tags": ["ERP/WMS/MES", "SQL", "REST API", "Production Systems"],
+        "description1": "Sole developer for the company's internal operations platform (ERP / WMS / MES), independently architecting a 50+ table relational database schema and 100,000+ line codebase supporting order processing, lot-level material traceability, and fuel cell manufacturing workflows.",
         "description2": "Led the live OpenCart 1.5 to 3.0 e-commerce migration for 2,000+ products and 70,000+ historical orders, including custom SQL migration scripts, UI redesign, and zero data loss.",
         "description3": "Built and maintained REST APIs, optimized SQL and reporting workflows, stabilized production systems, and used AI-assisted development tools to shorten delivery cycles."
       },
@@ -36,14 +36,14 @@
     "about": "关于",
     "contact": "联系",
     "page_title": "ERP 与后端工程经历 - 徐博伟",
-    "page_description": "徐博伟的工作经历：在 Fuel Cell Store 独立开发 ERP/MES 平台并主导电商迁移，此前在 DigiFinex 参与交易平台研发。",
+    "page_description": "徐博伟的工作经历：在 Fuel Cell Store 独立开发企业内部 ERP/WMS/MES 平台并主导电商迁移，此前在 DigiFinex 参与交易平台研发。",
     "workExperienceTitle": "工作经历",
     "workExperiences": [
       {
         "title": "软件开发工程师 - Fuel Cell Store",
         "period": "2023年8月 - 至今",
-        "tags": ["ERP/MES", "SQL", "REST API", "生产系统"],
-        "description1": "作为唯一开发者，独立架构并持续开发端到端 ERP/MES 平台，包含 50+ 张关系型数据库表和 10 万+ 行代码，支撑订单处理、批次级物料追溯和燃料电池制造流程。",
+        "tags": ["ERP/WMS/MES", "SQL", "REST API", "生产系统"],
+        "description1": "作为唯一开发者，独立架构并持续开发企业内部运营平台（ERP / WMS / MES），包含 50+ 张关系型数据库表和 10 万+ 行代码，支撑订单处理、批次级物料追溯和燃料电池制造流程。",
         "description2": "主导线上电商平台从 OpenCart 1.5 升级到 3.0，迁移 2,000+ 商品和 70,000+ 历史订单，编写自定义 SQL 迁移脚本，完成界面重设计，并实现零数据丢失。",
         "description3": "开发并维护 REST API，优化 SQL 查询和报表流程，诊断并稳定生产系统，同时结合 AI 辅助开发工具缩短功能交付周期。"
       },

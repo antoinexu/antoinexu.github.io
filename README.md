@@ -12,11 +12,11 @@ A bilingual English / Chinese personal portfolio website built with vanilla HTML
 |------|-------------|
 | Home | Short professional introduction, headline metrics, and resume downloads |
 | Experience | Work history at Fuel Cell Store and DigiFinex |
-| Projects | AI ERP assistant, inventory system, OpenCart upgrade, and internal ERP |
+| Projects | AI ERP assistant, internal operations platform (ERP/WMS/MES), warehouse subsystem, and OpenCart upgrade |
 | Skills | Technical stack, cloud tools, and Go background |
 | About | Background, education, what I'm looking for, and a note on Go |
 | Contact | Email, GitHub, and LinkedIn |
-| Case studies | Sanitized write-ups for the internal ERP, inventory system, and OpenCart upgrade |
+| Case studies | Sanitized write-ups for the two halves of the internal operations platform (order-to-shipment and warehouse) and the OpenCart upgrade |
 | 404 | Served by GitHub Pages for unknown paths; uses root-absolute links so it works at any depth |
 
 ## Features
@@ -37,7 +37,7 @@ A bilingual English / Chinese personal portfolio website built with vanilla HTML
 | `translations*.json` | Per-page English and Chinese strings, fetched at runtime |
 | `i18n.js` | Language persistence, shared footer, skip link, nav and metadata translation |
 | `animations.js` | Mobile menu toggle and scroll reveal |
-| `architecture.js` | Inline SVG architecture diagrams for the ERP and inventory case studies |
+| `architecture.js` | Inline SVG architecture diagrams for the platform and warehouse case studies |
 | `style.css` | All page styling |
 | `fonts.css`, `fonts/` | Self-hosted Poppins subsets |
 | `icons.css` | Self-hosted icon subset (Boxicons glyphs as inline SVG CSS masks) |
@@ -51,6 +51,11 @@ and on language switch). The JSON is the source of truth — after editing it,
 regenerate the static markup with `tools/render-case-studies.py` so the two
 cannot drift. Every other page keeps its English text only in the HTML, with the
 JSON supplying Chinese.
+
+The script rewrites everything from `#cs-back` through the close of
+`<div id="cs-body">`. Anything that must survive a regeneration — such as the
+`#cs-related` cross-links between the two platform case studies — has to sit
+outside that block.
 
 ## Tech Stack
 
