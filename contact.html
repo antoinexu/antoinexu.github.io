@@ -73,7 +73,7 @@
         <a href="project.html">Projects</a>
         <a href="skill.html">Skills</a>
         <a href="about.html">About</a>
-        <a href="contact.html" class="active">Contact</a>
+        <a href="contact.html" class="active" aria-current="page">Contact</a>
     </nav>
 
     <select id="language-selector" class="language-selector" aria-label="Select language">
@@ -86,7 +86,10 @@
 <section class="contact" id="contact">
     <div class="contact-content">
         <h1>Contact</h1>
-        <p>For software development work, collaboration, or Go training, reach me through any of the channels below.</p>
+        <p id="contact-blurb">For software development work, collaboration, or Go training, reach me through any of the channels below.</p>
+        <!-- Spelled out rather than hidden behind the icon: the address needs to
+             be readable and copyable without a mail client. -->
+        <p class="contact-email"><a href="mailto:bowei_xu@outlook.com">bowei_xu@outlook.com</a></p>
         <a href="mailto:bowei_xu@outlook.com" class="social-icon" aria-label="Email Bowei Xu"><i class="bx bx-envelope"></i></a>
         <a href="https://github.com/antoinexu" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Bowei Xu on GitHub"><i class="bx bxl-github"></i></a>
         <a href="https://www.linkedin.com/in/bowei-xu-132a3b1b9/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Bowei Xu on LinkedIn"><i class="bx bxl-linkedin"></i></a>
@@ -99,13 +102,21 @@
     document.addEventListener('DOMContentLoaded', function() {
         function changeLanguage(lang) {
             fetch('translations_contact.json')
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to load translations.');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     const t = data[lang];
                     translateNav(t);
                     document.querySelector('.contact-content h1').textContent = t.contact_info;
-                    document.querySelector('.contact-content p').textContent = t.contact_blurb;
+                    document.getElementById('contact-blurb').textContent = t.contact_blurb;
                     setDocumentLanguage(lang, t);
+                })
+                .catch(error => {
+                    console.error('Error loading translations:', error);
                 });
         }
 

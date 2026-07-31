@@ -69,7 +69,7 @@
 
     <nav class="navbar" id="primary-nav">
         <a href="index.html">Home</a>
-        <a href="experience.html" class="active">Experience</a>
+        <a href="experience.html" class="active" aria-current="page">Experience</a>
         <a href="project.html">Projects</a>
         <a href="skill.html">Skills</a>
         <a href="about.html">About</a>
@@ -90,7 +90,7 @@
                 <a href="https://www.fuelcellstore.com" target="_blank" rel="noopener noreferrer">
                     <img src="pics/fuel_cell_store_logo.jpg" alt="Fuel Cell Store Logo" class="company-logo" width="200" height="200">
                 </a>
-                <h3>Software Developer - Fuel Cell Store</h3>
+                <h2>Software Developer - Fuel Cell Store</h2>
                 <span>Aug 2023 - Present</span>
                 <div class="experience-tags" data-experience-tags="1">
                     <span>ERP/MES</span><span>SQL</span><span>REST API</span><span>Production Systems</span>
@@ -104,7 +104,7 @@
                 <a href="https://www.digifinex.com/en-ww/n/" target="_blank" rel="noopener noreferrer">
                     <img src="pics/digifinex_global_logo.jpg" alt="DigiFinex Logo" class="company-logo" width="200" height="200">
                 </a>
-                <h3>Software Engineering Intern - DigiFinex</h3>
+                <h2>Software Engineering Intern - DigiFinex</h2>
                 <span>Jun 2022 - Aug 2022</span>
                 <div class="experience-tags" data-experience-tags="2">
                     <span>Trading Platform</span><span>API Integration</span><span>Frontend/Backend</span>
@@ -133,7 +133,12 @@
 
         function changeLanguage(lang) {
             fetch('translations_experience.json')
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to load translations.');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     const t = data[lang];
                     translateNav(t);
@@ -142,13 +147,16 @@
 
                     t.workExperiences.forEach((exp, index) => {
                         const experienceItem = document.querySelector(`.experience-item:nth-child(${index + 1})`);
-                        experienceItem.querySelector('h3').textContent = exp.title;
+                        experienceItem.querySelector('h2').textContent = exp.title;
                         experienceItem.querySelector('span').textContent = exp.period;
                         setTags(index + 1, exp.tags);
                         experienceItem.querySelectorAll('p')[0].textContent = exp.description1;
                         experienceItem.querySelectorAll('p')[1].textContent = exp.description2;
                         experienceItem.querySelectorAll('p')[2].textContent = exp.description3;
                     });
+                })
+                .catch(error => {
+                    console.error('Error loading translations:', error);
                 });
         }
 

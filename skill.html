@@ -71,7 +71,7 @@
         <a href="index.html">Home</a>
         <a href="experience.html">Experience</a>
         <a href="project.html">Projects</a>
-        <a href="skill.html" class="active">Skills</a>
+        <a href="skill.html" class="active" aria-current="page">Skills</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
     </nav>
@@ -89,7 +89,7 @@
             <article class="skill-category">
                 <div class="skill-category-heading">
                     <i class="bx bx-code-alt"></i>
-                    <h3 id="frontend-title">Frontend</h3>
+                    <h2 id="frontend-title">Frontend</h2>
                 </div>
                 <div class="skill-pills">
                     <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>React.js</span><span>Responsive UI</span>
@@ -99,7 +99,7 @@
             <article class="skill-category">
                 <div class="skill-category-heading">
                     <i class="bx bx-server"></i>
-                    <h3 id="backend-title">Backend</h3>
+                    <h2 id="backend-title">Backend</h2>
                 </div>
                 <div class="skill-pills">
                     <span>PHP</span><span>Node.js</span><span>Express.js</span><span>Java</span><span>Python</span><span>REST API</span>
@@ -109,7 +109,7 @@
             <article class="skill-category">
                 <div class="skill-category-heading">
                     <i class="bx bxs-data"></i>
-                    <h3 id="data-title">Data & Systems</h3>
+                    <h2 id="data-title">Data & Systems</h2>
                 </div>
                 <div class="skill-pills">
                     <span>MySQL</span><span>Microsoft SQL Server</span><span>MongoDB</span><span>ERP</span><span>MES</span><span>OpenCart</span>
@@ -119,7 +119,7 @@
             <article class="skill-category">
                 <div class="skill-category-heading">
                     <i class="bx bx-cloud"></i>
-                    <h3 id="platform-title">Cloud & Tools</h3>
+                    <h2 id="platform-title">Cloud & Tools</h2>
                 </div>
                 <div class="skill-pills">
                     <span>AWS</span><span>Azure</span><span>Docker</span><span>Linux</span><span>Git</span><span>AI-assisted development</span>
@@ -129,7 +129,7 @@
             <article class="skill-category skill-category-wide">
                 <div class="skill-category-heading">
                     <i class="bx bx-brain"></i>
-                    <h3 id="go-title">Go (Weiqi/Baduk)</h3>
+                    <h2 id="go-title">Go (Weiqi/Baduk)</h2>
                 </div>
                 <p id="go-desc">AGA 6-dan, Chinese 5-dan, certified national referee (China, Level 2), AGA ID: 30045.</p>
                 <a href="https://www.usgo.org/content.aspx?page_id=22&club_id=454497&module_id=550340" target="_blank" rel="noopener noreferrer" id="go-link">AGA Profile</a>
@@ -144,7 +144,12 @@
     document.addEventListener('DOMContentLoaded', function() {
         function changeLanguage(lang) {
             fetch('translations_skill.json')
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to load translations.');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     const t = data[lang];
                     translateNav(t);
@@ -157,6 +162,9 @@
                     document.getElementById('go-desc').textContent = t.go_desc;
                     document.getElementById('go-link').textContent = t.go_link;
                     setDocumentLanguage(lang, t);
+                })
+                .catch(error => {
+                    console.error('Error loading translations:', error);
                 });
         }
 

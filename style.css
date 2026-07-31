@@ -158,13 +158,14 @@ section {
     line-height: 1.3;
 }
 
-.home-content h3 {
+.home-greeting,
+.home-role {
     font-size: 32px;
     font-weight: 700;
     word-break: break-word;
 }
 
-.home-content h3:nth-of-type(2) {
+.home-role {
     margin-bottom: 2rem;
 }
 
@@ -173,7 +174,7 @@ section {
     color: var(--main-color);
 }
 
-.home-content p {
+.home-bio {
     font-size: 16px;
     line-height: 1.8;
     margin-bottom: 2rem;
@@ -280,15 +281,12 @@ section {
     max-width: 800px;
 }
 
+/* Page titles only. The cards below them use h2 for their own titles, so this
+   must not reach into .experience-item / .project-item / .skill-category. */
 .contact-content h1,
-.contact-content h2,
 .skills-content h1,
-.skills-content h2,
 .experiences h1,
-.experiences h2,
-.projects h1,
-.projects h2,
-#services h2 {
+.projects h1 {
     text-align: center;
     font-size: 3.2rem;
     color: #ffffff;
@@ -296,9 +294,7 @@ section {
 }
 
 .contact-content h1,
-.contact-content h2,
-.skills-content h1,
-.skills-content h2 {
+.skills-content h1 {
     color: var(--main-color);
 }
 
@@ -307,6 +303,13 @@ section {
     color: var(--text-color);
     margin-bottom: 2rem;
     line-height: 1.7;
+}
+
+.contact-email {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 2.4rem;
+    word-break: break-word;
 }
 
 .contact-content a {
@@ -394,7 +397,7 @@ section {
     font-size: 2.8rem;
 }
 
-.skill-category h3 {
+.skill-category h2 {
     color: #333;
     font-size: 2rem;
 }
@@ -475,8 +478,8 @@ section {
 /* --main-color only reaches 1.83:1 on the white cards. --main-color-on-light
    is the same hue darkened to clear WCAG AA, and is what the tags and
    case-study links on these cards already use. */
-.experience-item h3,
-.project-item h3 {
+.experience-item h2,
+.project-item h2 {
     clear: both;
     margin-top: 1.2rem;
     font-size: 1.8rem;
@@ -774,11 +777,12 @@ section {
         font-size: 36px;
     }
 
-    .home-content h3 {
+    .home-greeting,
+    .home-role {
         font-size: 20px;
     }
 
-    .home-content p {
+    .home-bio {
         font-size: 14px;
     }
 
@@ -844,11 +848,12 @@ section {
         padding: 6px;
     }
 
-    .home-content h3 {
+    .home-greeting,
+    .home-role {
         font-size: 16px;
     }
 
-    .home-content p {
+    .home-bio {
         font-size: 13px;
     }
 

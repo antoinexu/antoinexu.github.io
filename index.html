@@ -113,7 +113,7 @@
          <button class="bx bx-menu" id="menu-icon" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-nav"></button>
 
          <nav class="navbar" id="primary-nav">
-             <a href="index.html" class="active">Home</a>
+             <a href="index.html" class="active" aria-current="page">Home</a>
              <a href="experience.html">Experience</a>
              <a href="project.html">Projects</a>
              <a href="skill.html">Skills</a>
@@ -129,19 +129,21 @@
 
      <section class="home" id="home">
          <div class="home-content">
-             <h3>Hi, I'm</h3>
+             <!-- Greeting and role are styling, not structure: keeping them as
+                  headings put an h3 above the h1 and broke the heading order. -->
+             <p class="home-greeting" id="home-greeting">Hi, I'm</p>
              <h1>Bowei Xu</h1>
-             <h3><span id="role-prefix">And I'm </span><span id="typed-role"></span><span class="cursor">|</span></h3>
-             <p>Business systems and backend engineer focused on ERP, MES, e-commerce, and data-driven platforms. I build production software end to end, from database design and backend APIs to responsive interfaces and operational dashboards.</p>
+             <p class="home-role"><span id="role-prefix">And I'm </span><span id="typed-role"></span><span class="cursor">|</span></p>
+             <p class="home-bio" id="home-bio">Business systems and backend engineer focused on ERP, MES, e-commerce, and data-driven platforms. I build production software end to end, from database design and backend APIs to responsive interfaces and operational dashboards.</p>
 
              <div class="home-highlights" aria-label="Professional highlights">
                  <div class="metric-card">
-                     <strong id="metric-1-value">100K+</strong>
-                     <span id="metric-1-label">lines of production code</span>
+                     <strong id="metric-1-value">80%</strong>
+                     <span id="metric-1-label">less manual reporting work</span>
                  </div>
                  <div class="metric-card">
                      <strong id="metric-2-value">70K+</strong>
-                     <span id="metric-2-label">orders migrated</span>
+                     <span id="metric-2-label">orders migrated, zero data loss</span>
                  </div>
                  <div class="metric-card">
                      <strong id="metric-3-value">50+</strong>
@@ -216,15 +218,20 @@
     document.addEventListener('DOMContentLoaded', function() {
         function changeLanguage(lang) {
             fetch('translations.json')
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to load translations.');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     const t = data[lang];
                     translateNav(t);
-                    document.querySelector('.home-content h3').textContent = t.greeting;
+                    document.getElementById('home-greeting').textContent = t.greeting;
                     document.querySelector('.home-content h1').textContent = t.name;
                     document.getElementById('role-prefix').textContent = t.role_prefix;
                     startTyping(lang);
-                    document.querySelector('.home-content p').textContent = t.bio;
+                    document.getElementById('home-bio').textContent = t.bio;
                     document.querySelector('#download-en-cv').textContent = t.download_cv;
                     document.querySelector('#download-zh-cv').textContent = t.download_zh_cv;
                     t.metrics.forEach((metric, index) => {
@@ -236,6 +243,12 @@
                     document.getElementById('case-link-inventory').textContent = t.case_inventory;
                     document.getElementById('case-link-opencart').textContent = t.case_opencart;
                     setDocumentLanguage(lang, t);
+                })
+                .catch(error => {
+                    console.error('Error loading translations:', error);
+                    // The English markup is already in the page, so only the
+                    // typing animation is left blank by a failed fetch.
+                    startTyping('en');
                 });
         }
 

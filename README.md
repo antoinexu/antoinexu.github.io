@@ -35,6 +35,12 @@ A bilingual English / Chinese personal portfolio website built with vanilla HTML
 |------|---------|
 | `*.html` | One file per page; each holds its own English markup and page-specific translation script |
 | `translations*.json` | Per-page English and Chinese strings, fetched at runtime |
+| `i18n.js` | Language persistence, shared footer, skip link, nav and metadata translation |
+| `animations.js` | Mobile menu toggle and scroll reveal |
+| `architecture.js` | Inline SVG architecture diagrams for the ERP and inventory case studies |
+| `style.css` | All page styling |
+| `fonts.css`, `fonts/` | Self-hosted Poppins subsets |
+| `icons.css` | Self-hosted icon subset (Boxicons glyphs as inline SVG CSS masks) |
 
 ### Editing a case study
 
@@ -42,14 +48,9 @@ The three `case-study-*.html` pages carry their English body **twice**: as stati
 markup inside `<div id="cs-body">` (so crawlers and non-JS clients see it) and in
 `translations_case_study_*.json` (which the page script re-renders from on load
 and on language switch). The JSON is the source of truth — after editing it,
-regenerate the static markup so the two cannot drift. Every other page keeps its
-English text only in the HTML, with the JSON supplying Chinese.
-| `i18n.js` | Language persistence, shared footer, skip link, nav and metadata translation |
-| `animations.js` | Mobile menu toggle and scroll reveal |
-| `architecture.js` | Inline SVG architecture diagrams for the ERP and inventory case studies |
-| `style.css` | All page styling |
-| `fonts.css`, `fonts/` | Self-hosted Poppins subsets |
-| `icons.css` | Self-hosted icon subset (Boxicons glyphs as inline SVG CSS masks) |
+regenerate the static markup with `tools/render-case-studies.py` so the two
+cannot drift. Every other page keeps its English text only in the HTML, with the
+JSON supplying Chinese.
 
 ## Tech Stack
 
