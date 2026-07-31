@@ -14,17 +14,23 @@
         "title": "Software Developer - Fuel Cell Store",
         "period": "Aug 2023 - Present",
         "tags": ["ERP/WMS/MES", "SQL", "REST API", "Production Systems"],
-        "description1": "Sole developer for the company's internal operations platform (ERP / WMS / MES), independently architecting a 50+ table relational database schema and 100,000+ line codebase supporting order processing, lot-level material traceability, and fuel cell manufacturing workflows.",
-        "description2": "Led the live OpenCart 1.5 to 3.0 e-commerce migration for 2,000+ products and 70,000+ historical orders, including custom SQL migration scripts, UI redesign, and zero data loss.",
-        "description3": "Built and maintained REST APIs, optimized SQL and reporting workflows, stabilized production systems, and used AI-assisted development tools to shorten delivery cycles."
+        "descriptions": [
+          "Sole developer for the company's internal operations platform (ERP / WMS / MES), independently architecting a 50+ table relational database schema and 100,000+ line codebase supporting order processing, lot-level material traceability, and fuel cell manufacturing workflows.",
+          "Led the live OpenCart 1.5 to 3.0 e-commerce migration for 2,000+ products and 70,000+ historical orders, including custom SQL migration scripts, UI redesign, and zero data loss.",
+          "Built and maintained REST APIs, optimized SQL and reporting workflows, stabilized production systems, and used AI-assisted development tools to shorten delivery cycles.",
+          "Work directly with business stakeholders to translate manufacturing and operations requirements into software features that match how production actually runs.",
+          "Maintain the production systems and servers behind it: Linux, a cPanel/WHM VPS, multi-site PHP and database version management, and OS and database major-version upgrades."
+        ]
       },
       {
         "title": "Software Engineering Intern - DigiFinex",
         "period": "Jun 2022 - Aug 2022",
         "tags": ["Trading Platform", "API Integration", "Frontend/Backend"],
-        "description1": "Collaborated with product managers and senior engineers to design, analyze, and implement system features aligned with business requirements.",
-        "description2": "Contributed to interface protocols, technical documentation, and API integrations for trading-platform workflows.",
-        "description3": "Developed and tested frontend and backend components to improve system reliability and performance."
+        "descriptions": [
+          "Collaborated with product managers and senior engineers to design, analyze, and implement system features aligned with business requirements.",
+          "Contributed to interface protocols, technical documentation, and API integrations for trading-platform workflows.",
+          "Developed and tested frontend and backend components to improve system reliability and performance."
+        ]
       }
     ]
   },
@@ -43,17 +49,23 @@
         "title": "软件开发工程师 - Fuel Cell Store",
         "period": "2023年8月 - 至今",
         "tags": ["ERP/WMS/MES", "SQL", "REST API", "生产系统"],
-        "description1": "作为唯一开发者，独立架构并持续开发企业内部运营平台（ERP / WMS / MES），包含 50+ 张关系型数据库表和 10 万+ 行代码，支撑订单处理、批次级物料追溯和燃料电池制造流程。",
-        "description2": "主导线上电商平台从 OpenCart 1.5 升级到 3.0，迁移 2,000+ 商品和 70,000+ 历史订单，编写自定义 SQL 迁移脚本，完成界面重设计，并实现零数据丢失。",
-        "description3": "开发并维护 REST API，优化 SQL 查询和报表流程，诊断并稳定生产系统，同时结合 AI 辅助开发工具缩短功能交付周期。"
+        "descriptions": [
+          "作为唯一开发者，独立架构并持续开发企业内部运营平台（ERP / WMS / MES），包含 50+ 张关系型数据库表和 10 万+ 行代码，支撑订单处理、批次级物料追溯和燃料电池制造流程。",
+          "主导线上电商平台从 OpenCart 1.5 升级到 3.0，迁移 2,000+ 商品和 70,000+ 历史订单，编写自定义 SQL 迁移脚本，完成界面重设计，并实现零数据丢失。",
+          "开发并维护 REST API，优化 SQL 查询和报表流程，诊断并稳定生产系统，同时结合 AI 辅助开发工具缩短功能交付周期。",
+          "与业务方直接沟通，将制造与运营需求转化为贴合真实生产流程的软件功能。",
+          "负责支撑这些系统的生产服务器运维：Linux、cPanel/WHM VPS、多站点 PHP 与数据库版本管理，以及操作系统和数据库的大版本升级。"
+        ]
       },
       {
         "title": "软件工程实习生 - DigiFinex",
         "period": "2022年6月 - 2022年8月",
         "tags": ["交易平台", "API 集成", "前后端开发"],
-        "description1": "与产品经理和资深工程师协作，根据业务需求设计、分析并实现系统功能。",
-        "description2": "参与交易平台接口协议、技术文档和 API 集成相关工作。",
-        "description3": "开发并测试前端和后端组件，提升系统可靠性与性能表现。"
+        "descriptions": [
+          "与产品经理和资深工程师协作，根据业务需求设计、分析并实现系统功能。",
+          "参与交易平台接口协议、技术文档和 API 集成相关工作。",
+          "开发并测试前端和后端组件，提升系统可靠性与性能表现。"
+        ]
       }
     ]
   }

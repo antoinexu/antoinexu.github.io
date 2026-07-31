@@ -99,6 +99,8 @@
                 <p>Sole developer for the company's internal operations platform (ERP / WMS / MES), independently architecting a 50+ table relational database schema and 100,000+ line codebase supporting order processing, lot-level material traceability, and fuel cell manufacturing workflows.</p>
                 <p>Led the live OpenCart 1.5 to 3.0 e-commerce migration for 2,000+ products and 70,000+ historical orders, including custom SQL migration scripts, UI redesign, and zero data loss.</p>
                 <p>Built and maintained REST APIs, optimized SQL and reporting workflows, stabilized production systems, and used AI-assisted development tools to shorten delivery cycles.</p>
+                <p>Work directly with business stakeholders to translate manufacturing and operations requirements into software features that match how production actually runs.</p>
+                <p>Maintain the production systems and servers behind it: Linux, a cPanel/WHM VPS, multi-site PHP and database version management, and OS and database major-version upgrades.</p>
             </div>
 
             <div class="experience-item">
@@ -180,9 +182,12 @@
                         experienceItem.querySelector('h2').textContent = exp.title;
                         experienceItem.querySelector('span').textContent = exp.period;
                         setTags(index + 1, exp.tags);
-                        experienceItem.querySelectorAll('p')[0].textContent = exp.description1;
-                        experienceItem.querySelectorAll('p')[1].textContent = exp.description2;
-                        experienceItem.querySelectorAll('p')[2].textContent = exp.description3;
+                        const paragraphs = experienceItem.querySelectorAll('p');
+                        exp.descriptions.forEach((text, i) => {
+                            if (paragraphs[i]) {
+                                paragraphs[i].textContent = text;
+                            }
+                        });
                     });
                 })
                 .catch(error => {
