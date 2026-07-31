@@ -69,6 +69,10 @@
         ]
     }
     </script>
+    <!-- Both controls are inert without JS: the hamburger cannot open the nav
+         (the static footer carries the links instead) and the language
+         selector cannot swap any text. -->
+    <noscript><style>#menu-icon,.language-selector{display:none!important}</style></noscript>
 </head>
 <body>
 
@@ -151,6 +155,38 @@
         </div>
     </div>
 </section>
+
+<!-- Static so navigation survives without JS (the mobile header nav collapses
+     behind the hamburger). i18n.js swaps the text in place; it no longer owns a
+     copy of this markup, so the two cannot drift. -->
+<footer id="site-footer" class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <a href="/index.html" class="footer-logo">Bowei Xu</a>
+            <p class="footer-tagline" data-footer="tagline">Business systems and backend engineer building ERP, MES, and e-commerce platforms.</p>
+        </div>
+        <nav class="footer-col" data-footer-nav aria-label="Explore">
+            <h2 data-footer="links_heading">Explore</h2>
+            <a href="/index.html" data-footer="home">Home</a>
+            <a href="/experience.html" data-footer="experiences">Experience</a>
+            <a href="/project.html" data-footer="projects">Projects</a>
+            <a href="/skill.html" data-footer="skills">Skills</a>
+            <a href="/about.html" data-footer="about">About</a>
+            <a href="/contact.html" data-footer="contact">Contact</a>
+        </nav>
+        <div class="footer-col">
+            <h2 data-footer="connect_heading">Connect</h2>
+            <div class="footer-social">
+                <a href="mailto:bowei_xu@outlook.com" data-footer-label="email_label" aria-label="Email Bowei Xu"><i class="bx bx-envelope"></i></a>
+                <a href="https://github.com/antoinexu" target="_blank" rel="noopener noreferrer" data-footer-label="github_label" aria-label="Bowei Xu on GitHub"><i class="bx bxl-github"></i></a>
+                <a href="https://www.linkedin.com/in/bowei-xu-132a3b1b9/" target="_blank" rel="noopener noreferrer" data-footer-label="linkedin_label" aria-label="Bowei Xu on LinkedIn"><i class="bx bxl-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p data-footer="copyright">&copy; 2026 Bowei Xu. All rights reserved.</p>
+    </div>
+</footer>
 
 <script src="i18n.js"></script>
 <script src="architecture.js"></script>

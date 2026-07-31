@@ -98,46 +98,33 @@ const footerStrings = {
     }
 };
 
+// The footer markup is static in every page so navigation works without JS.
+// This only swaps the text, so there is no second copy of the markup to drift.
 function renderFooter(lang) {
     const t = footerStrings[lang] || footerStrings.en;
-    const year = new Date().getFullYear();
-    let footer = document.getElementById('site-footer');
+    const footer = document.getElementById('site-footer');
+    if (!footer) return;
 
-    if (!footer) {
-        footer = document.createElement('footer');
-        footer.id = 'site-footer';
-        footer.className = 'site-footer';
-        document.body.appendChild(footer);
+    footer.querySelectorAll('[data-footer]').forEach(function (el) {
+        const key = el.getAttribute('data-footer');
+        if (key === 'copyright') {
+            el.textContent = '© ' + new Date().getFullYear() + ' Bowei Xu. ' + t.rights;
+        } else if (t[key]) {
+            el.textContent = t[key];
+        }
+    });
+
+    footer.querySelectorAll('[data-footer-label]').forEach(function (el) {
+        const key = el.getAttribute('data-footer-label');
+        if (t[key]) {
+            el.setAttribute('aria-label', t[key]);
+        }
+    });
+
+    const nav = footer.querySelector('[data-footer-nav]');
+    if (nav) {
+        nav.setAttribute('aria-label', t.links_heading);
     }
-
-    footer.innerHTML = `
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <a href="/index.html" class="footer-logo">Bowei Xu</a>
-                <p class="footer-tagline">${t.tagline}</p>
-            </div>
-            <nav class="footer-col" aria-label="${t.links_heading}">
-                <h4>${t.links_heading}</h4>
-                <a href="/index.html">${t.home}</a>
-                <a href="/experience.html">${t.experiences}</a>
-                <a href="/project.html">${t.projects}</a>
-                <a href="/skill.html">${t.skills}</a>
-                <a href="/about.html">${t.about}</a>
-                <a href="/contact.html">${t.contact}</a>
-            </nav>
-            <div class="footer-col">
-                <h4>${t.connect_heading}</h4>
-                <div class="footer-social">
-                    <a href="mailto:bowei_xu@outlook.com" aria-label="${t.email_label}"><i class="bx bx-envelope"></i></a>
-                    <a href="https://github.com/antoinexu" target="_blank" rel="noopener noreferrer" aria-label="${t.github_label}"><i class="bx bxl-github"></i></a>
-                    <a href="https://www.linkedin.com/in/bowei-xu-132a3b1b9/" target="_blank" rel="noopener noreferrer" aria-label="${t.linkedin_label}"><i class="bx bxl-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; ${year} Bowei Xu. ${t.rights}</p>
-        </div>
-    `;
 }
 
 function translateNav(labels) {
