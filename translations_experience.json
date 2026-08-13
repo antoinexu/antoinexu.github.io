@@ -17,6 +17,8 @@
         "descriptions": [
           "Sole developer for the company's internal operations platform (ERP / WMS / MES), independently architecting a 50+ table relational database schema and 100,000+ line codebase supporting order processing, lot-level material traceability, and fuel cell manufacturing workflows.",
           "Led the live OpenCart 1.5 to 3.0 e-commerce migration for 2,000+ products and 70,000+ historical orders, including custom SQL migration scripts, UI redesign, and zero data loss.",
+          "Integrated the OpenCart storefront with Google's platforms: instrumented the PHP templates to emit a dataLayer for Google Tag Manager and Google Ads conversion tracking, and resolved Search Console indexing and structured-data issues.",
+          "Onboarded manufacturer product lines onto the storefront, integrating vendor product data into the OpenCart catalog.",
           "Built and maintained REST APIs, optimized SQL and reporting workflows, stabilized production systems, and used AI-assisted development tools to shorten delivery cycles.",
           "Work directly with business stakeholders to translate manufacturing and operations requirements into software features that match how production actually runs.",
           "Maintain the production systems and servers behind it: Linux, a cPanel/WHM VPS, multi-site PHP and database version management, and OS and database major-version upgrades."
@@ -52,6 +54,8 @@
         "descriptions": [
           "作为唯一开发者，独立架构并持续开发企业内部运营平台（ERP / WMS / MES），包含 50+ 张关系型数据库表和 10 万+ 行代码，支撑订单处理、批次级物料追溯和燃料电池制造流程。",
           "主导线上电商平台从 OpenCart 1.5 升级到 3.0，迁移 2,000+ 商品和 70,000+ 历史订单，编写自定义 SQL 迁移脚本，完成界面重设计，并实现零数据丢失。",
+          "将 OpenCart 店面与 Google 各平台打通：在 PHP 模板层改代码输出 dataLayer，接入 Google Tag Manager 与 Google Ads 转化跟踪，并排查修复 Search Console 的索引与结构化数据问题。",
+          "将厂商产品线接入店面，把供应商的产品数据整合进 OpenCart 商品库。",
           "开发并维护 REST API，优化 SQL 查询和报表流程，诊断并稳定生产系统，同时结合 AI 辅助开发工具缩短功能交付周期。",
           "与业务方直接沟通，将制造与运营需求转化为贴合真实生产流程的软件功能。",
           "负责支撑这些系统的生产服务器运维：Linux、cPanel/WHM VPS、多站点 PHP 与数据库版本管理，以及操作系统和数据库的大版本升级。"

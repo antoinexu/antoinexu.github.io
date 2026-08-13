@@ -149,6 +149,16 @@
 
             <article class="skill-category skill-category-wide">
                 <div class="skill-category-heading">
+                    <i class="bx bx-cloud"></i>
+                    <h2 id="integrations-title">Integrations &amp; Tracking</h2>
+                </div>
+                <div class="skill-pills" data-skill-pills="integrations">
+                    <span>Google Tag Manager</span><span>Google Ads Conversion Tracking</span><span>Google Search Console</span><span>Third-Party Product Data</span>
+                </div>
+            </article>
+
+            <article class="skill-category skill-category-wide">
+                <div class="skill-category-heading">
                     <i class="bx bx-brain"></i>
                     <h2 id="go-title">Go (Weiqi/Baduk)</h2>
                 </div>
@@ -214,7 +224,7 @@
                     const t = data[lang];
                     translateNav(t);
                     document.getElementById('skills-title').textContent = t.skills_title;
-                    ['languages', 'backend', 'frontend', 'database', 'infrastructure', 'domain'].forEach(key => {
+                    ['languages', 'backend', 'frontend', 'database', 'infrastructure', 'domain', 'integrations'].forEach(key => {
                         document.getElementById(`${key}-title`).textContent = t[key];
                         setPills(key, t[`${key}_pills`]);
                     });

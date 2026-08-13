@@ -21,6 +21,8 @@
     "infrastructure_pills": ["Linux", "Apache", "cPanel/WHM", "Git/GitHub", "Bash", "AWS", "Claude Code", "Codex"],
     "domain": "Domain",
     "domain_pills": ["ERP / WMS / MES Systems", "OpenCart", "E-Commerce Platforms", "Manufacturing Operations Software"],
+    "integrations": "Integrations & Tracking",
+    "integrations_pills": ["Google Tag Manager", "Google Ads Conversion Tracking", "Google Search Console", "Third-Party Product Data"],
     "go": "Go (Weiqi/Baduk)",
     "go_desc": "AGA 6-dan, Chinese 5-dan, certified national referee (China, Level 2), AGA ID: 30045.",
     "go_link": "AGA Profile"
@@ -47,6 +49,8 @@
     "infrastructure_pills": ["Linux", "Apache", "cPanel/WHM", "Git/GitHub", "Bash", "AWS", "Claude Code", "Codex"],
     "domain": "业务领域",
     "domain_pills": ["ERP / WMS / MES 系统", "OpenCart", "电商平台", "制造运营软件"],
+    "integrations": "第三方集成与跟踪",
+    "integrations_pills": ["Google Tag Manager", "Google Ads 转化跟踪", "Google Search Console", "第三方产品数据接入"],
     "go": "围棋",
     "go_desc": "AGA 6 段，中国 5 段，国家二级裁判员，AGA ID: 30045。",
     "go_link": "AGA 资料"
