@@ -182,54 +182,29 @@
 <script src="i18n.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        function setTags(projectNumber, tags) {
-            const container = document.querySelector(`[data-project-tags="${projectNumber}"]`);
-            container.innerHTML = '';
-            tags.forEach(tag => {
-                const span = document.createElement('span');
-                span.textContent = tag;
-                container.appendChild(span);
+        function applyStrings(t) {
+            setText('projects-title', t.projects_title);
+
+            [1, 2, 3, 4].forEach(n => {
+                setText(`project-${n}-title`, t[`project_${n}_title`]);
+                setPills(`[data-project-tags="${n}"]`, t[`project_${n}_tags`], `project ${n} tags`);
+
+                ['duration', 'desc1', 'desc2', 'desc3', 'desc4'].forEach(field => {
+                    const el = document.getElementById(`project-${n}-${field}`);
+                    if (el) {
+                        setText(el, t[`project_${n}_${field}`], `project ${n} ${field}`);
+                    }
+                });
+
+                const caseStudy = document.getElementById(`project-${n}-casestudy`);
+                if (caseStudy) {
+                    setText(caseStudy, t.read_case_study, `project ${n} case study link`);
+                }
             });
         }
 
         function changeLanguage(lang) {
-            fetch('translations_projects.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Failed to load translations.');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const t = data[lang];
-
-                    translateNav(t);
-                    setDocumentLanguage(lang, t);
-
-                    document.getElementById('projects-title').textContent = t.projects_title;
-                    [1, 2, 3, 4].forEach(projectNumber => {
-                        document.getElementById(`project-${projectNumber}-title`).textContent = t[`project_${projectNumber}_title`];
-                        const duration = document.getElementById(`project-${projectNumber}-duration`);
-                        if (duration) {
-                            duration.textContent = t[`project_${projectNumber}_duration`];
-                        }
-                        document.getElementById(`project-${projectNumber}-desc1`).textContent = t[`project_${projectNumber}_desc1`];
-                        document.getElementById(`project-${projectNumber}-desc2`).textContent = t[`project_${projectNumber}_desc2`];
-                        document.getElementById(`project-${projectNumber}-desc3`).textContent = t[`project_${projectNumber}_desc3`];
-                        const desc4 = document.getElementById(`project-${projectNumber}-desc4`);
-                        if (desc4) {
-                            desc4.textContent = t[`project_${projectNumber}_desc4`];
-                        }
-                        setTags(projectNumber, t[`project_${projectNumber}_tags`]);
-                    });
-
-                    document.getElementById('project-1-casestudy').textContent = t.read_case_study;
-                    document.getElementById('project-2-casestudy').textContent = t.read_case_study;
-                    document.getElementById('project-3-casestudy').textContent = t.read_case_study;
-                })
-                .catch(error => {
-                    console.error('Error loading translations:', error);
-                });
+            loadTranslations('translations_projects.json', lang, applyStrings);
         }
 
         setupLanguageSelector(changeLanguage);

@@ -155,46 +155,27 @@
 <script src="i18n.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        function setTags(experienceNumber, tags) {
-            const container = document.querySelector(`[data-experience-tags="${experienceNumber}"]`);
-            container.innerHTML = '';
-            tags.forEach(tag => {
-                const span = document.createElement('span');
-                span.textContent = tag;
-                container.appendChild(span);
+        function applyStrings(t) {
+            setText('.experiences-content h1', t.workExperienceTitle, 'work experience title');
+
+            const entries = Array.isArray(t.workExperiences) ? t.workExperiences : [];
+            document.querySelectorAll('.experience-item').forEach((item, index) => {
+                const exp = entries[index] || {};
+                const label = `experience ${index + 1}`;
+
+                setText(item.querySelector('h2'), exp.title, `${label} title`);
+                setText(item.querySelector(':scope > span'), exp.period, `${label} period`);
+                setPills(item.querySelector('[data-experience-tags]'), exp.tags, `${label} tags`);
+
+                const descriptions = Array.isArray(exp.descriptions) ? exp.descriptions : [];
+                item.querySelectorAll('p').forEach((paragraph, i) => {
+                    setText(paragraph, descriptions[i], `${label} bullet ${i + 1}`);
+                });
             });
         }
 
         function changeLanguage(lang) {
-            fetch('translations_experience.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Failed to load translations.');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const t = data[lang];
-                    translateNav(t);
-                    document.querySelector('h1').textContent = t.workExperienceTitle;
-                    setDocumentLanguage(lang, t);
-
-                    t.workExperiences.forEach((exp, index) => {
-                        const experienceItem = document.querySelector(`.experience-item:nth-child(${index + 1})`);
-                        experienceItem.querySelector('h2').textContent = exp.title;
-                        experienceItem.querySelector('span').textContent = exp.period;
-                        setTags(index + 1, exp.tags);
-                        const paragraphs = experienceItem.querySelectorAll('p');
-                        exp.descriptions.forEach((text, i) => {
-                            if (paragraphs[i]) {
-                                paragraphs[i].textContent = text;
-                            }
-                        });
-                    });
-                })
-                .catch(error => {
-                    console.error('Error loading translations:', error);
-                });
+            loadTranslations('translations_experience.json', lang, applyStrings);
         }
 
         setupLanguageSelector(changeLanguage);

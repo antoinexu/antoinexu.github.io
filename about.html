@@ -110,7 +110,14 @@
 
         <div class="cs-section">
             <h2 id="beyond-title">Beyond Code</h2>
-            <p id="beyond-body">Outside of work I'm a competitive Go player (AGA 6-dan) and two-time champion of the Houston Go Tournament. The game keeps my pattern recognition and long-term planning sharp.</p>
+            <p id="beyond-body">Outside of work I'm a competitive Go player: AGA 6-dan, Chinese 5-dan, two-time champion of the Houston Go Tournament, and a certified national referee (China, Level 2). In 2023 I ranked 2nd in the U.S. among players with ten or more AGA-rated games, at 13 wins and 1 loss.</p>
+            <ul>
+                <li><a href="https://www.usgo.org/content.aspx?page_id=22&amp;club_id=454497&amp;module_id=550340" target="_blank" rel="noopener noreferrer" id="beyond-link">AGA profile (ID 30045)</a></li>
+                <li><a href="https://www.usgo.org/content.aspx?page_id=5&amp;club_id=454497&amp;item_id=127721" target="_blank" rel="noopener noreferrer" id="beyond-coverage-2025">American Go Association, Nov 2025: "Houston Fall Go Tournament Ends in Dramatic Tie at the Top"</a></li>
+                <li><a href="https://baduk.news/s/2025-us-win-ratio-ranking-top-15" target="_blank" rel="noopener noreferrer" id="beyond-ranking-2025">Baduk News, 2025 U.S. win ratio ranking: tied for 11th nationally, 66.7% (10 wins, 5 losses)</a></li>
+                <li><a href="https://www.facebook.com/HoustonGoClub/posts/thats-a-wrap-on-our-fall-2023-tournamentspecial-extra-thanks-to-paul-howard-for-/874018614551308/" target="_blank" rel="noopener noreferrer" id="beyond-coverage-2023">Houston Go Club, Nov 2023: Fall 2023 Tournament, Overall (High Dan) winner</a></li>
+                <li><a href="https://baduk.news/story/us-ranking-strong-players-win-ratio-2023-1708468585167x428720787722600450" target="_blank" rel="noopener noreferrer" id="beyond-ranking-2023">Baduk News, 2023 U.S. win ratio ranking: 2nd nationally, 13 wins and 1 loss</a></li>
+            </ul>
         </div>
     </div>
 </section>
@@ -148,35 +155,28 @@
 <script src="i18n.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        function changeLanguage(lang) {
-            fetch('translations_about.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Failed to load translations.');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const t = data[lang];
-                    translateNav(t);
-                    setDocumentLanguage(lang, t);
+        function applyStrings(t) {
+            setText('about-title', t.about_title);
+            setText('about-intro-1', t.intro_1);
+            setText('about-intro-2', t.intro_2);
+            setText('looking-title', t.looking_title);
+            setText('looking-body', t.looking_body);
+            setText('education-title', t.education_title);
+            setText('edu-1-school', t.edu_1_school);
+            setText('edu-1-detail', t.edu_1_detail);
+            setText('edu-2-school', t.edu_2_school);
+            setText('edu-2-detail', t.edu_2_detail);
+            setText('beyond-title', t.beyond_title);
+            setText('beyond-body', t.beyond_body);
+            setText('beyond-link', t.beyond_link);
+            setText('beyond-coverage-2025', t.beyond_coverage_2025);
+            setText('beyond-ranking-2025', t.beyond_ranking_2025);
+            setText('beyond-coverage-2023', t.beyond_coverage_2023);
+            setText('beyond-ranking-2023', t.beyond_ranking_2023);
+        }
 
-                    document.getElementById('about-title').textContent = t.about_title;
-                    document.getElementById('about-intro-1').textContent = t.intro_1;
-                    document.getElementById('about-intro-2').textContent = t.intro_2;
-                    document.getElementById('looking-title').textContent = t.looking_title;
-                    document.getElementById('looking-body').textContent = t.looking_body;
-                    document.getElementById('education-title').textContent = t.education_title;
-                    document.getElementById('edu-1-school').textContent = t.edu_1_school;
-                    document.getElementById('edu-1-detail').textContent = t.edu_1_detail;
-                    document.getElementById('edu-2-school').textContent = t.edu_2_school;
-                    document.getElementById('edu-2-detail').textContent = t.edu_2_detail;
-                    document.getElementById('beyond-title').textContent = t.beyond_title;
-                    document.getElementById('beyond-body').textContent = t.beyond_body;
-                })
-                .catch(error => {
-                    console.error('Error loading translations:', error);
-                });
+        function changeLanguage(lang) {
+            loadTranslations('translations_about.json', lang, applyStrings);
         }
 
         setupLanguageSelector(changeLanguage);

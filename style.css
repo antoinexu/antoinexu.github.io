@@ -371,19 +371,6 @@ section {
     padding: .7rem 1rem;
 }
 
-.skill-category p {
-    color: var(--card-text-color);
-    font-size: 1.5rem;
-    line-height: 1.7;
-    margin-bottom: 1.2rem;
-}
-
-.skill-category a {
-    color: var(--main-color-on-light);
-    font-size: 1.5rem;
-    font-weight: 600;
-}
-
 .experiences-content,
 .projects-content {
     max-width: 900px;
@@ -558,6 +545,16 @@ section {
     line-height: 1.85;
     color: rgba(255, 255, 255, 0.82);
     margin-bottom: 1.2rem;
+}
+
+.cs-section a {
+    color: var(--main-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.cs-section a:hover {
+    color: var(--text-color);
 }
 
 .cs-section ul {

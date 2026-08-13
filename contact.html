@@ -128,24 +128,13 @@
 <script src="i18n.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        function applyStrings(t) {
+            setText('.contact-content h1', t.contact_info, 'contact heading');
+            setText('contact-blurb', t.contact_blurb);
+        }
+
         function changeLanguage(lang) {
-            fetch('translations_contact.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Failed to load translations.');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const t = data[lang];
-                    translateNav(t);
-                    document.querySelector('.contact-content h1').textContent = t.contact_info;
-                    document.getElementById('contact-blurb').textContent = t.contact_blurb;
-                    setDocumentLanguage(lang, t);
-                })
-                .catch(error => {
-                    console.error('Error loading translations:', error);
-                });
+            loadTranslations('translations_contact.json', lang, applyStrings);
         }
 
         setupLanguageSelector(changeLanguage);

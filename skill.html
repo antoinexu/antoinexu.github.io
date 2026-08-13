@@ -157,14 +157,6 @@
                 </div>
             </article>
 
-            <article class="skill-category skill-category-wide">
-                <div class="skill-category-heading">
-                    <i class="bx bx-brain"></i>
-                    <h2 id="go-title">Go (Weiqi/Baduk)</h2>
-                </div>
-                <p id="go-desc">AGA 6-dan, Chinese 5-dan, certified national referee (China, Level 2), AGA ID: 30045.</p>
-                <a href="https://www.usgo.org/content.aspx?page_id=22&club_id=454497&module_id=550340" target="_blank" rel="noopener noreferrer" id="go-link">AGA Profile</a>
-            </article>
         </div>
     </div>
 </section>
@@ -202,40 +194,18 @@
 <script src="i18n.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        function setPills(category, pills) {
-            const container = document.querySelector(`[data-skill-pills="${category}"]`);
-            container.innerHTML = '';
-            pills.forEach(pill => {
-                const span = document.createElement('span');
-                span.textContent = pill;
-                container.appendChild(span);
+        function applyStrings(t) {
+            setText('skills-title', t.skills_title);
+
+            document.querySelectorAll('[data-skill-pills]').forEach(container => {
+                const key = container.getAttribute('data-skill-pills');
+                setText(`${key}-title`, t[key], `${key} heading`);
+                setPills(container, t[`${key}_pills`], `${key} pills`);
             });
         }
 
         function changeLanguage(lang) {
-            fetch('translations_skill.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Failed to load translations.');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const t = data[lang];
-                    translateNav(t);
-                    document.getElementById('skills-title').textContent = t.skills_title;
-                    ['languages', 'backend', 'frontend', 'database', 'infrastructure', 'domain', 'integrations'].forEach(key => {
-                        document.getElementById(`${key}-title`).textContent = t[key];
-                        setPills(key, t[`${key}_pills`]);
-                    });
-                    document.getElementById('go-title').textContent = t.go;
-                    document.getElementById('go-desc').textContent = t.go_desc;
-                    document.getElementById('go-link').textContent = t.go_link;
-                    setDocumentLanguage(lang, t);
-                })
-                .catch(error => {
-                    console.error('Error loading translations:', error);
-                });
+            loadTranslations('translations_skill.json', lang, applyStrings);
         }
 
         setupLanguageSelector(changeLanguage);

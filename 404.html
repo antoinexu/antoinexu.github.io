@@ -103,19 +103,19 @@
     };
 
     document.addEventListener('DOMContentLoaded', function() {
-        function changeLanguage(lang) {
-            const t = notFoundStrings[lang] || notFoundStrings.en;
-            translateNav(t);
-            setDocumentLanguage(lang, t);
+        function applyStrings(t) {
+            setText('nf-title', t.title);
+            setText('nf-body', t.body);
+            setText('nf-home', t.back);
+            setText('nf-projects', t.projects);
+            setText('nf-experience', t.experiences);
+            setText('nf-skills', t.skills);
+            setText('nf-about', t.about);
+            setText('nf-contact', t.contact);
+        }
 
-            document.getElementById('nf-title').textContent = t.title;
-            document.getElementById('nf-body').textContent = t.body;
-            document.getElementById('nf-home').textContent = t.back;
-            document.getElementById('nf-projects').textContent = t.projects;
-            document.getElementById('nf-experience').textContent = t.experiences;
-            document.getElementById('nf-skills').textContent = t.skills;
-            document.getElementById('nf-about').textContent = t.about;
-            document.getElementById('nf-contact').textContent = t.contact;
+        function changeLanguage(lang) {
+            applyTranslations(selectStrings(notFoundStrings, lang), lang, applyStrings);
         }
 
         setupLanguageSelector(changeLanguage);

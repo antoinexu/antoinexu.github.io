@@ -187,12 +187,21 @@
     document.addEventListener('DOMContentLoaded', function() {
         function el(tag, text) {
             const node = document.createElement(tag);
-            if (text !== undefined) node.textContent = text;
+            if (typeof text === 'string') node.textContent = text;
             return node;
         }
 
         function renderBody(sections) {
             const body = document.getElementById('cs-body');
+            if (!body) return;
+
+            const original = i18nOriginal(body, 'innerHTML');
+            if (!Array.isArray(sections) || sections.length === 0) {
+                i18nWarn('missing case study sections, keeping the original body');
+                body.innerHTML = original;
+                return;
+            }
+
             body.innerHTML = '';
 
             sections.forEach(section => {
@@ -225,27 +234,15 @@
             });
         }
 
-        function changeLanguage(lang) {
-            fetch('translations_case_study_opencart.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Failed to load translations.');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const t = data[lang];
-                    translateNav(t);
-                    setDocumentLanguage(lang, t);
+        function applyStrings(t) {
+            setText('cs-back', t.back);
+            setText('cs-title', t.title);
+            setText('cs-disclaimer', t.disclaimer);
+            renderBody(t.sections);
+        }
 
-                    document.getElementById('cs-back').textContent = t.back;
-                    document.getElementById('cs-title').textContent = t.title;
-                    document.getElementById('cs-disclaimer').textContent = t.disclaimer;
-                    renderBody(t.sections);
-                })
-                .catch(error => {
-                    console.error('Error loading translations:', error);
-                });
+        function changeLanguage(lang) {
+            loadTranslations('translations_case_study_opencart.json', lang, applyStrings);
         }
 
         setupLanguageSelector(changeLanguage);

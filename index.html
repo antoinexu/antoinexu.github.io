@@ -215,6 +215,7 @@
         roleIndex = 0;
         charIndex = 0;
         isDeleting = false;
+        if (!rolesMap[currentLang]) currentLang = 'en';
         if (prefersReducedMotion) {
             const el = document.getElementById('typed-role');
             if (el) el.textContent = rolesMap[currentLang][0];
@@ -246,38 +247,32 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
+        function applyStrings(t, lang) {
+            setText('home-greeting', t.greeting);
+            setText('.home-content h1', t.name, 'name');
+            setText('role-prefix', t.role_prefix);
+            startTyping(lang);
+            setText('home-bio', t.bio);
+            setText('download-en-cv', t.download_cv);
+            setText('download-zh-cv', t.download_zh_cv);
+
+            const metrics = Array.isArray(t.metrics) ? t.metrics : [];
+            [1, 2, 3].forEach(n => {
+                const metric = metrics[n - 1] || {};
+                setText(`metric-${n}-value`, metric.value);
+                setText(`metric-${n}-label`, metric.label);
+            });
+
+            setText('cases-heading', t.cases_heading);
+            setText('case-link-erp', t.case_erp);
+            setText('case-link-inventory', t.case_inventory);
+            setText('case-link-opencart', t.case_opencart);
+        }
+
         function changeLanguage(lang) {
-            fetch('translations.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Failed to load translations.');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const t = data[lang];
-                    translateNav(t);
-                    document.getElementById('home-greeting').textContent = t.greeting;
-                    document.querySelector('.home-content h1').textContent = t.name;
-                    document.getElementById('role-prefix').textContent = t.role_prefix;
-                    startTyping(lang);
-                    document.getElementById('home-bio').textContent = t.bio;
-                    document.querySelector('#download-en-cv').textContent = t.download_cv;
-                    document.querySelector('#download-zh-cv').textContent = t.download_zh_cv;
-                    t.metrics.forEach((metric, index) => {
-                        document.getElementById(`metric-${index + 1}-value`).textContent = metric.value;
-                        document.getElementById(`metric-${index + 1}-label`).textContent = metric.label;
-                    });
-                    document.getElementById('cases-heading').textContent = t.cases_heading;
-                    document.getElementById('case-link-erp').textContent = t.case_erp;
-                    document.getElementById('case-link-inventory').textContent = t.case_inventory;
-                    document.getElementById('case-link-opencart').textContent = t.case_opencart;
-                    setDocumentLanguage(lang, t);
-                })
-                .catch(error => {
-                    console.error('Error loading translations:', error);
-                    startTyping('en');
-                });
+            loadTranslations('translations.json', lang, applyStrings, function () {
+                startTyping('en');
+            });
         }
 
         setupLanguageSelector(changeLanguage);
