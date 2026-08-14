@@ -6,7 +6,6 @@
     font-family: var(--font-sans);
     text-decoration: none;
     border: none;
-    scroll-behavior: smooth;
 }
 
 :root {
@@ -23,6 +22,7 @@
 html {
     font-size: 62.5%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body {
