@@ -1,114 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://antoinexu.github.io/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://antoinexu.github.io/"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://antoinexu.github.io/?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://antoinexu.github.io/"/>
   </url>
   <url>
     <loc>https://antoinexu.github.io/?lang=zh</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://antoinexu.github.io/"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://antoinexu.github.io/?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://antoinexu.github.io/"/>
   </url>
   <url>
     <loc>https://antoinexu.github.io/experience.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://antoinexu.github.io/experience.html"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://antoinexu.github.io/experience.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://antoinexu.github.io/experience.html"/>
   </url>
   <url>
     <loc>https://antoinexu.github.io/experience.html?lang=zh</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://antoinexu.github.io/experience.html"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://antoinexu.github.io/experience.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://antoinexu.github.io/experience.html"/>
   </url>
   <url>
     <loc>https://antoinexu.github.io/project.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://antoinexu.github.io/project.html"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://antoinexu.github.io/project.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://antoinexu.github.io/project.html"/>
   </url>
   <url>
     <loc>https://antoinexu.github.io/project.html?lang=zh</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://antoinexu.github.io/project.html"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://antoinexu.github.io/project.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://antoinexu.github.io/project.html"/>
   </url>
   <url>
     <loc>https://antoinexu.github.io/skill.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://antoinexu.github.io/skill.html"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://antoinexu.github.io/skill.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://antoinexu.github.io/skill.html"/>
   </url>
   <url>
     <loc>https://antoinexu.github.io/skill.html?lang=zh</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://antoinexu.github.io/skill.html"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://antoinexu.github.io/skill.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://antoinexu.github.io/skill.html"/>
   </url>
   <url>
     <loc>https://antoinexu.github.io/about.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://antoinexu.github.io/about.html"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://antoinexu.github.io/about.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://antoinexu.github.io/about.html"/>
   </url>
   <url>
     <loc>https://antoinexu.github.io/about.html?lang=zh</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://antoinexu.github.io/about.html"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://antoinexu.github.io/about.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://antoinexu.github.io/about.html"/>
   </url>
   <url>
     <loc>https://antoinexu.github.io/contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://antoinexu.github.io/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://antoinexu.github.io/contact.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://antoinexu.github.io/contact.html"/>
   </url>
   <url>
     <loc>https://antoinexu.github.io/contact.html?lang=zh</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://antoinexu.github.io/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://antoinexu.github.io/contact.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://antoinexu.github.io/contact.html"/>
   </url>
   <url>
     <loc>https://antoinexu.github.io/case-study-opencart.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://antoinexu.github.io/case-study-opencart.html"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://antoinexu.github.io/case-study-opencart.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://antoinexu.github.io/case-study-opencart.html"/>
   </url>
   <url>
     <loc>https://antoinexu.github.io/case-study-opencart.html?lang=zh</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://antoinexu.github.io/case-study-opencart.html"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://antoinexu.github.io/case-study-opencart.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://antoinexu.github.io/case-study-opencart.html"/>
   </url>
   <url>
     <loc>https://antoinexu.github.io/case-study-erp.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://antoinexu.github.io/case-study-erp.html"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://antoinexu.github.io/case-study-erp.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://antoinexu.github.io/case-study-erp.html"/>
   </url>
   <url>
     <loc>https://antoinexu.github.io/case-study-erp.html?lang=zh</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://antoinexu.github.io/case-study-erp.html"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://antoinexu.github.io/case-study-erp.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://antoinexu.github.io/case-study-erp.html"/>
   </url>
   <url>
     <loc>https://antoinexu.github.io/case-study-inventory.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://antoinexu.github.io/case-study-inventory.html"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://antoinexu.github.io/case-study-inventory.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://antoinexu.github.io/case-study-inventory.html"/>
   </url>
   <url>
     <loc>https://antoinexu.github.io/case-study-inventory.html?lang=zh</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://antoinexu.github.io/case-study-inventory.html"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://antoinexu.github.io/case-study-inventory.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://antoinexu.github.io/case-study-inventory.html"/>
   </url>
 </urlset>
