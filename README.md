@@ -22,12 +22,13 @@ A bilingual English / Chinese personal portfolio website built with vanilla HTML
 ## Features
 
 - Bilingual support with localStorage language persistence; the tab title and meta description switch with the content
+- Every view has its own URL: `?lang=zh` selects Chinese, and the language a visitor is reading is written back to the address bar, so any view can be linked to
 - Typing animation on the home page
 - Scroll fade-in animations across pages
 - Downloadable English and Chinese resumes
 - Responsive layout for desktop and mobile
-- Skip-to-content link, keyboard focus rings, and `prefers-reduced-motion` support
-- Per-page canonical URLs, Open Graph / Twitter tags, JSON-LD structured data, and a sitemap
+- A `<main>` landmark, a skip-to-content link that works without JavaScript, keyboard focus rings, and `prefers-reduced-motion` support
+- Per-page canonical URLs that follow the language, `hreflang` alternates, Open Graph / Twitter tags, JSON-LD structured data, and a sitemap listing both languages
 
 ## Structure
 
@@ -35,7 +36,7 @@ A bilingual English / Chinese personal portfolio website built with vanilla HTML
 |------|---------|
 | `*.html` | One file per page; each holds its own English markup and page-specific translation script |
 | `translations*.json` | Per-page English and Chinese strings, fetched at runtime |
-| `i18n.js` | Language persistence, shared footer, skip link, nav and metadata translation, and the translation helpers below |
+| `i18n.js` | Language persistence and `?lang=` URL syncing, canonical/`og:` language switching, page chrome (skip link, header labels, footer), nav and metadata translation, and the translation helpers below |
 | `animations.js` | Mobile menu toggle and scroll reveal |
 | `architecture.js` | Inline SVG architecture diagrams for the platform and warehouse case studies |
 | `style.css` | All page styling |

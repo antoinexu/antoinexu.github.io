@@ -3,13 +3,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-sans);
     text-decoration: none;
     border: none;
     scroll-behavior: smooth;
 }
 
 :root {
+    --font-sans: 'Poppins', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
     --bg-color: #1d2329;
     --second-bg-color: #2c343d;
     --text-color: #fff;
@@ -43,7 +44,7 @@ body {
     outline-color: #7a4d10;
 }
 
-section {
+main {
     flex: 1 0 auto;
     padding: 10rem 9% 2rem;
 }
@@ -697,7 +698,7 @@ section {
         font-size: 1.4rem;
     }
 
-    section {
+    main {
         padding: 8rem 5% 2rem;
     }
 
@@ -755,7 +756,7 @@ section {
         font-size: 1.3rem;
     }
 
-    section {
+    main {
         padding: 7rem 4% 2rem;
     }
 }
@@ -958,7 +959,7 @@ section {
     max-width: 54rem;
     height: auto;
     margin: 0 auto;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-sans);
 }
 
 @media only screen and (max-width: 600px) {
