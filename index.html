@@ -148,7 +148,7 @@
      <main class="home" id="main-content" tabindex="-1">
          <div class="home-content">
              <p class="home-greeting" id="home-greeting">Hi, I'm</p>
-             <h1>Bowei Xu</h1>
+             <h1><span id="home-name">Bowei Xu</span><span class="home-title" id="home-title">Business Systems &amp; Backend Engineer</span></h1>
              <p class="home-role"><span id="role-prefix">And I'm </span><span id="typed-role"><noscript>a Business Systems Engineer</noscript></span><span class="cursor">|</span></p>
              <p class="home-bio" id="home-bio">Business systems and backend engineer focused on ERP, MES, e-commerce, and data-driven platforms. I build production software end to end, from database design and backend APIs to responsive interfaces and operational dashboards.</p>
 
@@ -262,7 +262,8 @@
     document.addEventListener('DOMContentLoaded', function() {
         function applyStrings(t, lang) {
             setText('home-greeting', t.greeting);
-            setText('.home-content h1', t.name, 'name');
+            setText('home-name', t.name, 'name');
+            setText('home-title', t.title);
             setText('role-prefix', t.role_prefix);
             startTyping(lang);
             setText('home-bio', t.bio);

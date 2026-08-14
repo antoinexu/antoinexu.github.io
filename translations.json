@@ -10,6 +10,7 @@
     "page_description": "Bowei Xu is a business systems and backend engineer focused on ERP, MES, e-commerce, and data-driven platforms, building production software end to end.",
     "greeting": "Hi, I'm",
     "name": "Bowei Xu",
+    "title": "Business Systems & Backend Engineer",
     "role_prefix": "And I'm ",
     "bio": "Business systems and backend engineer focused on ERP, MES, e-commerce, and data-driven platforms. I build production software end to end, from database design and backend APIs to responsive interfaces and operational dashboards.",
     "metrics": [
@@ -44,6 +45,7 @@
     "page_description": "徐博伟是一名业务系统与后端工程师，专注 ERP、MES、电商与数据驱动平台，从数据库设计到运营看板端到端交付生产级软件。",
     "greeting": "你好，我是",
     "name": "徐博伟",
+    "title": "业务系统与后端工程师",
     "role_prefix": "我是一名",
     "bio": "业务系统与后端工程师，专注于 ERP、MES、电商平台和数据驱动的业务系统。我能够从数据库设计、后端 API 到响应式界面和运营看板，端到端交付可落地的生产级软件。",
     "metrics": [
