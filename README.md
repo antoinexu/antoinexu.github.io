@@ -28,7 +28,7 @@ A bilingual English / Chinese personal portfolio website built with vanilla HTML
 - Downloadable English and Chinese resumes
 - Responsive layout for desktop and mobile
 - A `<main>` landmark, a skip-to-content link that works without JavaScript, keyboard focus rings, and `prefers-reduced-motion` support
-- Per-page canonical URLs that follow the language, `hreflang` alternates, Open Graph / Twitter tags, JSON-LD structured data, and a sitemap listing both languages
+- Per-page canonical URLs that follow the language, Open Graph / Twitter tags, and JSON-LD structured data; the sitemap lists English URLs only, since `?lang=zh` renders client-side and has no crawlable HTML of its own
 
 ## Structure
 
