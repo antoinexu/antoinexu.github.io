@@ -12,7 +12,7 @@
     "name": "Bowei Xu",
     "title": "Business Systems & Backend Engineer",
     "role_prefix": "And I'm ",
-    "bio": "I'm the entire IT department at a fuel cell and renewable energy company. I own the systems that take orders, run the shop floor, and tell the business what to buy next. ERP, WMS, MES, e-commerce, and the data layer connecting them: a 50+ table schema and a 100,000+ line codebase, in production, built and run by one person.",
+    "bio": "I'm the entire IT department at a fuel cell and renewable energy company. I own the systems that take orders, run the shop floor, and tell the business what to buy next: ERP, WMS, MES, and the storefront, all on one shared schema.",
     "metrics": [
       {
         "value": "1",
@@ -47,7 +47,7 @@
     "name": "徐博伟",
     "title": "业务系统与后端工程师",
     "role_prefix": "我是一名",
-    "bio": "我是一家燃料电池与可再生能源公司的整个 IT 部门。接单、车间生产、以及告诉业务下一步该采购什么，这些系统都由我负责。ERP、WMS、MES、电商，以及连接它们的数据层：50+ 张表的数据库结构、10 万行以上代码，全部在生产环境运行，由一个人建成并维护。",
+    "bio": "我是一家燃料电池与可再生能源公司的整个 IT 部门。接单、车间生产、以及告诉业务下一步该采购什么，这些系统都由我负责：ERP、WMS、MES 与电商平台，跑在同一套数据库架构上。",
     "metrics": [
       {
         "value": "1",

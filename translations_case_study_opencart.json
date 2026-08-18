@@ -10,7 +10,7 @@
     "page_description": "How I migrated a live store from OpenCart 1.5.6.4 to 3.0.3.8: 2,000+ products and 70,000+ orders with zero data loss and no business interruption.",
     "back": "Back to Projects",
     "title": "E-Commerce Platform Upgrade (OpenCart 1.5 to 3.0)",
-    "disclaimer": "A sanitized write-up of an e-commerce platform upgrade I led as the sole developer for a manufacturing and e-commerce company. Company names, product details, and proprietary code are omitted. It describes the approach and engineering decisions only.",
+    "disclaimer": "A sanitized write-up of the e-commerce platform upgrade I led as the sole developer at Fuel Cell Store. Product details and proprietary code are omitted. It describes the approach and engineering decisions only.",
     "sections": [
       {
         "heading": "Context",
@@ -91,7 +91,7 @@
     "page_description": "我如何将线上商店从 OpenCart 1.5.6.4 迁移到 3.0.3.8：2000 多个商品、7 万多条历史订单，零数据丢失且业务不中断。",
     "back": "返回项目",
     "title": "电商平台升级（OpenCart 1.5 到 3.0）",
-    "disclaimer": "这是一份脱敏的案例分析。我作为唯一开发者，为一家制造和电商公司主导了这次电商平台升级。公司名称、产品细节和专有代码均已省略，此处仅描述思路与工程决策。",
+    "disclaimer": "这是一份脱敏的案例分析。我作为唯一开发者，在 Fuel Cell Store 主导了这次电商平台升级。产品细节和专有代码均已省略，此处仅描述思路与工程决策。",
     "sections": [
       {
         "heading": "背景",

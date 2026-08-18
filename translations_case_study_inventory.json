@@ -10,7 +10,7 @@
     "page_description": "How I built the warehouse half of an internal operations platform: shared-schema stock tracking, receiving workflows, lot-level traceability, and scan-driven shop-floor counts.",
     "back": "Back to Projects",
     "title": "Warehouse & Inventory Subsystem (WMS)",
-    "disclaimer": "A sanitized write-up of the warehouse and shop-floor half of a production internal operations platform I designed and built as the sole developer for a manufacturing and e-commerce company. It runs on the same database as the order-to-shipment half, which has its own write-up. Company names, product details, and proprietary code are omitted. It describes the architecture and engineering decisions only.",
+    "disclaimer": "A sanitized write-up of the warehouse and shop-floor half of the production internal operations platform I designed and built as the sole developer at Fuel Cell Store. It runs on the same database as the order-to-shipment half, which has its own write-up. Product details and proprietary code are omitted. It describes the architecture and engineering decisions only.",
     "related": "Read the order-to-shipment half of this platform",
     "sections": [
       {
@@ -99,7 +99,7 @@
     "page_description": "我如何构建企业内部运营平台的仓储一侧：共库共表的库存跟踪、收货流程、批次级物料追溯，以及扫码驱动的车间盘点。",
     "back": "返回项目",
     "title": "仓储与库存子系统（WMS）",
-    "disclaimer": "这是一份脱敏的案例分析。我作为唯一开发者，为一家制造和电商公司设计并构建了内部运营平台中仓储与车间的这一半。它与从下单到发货的另一半运行在同一个数据库上，那一半另有独立的案例分析。公司名称、产品细节和专有代码均已省略，此处仅描述架构与工程决策。",
+    "disclaimer": "这是一份脱敏的案例分析。我作为唯一开发者，在 Fuel Cell Store 设计并构建了内部运营平台中仓储与车间的这一半。它与从下单到发货的另一半运行在同一个数据库上，那一半另有独立的案例分析。产品细节和专有代码均已省略，此处仅描述架构与工程决策。",
     "related": "查看这套平台从下单到发货的部分",
     "sections": [
       {

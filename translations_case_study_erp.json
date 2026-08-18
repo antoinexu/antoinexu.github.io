@@ -10,7 +10,7 @@
     "page_description": "How I designed and built an internal operations platform (ERP/WMS/MES) as sole developer: a 50+ table schema, order tracking, material traceability, and automated reporting.",
     "back": "Back to Projects",
     "title": "Internal Operations Platform (ERP / WMS / MES)",
-    "disclaimer": "A sanitized write-up of a production internal operations system I designed and built as the sole developer for a manufacturing and e-commerce company. This covers the order-to-shipment half of the platform; the warehouse and shop-floor half runs on the same database and has its own write-up. Company names, product details, and proprietary code are omitted. It describes the architecture and engineering decisions only.",
+    "disclaimer": "A sanitized write-up of the production internal operations system I designed and built as the sole developer at Fuel Cell Store. This covers the order-to-shipment half of the platform; the warehouse and shop-floor half runs on the same database and has its own write-up. Product details and proprietary code are omitted. It describes the architecture and engineering decisions only.",
     "related": "Read the warehouse and materials half of this platform",
     "sections": [
       {
@@ -100,7 +100,7 @@
     "page_description": "作为唯一开发者，我如何设计并构建企业内部运营平台（ERP/WMS/MES）：50 多张表的数据库架构、订单跟踪、物料追溯与自动化报表。",
     "back": "返回项目",
     "title": "企业内部运营平台（ERP / WMS / MES）",
-    "disclaimer": "这是一份脱敏的案例分析。我作为唯一开发者，为一家制造和电商公司设计并构建了这套生产环境内部运营系统。本文覆盖平台中从下单到发货的这一半；仓储与车间那一半运行在同一个数据库上，另有独立的案例分析。公司名称、产品细节和专有代码均已省略，此处仅描述架构与工程决策。",
+    "disclaimer": "这是一份脱敏的案例分析。我作为唯一开发者，在 Fuel Cell Store 设计并构建了这套生产环境内部运营系统。本文覆盖平台中从下单到发货的这一半；仓储与车间那一半运行在同一个数据库上，另有独立的案例分析。产品细节和专有代码均已省略，此处仅描述架构与工程决策。",
     "related": "查看这套平台的仓储与物料部分",
     "sections": [
       {
