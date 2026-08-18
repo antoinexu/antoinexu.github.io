@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<link rel="stylesheet" href="../fonts.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{background:#1d2329;color:#fff;font-family:'Poppins',sans-serif;display:flex;align-items:center;gap:44px;padding:0 68px}
+.left{flex:1 1 auto;min-width:0}
+.eyebrow{font-size:18px;font-weight:500;letter-spacing:2.8px;text-transform:uppercase;color:#f3b562;margin-bottom:24px}
+h1{font-size:82px;font-weight:700;line-height:1;letter-spacing:-1.5px}
+.role{font-size:31px;font-weight:600;color:#12d6c8;margin-top:18px;line-height:1.25}
+.rule{width:80px;height:4px;background:#12d6c8;border-radius:2px;margin:32px 0 28px}
+.blurb{font-size:24px;font-weight:400;line-height:1.5;color:#aeb6bf;max-width:26ch}
+.right{flex:0 0 462px;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:26px 20px}
+.arch-svg{display:block;width:100%;height:auto;font-family:'Poppins',sans-serif}
+.arch-node{fill:#2c343d;stroke:rgba(255,255,255,.14);stroke-width:1}
+.arch-node-title{fill:#12d6c8;font-size:19px;font-weight:600}
+.arch-node-desc,.arch-node-item{fill:#c3cad3;font-size:15.5px}
+.arch-host{fill:none;stroke:#f3b562;stroke-width:1.6;stroke-dasharray:6 5}
+.arch-host-title{fill:#f3b562;font-size:15.5px;font-weight:600;letter-spacing:.4px;text-anchor:middle}
+.arch-line{stroke:#6b7684;stroke-width:1.8}
+.arch-arrow{fill:#6b7684}
+.arch-edge-label{fill:#c3cad3;font-size:14px;text-anchor:middle;stroke:#1d2329;stroke-width:5px;paint-order:stroke;stroke-linejoin:round}
+</style></head>
+<body>
+<div class="left">
+<div class="eyebrow">antoinexu.github.io</div>
+<h1>Bowei Xu</h1>
+<div class="role">Business Systems &amp;<br>Backend Engineer</div>
+<div class="rule"></div>
+<p class="blurb">Sole engineer behind a fuel cell company&#8217;s ERP, WMS, MES, and e&#8209;commerce systems.</p>
+</div>
+<div class="right"><svg class="arch-svg" viewBox="0 0 540 458" role="img" preserveAspectRatio="xMidYMid meet" aria-label="Architecture diagram: the browser talks over HTTP to a single Ubuntu Linux server running PHP, SQL Server, and local file storage."><rect class="arch-host" x="56" y="112" width="428" height="330" rx="14"></rect><text class="arch-host-title" x="270" y="138">single Ubuntu Linux server</text><rect class="arch-node" x="78" y="16" width="384" height="46" rx="10"></rect><text class="arch-node-title" x="96" y="44">Browser</text><line class="arch-line" x1="270" y1="62" x2="270" y2="105"></line><polygon class="arch-arrow" points="265,104 275,104 270,112"></polygon><text class="arch-edge-label" x="270" y="91">HTTP</text><rect class="arch-node" x="78" y="154" width="384" height="64" rx="10"></rect><text class="arch-node-title" x="96" y="182">PHP</text><text class="arch-node-desc" x="96" y="203">auth, business logic, rendering, cron jobs</text><line class="arch-line" x1="270" y1="218" x2="270" y2="257"></line><polygon class="arch-arrow" points="265,256 275,256 270,264"></polygon><text class="arch-edge-label" x="270" y="245">parameterized queries</text><rect class="arch-node" x="78" y="264" width="384" height="64" rx="10"></rect><text class="arch-node-title" x="96" y="292">SQL Server</text><text class="arch-node-desc" x="96" y="313">all business data</text><line class="arch-line" x1="270" y1="328" x2="270" y2="353"></line><polygon class="arch-arrow" points="265,352 275,352 270,360"></polygon><rect class="arch-node" x="78" y="360" width="384" height="64" rx="10"></rect><text class="arch-node-title" x="96" y="388">File System</text><text class="arch-node-desc" x="96" y="409">order attachments</text></svg></div>
+</body></html>
