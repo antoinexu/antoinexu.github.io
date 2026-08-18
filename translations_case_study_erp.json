@@ -18,7 +18,7 @@
         "paragraphs": [
           "The company already had an internal system, but it was slow: common queries and reports could take a long time to run, and it covered only part of the operational workflow, so significant gaps were still filled with spreadsheets and manual data entry. There was also no reliable record of who changed what.",
           "As the sole developer, I designed and built a replacement platform that was both more complete and faster to query. It covers the full order-to-shipment lifecycle, and over time grew into a codebase of roughly 100,000 lines backed by a 50+ table relational schema.",
-          "The platform has two halves. This write-up covers the order-to-shipment side: orders, builds, shipments, and reporting. The warehouse and shop-floor side - receiving, scan-driven picking, physical counts, and lot-level material traceability - is built on this same schema and is covered in a separate write-up."
+          "The platform has two halves. This write-up covers the order-to-shipment side: orders, builds, shipments, and reporting. The warehouse and shop-floor side covers receiving, scan-driven picking, physical counts, and lot-level material traceability. It is built on this same schema and has a separate write-up."
         ]
       },
       {
@@ -108,7 +108,7 @@
         "paragraphs": [
           "公司原本已有一套内部系统，但它运行缓慢：常用的查询和报表往往需要很长时间，而且只覆盖了部分业务流程，大量环节仍需依靠电子表格和人工录入来弥补。此外，也没有可靠的记录说明谁修改了哪些数据。",
           "作为唯一开发者，我设计并构建了一套替代平台，既功能更完整，查询也更快。它覆盖从下单到发货的完整流程，并随时间发展为一个约 10 万行代码、由 50+ 张关系型数据表支撑的系统。",
-          "这套平台分为两半。本文覆盖从下单到发货的一侧：订单、生产、发货与报表。仓储与车间的一侧——收货、扫码拣货、盘点和批次级物料追溯——建立在同一套数据库架构之上，另有独立的案例分析。"
+          "这套平台分为两半。本文覆盖从下单到发货的一侧：订单、生产、发货与报表。仓储与车间的一侧覆盖收货、扫码拣货、盘点和批次级物料追溯，建立在同一套数据库架构之上，另有独立的案例分析。"
         ]
       },
       {
