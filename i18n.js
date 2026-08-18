@@ -231,7 +231,7 @@ const chromeStrings = {
         skip_link: 'Skip to main content',
         menu_label: 'Open navigation',
         language_label: 'Select language',
-        tagline: 'Sole engineer behind a fuel cell company's ERP, WMS, MES, and e-commerce systems.',
+        tagline: 'Sole engineer behind the ERP, WMS, MES, and e-commerce systems at a fuel cell company.',
         links_heading: 'Explore',
         home: 'Home',
         experiences: 'Experience',
