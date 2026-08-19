@@ -40,7 +40,7 @@ PAGES = {
 # Ends on the 8-space close of #cs-body; the 12-space closes of the inner
 # .cs-section divs cannot match that indentation, so the lazy .*? stops here.
 BLOCK = re.compile(
-    r'        <a href="project\.html" class="case-study-back" id="cs-back">.*?'
+    r'        <a href="/?project\.html" class="case-study-back" id="cs-back">.*?'
     r'<div id="cs-body">.*?\n        </div>',
     re.S)
 
