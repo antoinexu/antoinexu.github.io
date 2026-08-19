@@ -31,16 +31,19 @@
       },
       "digifinex": {
         "title": "Software Engineering Intern - DigiFinex",
-        "period": "Jun 2022 - Aug 2022",
+        "period": "Jun 2022 - Aug 2022 · Full-time",
         "tags": [
+          "Go",
+          "MySQL",
+          "Jenkins",
           "Trading Platform",
-          "API Integration",
-          "Frontend/Backend"
+          "API Integration"
         ],
         "descriptions": {
           "collaboration": "Collaborated with product managers and senior engineers to design, analyze, and implement system features aligned with business requirements.",
           "protocols": "Contributed to interface protocols, technical documentation, and API integrations for trading-platform workflows.",
-          "components": "Developed and tested frontend and backend components to improve system reliability and performance."
+          "components": "Developed and tested frontend and backend components to improve system reliability and performance.",
+          "stack": "Worked across the stack in Go, JavaScript, and MySQL, using Git for version control and Jenkins for continuous integration."
         }
       }
     }
@@ -77,16 +80,19 @@
       },
       "digifinex": {
         "title": "软件工程实习生 - DigiFinex",
-        "period": "2022年6月 - 2022年8月",
+        "period": "2022年6月 - 2022年8月 · 全职",
         "tags": [
+          "Go",
+          "MySQL",
+          "Jenkins",
           "交易平台",
-          "API 集成",
-          "前后端开发"
+          "API 集成"
         ],
         "descriptions": {
           "collaboration": "与产品经理和资深工程师协作，根据业务需求设计、分析并实现系统功能。",
           "protocols": "参与交易平台接口协议、技术文档和 API 集成相关工作。",
-          "components": "开发并测试前端和后端组件，提升系统可靠性与性能表现。"
+          "components": "开发并测试前端和后端组件，提升系统可靠性与性能表现。",
+          "stack": "使用 Go、JavaScript 和 MySQL 进行全栈开发，以 Git 管理版本，以 Jenkins 执行持续集成。"
         }
       }
     }
