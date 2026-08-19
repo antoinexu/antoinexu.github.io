@@ -396,7 +396,6 @@ main {
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    align-items: start;
     grid-gap: 20px;
     margin-bottom: 20px;
 }
