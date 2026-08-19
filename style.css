@@ -966,6 +966,27 @@ main {
     }
 }
 
+.about-photo {
+    margin: 2rem 0 1.2rem;
+}
+
+.about-photo img {
+    display: block;
+    width: 100%;
+    max-width: 54rem;
+    height: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.about-photo figcaption {
+    max-width: 54rem;
+    margin-top: 0.9rem;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.62);
+}
+
 .arch-figure {
     background: rgba(0, 0, 0, 0.28);
     border: 1px solid rgba(255, 255, 255, 0.1);

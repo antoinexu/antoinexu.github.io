@@ -55,6 +55,25 @@ function setText(target, value, label) {
     return true;
 }
 
+function setAlt(target, value, label) {
+    const el = i18nResolve(target);
+    const name = i18nLabel(target, label);
+    if (!el) {
+        i18nWarn('no element for "' + name + '"');
+        return false;
+    }
+
+    const original = i18nOriginal(el, 'alt');
+    if (typeof value !== 'string' || value === '') {
+        i18nWarn('missing alt for "' + name + '", keeping the original');
+        el.alt = original;
+        return false;
+    }
+
+    el.alt = value;
+    return true;
+}
+
 function setPills(target, values, label) {
     const el = i18nResolve(target);
     const name = i18nLabel(target, label);
