@@ -101,7 +101,7 @@ def main():
         data = json.load(io.open(os.path.join(ROOT, json_name), encoding="utf-8"))["en"]
 
         block = (
-            '        <a href="project.html" class="case-study-back" id="cs-back">%s</a>\n'
+            '        <a href="/project.html" class="case-study-back" id="cs-back">%s</a>\n'
             '        <h1 id="cs-title">%s</h1>\n'
             '        <p class="case-study-disclaimer" id="cs-disclaimer">%s</p>\n'
             '        <div id="cs-body">\n%s\n        </div>'

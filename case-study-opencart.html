@@ -115,6 +115,7 @@
                 <h2>Context</h2>
                 <p>The online store ran on a years-old release of OpenCart, two major versions behind current, with no supported upgrade path. Custom modules and theme changes had accumulated on top of the core over several years, no documentation existed, and the original developers had left, so the behavior of much of the custom functionality was effectively undocumented.</p>
                 <p>As the sole developer, I led the upgrade from 1.5.6.4 to 3.0.3.8, covering 2,000+ products and 70,000+ historical orders, with zero data loss and no business interruption. With no documentation and no reliable automated path across that version gap, the project combined reverse engineering, data migration, and the rebuilding of custom functionality in roughly equal measure.</p>
+                <div class="arch-figure"><svg class="arch-svg" viewBox="0 0 540 420" role="img" preserveAspectRatio="xMidYMid meet" aria-label="Architecture diagram: the browser talks over HTTPS to a cPanel/WHM VPS, separate from the ERP server, running OpenCart 3.0.3.8 on PHP 7.4 backed by MySQL."><rect class="arch-host" x="56" y="130" width="428" height="274" rx="14"></rect><text class="arch-host-title" x="270" y="156">cPanel/WHM VPS, separate from the ERP server</text><rect class="arch-node" x="78" y="16" width="384" height="64" rx="10"></rect><text class="arch-node-title" x="96" y="44">Browser</text><text class="arch-node-desc" x="96" y="65">storefront pages, Google Tag Manager</text><line class="arch-line" x1="270" y1="80" x2="270" y2="123"></line><polygon class="arch-arrow" points="265,122 275,122 270,130"></polygon><text class="arch-edge-label" x="270" y="109">HTTPS</text><rect class="arch-node" x="78" y="172" width="384" height="118" rx="10"></rect><text class="arch-node-title" x="96" y="200">OpenCart 3.0.3.8 on PHP 7.4</text><text class="arch-node-item" x="96" y="220">•  catalog, cart, and checkout</text><text class="arch-node-item" x="96" y="242">•  online quote and request for quote</text><text class="arch-node-item" x="96" y="264">•  Stripe payment gateway</text><line class="arch-line" x1="270" y1="290" x2="270" y2="315"></line><polygon class="arch-arrow" points="265,314 275,314 270,322"></polygon><rect class="arch-node" x="78" y="322" width="384" height="64" rx="10"></rect><text class="arch-node-title" x="96" y="350">MySQL</text><text class="arch-node-desc" x="96" y="371">2,000+ products, 70,000+ historical orders</text></svg></div>
             </div>
             <div class="cs-section">
                 <h2>Scope</h2>
@@ -195,6 +196,7 @@
 </footer>
 
 <script src="animations.js"></script>
+<script src="architecture.js"></script>
 <script src="i18n.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -224,7 +226,12 @@
 
                 (section.paragraphs || []).forEach(p => wrap.appendChild(el('p', p)));
 
-                if (section.code) {
+                if (section.architecture && window.buildArchitectureSVG) {
+                    const fig = el('div');
+                    fig.className = 'arch-figure';
+                    fig.appendChild(window.buildArchitectureSVG(section.architecture));
+                    wrap.appendChild(fig);
+                } else if (section.code) {
                     const pre = el('pre');
                     pre.appendChild(el('code', section.code));
                     wrap.appendChild(pre);
