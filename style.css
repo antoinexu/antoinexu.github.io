@@ -485,6 +485,10 @@ main {
     transition: color 0.3s ease;
 }
 
+.case-study-link + .case-study-link {
+    margin-left: 1.6rem;
+}
+
 .case-study-link:hover {
     color: var(--main-color);
 }
