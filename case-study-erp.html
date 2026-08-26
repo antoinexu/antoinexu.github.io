@@ -113,8 +113,8 @@
         <div id="cs-body">
             <div class="cs-section">
                 <h2>Context</h2>
-                <p>The company already had an internal system, but it was slow: common queries and reports could take a long time to run, and it covered only part of the operational workflow, so significant gaps were still filled with spreadsheets and manual data entry. There was also no reliable record of who changed what.</p>
-                <p>As the sole developer, I designed and built a replacement platform that was both more complete and faster to query. It covers the full order-to-shipment lifecycle, and over time grew into a codebase of roughly 100,000 lines backed by a 50+ table relational schema.</p>
+                <p>The company already had an internal system, but it was slow: common lookups and reports took several seconds or more to return, and it covered only part of the operational workflow, so significant gaps were still filled with spreadsheets and manual data entry. There was also no reliable record of who changed what.</p>
+                <p>As the sole developer, I designed and built a replacement platform that was both more complete and faster to query. It covers the full order-to-shipment lifecycle, built on a relational schema of 50+ tables.</p>
                 <p>The platform has two halves. This write-up covers the order-to-shipment side: orders, builds, shipments, and reporting. The warehouse and shop-floor side covers receiving, scan-driven picking, physical counts, and lot-level material traceability. It is built on this same schema and has a separate write-up.</p>
             </div>
             <div class="cs-section">
@@ -136,9 +136,19 @@
                 <p>Why a monolith rather than microservices? A small internal user base, a one-person team, and no strict uptime SLA. Microservices would have added operational overhead with no payoff at this scale. The guiding principle was to optimize for development speed and maintainability, while remaining clear on which parts would need to change first as the system grows.</p>
             </div>
             <div class="cs-section">
+                <h2>Scale</h2>
+                <ul>
+                    <li>One SQL Server database of 50+ tables covering orders, inventory, materials, builds, and shipments as a single shared schema</li>
+                    <li>The audit table is the largest in the schema, at over 1,000,000 rows</li>
+                    <li>20 to 30 internal users working in the system at the same time</li>
+                    <li>Any one work order is edited by a single person at a time, enforced by the lock table rather than left to convention</li>
+                    <li>Reports query live operational data and return in under a second</li>
+                </ul>
+            </div>
+            <div class="cs-section">
                 <h2>Engineering decisions worth highlighting</h2>
                 <h3>1. Concurrency control via pessimistic locking</h3>
-                <p>Two operators editing the same work order would silently overwrite each other's changes. I introduced a lock table: opening an order checks for an existing lock and acquires one if it is free, and the save releases it. A scheduled job clears stale locks left by abandoned sessions. Pessimistic locking is the appropriate choice when conflicts are costly, whereas optimistic version-number locking suits low-conflict, higher-throughput scenarios.</p>
+                <p>Two operators editing the same work order would silently overwrite each other's changes. I introduced a lock table: opening a work order checks for an existing lock and acquires one if it is free, and the save releases it. A scheduled job clears any lock older than five minutes, so an abandoned session cannot hold a work order indefinitely. The warehouse subsystem reads and writes this same lock table, so a work order locked on the shop floor cannot be checked out here; the conflict is resolved between the two applications rather than inside either one. Pessimistic locking is the appropriate choice when conflicts are costly, whereas optimistic version-number locking suits low-conflict, higher-throughput scenarios.</p>
                 <h3>2. Unified audit trail</h3>
                 <p>Internal operations require full traceability. Every create, update, and delete writes to a single audit table capturing actor, timestamp, object type, object ID, and a human-readable note. A single table across all modules makes cross-module "who changed this record" queries straightforward. The trade-off is that a high write volume will eventually make a single table a bottleneck; the scale path is asynchronous audit writes or monthly partitioning.</p>
                 <h3>3. Real-time reporting without extra infrastructure</h3>
@@ -146,13 +156,13 @@
                 <h3>4. Role-based access control</h3>
                 <p>Two roles, Admin and normal user, enforced at the top of every page via server-side sessions. The model is simple, fast, and easy to reason about. Its limitation is that it cannot express per-record rules; the upgrade path is attribute-based access control with a centralized session store for a multi-server deployment.</p>
                 <h3>5. Data-integrity discipline</h3>
-                <p>All queries are parameterized rather than built from concatenated strings, which prevents SQL injection. Lot-number duplicate detection, negative-stock alerts, and reconciliation reports catch operational data errors before they compound.</p>
+                <p>Operational data errors compound quietly, so the platform catches them where they enter: lot-number duplicate detection, negative-stock alerts, and reconciliation reports across materials and stock. Queries are parameterized throughout rather than assembled from concatenated strings, which keeps injection out of a system where every table is business-critical.</p>
             </div>
             <div class="cs-section">
                 <h2>Results</h2>
                 <ul>
                     <li>Replaced a slow, feature-incomplete legacy internal system with one platform covering the full order-to-shipment lifecycle across orders, inventory, materials, builds, and shipments</li>
-                    <li>Restructured queries and schema so reports and lookups that previously ran slowly now return quickly</li>
+                    <li>Designed the schema and query layer so reporting runs against live operational data, with no separate analytics stack to build or keep in sync</li>
                     <li>Gave the business end-to-end order traceability and a complete audit trail it had not had before</li>
                     <li>Built, maintained, and extended the platform single-handedly in production</li>
                 </ul>

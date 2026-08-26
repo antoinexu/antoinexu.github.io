@@ -20,7 +20,7 @@
           "Production Systems"
         ],
         "descriptions": {
-          "platform": "Sole developer for the company's internal operations platform (ERP / WMS / MES), independently architecting a 50+ table relational database schema and 100,000+ line codebase supporting order processing, lot-level material traceability, and fuel cell manufacturing workflows.",
+          "platform": "Sole developer for the company's internal operations platform (ERP / WMS / MES), independently architecting a 50+ table relational database schema supporting order processing, lot-level material traceability, and fuel cell manufacturing workflows.",
           "opencart": "Led the live OpenCart 1.5 to 3.0 e-commerce migration for 2,000+ products and 70,000+ historical orders, including custom SQL migration scripts, UI redesign, and zero data loss.",
           "google": "Integrated the OpenCart storefront with Google's platforms: instrumented the PHP templates to emit a dataLayer for Google Tag Manager and Google Ads conversion tracking, and resolved Search Console indexing and structured-data issues.",
           "vendor-catalog": "Onboarded manufacturer product lines onto the storefront, integrating vendor product data into the OpenCart catalog.",
@@ -68,7 +68,7 @@
           "生产系统"
         ],
         "descriptions": {
-          "platform": "作为唯一开发者，独立架构并持续开发企业内部运营平台（ERP / WMS / MES），包含 50+ 张关系型数据库表和 10 万+ 行代码，支撑订单处理、批次级物料追溯和燃料电池制造流程。",
+          "platform": "作为唯一开发者，独立架构并持续开发企业内部运营平台（ERP / WMS / MES），包含 50+ 张关系型数据库表，支撑订单处理、批次级物料追溯和燃料电池制造流程。",
           "opencart": "主导线上电商平台从 OpenCart 1.5 升级到 3.0，迁移 2,000+ 商品和 70,000+ 历史订单，编写自定义 SQL 迁移脚本，完成界面重设计，并实现零数据丢失。",
           "google": "将 OpenCart 店面与 Google 各平台打通：在 PHP 模板层改代码输出 dataLayer，接入 Google Tag Manager 与 Google Ads 转化跟踪，并排查修复 Search Console 的索引与结构化数据问题。",
           "vendor-catalog": "将厂商产品线接入店面，把供应商的产品数据整合进 OpenCart 商品库。",

@@ -131,9 +131,20 @@
             </div>
             <div class="cs-section">
                 <h2>Architecture</h2>
-                <p>Two vanilla-PHP applications backed by Microsoft SQL Server, each a single-file-per-feature design where every page is either a server-rendered UI or a JSON endpoint. The main inventory system shares its database directly with the ERP, while the lot-tracked-materials subsystem has its own database on the same server.</p>
+                <p>Two PHP applications backed by Microsoft SQL Server, both server-rendered, where each page is either a UI or a JSON endpoint. The main inventory system shares its database directly with the ERP, while the lot-tracked-materials subsystem has its own database on the same server.</p>
                 <div class="arch-figure"><svg class="arch-svg" viewBox="0 0 540 398" role="img" preserveAspectRatio="xMidYMid meet" aria-label="Architecture diagram: the browser talks over the internal network to a single Ubuntu Linux server running PHP and SQL Server."><rect class="arch-host" x="56" y="130" width="428" height="252" rx="14"></rect><text class="arch-host-title" x="270" y="156">single Ubuntu Linux server</text><rect class="arch-node" x="78" y="16" width="384" height="64" rx="10"></rect><text class="arch-node-title" x="96" y="44">Browser</text><text class="arch-node-desc" x="96" y="65">server-rendered pages, QR scanning</text><line class="arch-line" x1="270" y1="80" x2="270" y2="123"></line><polygon class="arch-arrow" points="265,122 275,122 270,130"></polygon><text class="arch-edge-label" x="270" y="109">HTTP over the internal network</text><rect class="arch-node" x="78" y="172" width="384" height="64" rx="10"></rect><text class="arch-node-title" x="96" y="200">PHP</text><text class="arch-node-desc" x="96" y="221">UI pages, JSON endpoints, cron jobs</text><line class="arch-line" x1="270" y1="236" x2="270" y2="261"></line><polygon class="arch-arrow" points="265,260 275,260 270,268"></polygon><rect class="arch-node" x="78" y="268" width="384" height="96" rx="10"></rect><text class="arch-node-title" x="96" y="296">SQL Server</text><text class="arch-node-item" x="96" y="316">•  main database, shared with the ERP</text><text class="arch-node-item" x="96" y="338">•  materials database, owned by the subsystem</text></svg></div>
                 <p>Why two systems rather than one? The main system grew alongside the ERP and shares its tables, so reads and writes are immediate with no API layer. The lot-tracked-materials subsystem was rebuilt from the ground up as a clean, separate system because that data requires tighter access control, lot-level precision, and its own alerting; isolating it also allowed me to replace the legacy version without destabilizing the live inventory system.</p>
+                <p>Neither application sits on a framework. With one developer maintaining both, a page that is a single file is the fastest unit to open, understand, and change months later, and deployment stays a file copy onto the server that already runs the ERP. The trade-off is that cross-cutting concerns such as auth and input validation live in shared includes rather than in middleware, and that is the first thing that would need to change if a second maintainer joined.</p>
+            </div>
+            <div class="cs-section">
+                <h2>Scale</h2>
+                <ul>
+                    <li>Runs directly on the ERP's own 50+ table SQL Server schema, alongside the separate database owned by the materials subsystem</li>
+                    <li>The shared audit table is the largest in the schema, at over 1,000,000 rows</li>
+                    <li>20 to 30 internal users across the office and the shop floor at the same time</li>
+                    <li>One operator at a time per work order, enforced by the lock table the ERP also honors</li>
+                    <li>Stock lookups and inventory reports return in under a second</li>
+                </ul>
             </div>
             <div class="cs-section">
                 <h2>Engineering decisions worth highlighting</h2>

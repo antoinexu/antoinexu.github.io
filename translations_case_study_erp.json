@@ -16,8 +16,8 @@
       {
         "heading": "Context",
         "paragraphs": [
-          "The company already had an internal system, but it was slow: common queries and reports could take a long time to run, and it covered only part of the operational workflow, so significant gaps were still filled with spreadsheets and manual data entry. There was also no reliable record of who changed what.",
-          "As the sole developer, I designed and built a replacement platform that was both more complete and faster to query. It covers the full order-to-shipment lifecycle, and over time grew into a codebase of roughly 100,000 lines backed by a 50+ table relational schema.",
+          "The company already had an internal system, but it was slow: common lookups and reports took several seconds or more to return, and it covered only part of the operational workflow, so significant gaps were still filled with spreadsheets and manual data entry. There was also no reliable record of who changed what.",
+          "As the sole developer, I designed and built a replacement platform that was both more complete and faster to query. It covers the full order-to-shipment lifecycle, built on a relational schema of 50+ tables.",
           "The platform has two halves. This write-up covers the order-to-shipment side: orders, builds, shipments, and reporting. The warehouse and shop-floor side covers receiving, scan-driven picking, physical counts, and lot-level material traceability. It is built on this same schema and has a separate write-up."
         ]
       },
@@ -54,11 +54,21 @@
         ]
       },
       {
+        "heading": "Scale",
+        "list": [
+          "One SQL Server database of 50+ tables covering orders, inventory, materials, builds, and shipments as a single shared schema",
+          "The audit table is the largest in the schema, at over 1,000,000 rows",
+          "20 to 30 internal users working in the system at the same time",
+          "Any one work order is edited by a single person at a time, enforced by the lock table rather than left to convention",
+          "Reports query live operational data and return in under a second"
+        ]
+      },
+      {
         "heading": "Engineering decisions worth highlighting",
         "subsections": [
           {
             "title": "1. Concurrency control via pessimistic locking",
-            "body": "Two operators editing the same work order would silently overwrite each other's changes. I introduced a lock table: opening an order checks for an existing lock and acquires one if it is free, and the save releases it. A scheduled job clears stale locks left by abandoned sessions. Pessimistic locking is the appropriate choice when conflicts are costly, whereas optimistic version-number locking suits low-conflict, higher-throughput scenarios."
+            "body": "Two operators editing the same work order would silently overwrite each other's changes. I introduced a lock table: opening a work order checks for an existing lock and acquires one if it is free, and the save releases it. A scheduled job clears any lock older than five minutes, so an abandoned session cannot hold a work order indefinitely. The warehouse subsystem reads and writes this same lock table, so a work order locked on the shop floor cannot be checked out here; the conflict is resolved between the two applications rather than inside either one. Pessimistic locking is the appropriate choice when conflicts are costly, whereas optimistic version-number locking suits low-conflict, higher-throughput scenarios."
           },
           {
             "title": "2. Unified audit trail",
@@ -74,7 +84,7 @@
           },
           {
             "title": "5. Data-integrity discipline",
-            "body": "All queries are parameterized rather than built from concatenated strings, which prevents SQL injection. Lot-number duplicate detection, negative-stock alerts, and reconciliation reports catch operational data errors before they compound."
+            "body": "Operational data errors compound quietly, so the platform catches them where they enter: lot-number duplicate detection, negative-stock alerts, and reconciliation reports across materials and stock. Queries are parameterized throughout rather than assembled from concatenated strings, which keeps injection out of a system where every table is business-critical."
           }
         ]
       },
@@ -82,7 +92,7 @@
         "heading": "Results",
         "list": [
           "Replaced a slow, feature-incomplete legacy internal system with one platform covering the full order-to-shipment lifecycle across orders, inventory, materials, builds, and shipments",
-          "Restructured queries and schema so reports and lookups that previously ran slowly now return quickly",
+          "Designed the schema and query layer so reporting runs against live operational data, with no separate analytics stack to build or keep in sync",
           "Gave the business end-to-end order traceability and a complete audit trail it had not had before",
           "Built, maintained, and extended the platform single-handedly in production"
         ]
@@ -106,8 +116,8 @@
       {
         "heading": "背景",
         "paragraphs": [
-          "公司原本已有一套内部系统，但它运行缓慢：常用的查询和报表往往需要很长时间，而且只覆盖了部分业务流程，大量环节仍需依靠电子表格和人工录入来弥补。此外，也没有可靠的记录说明谁修改了哪些数据。",
-          "作为唯一开发者，我设计并构建了一套替代平台，既功能更完整，查询也更快。它覆盖从下单到发货的完整流程，并随时间发展为一个约 10 万行代码、由 50+ 张关系型数据表支撑的系统。",
+          "公司原本已有一套内部系统，但它运行缓慢：常用的查询和报表往往要等上数秒甚至更久，而且只覆盖了部分业务流程，大量环节仍需依靠电子表格和人工录入来弥补。此外，也没有可靠的记录说明谁修改了哪些数据。",
+          "作为唯一开发者，我设计并构建了一套替代平台，既功能更完整，查询也更快。它覆盖从下单到发货的完整流程，由一套 50+ 张表的关系型数据库架构支撑。",
           "这套平台分为两半。本文覆盖从下单到发货的一侧：订单、生产、发货与报表。仓储与车间的一侧覆盖收货、扫码拣货、盘点和批次级物料追溯，建立在同一套数据库架构之上，另有独立的案例分析。"
         ]
       },
@@ -144,11 +154,21 @@
         ]
       },
       {
+        "heading": "规模",
+        "list": [
+          "单个 SQL Server 数据库，50+ 张表，以一套共享 schema 覆盖订单、库存、物料、生产和发货",
+          "审计表是库中最大的一张，超过 100 万行",
+          "20 到 30 名内部用户同时在系统中作业",
+          "任何一张工单在同一时刻只由一个人编辑，这由锁表强制保证，而不是靠约定",
+          "报表直接查询线上业务数据，返回时间在 1 秒以内"
+        ]
+      },
+      {
         "heading": "值得一提的工程决策",
         "subsections": [
           {
             "title": "1. 以悲观锁实现并发控制",
-            "body": "两名操作员同时编辑同一张工单时，会静默地覆盖彼此的改动。我引入了一张锁表：打开订单时检查是否已存在锁，空闲则加锁，保存时释放。一个定时任务会清理被弃置会话遗留的过期锁。冲突代价较高时，悲观锁是合适的选择；而低冲突、高吞吐的场景则更适合基于版本号的乐观锁。"
+            "body": "两名操作员同时编辑同一张工单时，会静默地覆盖彼此的改动。我引入了一张锁表：打开工单时检查是否已存在锁，空闲则加锁，保存时释放。一个定时任务会清理任何超过五分钟的锁，使被弃置的会话无法长期占住一张工单。仓储子系统读写的是同一张锁表，因此在车间被锁定的工单无法在这里签出，冲突是在两套应用之间解决的，而不是各自为政。冲突代价较高时，悲观锁是合适的选择；而低冲突、高吞吐的场景则更适合基于版本号的乐观锁。"
           },
           {
             "title": "2. 统一的审计记录",
@@ -164,7 +184,7 @@
           },
           {
             "title": "5. 数据完整性纪律",
-            "body": "所有查询均采用参数化，而非拼接字符串，以此防止 SQL 注入。批号重复检测、负库存告警和对账报表，可在数据错误扩散之前将其捕捉。"
+            "body": "业务数据的错误会悄无声息地累积，因此平台在错误产生的入口处就将其拦截：批号重复检测、负库存告警，以及覆盖物料与库存的对账报表。所有查询一律采用参数化而非拼接字符串，使注入无法进入一套每张表都关乎业务的系统。"
           }
         ]
       },
@@ -172,7 +192,7 @@
         "heading": "成果",
         "list": [
           "用一套覆盖从下单到发货完整流程的平台，取代了原先缓慢、功能不全的老内部系统，贯通订单、库存、物料、生产和发货",
-          "通过重构查询和表结构，使原本运行缓慢的报表和查询能够快速返回",
+          "将数据库架构与查询层设计为报表可直接跑在线上业务数据之上，无需搭建和维护独立的分析栈",
           "为业务提供了此前从未有过的端到端订单可追溯性和完整审计记录",
           "由单人在生产环境中独立构建、维护和迭代"
         ]

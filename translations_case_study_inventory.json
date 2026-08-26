@@ -36,7 +36,7 @@
       {
         "heading": "Architecture",
         "paragraphs": [
-          "Two vanilla-PHP applications backed by Microsoft SQL Server, each a single-file-per-feature design where every page is either a server-rendered UI or a JSON endpoint. The main inventory system shares its database directly with the ERP, while the lot-tracked-materials subsystem has its own database on the same server."
+          "Two PHP applications backed by Microsoft SQL Server, both server-rendered, where each page is either a UI or a JSON endpoint. The main inventory system shares its database directly with the ERP, while the lot-tracked-materials subsystem has its own database on the same server."
         ],
         "architecture": {
           "client": { "label": "Browser", "desc": "server-rendered pages, QR scanning" },
@@ -49,7 +49,18 @@
           "aria": "Architecture diagram: the browser talks over the internal network to a single Ubuntu Linux server running PHP and SQL Server."
         },
         "paragraphs_after": [
-          "Why two systems rather than one? The main system grew alongside the ERP and shares its tables, so reads and writes are immediate with no API layer. The lot-tracked-materials subsystem was rebuilt from the ground up as a clean, separate system because that data requires tighter access control, lot-level precision, and its own alerting; isolating it also allowed me to replace the legacy version without destabilizing the live inventory system."
+          "Why two systems rather than one? The main system grew alongside the ERP and shares its tables, so reads and writes are immediate with no API layer. The lot-tracked-materials subsystem was rebuilt from the ground up as a clean, separate system because that data requires tighter access control, lot-level precision, and its own alerting; isolating it also allowed me to replace the legacy version without destabilizing the live inventory system.",
+          "Neither application sits on a framework. With one developer maintaining both, a page that is a single file is the fastest unit to open, understand, and change months later, and deployment stays a file copy onto the server that already runs the ERP. The trade-off is that cross-cutting concerns such as auth and input validation live in shared includes rather than in middleware, and that is the first thing that would need to change if a second maintainer joined."
+        ]
+      },
+      {
+        "heading": "Scale",
+        "list": [
+          "Runs directly on the ERP's own 50+ table SQL Server schema, alongside the separate database owned by the materials subsystem",
+          "The shared audit table is the largest in the schema, at over 1,000,000 rows",
+          "20 to 30 internal users across the office and the shop floor at the same time",
+          "One operator at a time per work order, enforced by the lock table the ERP also honors",
+          "Stock lookups and inventory reports return in under a second"
         ]
       },
       {
@@ -125,7 +136,7 @@
       {
         "heading": "架构",
         "paragraphs": [
-          "两套纯 PHP 应用，后端均为 Microsoft SQL Server，都采用单文件即一个功能的设计，每个页面要么是服务端渲染的界面，要么是一个 JSON 接口。主库存系统直接与 ERP 共用数据库，物料子系统则在同一台服务器上拥有自己的独立数据库。"
+          "两套 PHP 应用，后端均为 Microsoft SQL Server，全部由服务端渲染，每个页面要么是一个界面，要么是一个 JSON 接口。主库存系统直接与 ERP 共用数据库，物料子系统则在同一台服务器上拥有自己的独立数据库。"
         ],
         "architecture": {
           "client": { "label": "浏览器", "desc": "服务端渲染页面、QR 扫描" },
@@ -138,7 +149,18 @@
           "aria": "架构图：浏览器通过内部网络访问单台 Ubuntu Linux 服务器，服务器上运行 PHP 与 SQL Server。"
         },
         "paragraphs_after": [
-          "为什么采用两套系统而非一套？主系统是伴随 ERP 一同发展起来的，与其共用数据表，因此读写都是即时的，无需 API 层。物料子系统则从头彻底重做为一套干净、独立的新系统，因为这类数据需要更严格的权限、批号级精度和独立的告警；将其隔离，也使我能够在不影响线上库存系统的前提下替换旧版本。"
+          "为什么采用两套系统而非一套？主系统是伴随 ERP 一同发展起来的，与其共用数据表，因此读写都是即时的，无需 API 层。物料子系统则从头彻底重做为一套干净、独立的新系统，因为这类数据需要更严格的权限、批号级精度和独立的告警；将其隔离，也使我能够在不影响线上库存系统的前提下替换旧版本。",
+          "两套应用都没有建立在框架之上。在只有一名开发者同时维护两套系统的情况下，一个页面就是一个文件，是几个月后重新打开、理解和修改时最快的单位，部署也始终只是往那台已经在跑 ERP 的服务器上拷文件。代价是鉴权、输入校验这类横切关注点只能放在共享的 include 里而不是中间件中，一旦有第二个人接手维护，这就是最先需要改造的部分。"
+        ]
+      },
+      {
+        "heading": "规模",
+        "list": [
+          "直接运行在 ERP 那套 50+ 张表的 SQL Server schema 上，此外还有物料子系统独占的那个数据库",
+          "共享的审计表是库中最大的一张，超过 100 万行",
+          "办公室与车间合计 20 到 30 名内部用户同时在线",
+          "每张工单在同一时刻只允许一名操作员操作，由 ERP 同样遵守的锁表强制保证",
+          "库存查询和库存报表的返回时间在 1 秒以内"
         ]
       },
       {
