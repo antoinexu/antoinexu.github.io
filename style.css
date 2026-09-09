@@ -158,6 +158,14 @@ main {
     margin-top: .4rem;
 }
 
+.home-domain {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.62);
+    margin-top: .6rem;
+}
+
 .home-greeting,
 .home-role {
     font-size: 3.2rem;
@@ -392,52 +400,41 @@ main {
     text-align: left;
 }
 
-.projects-overview {
-    margin-top: 1.6rem;
-}
-
-.projects-overview p {
-    font-size: 1.5rem;
-    line-height: 1.85;
-    color: rgba(255, 255, 255, 0.82);
-    margin-bottom: 1.2rem;
-}
-
-.projects-overview .flow-list {
+.flow-list {
     display: none;
 }
 
-.projects-overview .flow-row {
+.flow-row {
     display: flex;
     flex-direction: column;
     gap: .8rem;
 }
 
-.projects-overview .flow-row-parallel {
+.flow-row-parallel {
     margin-left: .2rem;
     padding-left: 1.2rem;
     border-left: 2px solid rgba(255, 255, 255, 0.14);
 }
 
-.projects-overview .flow-node {
+.flow-node {
     background: var(--second-bg-color);
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 10px;
     padding: 1rem 1.2rem;
 }
 
-.projects-overview .flow-node-accent {
+.flow-node-accent {
     border-color: var(--accent-color);
 }
 
-.projects-overview .flow-node strong {
+.flow-node strong {
     display: block;
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--main-color);
 }
 
-.projects-overview .flow-node span {
+.flow-node span {
     display: block;
     margin-top: .3rem;
     font-size: 1.3rem;
@@ -445,7 +442,7 @@ main {
     color: #aeb6bf;
 }
 
-.projects-overview .flow-step {
+.flow-step {
     margin: .8rem 0;
     padding-left: 1.2rem;
     font-size: 1.3rem;
@@ -1070,11 +1067,11 @@ main {
 }
 
 @media only screen and (max-width: 600px) {
-    .projects-overview .arch-figure {
+    .flow-figure {
         display: none;
     }
 
-    .projects-overview .flow-list {
+    .flow-list {
         display: block;
     }
 

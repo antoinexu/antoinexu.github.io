@@ -1,0 +1,288 @@
+{
+  "en": {
+    "home": "Home",
+    "experiences": "Experience",
+    "projects": "Projects",
+    "skills": "Skills",
+    "architecture": "Architecture",
+    "about": "About",
+    "contact": "Contact",
+    "page_title": "Systems Architecture - Bowei Xu",
+    "page_description": "How a manufacturer's operational execution platform fits together: an ERP, WMS, and MES on one SQL Server schema, a separate lot-tracked materials database, and an OpenCart storefront on its own VPS.",
+    "title": "Systems Architecture",
+    "lead": "An operational execution platform for a manufacturer: the systems that take an order, build it, ship it, and decide what to buy next. This page is the map of how they fit together and where the boundaries between them are. The three case studies are the detail.",
+    "sections": [
+      {
+        "heading": "The landscape",
+        "paragraphs": [
+          "Orders arrive on two channels. The warehouse, the shop floor, and procurement all sit downstream of the platform that records them."
+        ],
+        "flow": {
+          "rows": [
+            {
+              "nodes": [
+                {
+                  "label": "E-commerce",
+                  "desc": "OpenCart storefront"
+                },
+                {
+                  "label": "PO / Quote",
+                  "desc": "customer purchase orders"
+                }
+              ]
+            },
+            {
+              "connector": "keyed in by hand",
+              "nodes": [
+                {
+                  "label": "Internal ERP",
+                  "desc": "order entry, builds, shipments, reporting",
+                  "accent": true
+                }
+              ]
+            },
+            {
+              "connector": "same database",
+              "nodes": [
+                {
+                  "label": "WMS",
+                  "desc": "receiving, picking, counts"
+                },
+                {
+                  "label": "MES",
+                  "desc": "work orders, lot traceability"
+                }
+              ]
+            },
+            {
+              "nodes": [
+                {
+                  "label": "Inventory",
+                  "desc": "finished-goods stock"
+                },
+                {
+                  "label": "Production",
+                  "desc": "builds against work orders"
+                }
+              ]
+            },
+            {
+              "connector": "low-stock email alert",
+              "col": 0,
+              "nodes": [
+                {
+                  "label": "Procurement",
+                  "desc": "reviewed and placed by a person"
+                }
+              ]
+            }
+          ],
+          "aria": "Systems diagram: e-commerce and purchase-order channels are keyed into the internal ERP by hand. The ERP shares one database with the WMS and MES, which drive inventory and production. Low stock sends an email alert that a person acts on to start procurement."
+        },
+        "paragraphs_after": [
+          "Two boundaries on this diagram are manual. Storefront orders and customer purchase orders are keyed in rather than fed through an integration, and a low-stock condition sends an email notification that a person acts on instead of raising a purchase order on its own."
+        ]
+      },
+      {
+        "heading": "Three stores of record, not one",
+        "paragraphs": [
+          "The platform is not a single database with everything in it. It is three separate stores, each with a deliberate boundary around it."
+        ],
+        "list": [
+          "The platform schema: one Microsoft SQL Server database of 50+ tables covering orders, inventory, materials, builds, and shipments, on the company's own internal Ubuntu Linux server. The ERP and the main warehouse application both read and write it directly.",
+          "The lot-tracked materials subsystem: its own database on that same internal server. It was separated because that data needs tighter access control, lot-level precision, and its own alerting, and because isolating it allowed the legacy version to be replaced without destabilizing live inventory.",
+          "The storefront: OpenCart 3 on PHP 7.4 backed by MySQL, on an external cPanel/WHM VPS, separate from the internal server entirely."
+        ]
+      },
+      {
+        "heading": "Where the boundaries are, and why",
+        "subsections": [
+          {
+            "title": "1. Between the ERP and the warehouse application: no boundary at all",
+            "body": "They share the same tables. A stock write is visible to an order the moment it happens, with no API layer, no sync job, and nothing that can fall out of step. The cost is that two applications can act on the same work order at the same time, so both honor a shared lock table: a work order locked on the shop floor cannot be checked out in the office, and a scheduled job clears any lock left behind by an abandoned session. The conflict is resolved between the two applications rather than inside either one."
+          },
+          {
+            "title": "2. Between the main system and the materials subsystem: one owner, one reference",
+            "body": "Usage of lot-tracked materials can be recorded from either side. Rather than have each write to the other automatically, one side owns the actual quantity deduction and the other is read-only reference. The two are reconciled by report rather than kept in lockstep by a sync, because a two-way automatic sync between separate databases fails quietly and a reconciliation report fails loudly."
+          },
+          {
+            "title": "3. Between the storefront and the platform: a person",
+            "body": "The storefront is public and the platform is not. They share no network, no server, and no database. Orders cross that line as data a person enters, which is also the point at which pricing and specification are checked against what the shop floor can actually build. What the two sides do share is the SKU vocabulary: the same part numbers identify the same products in both catalogs. The boundary is manual by choice, not because the two systems disagree about what a product is."
+          }
+        ]
+      },
+      {
+        "heading": "What keeps the data honest",
+        "paragraphs": [
+          "Operational data errors compound quietly, so the platform is built to catch them where they enter rather than to trust that they never happen."
+        ],
+        "list": [
+          "One audit table across every module records who acted, what changed, and the before and after values. It is the largest table in the schema, at over 1,000,000 rows.",
+          "A physical count that does not match the database flags the SKU and blocks pulling against it until the variance is resolved, so a known-wrong quantity cannot drift further while it is investigated.",
+          "Lot-number duplicate detection, negative-stock alerts, and reconciliation reports across materials and stock catch the errors that a workflow alone would let through.",
+          "A scheduled job snapshots stock levels at a fixed interval into a separate table, so trend charts do not compete with live operations.",
+          "Queries are parameterized throughout rather than assembled from concatenated strings, in a schema where every table is business-critical."
+        ]
+      },
+      {
+        "heading": "What this shape costs",
+        "paragraphs": [
+          "Every decision above was made for a specific scale: 20 to 30 concurrent internal users, one developer, and no strict uptime SLA. These are the places it will break first as that changes."
+        ],
+        "list": [
+          "A single audit table will eventually bottleneck on write volume. The path is asynchronous audit writes or monthly partitioning.",
+          "Reports query live operational data, so heavy reports compete with live operations. The path is a read replica and asynchronous generation for the heaviest ones.",
+          "Two roles, admin and normal user, cannot express per-record rules. The path is attribute-based access control with a centralized session store for a multi-server deployment.",
+          "Neither internal application sits on a framework, so cross-cutting concerns such as auth and input validation live in shared includes rather than in middleware. That is the first thing that would need to change if a second maintainer joined."
+        ]
+      }
+    ],
+    "cases_heading": "Read the detail",
+    "case_erp": "Internal Operations Platform (ERP / WMS / MES)",
+    "case_inventory": "Warehouse & Inventory Subsystem (WMS)",
+    "case_opencart": "E-Commerce Platform Upgrade (OpenCart 1.5 to 3.0)"
+  },
+  "zh": {
+    "home": "首页",
+    "experiences": "经历",
+    "projects": "项目",
+    "skills": "技能",
+    "architecture": "系统架构",
+    "about": "关于",
+    "contact": "联系",
+    "page_title": "系统架构 - 徐博伟",
+    "page_description": "一家制造企业运营执行平台的整体结构：ERP、WMS、MES 共用一套 SQL Server 数据库架构，批次物料子系统独立建库，电商前台托管在独立 VPS 上。",
+    "title": "系统架构",
+    "lead": "一家制造企业的运营执行平台：接下订单、组织生产、完成出货、并决定下一步该采购什么的那几套系统。这一页讲的是它们如何拼接，以及边界划在哪里。具体细节在三篇案例分析里。",
+    "sections": [
+      {
+        "heading": "整体格局",
+        "paragraphs": [
+          "订单来自两个渠道。仓库、车间和采购都位于记录这些订单的平台下游。"
+        ],
+        "flow": {
+          "rows": [
+            {
+              "nodes": [
+                {
+                  "label": "电商",
+                  "desc": "OpenCart 商城"
+                },
+                {
+                  "label": "采购单 / 报价",
+                  "desc": "客户采购订单"
+                }
+              ]
+            },
+            {
+              "connector": "人工录入",
+              "nodes": [
+                {
+                  "label": "内部 ERP",
+                  "desc": "订单录入、生产、出货、报表",
+                  "accent": true
+                }
+              ]
+            },
+            {
+              "connector": "同一套数据库",
+              "nodes": [
+                {
+                  "label": "WMS",
+                  "desc": "收货、拣货、盘点"
+                },
+                {
+                  "label": "MES",
+                  "desc": "工单、批次追溯"
+                }
+              ]
+            },
+            {
+              "nodes": [
+                {
+                  "label": "库存",
+                  "desc": "成品库存"
+                },
+                {
+                  "label": "生产",
+                  "desc": "按工单排产"
+                }
+              ]
+            },
+            {
+              "connector": "库存不足邮件提醒",
+              "col": 0,
+              "nodes": [
+                {
+                  "label": "采购",
+                  "desc": "由人工确认并下单"
+                }
+              ]
+            }
+          ],
+          "aria": "系统关系图：电商和采购单两个渠道的订单由人工录入内部 ERP。ERP 与 WMS、MES 共用同一套数据库，分别驱动库存与生产。库存不足时系统发出邮件提醒，由人工确认后发起采购。"
+        },
+        "paragraphs_after": [
+          "图上有两处边界是人工的。商城订单和客户采购单由人工录入，而不是通过集成自动进入系统。库存不足时系统只发出邮件提醒，由人来处理，并不会自动生成采购单。"
+        ]
+      },
+      {
+        "heading": "三套数据存储，不是一套",
+        "paragraphs": [
+          "这个平台不是一个把所有东西塞在一起的数据库。它是三套独立的存储，每一套外面都有一条有意划下的边界。"
+        ],
+        "list": [
+          "平台主库：一套 Microsoft SQL Server 数据库，50+ 张表，覆盖订单、库存、物料、生产与出货，跑在公司自己的内部 Ubuntu Linux 服务器上。ERP 和主仓储应用直接读写它。",
+          "批次物料子系统：在同一台内部服务器上拥有自己独立的数据库。分开是因为这类数据需要更严格的访问控制、批次级精度和独立的告警，也因为隔离出来之后，才能在不动摇线上库存系统的前提下替换掉旧版本。",
+          "电商前台：OpenCart 3 跑在 PHP 7.4 上，后端是 MySQL，托管在外部的 cPanel/WHM VPS，与内部服务器完全分离。"
+        ]
+      },
+      {
+        "heading": "边界划在哪里，以及为什么",
+        "subsections": [
+          {
+            "title": "1. ERP 与仓储应用之间：没有边界",
+            "body": "它们直接共用同一批表。一次库存写入在发生的瞬间就对订单可见，没有 API 层，没有同步任务，也就没有东西会走偏。代价是两个应用可能同时操作同一张工单，所以两边都遵守同一张锁表：车间锁住的工单，办公室这边就检出不了，定时任务会清理掉会话中断后遗留的锁。冲突在两个应用之间解决，而不是塞进其中任何一个里面。"
+          },
+          {
+            "title": "2. 主系统与物料子系统之间：一个归属方，一个只读参照",
+            "body": "批次物料的消耗可以从两边记录。我没有让它们互相自动写入，而是让其中一方拥有真正的数量扣减，另一方作为只读参照。两者通过报表对账，而不是靠同步保持一致，因为跨库的双向自动同步出错时是静悄悄的，而对账报表出错时是吵闹的。"
+          },
+          {
+            "title": "3. 电商与平台之间：一个人",
+            "body": "电商是对公网开放的，平台不是。两者不共用网络、不共用服务器、不共用数据库。订单以人工录入的数据形式跨过这条线，而这一步同时也是核对价格与规格、确认车间确实做得出来的环节。两边真正共用的是 SKU：同一个料号在两套目录里指向同一个产品。这条边界是人工的，是选择的结果，不是因为两套系统对「什么是一个产品」的理解对不上。"
+          }
+        ]
+      },
+      {
+        "heading": "靠什么保证数据不失真",
+        "paragraphs": [
+          "运营数据的错误是悄悄累积的，所以平台的做法是在错误进入的地方就拦住它，而不是指望它不发生。"
+        ],
+        "list": [
+          "一张贯穿所有模块的审计表，记录谁做的、改了什么、改动前后的值。它是整个库里最大的一张表，超过 100 万行。",
+          "实盘数量与数据库不符时，该 SKU 会被标记并禁止继续出库，直到差异被处理完。这样一个已知错误的数量不会在排查期间继续漂移。",
+          "批次号重复检测、负库存告警，以及物料与库存之间的对账报表，负责抓住光靠流程拦不住的错误。",
+          "定时任务按固定间隔把库存快照写进单独的表，因此趋势图表不会和线上作业抢资源。",
+          "全部查询使用参数化写法，不用字符串拼接。在一个每张表都关乎业务的库里，这是底线。"
+        ]
+      },
+      {
+        "heading": "这个结构的代价",
+        "paragraphs": [
+          "上面每一个决定都是针对一个具体规模做的：20 到 30 个内部用户同时在线、一个开发者、没有严格的可用性 SLA。规模变化时，下面这些地方会最先撞不住。"
+        ],
+        "list": [
+          "单张审计表迟早会在写入量上成为瓶颈。扩展路径是异步写审计或按月分区。",
+          "报表直接查线上业务数据，重报表会和线上作业抢资源。扩展路径是只读副本，以及把最重的报表改成异步生成。",
+          "管理员和普通用户两种角色表达不了行级权限。升级路径是基于属性的访问控制，配合集中式会话存储以支持多机部署。",
+          "两个内部应用都没有用框架，所以鉴权、输入校验这类横切关注点放在共享的 include 里，而不是中间件里。一旦有第二个维护者加入，这是最先需要改的东西。"
+        ]
+      }
+    ],
+    "cases_heading": "查看细节",
+    "case_erp": "企业内部运营平台（ERP / WMS / MES）",
+    "case_inventory": "仓储与库存子系统（WMS）",
+    "case_opencart": "电商平台升级（OpenCart 1.5 到 3.0）"
+  }
+}

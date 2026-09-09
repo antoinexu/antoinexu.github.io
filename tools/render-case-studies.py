@@ -1,17 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Regenerate the static English bodies of the case-study pages.
+"""Regenerate the static English bodies of the case-study and architecture pages.
 
-Also refreshes the systems overview on project.html, which is rendered from
-translations_projects.json by the same architecture.js code.
+These pages ship their English body as static markup so crawlers and non-JS
+clients can read it, while the matching translations_*.json stays the source of
+truth that the page script renders from at runtime. Run this after editing any
+of those JSON files so the two cannot drift apart.
 
-The case-study pages ship their English body as static markup so crawlers and
-non-JS clients can read it, while translations_case_study_*.json remains the
-source of truth that the page script renders from at runtime. Run this after
-editing any of those JSON files so the two cannot drift apart.
-
-This mirrors renderBody() in each page. The architecture diagram is captured
-from a real browser render so it matches architecture.js exactly.
+This mirrors renderBody() in each page. Diagrams are captured from a real
+browser render so they match architecture.js exactly.
 
     pip install playwright && playwright install chromium
     python -m http.server 8765          # from the repo root, in another shell
@@ -40,6 +37,9 @@ PAGES = {
     "case-study-opencart.html": "translations_case_study_opencart.json",
 }
 
+ARCH_PAGE = "architecture.html"
+ARCH_JSON = "translations_architecture.json"
+
 # Ends on the 8-space close of #cs-body; the 12-space closes of the inner
 # .cs-section divs cannot match that indentation, so the lazy .*? stops here.
 BLOCK = re.compile(
@@ -47,9 +47,14 @@ BLOCK = re.compile(
     r'<div id="cs-body">.*?\n        </div>',
     re.S)
 
+ARCH_BLOCK = re.compile(
+    r'        <h1 id="arch-title">.*?<div id="arch-body">.*?\n        </div>',
+    re.S)
 
-def render_body(sections, page_svgs, indent="            "):
-    i1, i2, i3 = indent, indent + "    ", indent + "        "
+
+def render_body(sections, page_svgs, flow_html=None, body_indent="            "):
+    """Mirror the renderBody() in the page scripts, in Python."""
+    i1, i2, i3 = body_indent, body_indent + "    ", body_indent + "        "
     out, svg_index = [], 0
 
     for section in sections:
@@ -63,6 +68,10 @@ def render_body(sections, page_svgs, indent="            "):
             out.append('%s<div class="arch-figure">%s</div>'
                        % (i2, page_svgs[svg_index]))
             svg_index += 1
+        elif section.get("flow"):
+            svg, flow_list = flow_html
+            out.append('%s<div class="arch-figure flow-figure" id="arch-figure">%s</div>' % (i2, svg))
+            out.append('%s<div class="flow-list" id="arch-flow-list">%s</div>' % (i2, flow_list))
         elif section.get("code"):
             out.append("%s<pre><code>%s</code></pre>" % (i2, escape(section["code"])))
 
@@ -86,38 +95,14 @@ def render_body(sections, page_svgs, indent="            "):
     return "\n".join(out)
 
 
-OVERVIEW = re.compile(
-    r'(<div class="arch-figure" id="projects-overview-figure">).*?(</div>)', re.S)
-LIST_OPEN = '<div class="flow-list" id="projects-overview-list">'
-LIST_CLOSE = '<p id="projects-overview-note">'
-
-
-def replace_list(html, flow_list):
-    """Swap the mobile flow list, which nests divs the lazy regexes cannot span."""
-    start = html.index(LIST_OPEN) + len(LIST_OPEN)
-    end = html.rindex("</div>", start, html.index(LIST_CLOSE, start))
-    return html[:start] + flow_list + html[end:]
-
-
-def render_overview(svg, flow_list):
-    """Put the freshly rendered systems diagram back into project.html."""
-    path = os.path.join(ROOT, "project.html")
+def write_block(name, pattern, block):
+    path = os.path.join(ROOT, name)
     html = io.open(path, encoding="utf-8").read()
-    data = json.load(io.open(os.path.join(ROOT, "translations_projects.json"),
-                             encoding="utf-8"))["en"]
-
-    if not OVERVIEW.search(html) or LIST_OPEN not in html:
-        raise SystemExit("could not locate the systems overview in project.html")
-    html = OVERVIEW.sub(lambda m: m.group(1) + svg + m.group(2), html, count=1)
-    html = replace_list(html, flow_list)
-
-    for key in ("lead", "note"):
-        pattern = re.compile(r'(<p id="projects-overview-%s">).*?(</p>)' % key, re.S)
-        text = escape(data["projects_overview_" + key])
-        html = pattern.sub(lambda m: m.group(1) + text + m.group(2), html, count=1)
-
-    io.open(path, "w", encoding="utf-8", newline="\n").write(html)
-    print("rendered project.html")
+    if not pattern.search(html):
+        raise SystemExit("could not locate the generated block in " + name)
+    io.open(path, "w", encoding="utf-8", newline="\n").write(
+        pattern.sub(lambda m: block, html, count=1))
+    print("rendered", name)
 
 
 def main():
@@ -130,34 +115,33 @@ def main():
             page.wait_for_timeout(700)
             svgs[name] = page.eval_on_selector_all(
                 ".arch-figure svg", "els => els.map(e => e.outerHTML)")
-        page.goto("%s/project.html" % SERVER)
+        page.goto("%s/%s" % (SERVER, ARCH_PAGE))
         page.wait_for_timeout(700)
-        overview = page.eval_on_selector("#projects-overview-figure svg", "e => e.outerHTML")
-        overview_list = page.eval_on_selector("#projects-overview-list", "e => e.innerHTML")
+        flow_html = (
+            page.eval_on_selector("#arch-figure svg", "e => e.outerHTML"),
+            page.eval_on_selector("#arch-flow-list", "e => e.innerHTML"),
+        )
         browser.close()
 
-    render_overview(overview, overview_list)
+    data = json.load(io.open(os.path.join(ROOT, ARCH_JSON), encoding="utf-8"))["en"]
+    write_block(ARCH_PAGE, ARCH_BLOCK, (
+        '        <h1 id="arch-title">%s</h1>\n'
+        '        <p class="case-study-disclaimer" id="arch-lead">%s</p>\n'
+        '        <div id="arch-body">\n%s\n        </div>'
+        % (escape(data["title"]), escape(data["lead"]),
+           render_body(data["sections"], [], flow_html))
+    ))
 
     for name, json_name in PAGES.items():
-        path = os.path.join(ROOT, name)
-        html = io.open(path, encoding="utf-8").read()
         data = json.load(io.open(os.path.join(ROOT, json_name), encoding="utf-8"))["en"]
-
-        block = (
+        write_block(name, BLOCK, (
             '        <a href="/project.html" class="case-study-back" id="cs-back">%s</a>\n'
             '        <h1 id="cs-title">%s</h1>\n'
             '        <p class="case-study-disclaimer" id="cs-disclaimer">%s</p>\n'
             '        <div id="cs-body">\n%s\n        </div>'
             % (escape(data["back"]), escape(data["title"]), escape(data["disclaimer"]),
                render_body(data["sections"], svgs[name]))
-        )
-
-        if not BLOCK.search(html):
-            raise SystemExit("could not locate the case-study block in " + name)
-
-        io.open(path, "w", encoding="utf-8", newline="\n").write(
-            BLOCK.sub(lambda m: block, html, count=1))
-        print("rendered", name)
+        ))
 
 
 if __name__ == "__main__":

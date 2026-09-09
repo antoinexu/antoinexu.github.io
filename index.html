@@ -133,7 +133,8 @@
              <a href="/experience.html">Experience</a>
              <a href="/project.html">Projects</a>
              <a href="/skill.html">Skills</a>
-             <a href="/about.html">About</a>
+             <a href="/architecture.html">Architecture</a>
+        <a href="/about.html">About</a>
              <a href="/contact.html">Contact</a>
          </nav>
 
@@ -147,8 +148,9 @@
          <div class="home-content">
              <p class="home-greeting" id="home-greeting">Hi, I'm</p>
              <h1><span id="home-name">Bowei Xu</span><span class="home-title" id="home-title">Business Systems &amp; Backend Engineer</span></h1>
+             <p class="home-domain" id="home-domain">Manufacturing operations: ERP, WMS, MES, and e-commerce</p>
              <p class="home-role"><span id="role-prefix">And I'm </span><span id="typed-role"><noscript>a Business Systems Engineer</noscript></span><span class="cursor">|</span></p>
-             <p class="home-bio" id="home-bio">I'm the entire IT department at a fuel cell and renewable energy company. I own the systems that take orders, run the shop floor, and tell the business what to buy next: ERP, WMS, MES, and the storefront, all on one shared schema.</p>
+             <p class="home-bio" id="home-bio">I'm the entire IT department at a fuel cell and renewable energy company. I own the systems that take orders, run the shop floor, and tell the business what to buy next: an ERP, a WMS, and an MES on one SQL Server schema on the company's own internal server, plus the OpenCart storefront on a separate external VPS.</p>
 
              <div class="home-highlights" aria-label="Professional highlights">
                  <div class="metric-card">
@@ -193,6 +195,7 @@
             <a href="/experience.html" data-footer="experiences">Experience</a>
             <a href="/project.html" data-footer="projects">Projects</a>
             <a href="/skill.html" data-footer="skills">Skills</a>
+            <a href="/architecture.html" data-footer="architecture">Architecture</a>
             <a href="/about.html" data-footer="about">About</a>
             <a href="/contact.html" data-footer="contact">Contact</a>
         </nav>
@@ -262,6 +265,7 @@
             setText('home-greeting', t.greeting);
             setText('home-name', t.name, 'name');
             setText('home-title', t.title);
+            setText('home-domain', t.domain);
             setText('role-prefix', t.role_prefix);
             startTyping(lang);
             setText('home-bio', t.bio);

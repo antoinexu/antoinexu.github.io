@@ -4,49 +4,12 @@
     "experiences": "Experience",
     "projects": "Projects",
     "skills": "Skills",
+    "architecture": "Architecture",
     "about": "About",
     "contact": "Contact",
     "page_title": "ERP, Inventory & E-Commerce Projects - Bowei Xu",
     "page_description": "Software projects by Bowei Xu: an internal operations platform (ERP/WMS/MES), its warehouse subsystem, and an OpenCart 1.5 to 3.0 upgrade.",
     "projects_title": "Projects",
-    "projects_overview_lead": "One company's operations run across an e-commerce storefront, an internal ERP, and the warehouse and shop-floor systems behind it. I built or rebuilt each of them. This is how they connect, and where a person still stands between two systems.",
-    "projects_overview_note": "Two boundaries are manual. Storefront orders and customer purchase orders are keyed in rather than fed through an integration, and a low-stock condition sends an email notification that a person acts on instead of raising a purchase order on its own.",
-    "projects_overview_flow": {
-      "rows": [
-        {
-          "nodes": [
-            { "label": "E-commerce", "desc": "OpenCart storefront" },
-            { "label": "PO / Quote", "desc": "customer purchase orders" }
-          ]
-        },
-        {
-          "connector": "keyed in by hand",
-          "nodes": [
-            { "label": "Internal ERP", "desc": "order entry, builds, shipments, reporting", "accent": true }
-          ]
-        },
-        {
-          "connector": "same database",
-          "nodes": [
-            { "label": "WMS", "desc": "receiving, picking, counts" },
-            { "label": "MES", "desc": "work orders, lot traceability" }
-          ]
-        },
-        {
-          "nodes": [
-            { "label": "Inventory", "desc": "finished-goods stock" },
-            { "label": "Production", "desc": "builds against work orders" }
-          ]
-        },
-        {
-          "connector": "low-stock email alert", "col": 0,
-          "nodes": [
-            { "label": "Procurement", "desc": "reviewed and placed by a person" }
-          ]
-        }
-      ],
-      "aria": "Systems diagram: e-commerce and purchase-order channels are keyed into the internal ERP by hand. The ERP shares one database with the WMS and MES, which drive inventory and production. Low stock sends an email alert that a person acts on to start procurement."
-    },
     "read_case_study": "Read case study",
     "visit_store": "Visit the live store",
     "project_1_title": "OpenCart Upgrade - Fuel Cell Store",
@@ -75,49 +38,12 @@
     "experiences": "经历",
     "projects": "项目",
     "skills": "技能",
+    "architecture": "系统架构",
     "about": "关于",
     "contact": "联系",
     "page_title": "ERP、库存与电商项目 - 徐博伟",
     "page_description": "徐博伟的软件项目：企业内部运营平台（ERP/WMS/MES）及其仓储子系统，以及 OpenCart 1.5 到 3.0 的电商迁移。",
     "projects_title": "项目",
-    "projects_overview_lead": "这家公司的日常运营跑在一个电商前台、一套内部 ERP，以及它背后的仓储和车间系统上。这几套系统都由我搭建或重建。下图是它们之间的衔接关系，以及仍然由人来衔接的位置。",
-    "projects_overview_note": "有两处边界是人工的。商城订单和客户采购单由人工录入，而不是通过集成自动进入系统。库存不足时系统只发出邮件提醒，由人来处理，并不会自动生成采购单。",
-    "projects_overview_flow": {
-      "rows": [
-        {
-          "nodes": [
-            { "label": "电商", "desc": "OpenCart 商城" },
-            { "label": "采购单 / 报价", "desc": "客户采购订单" }
-          ]
-        },
-        {
-          "connector": "人工录入",
-          "nodes": [
-            { "label": "内部 ERP", "desc": "订单录入、生产、出货、报表", "accent": true }
-          ]
-        },
-        {
-          "connector": "同一套数据库",
-          "nodes": [
-            { "label": "WMS", "desc": "收货、拣货、盘点" },
-            { "label": "MES", "desc": "工单、批次追溯" }
-          ]
-        },
-        {
-          "nodes": [
-            { "label": "库存", "desc": "成品库存" },
-            { "label": "生产", "desc": "按工单排产" }
-          ]
-        },
-        {
-          "connector": "库存不足邮件提醒", "col": 0,
-          "nodes": [
-            { "label": "采购", "desc": "由人工确认并下单" }
-          ]
-        }
-      ],
-      "aria": "系统关系图：电商和采购单两个渠道的订单由人工录入内部 ERP。ERP 与 WMS、MES 共用同一套数据库，分别驱动库存与生产。库存不足时系统发出邮件提醒，由人工确认后发起采购。"
-    },
     "read_case_study": "查看案例分析",
     "visit_store": "访问线上店铺",
     "project_1_title": "OpenCart 电商平台升级 - Fuel Cell Store",

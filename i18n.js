@@ -336,6 +336,7 @@ function translateNav(labels) {
         'experience.html': labels.experiences,
         'project.html': labels.projects,
         'skill.html': labels.skills,
+        'architecture.html': labels.architecture,
         'about.html': labels.about,
         'contact.html': labels.contact
     };
