@@ -13,7 +13,6 @@
     "name": "Bowei Xu",
     "title": "Business Systems & Backend Engineer",
     "domain": "Manufacturing operations: ERP, WMS, MES, and e-commerce",
-    "role_prefix": "And I'm ",
     "bio": "I'm the entire IT department at a fuel cell and renewable energy company. I own the systems that take orders, run the shop floor, and tell the business what to buy next: an ERP, a WMS, and an MES on one SQL Server schema on the company's own internal server, plus the OpenCart storefront on a separate external VPS.",
     "metrics": [
       {
@@ -51,7 +50,6 @@
     "name": "徐博伟",
     "title": "业务系统与后端工程师",
     "domain": "制造业运营系统：ERP、WMS、MES 与电商",
-    "role_prefix": "我是一名",
     "bio": "我是一家燃料电池与可再生能源公司的整个 IT 部门。接单、车间生产、以及告诉业务下一步该采购什么，这些系统都由我负责：ERP、WMS、MES 共用一套 SQL Server 数据库架构，跑在公司自己的内部服务器上。电商前台是独立的 OpenCart 系统，托管在外部 VPS 上。",
     "metrics": [
       {

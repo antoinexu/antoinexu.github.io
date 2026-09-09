@@ -9,7 +9,7 @@
 }
 
 :root {
-    --font-sans: 'Poppins', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+    --font-sans: 'IBM Plex Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
     --bg-color: #1d2329;
     --second-bg-color: #2c343d;
     --text-color: #fff;
@@ -160,20 +160,10 @@ main {
     margin-top: .6rem;
 }
 
-.home-greeting,
-.home-role {
+.home-greeting {
     font-size: 3.2rem;
     font-weight: 700;
     word-break: break-word;
-}
-
-.home-role {
-    margin-bottom: 2rem;
-}
-
-.home-content span,
-.cursor {
-    color: var(--main-color);
 }
 
 .home-bio {
@@ -695,19 +685,6 @@ main {
     transform: translateY(0);
 }
 
-.cursor {
-    display: inline-block;
-    color: var(--main-color);
-    font-weight: 300;
-    animation: blink 0.7s step-end infinite;
-}
-
-@keyframes blink {
-    50% {
-        opacity: 0;
-    }
-}
-
 @media (max-width: 900px) {
     .header {
         padding: 2rem 5%;
@@ -777,8 +754,7 @@ main {
         font-size: 1.8rem;
     }
 
-    .home-greeting,
-    .home-role {
+    .home-greeting {
         font-size: 2rem;
     }
 
@@ -839,8 +815,7 @@ main {
         padding: 6px;
     }
 
-    .home-greeting,
-    .home-role {
+    .home-greeting {
         font-size: 1.6rem;
     }
 

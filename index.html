@@ -27,8 +27,7 @@
     <link rel="alternate" hreflang="x-default" href="https://antoinexu.github.io/">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="apple-touch-icon" href="pics/apple-touch-icon.png">
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/poppins-latin-400.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/poppins-latin-700.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/plex-sans-latin.woff2">
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="icons.css">
@@ -149,7 +148,6 @@
              <p class="home-greeting" id="home-greeting">Hi, I'm</p>
              <h1><span id="home-name">Bowei Xu</span><span class="home-title" id="home-title">Business Systems &amp; Backend Engineer</span></h1>
              <p class="home-domain" id="home-domain">Manufacturing operations: ERP, WMS, MES, and e-commerce</p>
-             <p class="home-role"><span id="role-prefix">And I'm </span><span id="typed-role"><noscript>a Business Systems Engineer</noscript></span><span class="cursor">|</span></p>
              <p class="home-bio" id="home-bio">I'm the entire IT department at a fuel cell and renewable energy company. I own the systems that take orders, run the shop floor, and tell the business what to buy next: an ERP, a WMS, and an MES on one SQL Server schema on the company's own internal server, plus the OpenCart storefront on a separate external VPS.</p>
 
              <div class="home-highlights" aria-label="Professional highlights">
@@ -217,58 +215,12 @@
 <script src="animations.js"></script>
 <script src="i18n.js"></script>
 <script>
-    const rolesMap = {
-        en: ['a Business Systems Engineer', 'a Backend Engineer', 'an End-to-End Platform Builder'],
-        zh: ['业务系统工程师', '后端工程师', '端到端平台构建者']
-    };
-    let currentLang = 'en', roleIndex = 0, charIndex = 0, isDeleting = false, typingTimer = null;
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    function startTyping(lang) {
-        currentLang = lang || 'en';
-        clearTimeout(typingTimer);
-        roleIndex = 0;
-        charIndex = 0;
-        isDeleting = false;
-        if (!rolesMap[currentLang]) currentLang = 'en';
-        if (prefersReducedMotion) {
-            const el = document.getElementById('typed-role');
-            if (el) el.textContent = rolesMap[currentLang][0];
-            return;
-        }
-        type();
-    }
-
-    function type() {
-        const el = document.getElementById('typed-role');
-        if (!el) return;
-        const roles = rolesMap[currentLang];
-        const current = roles[roleIndex];
-        el.textContent = isDeleting
-            ? current.substring(0, charIndex - 1)
-            : current.substring(0, charIndex + 1);
-        isDeleting ? charIndex-- : charIndex++;
-
-        let speed = isDeleting ? 50 : 100;
-        if (!isDeleting && charIndex === current.length) {
-            speed = 2000;
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            roleIndex = (roleIndex + 1) % roles.length;
-            speed = 400;
-        }
-        typingTimer = setTimeout(type, speed);
-    }
-
     document.addEventListener('DOMContentLoaded', function() {
-        function applyStrings(t, lang) {
+        function applyStrings(t) {
             setText('home-greeting', t.greeting);
             setText('home-name', t.name, 'name');
             setText('home-title', t.title);
             setText('home-domain', t.domain);
-            setText('role-prefix', t.role_prefix);
-            startTyping(lang);
             setText('home-bio', t.bio);
             setText('download-en-cv', t.download_cv);
             setText('download-zh-cv', t.download_zh_cv);
@@ -288,9 +240,7 @@
         }
 
         function changeLanguage(lang) {
-            loadTranslations('translations.json', lang, applyStrings, function () {
-                startTyping('en');
-            });
+            loadTranslations('translations.json', lang, applyStrings);
         }
 
         setupLanguageSelector(changeLanguage);
