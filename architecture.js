@@ -21,7 +21,8 @@
         const cls = tier.accent ? 'arch-node arch-node-accent' : 'arch-node';
         into.push(svgEl('rect', { class: cls, x: x, y: y, width: w, height: h, rx: 10 }));
         const padX = x + 18;
-        into.push(svgEl('text', { class: 'arch-node-title', x: padX, y: y + 28 }, tier.label));
+        const titleCls = tier.accent ? 'arch-node-title arch-node-title-accent' : 'arch-node-title';
+        into.push(svgEl('text', { class: titleCls, x: padX, y: y + 28 }, tier.label));
         if (tier.desc) {
             into.push(svgEl('text', { class: 'arch-node-desc', x: padX, y: y + 49 }, tier.desc));
         }

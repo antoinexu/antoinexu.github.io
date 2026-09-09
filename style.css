@@ -38,12 +38,6 @@ body {
     outline-offset: 3px;
 }
 
-.skill-category :focus-visible,
-.experience-item :focus-visible,
-.project-item :focus-visible {
-    outline-color: #7a4d10;
-}
-
 main {
     flex: 1 0 auto;
     padding: 10rem 9% 2rem;
@@ -299,7 +293,7 @@ main {
 
 .contact-content h1,
 .skills-content h1 {
-    color: var(--main-color);
+    color: #ffffff;
 }
 
 .contact-content p {
@@ -346,10 +340,10 @@ main {
 }
 
 .skill-category {
-    background: #fff;
-    border-left: 5px solid var(--main-color);
+    background: var(--second-bg-color);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 10px;
     padding: 2.4rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
 }
 
 .skill-category-wide {
@@ -364,12 +358,12 @@ main {
 }
 
 .skill-category-heading i {
-    color: var(--main-color);
+    color: #8f9aa7;
     font-size: 2.8rem;
 }
 
 .skill-category h2 {
-    color: #333;
+    color: #eef1f5;
     font-size: 2rem;
 }
 
@@ -385,12 +379,14 @@ main {
     display: inline-flex;
     align-items: center;
     border-radius: 999px;
-    background: rgba(18, 214, 200, 0.12);
-    color: var(--main-color-on-light);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #c8d1db;
+    font-style: normal;
     font-size: 1.3rem;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.2;
-    padding: .7rem 1rem;
+    padding: .6rem 1rem;
 }
 
 .experiences-content,
@@ -431,7 +427,11 @@ main {
     display: block;
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--main-color);
+    color: #e6eaef;
+}
+
+.flow-node-accent strong {
+    color: var(--accent-color);
 }
 
 .flow-node span {
@@ -461,11 +461,11 @@ main {
 .experience-item,
 .project-item {
     overflow: hidden;
-    background-color: #fff;
+    background-color: var(--second-bg-color);
     padding: 25px;
     margin-bottom: 25px;
-    border-left: 5px solid var(--main-color);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 10px;
 }
 
 .experience-item h2,
@@ -473,14 +473,14 @@ main {
     clear: both;
     margin-top: 1.2rem;
     font-size: 1.8rem;
-    color: var(--main-color-on-light);
+    color: #eef1f5;
 }
 
 .experience-item span,
 .project-item span {
     font-style: italic;
     font-size: 1.4rem;
-    color: var(--card-text-color);
+    color: rgba(255, 255, 255, 0.55);
 }
 
 .project-tags {
@@ -499,15 +499,14 @@ main {
 
 .project-tags span,
 .experience-tags span {
-    background: rgba(243, 181, 98, 0.18);
-    color: #7a4d10;
+    font-style: normal;
 }
 
 .experience-item p,
 .project-item p {
     line-height: 1.8;
-    font-size: 1.4rem;
-    color: var(--card-text-color);
+    font-size: 1.45rem;
+    color: rgba(255, 255, 255, 0.78);
     margin-top: 1rem;
     padding-left: 1.4rem;
     position: relative;
@@ -522,7 +521,7 @@ main {
     width: .5rem;
     height: .5rem;
     border-radius: 50%;
-    background: var(--accent-color);
+    background: rgba(255, 255, 255, 0.35);
 }
 
 .company-logo {
@@ -532,12 +531,15 @@ main {
     height: auto;
     margin: 0 0 1.4rem;
     object-fit: contain;
+    background: #fff;
+    border-radius: 6px;
+    padding: .5rem .7rem;
 }
 
 .case-study-link {
     display: inline-block;
     margin-top: 1.4rem;
-    color: var(--main-color-on-light);
+    color: var(--main-color);
     font-size: 1.4rem;
     font-weight: 600;
     transition: color 0.3s ease;
@@ -548,11 +550,11 @@ main {
 }
 
 .case-study-link:hover {
-    color: var(--main-color);
+    color: var(--text-color);
 }
 
 .case-study-content {
-    max-width: 860px;
+    max-width: 720px;
     margin: 0 auto;
     text-align: left;
 }
@@ -591,7 +593,7 @@ main {
 }
 
 .case-study-disclaimer {
-    font-size: 1.4rem;
+    font-size: 1.55rem;
     font-style: italic;
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.7;
@@ -606,21 +608,28 @@ main {
 
 .cs-section h2 {
     font-size: 2.2rem;
-    color: var(--main-color);
+    color: #eef1f5;
     margin-bottom: 1.2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cs-section:first-child h2 {
+    padding-top: 0;
+    border-top: none;
 }
 
 .cs-section h3 {
-    font-size: 1.7rem;
-    color: var(--accent-color);
-    margin: 1.6rem 0 .6rem;
+    font-size: 1.75rem;
+    color: #c8d1db;
+    margin: 2rem 0 .6rem;
 }
 
 .cs-section p {
-    font-size: 1.5rem;
-    line-height: 1.85;
+    font-size: 1.65rem;
+    line-height: 1.75;
     color: rgba(255, 255, 255, 0.82);
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.3rem;
 }
 
 .cs-section a {
@@ -671,7 +680,7 @@ main {
     font-family: 'Courier New', monospace;
     font-size: 1.3rem;
     line-height: 1.6;
-    color: var(--main-color);
+    color: #c8d1db;
     white-space: pre;
 }
 
@@ -1108,8 +1117,12 @@ main {
     stroke-width: 1.4;
 }
 
+.arch-node-title-accent {
+    fill: var(--accent-color);
+}
+
 .arch-node-title {
-    fill: var(--main-color);
+    fill: #e6eaef;
     font-size: 15px;
     font-weight: 600;
 }
