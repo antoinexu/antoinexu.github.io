@@ -138,6 +138,12 @@
                 <a href="/case-study-erp.html" class="case-study-link" id="project-2-casestudy">Read case study</a>
             </div>
         </div>
+        <div class="projects-overview">
+            <p id="projects-overview-lead">One company's operations run across an e-commerce storefront, an internal ERP, and the warehouse and shop-floor systems behind it. I built or rebuilt each of them. This is how they connect, and where a person still stands between two systems.</p>
+            <div class="arch-figure" id="projects-overview-figure"><svg class="arch-svg" viewBox="0 0 560 566" role="img" preserveAspectRatio="xMidYMid meet" aria-label="Systems diagram: e-commerce and purchase-order channels are keyed into the internal ERP by hand. The ERP shares one database with the WMS and MES, which drive inventory and production. Low stock sends an email alert that a person acts on to start procurement."><rect class="arch-node" x="24" y="16" width="248" height="64" rx="10"></rect><text class="arch-node-title" x="42" y="44">E-commerce</text><text class="arch-node-desc" x="42" y="65">OpenCart storefront</text><rect class="arch-node" x="288" y="16" width="248" height="64" rx="10"></rect><text class="arch-node-title" x="306" y="44">PO / Quote</text><text class="arch-node-desc" x="306" y="65">customer purchase orders</text><line class="arch-line" x1="148" y1="105" x2="412" y2="105"></line><line class="arch-line" x1="148" y1="80" x2="148" y2="105"></line><line class="arch-line" x1="412" y1="80" x2="412" y2="105"></line><line class="arch-line" x1="280" y1="105" x2="280" y2="131"></line><polygon class="arch-arrow" points="275,130 285,130 280,138"></polygon><text class="arch-edge-label" x="280" y="125.5">keyed in by hand</text><rect class="arch-node arch-node-accent" x="24" y="138" width="512" height="64" rx="10"></rect><text class="arch-node-title" x="42" y="166">Internal ERP</text><text class="arch-node-desc" x="42" y="187">order entry, builds, shipments, reporting</text><line class="arch-line" x1="148" y1="227" x2="412" y2="227"></line><line class="arch-line" x1="280" y1="202" x2="280" y2="227"></line><line class="arch-line" x1="148" y1="227" x2="148" y2="253"></line><polygon class="arch-arrow" points="143,252 153,252 148,260"></polygon><line class="arch-line" x1="412" y1="227" x2="412" y2="253"></line><polygon class="arch-arrow" points="407,252 417,252 412,260"></polygon><text class="arch-edge-label" x="280" y="218.5">same database</text><rect class="arch-node" x="24" y="260" width="248" height="64" rx="10"></rect><text class="arch-node-title" x="42" y="288">WMS</text><text class="arch-node-desc" x="42" y="309">receiving, picking, counts</text><rect class="arch-node" x="288" y="260" width="248" height="64" rx="10"></rect><text class="arch-node-title" x="306" y="288">MES</text><text class="arch-node-desc" x="306" y="309">work orders, lot traceability</text><line class="arch-line" x1="148" y1="324" x2="148" y2="357"></line><polygon class="arch-arrow" points="143,356 153,356 148,364"></polygon><line class="arch-line" x1="412" y1="324" x2="412" y2="357"></line><polygon class="arch-arrow" points="407,356 417,356 412,364"></polygon><rect class="arch-node" x="24" y="364" width="248" height="64" rx="10"></rect><text class="arch-node-title" x="42" y="392">Inventory</text><text class="arch-node-desc" x="42" y="413">finished-goods stock</text><rect class="arch-node" x="288" y="364" width="248" height="64" rx="10"></rect><text class="arch-node-title" x="306" y="392">Production</text><text class="arch-node-desc" x="306" y="413">builds against work orders</text><line class="arch-line" x1="148" y1="428" x2="148" y2="479"></line><polygon class="arch-arrow" points="143,478 153,478 148,486"></polygon><text class="arch-edge-label" x="148" y="461">low-stock email alert</text><rect class="arch-node" x="24" y="486" width="248" height="64" rx="10"></rect><text class="arch-node-title" x="42" y="514">Procurement</text><text class="arch-node-desc" x="42" y="535">reviewed and placed by a person</text></svg></div>
+            <div class="flow-list" id="projects-overview-list"><div class="flow-row flow-row-parallel"><div class="flow-node"><strong>E-commerce</strong><span>OpenCart storefront</span></div><div class="flow-node"><strong>PO / Quote</strong><span>customer purchase orders</span></div></div><p class="flow-step">↓  keyed in by hand</p><div class="flow-row"><div class="flow-node flow-node-accent"><strong>Internal ERP</strong><span>order entry, builds, shipments, reporting</span></div></div><p class="flow-step">↓  same database</p><div class="flow-row flow-row-parallel"><div class="flow-node"><strong>WMS</strong><span>receiving, picking, counts</span></div><div class="flow-node"><strong>MES</strong><span>work orders, lot traceability</span></div></div><p class="flow-step">↓</p><div class="flow-row flow-row-parallel"><div class="flow-node"><strong>Inventory</strong><span>finished-goods stock</span></div><div class="flow-node"><strong>Production</strong><span>builds against work orders</span></div></div><p class="flow-step">↓  Inventory  ·  low-stock email alert</p><div class="flow-row"><div class="flow-node"><strong>Procurement</strong><span>reviewed and placed by a person</span></div></div></div>
+            <p id="projects-overview-note">Two boundaries are manual. Storefront orders and customer purchase orders are keyed in rather than fed through an integration, and a low-stock condition sends an email notification that a person acts on instead of raising a purchase order on its own.</p>
+        </div>
     </div>
 </main>
 
@@ -172,10 +178,33 @@
 
 <script src="animations.js"></script>
 <script src="i18n.js"></script>
+<script src="architecture.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        function renderOverview(flow) {
+            const fig = document.getElementById('projects-overview-figure');
+            const list = document.getElementById('projects-overview-list');
+            if (!fig || !list) return;
+
+            const originalFig = i18nOriginal(fig, 'innerHTML');
+            const originalList = i18nOriginal(list, 'innerHTML');
+            if (!flow || !window.buildFlowSVG || !window.buildFlowList) {
+                i18nWarn('missing systems overview diagram, keeping the original');
+                fig.innerHTML = originalFig;
+                list.innerHTML = originalList;
+                return;
+            }
+
+            fig.innerHTML = '';
+            fig.appendChild(window.buildFlowSVG(flow));
+            list.innerHTML = window.buildFlowList(flow).innerHTML;
+        }
+
         function applyStrings(t) {
             setText('projects-title', t.projects_title);
+            setText('projects-overview-lead', t.projects_overview_lead);
+            setText('projects-overview-note', t.projects_overview_note);
+            renderOverview(t.projects_overview_flow);
 
             [1, 2, 3].forEach(n => {
                 setText(`project-${n}-title`, t[`project_${n}_title`]);
