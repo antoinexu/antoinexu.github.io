@@ -57,7 +57,7 @@
       {
         "heading": "Scale",
         "list": [
-          "One SQL Server database of 50+ tables covering orders, inventory, materials, builds, and shipments as a single shared schema",
+          "One SQL Server database of 50+ tables covering orders, inventory, materials, builds, and shipments, shared directly by the ERP and the warehouse application",
           "The audit table is the largest in the schema, at over 1,000,000 rows",
           "20 to 30 internal users working in the system at the same time",
           "Any one work order is edited by a single person at a time, enforced by the lock table rather than left to convention",
@@ -158,7 +158,7 @@
       {
         "heading": "规模",
         "list": [
-          "单个 SQL Server 数据库，50+ 张表，以一套共享 schema 覆盖订单、库存、物料、生产和发货",
+          "单个 SQL Server 数据库，50+ 张表，覆盖订单、库存、物料、生产和发货，由 ERP 和仓库应用直接共用",
           "审计表是库中最大的一张，超过 100 万行",
           "20 到 30 名内部用户同时在系统中作业",
           "任何一张工单在同一时刻只由一个人编辑，这由锁表强制保证，而不是靠约定",
