@@ -12,8 +12,9 @@ A bilingual English / Chinese personal portfolio website built with vanilla HTML
 |------|-------------|
 | Home | Short professional introduction, headline metrics, and resume downloads |
 | Experience | Work history at Fuel Cell Store and DigiFinex |
-| Projects | AI ERP assistant, internal operations platform (ERP/WMS/MES), warehouse subsystem, and OpenCart upgrade |
+| Projects | Internal operations platform (ERP/WMS/MES), warehouse subsystem, and OpenCart upgrade |
 | Skills | Technical stack and cloud tools |
+| Architecture | How the systems connect: the three stores of record, where the boundaries are, and what the shape costs |
 | About | Background, education, what I'm looking for, and Go credentials |
 | Contact | Email, GitHub, and LinkedIn |
 | Case studies | Sanitized write-ups for the two halves of the internal operations platform (order-to-shipment and warehouse) and the OpenCart upgrade |
@@ -23,7 +24,6 @@ A bilingual English / Chinese personal portfolio website built with vanilla HTML
 
 - Bilingual support with localStorage language persistence; the tab title and meta description switch with the content
 - Every view has its own URL: `?lang=zh` selects Chinese, and the language a visitor is reading is written back to the address bar, so any view can be linked to
-- Typing animation on the home page
 - Scroll fade-in animations across pages
 - Downloadable English and Chinese resumes
 - Responsive layout for desktop and mobile
@@ -38,9 +38,9 @@ A bilingual English / Chinese personal portfolio website built with vanilla HTML
 | `translations*.json` | Per-page English and Chinese strings, fetched at runtime |
 | `i18n.js` | Language persistence and `?lang=` URL syncing, canonical/`og:` language switching, page chrome (skip link, header labels, footer), nav and metadata translation, and the translation helpers below |
 | `animations.js` | Mobile menu toggle and scroll reveal |
-| `architecture.js` | Inline SVG architecture diagrams for the platform and warehouse case studies |
+| `architecture.js` | Builds the inline SVG architecture diagrams, plus the stacked text fallback each one falls back to on narrow screens; used by the architecture page and the case studies |
 | `style.css` | All page styling |
-| `fonts.css`, `fonts/` | Self-hosted Poppins subsets |
+| `fonts.css`, `fonts/` | Self-hosted IBM Plex Sans variable font, latin and latin-ext subsets |
 | `icons.css` | Self-hosted icon subset (Boxicons glyphs as inline SVG CSS masks) |
 
 ### Adding or renaming a translated string
@@ -79,25 +79,41 @@ Two things the helpers rely on, neither of them visible at the call site:
   the case-study pages does — or the snapshot captures the previous render
   instead of the English.
 
-### Editing a case study
+### Editing a case study or the architecture page
 
-The three `case-study-*.html` pages carry their English body **twice**: as static
-markup inside `<div id="cs-body">` (so crawlers and non-JS clients see it) and in
-`translations_case_study_*.json` (which the page script re-renders from on load
-and on language switch). The JSON is the source of truth — after editing it,
-regenerate the static markup with `tools/render-case-studies.py` so the two
-cannot drift. Every other page keeps its English text only in the HTML, with the
-JSON supplying Chinese.
+Four pages carry their English body **twice**: the three `case-study-*.html`
+pages and `architecture.html`. Each ships static markup (so crawlers and non-JS
+clients see it) and a matching JSON file that the page script re-renders the
+same body from on load and on language switch. For these four the JSON is the
+source of truth. After editing it, regenerate the static markup with
+`tools/render-case-studies.py` so the two cannot drift. Every other page keeps
+its English text only in the HTML, with the JSON supplying Chinese.
 
-The script rewrites everything from `#cs-back` through the close of
-`<div id="cs-body">`. Anything that must survive a regeneration — such as the
-`#cs-related` cross-links between the two platform case studies — has to sit
-outside that block.
+| Page | Static block | JSON |
+|------|--------------|------|
+| `case-study-*.html` | `#cs-back` through the close of `<div id="cs-body">` | `translations_case_study_*.json` |
+| `architecture.html` | `<h1 id="arch-title">` through the close of `<div id="arch-body">` | `translations_architecture.json` |
+
+The script rewrites that whole block. Anything that must survive a regeneration,
+such as the `#cs-related` cross-links between the two platform case studies, has
+to sit outside it.
+
+The architecture diagrams are captured from a real browser render, so the script
+needs Playwright and a local server:
+
+```
+pip install playwright && playwright install chromium
+python -m http.server 8765      # from the repo root, in another shell
+python tools/render-case-studies.py
+```
+
+This is a dev-only tool. The site itself still has no build step and no runtime
+dependencies.
 
 ## Tech Stack
 
 - HTML5, CSS3, Vanilla JavaScript
-- Self-hosted Poppins font subsets and icon glyphs (no third-party requests at runtime)
+- Self-hosted IBM Plex Sans variable font and icon glyphs (no third-party requests at runtime)
 - GitHub Pages for hosting
 
 ## Contact
