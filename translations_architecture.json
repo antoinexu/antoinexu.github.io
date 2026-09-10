@@ -99,7 +99,7 @@
         "subsections": [
           {
             "title": "1. Between the ERP and the warehouse application: no boundary at all",
-            "body": "They share the same tables. A stock write is visible to an order the moment it happens, with no API layer, no sync job, and nothing that can fall out of step. The cost is that two applications can act on the same work order at the same time, so both honor a shared lock table: a work order locked on the shop floor cannot be checked out in the office, and a scheduled job clears any lock left behind by an abandoned session. The conflict is resolved between the two applications rather than inside either one."
+            "body": "They share the same tables. A stock write is visible to an order the moment it happens, with no API layer, no sync job, and nothing that can fall out of step. The cost is that two applications can act on the same work order at the same time, so both honor a shared lock table: a work order locked on the shop floor cannot be checked out in the office, and a scheduled job clears any lock left behind by an abandoned session. SQL Server could enforce this itself, but a lock in a table is one the office can see. The conflict is resolved between the two applications rather than inside either one."
           },
           {
             "title": "2. Between the main system and the materials subsystem: one owner, one reference",
@@ -130,7 +130,7 @@
           "Every decision above was made for a specific scale: 20 to 30 concurrent internal users, one developer, and no strict uptime SLA. These are the places it will break first as that changes."
         ],
         "list": [
-          "A single audit table will eventually bottleneck on write volume. The path is asynchronous audit writes or monthly partitioning.",
+          "A single audit table takes a synchronous write on every operational write, so the pressure comes from write concurrency rather than from row count. The path is asynchronous audit writes or monthly partitioning.",
           "Reports query live operational data, so heavy reports compete with live operations. The path is a read replica and asynchronous generation for the heaviest ones.",
           "Two roles, admin and normal user, cannot express per-record rules. The path is attribute-based access control with a centralized session store for a multi-server deployment.",
           "Neither internal application sits on a framework, so cross-cutting concerns such as auth and input validation live in shared includes rather than in middleware. That is the first thing that would need to change if a second maintainer joined."
@@ -242,7 +242,7 @@
         "subsections": [
           {
             "title": "1. ERP 与仓储应用之间：没有边界",
-            "body": "它们直接共用同一批表。一次库存写入在发生的瞬间就对订单可见，没有 API 层，没有同步任务，也就没有东西会走偏。代价是两个应用可能同时操作同一张工单，所以两边都遵守同一张锁表：车间锁住的工单，办公室这边就检出不了，定时任务会清理掉会话中断后遗留的锁。冲突在两个应用之间解决，而不是塞进其中任何一个里面。"
+            "body": "它们直接共用同一批表。一次库存写入在发生的瞬间就对订单可见，没有 API 层，没有同步任务，也就没有东西会走偏。代价是两个应用可能同时操作同一张工单，所以两边都遵守同一张锁表：车间锁住的工单，办公室这边就检出不了，定时任务会清理掉会话中断后遗留的锁。SQL Server 自己也能做这件事，但放在表里的锁，办公室看得见。冲突在两个应用之间解决，而不是塞进其中任何一个里面。"
           },
           {
             "title": "2. 主系统与物料子系统之间：一个归属方，一个只读参照",
@@ -273,7 +273,7 @@
           "上面每一个决定都是针对一个具体规模做的：20 到 30 个内部用户同时在线、一个开发者、没有严格的可用性 SLA。规模变化时，下面这些地方会最先撞不住。"
         ],
         "list": [
-          "单张审计表迟早会在写入量上成为瓶颈。扩展路径是异步写审计或按月分区。",
+          "每一次业务写入都会同步带上一条审计写入，压力来自并发写入而不是行数。扩展路径是异步写审计或按月分区。",
           "报表直接查线上业务数据，重报表会和线上作业抢资源。扩展路径是只读副本，以及把最重的报表改成异步生成。",
           "管理员和普通用户两种角色表达不了行级权限。升级路径是基于属性的访问控制，配合集中式会话存储以支持多机部署。",
           "两个内部应用都没有用框架，所以鉴权、输入校验这类横切关注点放在共享的 include 里，而不是中间件里。一旦有第二个维护者加入，这是最先需要改的东西。"

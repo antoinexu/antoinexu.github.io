@@ -73,7 +73,7 @@
           },
           {
             "title": "2. Unified audit trail",
-            "body": "Internal operations require full traceability. Every create, update, and delete writes to a single audit table capturing actor, timestamp, object type, object ID, and a human-readable note. A single table across all modules makes cross-module \"who changed this record\" queries straightforward. The trade-off is that a high write volume will eventually make a single table a bottleneck; the scale path is asynchronous audit writes or monthly partitioning."
+            "body": "Internal operations require full traceability. Every create, update, and delete writes to a single audit table capturing actor, timestamp, object type, object ID, and a human-readable note. A single table across all modules makes cross-module \"who changed this record\" queries straightforward. The trade-off is that every operational write carries a synchronous audit write, so the pressure comes from write concurrency rather than from row count; the scale path is asynchronous audit writes or monthly partitioning."
           },
           {
             "title": "3. Real-time reporting without extra infrastructure",
@@ -174,7 +174,7 @@
           },
           {
             "title": "2. 统一的审计记录",
-            "body": "内部运营需要完整的可追溯性。每一次新增、更新、删除都写入同一张审计表，记录操作者、时间戳、对象类型、对象 ID 和一条可读备注。全模块共用一张表，使跨模块的“谁修改过此记录”查询变得简单。其代价是高写入量最终会使单表成为瓶颈，扩展路径是异步写入或按月分区。"
+            "body": "内部运营需要完整的可追溯性。每一次新增、更新、删除都写入同一张审计表，记录操作者、时间戳、对象类型、对象 ID 和一条可读备注。全模块共用一张表，使跨模块的“谁修改过此记录”查询变得简单。其代价是每一次业务写入都会同步带上一条审计写入，压力来自并发写入而不是行数，扩展路径是异步写入或按月分区。"
           },
           {
             "title": "3. 无需额外基础设施的实时报表",

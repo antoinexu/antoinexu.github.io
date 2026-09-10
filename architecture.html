@@ -119,7 +119,7 @@
             <div class="cs-section">
                 <h2>Where the boundaries are, and why</h2>
                 <h3>1. Between the ERP and the warehouse application: no boundary at all</h3>
-                <p>They share the same tables. A stock write is visible to an order the moment it happens, with no API layer, no sync job, and nothing that can fall out of step. The cost is that two applications can act on the same work order at the same time, so both honor a shared lock table: a work order locked on the shop floor cannot be checked out in the office, and a scheduled job clears any lock left behind by an abandoned session. The conflict is resolved between the two applications rather than inside either one.</p>
+                <p>They share the same tables. A stock write is visible to an order the moment it happens, with no API layer, no sync job, and nothing that can fall out of step. The cost is that two applications can act on the same work order at the same time, so both honor a shared lock table: a work order locked on the shop floor cannot be checked out in the office, and a scheduled job clears any lock left behind by an abandoned session. SQL Server could enforce this itself, but a lock in a table is one the office can see. The conflict is resolved between the two applications rather than inside either one.</p>
                 <h3>2. Between the main system and the materials subsystem: one owner, one reference</h3>
                 <p>Usage of lot-tracked materials can be recorded from either side. Rather than have each write to the other automatically, one side owns the actual quantity deduction and the other is read-only reference. The two are reconciled by report rather than kept in lockstep by a sync, because a two-way automatic sync between separate databases fails quietly and a reconciliation report fails loudly.</p>
                 <h3>3. Between the storefront and the platform: a person</h3>
@@ -140,7 +140,7 @@
                 <h2>What this shape costs</h2>
                 <p>Every decision above was made for a specific scale: 20 to 30 concurrent internal users, one developer, and no strict uptime SLA. These are the places it will break first as that changes.</p>
                 <ul>
-                    <li>A single audit table will eventually bottleneck on write volume. The path is asynchronous audit writes or monthly partitioning.</li>
+                    <li>A single audit table takes a synchronous write on every operational write, so the pressure comes from write concurrency rather than from row count. The path is asynchronous audit writes or monthly partitioning.</li>
                     <li>Reports query live operational data, so heavy reports compete with live operations. The path is a read replica and asynchronous generation for the heaviest ones.</li>
                     <li>Two roles, admin and normal user, cannot express per-record rules. The path is attribute-based access control with a centralized session store for a multi-server deployment.</li>
                     <li>Neither internal application sits on a framework, so cross-cutting concerns such as auth and input validation live in shared includes rather than in middleware. That is the first thing that would need to change if a second maintainer joined.</li>
