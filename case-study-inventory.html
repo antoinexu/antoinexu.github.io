@@ -109,63 +109,60 @@
     <div class="case-study-content">
         <a href="/project.html" class="case-study-back" id="cs-back">Back to Projects</a>
         <h1 id="cs-title">Warehouse &amp; Inventory Subsystem (WMS)</h1>
-        <p class="case-study-disclaimer" id="cs-disclaimer">A sanitized write-up of the warehouse and shop-floor half of the production internal operations platform I designed and built as the sole developer at Fuel Cell Store. It runs on the same database as the order-to-shipment half, which has its own write-up. Product details and proprietary code are omitted. It describes the architecture and engineering decisions only.</p>
+        <p class="case-study-disclaimer" id="cs-disclaimer">A sanitized write-up of the warehouse and shop-floor half of the internal operations platform I designed and built as the sole developer at Fuel Cell Store. It runs on the same database as the order-to-shipment half, which has its own write-up. Product details and proprietary code are omitted; what follows is architecture and engineering decisions.</p>
         <div id="cs-body">
             <div class="cs-section">
                 <h2>Context</h2>
-                <p>Manufacturing operations needed accurate, real-time inventory that the storefront and accounting tools could not provide. Stock counts drifted, and there was no reliable record of who pulled what against which work order. The materials themselves also varied widely, from items that record cleanly by discrete lot to harder-to-measure stock such as roll goods and liquids.</p>
-                <p>As the sole developer, I built the warehouse side of the platform in two parts. The first is a comprehensive tracking application covering everyday stock, receiving, builds, waste, and physical counts. The second is a dedicated subsystem for one category of materials that records cleanly by lot number and exact quantity; it is a ground-up rebuild of an older system that had become unreliable and hard to maintain. Both run on the same internal Ubuntu Linux server as the rest of the platform, and the main one reads and writes the platform's own schema directly rather than syncing across an API.</p>
+                <p>Manufacturing needed real-time inventory that the storefront and accounting tools could not provide. Counts drifted, and nothing recorded who pulled what against which work order. The materials themselves vary widely: some track cleanly by discrete lot, others are roll goods and liquids that resist exact measurement.</p>
+                <p>As the sole developer, I built this half in two parts. The first tracks everyday stock, receiving, builds, waste, and physical counts. The second handles the one category of material that does track by lot number and exact quantity, a ground-up rebuild of an older system that had become unreliable and hard to maintain. Both run on the same internal Ubuntu Linux server as the rest of the platform.</p>
             </div>
             <div class="cs-section">
                 <h2>Scope</h2>
                 <ul>
                     <li>Stock and SKUs: real-time quantities, pulling against work orders, and manual adjustments</li>
-                    <li>Receiving: purchase orders with a pending, partially-arrived, and arrived status flow that feeds stock on arrival</li>
+                    <li>Receiving: purchase orders moving through pending, partially arrived, and arrived, feeding stock on arrival</li>
                     <li>Builds and bill-of-materials: assembly tracking and per-build material consumption</li>
-                    <li>Physical inventory checks: QR-scanned counts compared against the database, with discrepancy reporting</li>
-                    <li>Waste tracking: scrap recorded against stock with its own audit</li>
+                    <li>Physical counts: QR-scanned counts compared against the database, with discrepancy reporting</li>
+                    <li>Waste: scrap recorded against stock, with its own audit trail</li>
                     <li>Lot-tracked materials subsystem: lot-level inventory, weekly snapshots, and threshold alerts</li>
                     <li>Reporting and analytics: stock trends, purchase-versus-usage, low-stock and reconciliation reports</li>
-                    <li>QR code subsystem: bulk QR generation and shop-floor scanning for stock, lots, and operator badges</li>
+                    <li>QR codes: bulk generation, plus shop-floor scanning for stock, lots, and operator badges</li>
                 </ul>
             </div>
             <div class="cs-section">
                 <h2>Architecture</h2>
-                <p>Two PHP applications backed by Microsoft SQL Server, both server-rendered, where each page is either a UI or a JSON endpoint. The main inventory system shares its database directly with the ERP, while the lot-tracked-materials subsystem has its own database on the same server.</p>
+                <p>Two server-rendered PHP applications on Microsoft SQL Server, where every page is either a screen or a JSON endpoint. The main system shares the ERP's database; the lot-tracked-materials subsystem has its own on the same server.</p>
                 <div class="arch-figure"><svg class="arch-svg" viewBox="0 0 540 398" role="img" preserveAspectRatio="xMidYMid meet" aria-label="Architecture diagram: the browser talks over the internal network to a single Ubuntu Linux server running PHP and SQL Server."><rect class="arch-host" x="56" y="130" width="428" height="252" rx="14"></rect><text class="arch-host-title" x="270" y="156">single Ubuntu Linux server</text><rect class="arch-node" x="78" y="16" width="384" height="64" rx="10"></rect><text class="arch-node-title" x="96" y="44">Browser</text><text class="arch-node-desc" x="96" y="65">server-rendered pages, QR scanning</text><line class="arch-line" x1="270" y1="80" x2="270" y2="123"></line><polygon class="arch-arrow" points="265,122 275,122 270,130"></polygon><text class="arch-edge-label" x="270" y="109">HTTP over the internal network</text><rect class="arch-node" x="78" y="172" width="384" height="64" rx="10"></rect><text class="arch-node-title" x="96" y="200">PHP</text><text class="arch-node-desc" x="96" y="221">UI pages, JSON endpoints, cron jobs</text><line class="arch-line" x1="270" y1="236" x2="270" y2="261"></line><polygon class="arch-arrow" points="265,260 275,260 270,268"></polygon><rect class="arch-node" x="78" y="268" width="384" height="96" rx="10"></rect><text class="arch-node-title" x="96" y="296">SQL Server</text><text class="arch-node-item" x="96" y="316">•  main database, shared with the ERP</text><text class="arch-node-item" x="96" y="338">•  materials database, owned by the subsystem</text></svg></div>
-                <p>Why two systems rather than one? The main system grew alongside the ERP and shares its tables, so reads and writes are immediate with no API layer. The lot-tracked-materials subsystem was rebuilt from the ground up as a clean, separate system because that data requires tighter access control, lot-level precision, and its own alerting; isolating it also allowed me to replace the legacy version without destabilizing the live inventory system.</p>
-                <p>Neither application sits on a framework. With one developer maintaining both, a page that is a single file is the fastest unit to open, understand, and change months later, and deployment stays a file copy onto the server that already runs the ERP. The trade-off is that cross-cutting concerns such as auth and input validation live in shared includes rather than in middleware, and that is the first thing that would need to change if a second maintainer joined.</p>
+                <p>Why two systems rather than one? The main one grew alongside the ERP and shares its tables, so reads and writes are immediate and there is no API layer to keep in sync. The materials subsystem got its own database because that data needs tighter access control, lot-level precision, and separate alerting. Isolating it also let me retire the legacy version without putting live inventory at risk.</p>
+                <p>Neither application uses a framework. With one person maintaining both, a page that is a single file is the fastest thing to open, understand, and change months later, and deploying stays a file copy onto the server already running the ERP. The cost is that auth and input validation live in shared includes rather than middleware, which is the first thing I would change if a second maintainer joined.</p>
             </div>
             <div class="cs-section">
                 <h2>Scale</h2>
                 <ul>
-                    <li>Runs directly on the ERP's own 50+ table SQL Server schema, alongside the separate database owned by the materials subsystem</li>
-                    <li>The shared audit table is the largest in the schema, at over 1,000,000 rows</li>
                     <li>20 to 30 internal users across the office and the shop floor at the same time</li>
-                    <li>One operator at a time per work order, enforced by the lock table the ERP also honors</li>
                     <li>Stock lookups and inventory reports return in under a second</li>
                 </ul>
             </div>
             <div class="cs-section">
-                <h2>Engineering decisions worth highlighting</h2>
+                <h2>Engineering decisions</h2>
                 <h3>1. Cross-system work order locking</h3>
-                <p>Two operators pulling against the same work order simultaneously would corrupt stock counts, and the ERP could also check out the same order. Scanning a work order acquires a short-lived lock in a shared table. The save releases it, navigating away from the page releases it, and a scheduled job clears any lock older than five minutes. Because the lock table is shared, the ERP refuses to check out a work order that inventory has locked, which resolves the conflict across both systems.</p>
+                <p>Two operators pulling against the same work order would corrupt stock counts, and the ERP could check that order out at the same time. Scanning a work order takes a short-lived lock in a shared table. Saving releases it, leaving the page releases it, and a scheduled job clears anything older than five minutes. Because the table is shared, the ERP refuses to check out a work order the shop floor has locked, so the conflict is settled between the two systems rather than inside either one.</p>
                 <h3>2. Shop-floor workflows driven by scanning</h3>
-                <p>Operators work by scanning rather than typing. A scanned badge identifies the operator, a scanned work order validates and locks it, and scanned codes identify SKUs and material lots. This supports both a hardware barcode scanner, which enters values directly into the focused field, and camera-based scanning in the browser. It keeps data entry fast and accurate in a warehouse environment where typing is error-prone.</p>
+                <p>Operators scan instead of typing. A badge identifies the operator, a work order is validated and locked on scan, and SKUs and material lots are identified the same way. Both input paths work: a hardware barcode gun types into the focused field, and the browser scans through the camera when no gun is at hand. On a shop floor, typing is where the errors come from.</p>
                 <h3>3. Two material sources, reconciled rather than auto-synced</h3>
-                <p>Usage of these lot-tracked materials can be recorded from two places: the materials subsystem and the build-itemization flow in the main system. Rather than have each write to the other automatically, I kept a single owner for the actual quantity deduction and treated the other as read-only reference, matched on a normalized work-order-and-lot key. Reconciliation reports surface rows that exist in one source but not the other. Automatic dual writes were deliberately avoided: without a clear owner, they conceal quantity drift rather than correcting it, so any future synchronization requires an explicit reviewer decision.</p>
+                <p>Usage of these lot-tracked materials gets recorded in two places: the materials subsystem and the build-itemization flow in the main system. Only one of them owns the actual quantity deduction; the other is read-only reference, matched on a normalized work-order-and-lot key. Reconciliation reports list the rows that exist in one source but not the other. I left automatic dual writes out on purpose, because without a clear owner they hide quantity drift instead of correcting it. Closing a gap stays a decision someone makes, not something the system does quietly.</p>
                 <h3>4. Discrepancy lock to stop drift</h3>
-                <p>When a physical count does not match the database, the SKU is flagged and pulling against it is blocked until the variance is resolved. This prevents a known-incorrect quantity from drifting further while it is investigated, and it notifies the admins automatically when the discrepancy is filed.</p>
+                <p>When a physical count does not match the database, the SKU is flagged and pulling against it is blocked until the variance is resolved, and filing the discrepancy notifies the admins. A quantity already known to be wrong stops moving while someone looks into it.</p>
                 <h3>5. Audit trail and historical snapshots</h3>
-                <p>Every state-changing operation records who performed it, what changed, and the before and after values in one audit table. A scheduled job also snapshots all stock levels at a fixed interval into a separate table, which powers inventory trend charts without slowing down live operations.</p>
+                <p>Every state-changing operation records who did it, what changed, and the before and after values, all in one audit table. A scheduled job snapshots stock levels into a separate table on a fixed interval, and the trend charts read that snapshot, so reporting never competes with live operations.</p>
             </div>
             <div class="cs-section">
                 <h2>Results</h2>
                 <ul>
                     <li>Replaced drifting spreadsheet counts with real-time inventory across stock, receiving, builds, waste, and lot-tracked materials</li>
-                    <li>Gave the shop floor a scan-driven workflow for pulling, receiving, and counting, with a full audit trail of every movement</li>
+                    <li>Gave the shop floor a scan-driven workflow for pulling, receiving, and counting, with every movement on the audit trail</li>
                     <li>Prevented concurrent-edit and cross-system conflicts through work-order locking shared with the ERP</li>
-                    <li>Built and shipped two coordinated systems single-handedly, and kept them running in production</li>
+                    <li>Built and shipped both systems single-handedly, and kept them running in production</li>
                 </ul>
             </div>
         </div>
