@@ -8,7 +8,7 @@
     "about": "About",
     "contact": "Contact",
     "page_title": "Case Study: Internal ERP / WMS / MES Platform - Bowei Xu",
-    "page_description": "How I designed and built an internal operations platform (ERP/WMS/MES) as sole developer: a 50+ table schema, order tracking, material traceability, and automated reporting.",
+    "page_description": "How I built an internal operations platform (ERP/WMS/MES) as sole developer: a 50+ table schema, order tracking, material traceability, and automated reporting.",
     "back": "Back to Projects",
     "title": "Internal Operations Platform (ERP / WMS / MES)",
     "disclaimer": "A sanitized write-up of the internal operations system I designed and built as the sole developer at Fuel Cell Store. It covers the order-to-shipment half of the platform; the warehouse and shop-floor half runs on the same database and has its own write-up. Product details and proprietary code are omitted; what follows is architecture and engineering decisions.",

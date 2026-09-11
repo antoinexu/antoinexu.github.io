@@ -8,7 +8,7 @@
     "about": "About",
     "contact": "Contact",
     "page_title": "Systems Architecture - Bowei Xu",
-    "page_description": "One diagram of how a manufacturer's operational execution platform fits together: e-commerce and purchase orders into an internal ERP, with a WMS, MES, and procurement downstream.",
+    "page_description": "One diagram of a manufacturer's operational execution platform: e-commerce and purchase orders into an internal ERP, with WMS, MES, and procurement downstream.",
     "title": "Systems Architecture",
     "lead": "An operational execution platform for a manufacturer: the systems that take an order, build it, ship it, and decide what to buy next. The case studies are the detail.",
     "sections": [

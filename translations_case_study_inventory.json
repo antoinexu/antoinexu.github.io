@@ -8,7 +8,7 @@
     "about": "About",
     "contact": "Contact",
     "page_title": "Case Study: Warehouse & Inventory Subsystem (WMS) - Bowei Xu",
-    "page_description": "How I built the warehouse half of an internal operations platform: shared-schema stock tracking, receiving workflows, lot-level traceability, and scan-driven shop-floor counts.",
+    "page_description": "How I built the warehouse half of an internal operations platform: shared-schema stock tracking, receiving, lot-level traceability, and scan-driven counts.",
     "back": "Back to Projects",
     "title": "Warehouse & Inventory Subsystem (WMS)",
     "disclaimer": "A sanitized write-up of the warehouse and shop-floor half of the internal operations platform I designed and built as the sole developer at Fuel Cell Store. It runs on the same database as the order-to-shipment half, which has its own write-up. Product details and proprietary code are omitted; what follows is architecture and engineering decisions.",
