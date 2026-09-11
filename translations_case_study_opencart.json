@@ -44,17 +44,6 @@
         }
       },
       {
-        "heading": "Scope",
-        "list": [
-          "Reverse engineering the legacy store: reading the legacy code to determine how each custom feature behaved, as nothing was documented",
-          "Data migration: moving 2,000+ products and 70,000+ orders across two major schema versions",
-          "Custom functionality: adopting maintained extensions where they existed and building custom ones where they did not",
-          "Frontend: rebuilding the theme on the new template system and improving mobile responsiveness",
-          "Backend: re-implementing admin customizations and resolving third-party module compatibility",
-          "Validation: reconciling migrated data against the source to confirm nothing was lost"
-        ]
-      },
-      {
         "heading": "Approach",
         "paragraphs": [
           "The two versions differ in database schema, templating, and module systems, so a direct in-place upgrade was not viable. I approached it as a rebuild on the new version paired with a controlled data migration, developed and rehearsed on a staging copy before any production cutover."
@@ -147,17 +136,6 @@
           ],
           "aria": "架构图：浏览器通过 HTTPS 访问一台 cPanel/WHM VPS，该服务器与 ERP 服务器彼此独立，运行 OpenCart 3.0.3.8（PHP 7.4），数据存于 MySQL。"
         }
-      },
-      {
-        "heading": "范围",
-        "list": [
-          "逆向分析旧商城：在没有任何文档的情况下，通过阅读旧代码厘清每个自定义功能的实现",
-          "数据迁移：将 2,000+ 商品和 70,000+ 订单跨两个大版本的库结构迁移过去",
-          "自定义功能：已有成熟扩展则直接采用，没有则自行实现",
-          "前端：在新模板体系上重建主题，并提升移动端适配",
-          "后端：重做后台自定义功能，解决第三方模块兼容问题",
-          "校验：将迁移后的数据与源数据对账，确认无任何丢失"
-        ]
       },
       {
         "heading": "迁移思路",
