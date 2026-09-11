@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="theme-color" content="#1d2329">
-    <meta name="description" content="How a manufacturer's operational execution platform fits together: an ERP, WMS, and MES on one SQL Server schema, a separate lot-tracked materials database, and an OpenCart storefront on its own VPS.">
+    <meta name="description" content="One diagram of how a manufacturer's operational execution platform fits together: e-commerce and purchase orders into an internal ERP, with a WMS, MES, and procurement downstream.">
     <title>Systems Architecture - Bowei Xu</title>
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Bowei Xu">
     <meta property="og:title" content="Systems Architecture - Bowei Xu">
-    <meta property="og:description" content="How a manufacturer's operational execution platform fits together: an ERP, WMS, and MES on one SQL Server schema, a separate lot-tracked materials database, and an OpenCart storefront on its own VPS.">
+    <meta property="og:description" content="One diagram of how a manufacturer's operational execution platform fits together: e-commerce and purchase orders into an internal ERP, with a WMS, MES, and procurement downstream.">
     <meta property="og:url" content="https://antoinexu.github.io/architecture.html">
     <meta property="og:image" content="https://antoinexu.github.io/pics/og-card.png">
     <meta property="og:image:alt" content="Bowei Xu, Business Systems and Backend Engineer, next to a three-tier architecture diagram">
@@ -19,7 +19,7 @@
     <meta property="og:locale:alternate" content="zh_CN">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Systems Architecture - Bowei Xu">
-    <meta name="twitter:description" content="How a manufacturer's operational execution platform fits together: an ERP, WMS, and MES on one SQL Server schema, a separate lot-tracked materials database, and an OpenCart storefront on its own VPS.">
+    <meta name="twitter:description" content="One diagram of how a manufacturer's operational execution platform fits together: e-commerce and purchase orders into an internal ERP, with a WMS, MES, and procurement downstream.">
     <meta name="twitter:image" content="https://antoinexu.github.io/pics/og-card.png">
     <meta name="twitter:image:alt" content="Bowei Xu, Business Systems and Backend Engineer, next to a three-tier architecture diagram">
     <link rel="canonical" href="https://antoinexu.github.io/architecture.html">
@@ -40,7 +40,7 @@
                 "@id": "https://antoinexu.github.io/architecture.html#webpage",
                 "url": "https://antoinexu.github.io/architecture.html",
                 "name": "Systems Architecture - Bowei Xu",
-                "description": "How a manufacturer's operational execution platform fits together: an ERP, WMS, and MES on one SQL Server schema, a separate lot-tracked materials database, and an OpenCart storefront on its own VPS.",
+                "description": "One diagram of how a manufacturer's operational execution platform fits together: e-commerce and purchase orders into an internal ERP, with a WMS, MES, and procurement downstream.",
                 "isPartOf": {
                     "@id": "https://antoinexu.github.io/#website"
                 },
@@ -98,53 +98,11 @@
 <main class="case-study" id="main-content" tabindex="-1">
     <div class="case-study-content">
         <h1 id="arch-title">Systems Architecture</h1>
-        <p class="case-study-disclaimer" id="arch-lead">An operational execution platform for a manufacturer: the systems that take an order, build it, ship it, and decide what to buy next. This page is the map of how they fit together and where the boundaries between them are. The three case studies are the detail.</p>
+        <p class="case-study-disclaimer" id="arch-lead">An operational execution platform for a manufacturer: the systems that take an order, build it, ship it, and decide what to buy next. The case studies are the detail.</p>
         <div id="arch-body">
             <div class="cs-section">
-                <h2>The landscape</h2>
-                <p>Orders arrive on two channels. The warehouse, the shop floor, and procurement all sit downstream of the platform that records them.</p>
                 <div class="arch-figure flow-figure" id="arch-figure"><svg class="arch-svg" viewBox="0 0 560 566" role="img" preserveAspectRatio="xMidYMid meet" aria-label="Systems diagram: e-commerce and purchase-order channels are keyed into the internal ERP by hand. The ERP shares one database with the WMS and MES, which drive inventory and production. Low stock sends an email alert that a person acts on to start procurement."><rect class="arch-node" x="24" y="16" width="248" height="64" rx="10"></rect><text class="arch-node-title" x="42" y="44">E-commerce</text><text class="arch-node-desc" x="42" y="65">OpenCart storefront</text><rect class="arch-node" x="288" y="16" width="248" height="64" rx="10"></rect><text class="arch-node-title" x="306" y="44">PO / Quote</text><text class="arch-node-desc" x="306" y="65">customer purchase orders</text><line class="arch-line" x1="148" y1="105" x2="412" y2="105"></line><line class="arch-line" x1="148" y1="80" x2="148" y2="105"></line><line class="arch-line" x1="412" y1="80" x2="412" y2="105"></line><line class="arch-line" x1="280" y1="105" x2="280" y2="131"></line><polygon class="arch-arrow" points="275,130 285,130 280,138"></polygon><text class="arch-edge-label" x="280" y="125.5">keyed in by hand</text><rect class="arch-node arch-node-accent" x="24" y="138" width="512" height="64" rx="10"></rect><text class="arch-node-title arch-node-title-accent" x="42" y="166">Internal ERP</text><text class="arch-node-desc" x="42" y="187">order entry, builds, shipments, reporting</text><line class="arch-line" x1="148" y1="227" x2="412" y2="227"></line><line class="arch-line" x1="280" y1="202" x2="280" y2="227"></line><line class="arch-line" x1="148" y1="227" x2="148" y2="253"></line><polygon class="arch-arrow" points="143,252 153,252 148,260"></polygon><line class="arch-line" x1="412" y1="227" x2="412" y2="253"></line><polygon class="arch-arrow" points="407,252 417,252 412,260"></polygon><text class="arch-edge-label" x="280" y="218.5">same database</text><rect class="arch-node" x="24" y="260" width="248" height="64" rx="10"></rect><text class="arch-node-title" x="42" y="288">WMS</text><text class="arch-node-desc" x="42" y="309">receiving, picking, counts</text><rect class="arch-node" x="288" y="260" width="248" height="64" rx="10"></rect><text class="arch-node-title" x="306" y="288">MES</text><text class="arch-node-desc" x="306" y="309">work orders, lot traceability</text><line class="arch-line" x1="148" y1="324" x2="148" y2="357"></line><polygon class="arch-arrow" points="143,356 153,356 148,364"></polygon><line class="arch-line" x1="412" y1="324" x2="412" y2="357"></line><polygon class="arch-arrow" points="407,356 417,356 412,364"></polygon><rect class="arch-node" x="24" y="364" width="248" height="64" rx="10"></rect><text class="arch-node-title" x="42" y="392">Inventory</text><text class="arch-node-desc" x="42" y="413">finished-goods stock</text><rect class="arch-node" x="288" y="364" width="248" height="64" rx="10"></rect><text class="arch-node-title" x="306" y="392">Production</text><text class="arch-node-desc" x="306" y="413">builds against work orders</text><line class="arch-line" x1="148" y1="428" x2="148" y2="479"></line><polygon class="arch-arrow" points="143,478 153,478 148,486"></polygon><text class="arch-edge-label" x="148" y="461">low-stock email alert</text><rect class="arch-node" x="24" y="486" width="248" height="64" rx="10"></rect><text class="arch-node-title" x="42" y="514">Procurement</text><text class="arch-node-desc" x="42" y="535">reviewed and placed by a person</text></svg></div>
                 <div class="flow-list" id="arch-flow-list"><div class="flow-row flow-row-parallel"><div class="flow-node"><strong>E-commerce</strong><span>OpenCart storefront</span></div><div class="flow-node"><strong>PO / Quote</strong><span>customer purchase orders</span></div></div><p class="flow-step">↓  keyed in by hand</p><div class="flow-row"><div class="flow-node flow-node-accent"><strong>Internal ERP</strong><span>order entry, builds, shipments, reporting</span></div></div><p class="flow-step">↓  same database</p><div class="flow-row flow-row-parallel"><div class="flow-node"><strong>WMS</strong><span>receiving, picking, counts</span></div><div class="flow-node"><strong>MES</strong><span>work orders, lot traceability</span></div></div><p class="flow-step">↓</p><div class="flow-row flow-row-parallel"><div class="flow-node"><strong>Inventory</strong><span>finished-goods stock</span></div><div class="flow-node"><strong>Production</strong><span>builds against work orders</span></div></div><p class="flow-step">↓  Inventory  ·  low-stock email alert</p><div class="flow-row"><div class="flow-node"><strong>Procurement</strong><span>reviewed and placed by a person</span></div></div></div>
-                <p>Two boundaries on this diagram are manual. Storefront orders and customer purchase orders are keyed in rather than fed through an integration, and a low-stock condition sends an email notification that a person acts on instead of raising a purchase order on its own.</p>
-            </div>
-            <div class="cs-section">
-                <h2>Three stores of record, not one</h2>
-                <p>The platform is not a single database with everything in it. It is three separate stores, each with a deliberate boundary around it.</p>
-                <ul>
-                    <li>The platform schema: one Microsoft SQL Server database of 50+ tables covering orders, inventory, materials, builds, and shipments, on the company's own internal Ubuntu Linux server. The ERP and the main warehouse application both read and write it directly.</li>
-                    <li>The lot-tracked materials subsystem: its own database on that same internal server. It was separated because that data needs tighter access control, lot-level precision, and its own alerting, and because isolating it allowed the legacy version to be replaced without destabilizing live inventory.</li>
-                    <li>The storefront: OpenCart 3 on PHP 7.4 backed by MySQL, on an external cPanel/WHM VPS, separate from the internal server entirely.</li>
-                </ul>
-            </div>
-            <div class="cs-section">
-                <h2>Where the boundaries are, and why</h2>
-                <h3>1. Between the ERP and the warehouse application: no boundary at all</h3>
-                <p>They share the same tables. A stock write is visible to an order the moment it happens, with no API layer, no sync job, and nothing that can fall out of step. The cost is that two applications can act on the same work order at the same time, so both honor a shared lock table: a work order locked on the shop floor cannot be checked out in the office, and a scheduled job clears any lock left behind by an abandoned session. SQL Server could enforce this itself, but a lock in a table is one the office can see. The conflict is resolved between the two applications rather than inside either one.</p>
-                <h3>2. Between the main system and the materials subsystem: one owner, one reference</h3>
-                <p>Usage of lot-tracked materials can be recorded from either side. Rather than have each write to the other automatically, one side owns the actual quantity deduction and the other is read-only reference. The two are reconciled by report rather than kept in lockstep by a sync, because a two-way automatic sync between separate databases fails quietly and a reconciliation report fails loudly.</p>
-                <h3>3. Between the storefront and the platform: a person</h3>
-                <p>The storefront is public and the platform is not. They share no network, no server, and no database. Orders cross that line as data a person enters, which is also the point at which pricing and specification are checked against what the shop floor can actually build. What the two sides do share is the SKU vocabulary: the same part numbers identify the same products in both catalogs. The boundary is manual by choice, not because the two systems disagree about what a product is.</p>
-            </div>
-            <div class="cs-section">
-                <h2>What keeps the data honest</h2>
-                <p>Operational data errors compound quietly, so the platform is built to catch them where they enter rather than to trust that they never happen.</p>
-                <ul>
-                    <li>One audit table across every module records who acted, what changed, and the before and after values. It is the largest table in the schema, at over 1,000,000 rows.</li>
-                    <li>A physical count that does not match the database flags the SKU and blocks pulling against it until the variance is resolved, so a known-wrong quantity cannot drift further while it is investigated.</li>
-                    <li>Lot-number duplicate detection, negative-stock alerts, and reconciliation reports across materials and stock catch the errors that a workflow alone would let through.</li>
-                    <li>A scheduled job snapshots stock levels at a fixed interval into a separate table, so trend charts do not compete with live operations.</li>
-                    <li>Queries are parameterized throughout rather than assembled from concatenated strings, in a schema where every table is business-critical.</li>
-                </ul>
-            </div>
-            <div class="cs-section">
-                <h2>What this shape costs</h2>
-                <p>Every decision above was made for a specific scale: 20 to 30 concurrent internal users, one developer, and no strict uptime SLA. These are the places it will break first as that changes.</p>
-                <ul>
-                    <li>A single audit table takes a synchronous write on every operational write, so the pressure comes from write concurrency rather than from row count. The path is asynchronous audit writes or monthly partitioning.</li>
-                    <li>Reports query live operational data, so heavy reports compete with live operations. The path is a read replica and asynchronous generation for the heaviest ones.</li>
-                    <li>Two roles, admin and normal user, cannot express per-record rules. The path is attribute-based access control with a centralized session store for a multi-server deployment.</li>
-                    <li>Neither internal application sits on a framework, so cross-cutting concerns such as auth and input validation live in shared includes rather than in middleware. That is the first thing that would need to change if a second maintainer joined.</li>
-                </ul>
             </div>
         </div>
         <nav class="home-cases arch-cases" aria-labelledby="arch-cases-heading">
@@ -215,7 +173,7 @@
             sections.forEach(section => {
                 const wrap = el('div');
                 wrap.className = 'cs-section';
-                wrap.appendChild(el('h2', section.heading));
+                if (section.heading) wrap.appendChild(el('h2', section.heading));
 
                 (section.paragraphs || []).forEach(p => wrap.appendChild(el('p', p)));
 
