@@ -18,8 +18,7 @@
         "heading": "Context",
         "paragraphs": [
           "The company already had an internal system, but it was slow: common lookups and reports took several seconds or worse. It also covered only part of the workflow, so the gaps were filled with spreadsheets and manual entry, and nothing reliably recorded who changed what.",
-          "As the sole developer, I designed and built the replacement: more complete, and faster to query. It covers the full order-to-shipment lifecycle on a relational schema of 50+ tables.",
-          "The platform has two halves. This one runs order to shipment: orders, builds, shipments, and reporting. The other is warehouse and shop floor: receiving, scan-driven picking, physical counts, and lot-level material traceability. It sits on this same schema and has its own write-up."
+          "As the sole developer, I designed and built the replacement: more complete, and faster to query."
         ]
       },
       {
@@ -40,13 +39,25 @@
           "A monolith, on purpose, in three tiers. PHP renders the UI and holds the business logic, SQL Server is the single source of truth, and attachments sit on the local filesystem."
         ],
         "architecture": {
-          "client": { "label": "Browser" },
+          "client": {
+            "label": "Browser"
+          },
           "link": "HTTP",
           "host": "single internal Ubuntu Linux server",
           "tiers": [
-            { "label": "PHP", "desc": "auth, business logic, rendering, cron jobs" },
-            { "label": "SQL Server", "desc": "orders, inventory, builds, shipments", "connector": "parameterized queries" },
-            { "label": "File System", "desc": "order attachments" }
+            {
+              "label": "PHP",
+              "desc": "auth, business logic, rendering, cron jobs"
+            },
+            {
+              "label": "SQL Server",
+              "desc": "orders, inventory, builds, shipments",
+              "connector": "parameterized queries"
+            },
+            {
+              "label": "File System",
+              "desc": "order attachments"
+            }
           ],
           "aria": "Architecture diagram: the browser talks over HTTP to a single internal Ubuntu Linux server running PHP, SQL Server, and local file storage."
         },
@@ -119,8 +130,7 @@
         "heading": "背景",
         "paragraphs": [
           "公司原本有一套内部系统，但很慢：常用的查询和报表动辄要等上好几秒。它也只覆盖了一部分流程，剩下的缺口靠电子表格和人工录入来补，谁改过什么也没有可靠的记录。",
-          "作为唯一开发者，我设计并构建了替代它的平台：覆盖更全，查询更快，基于一套 50+ 张表的关系型库，贯通从下单到发货的完整流程。",
-          "平台分两半。本文是从下单到发货的这一半：订单、生产、发货、报表。另一半是仓储与车间：收货、扫码拣货、实物盘点和批次级物料追溯，跑在同一套库上，另有独立案例。"
+          "作为唯一开发者，我设计并构建了替代它的平台：覆盖更全，查询更快。"
         ]
       },
       {
@@ -141,13 +151,25 @@
           "刻意做成单体，分三层。PHP 渲染界面并承载业务逻辑，SQL Server 是唯一数据源，附件放在本地文件系统。"
         ],
         "architecture": {
-          "client": { "label": "浏览器" },
+          "client": {
+            "label": "浏览器"
+          },
           "link": "HTTP",
           "host": "公司内部的单台 Ubuntu Linux 服务器",
           "tiers": [
-            { "label": "PHP", "desc": "鉴权、业务逻辑、渲染、定时任务" },
-            { "label": "SQL Server", "desc": "订单、库存、生产、发货", "connector": "参数化查询" },
-            { "label": "文件系统", "desc": "订单附件" }
+            {
+              "label": "PHP",
+              "desc": "鉴权、业务逻辑、渲染、定时任务"
+            },
+            {
+              "label": "SQL Server",
+              "desc": "订单、库存、生产、发货",
+              "connector": "参数化查询"
+            },
+            {
+              "label": "文件系统",
+              "desc": "订单附件"
+            }
           ],
           "aria": "架构图：浏览器通过 HTTP 访问公司内部的单台 Ubuntu Linux 服务器，服务器上运行 PHP、SQL Server 和本地文件存储。"
         },
