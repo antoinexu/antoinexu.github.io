@@ -17,7 +17,7 @@
         "heading": "Context",
         "paragraphs": [
           "The online store ran on a years-old release of OpenCart, two major versions behind current, with no supported upgrade path. Custom modules and theme changes had accumulated on top of the core over several years, no documentation existed, and the original developers had left, so the behavior of much of the custom functionality was effectively undocumented.",
-          "As the sole developer, I led the upgrade from 1.5.6.4 to 3.0.3.8, covering 2,000+ products and 70,000+ historical orders, with zero data loss and no business interruption. With no documentation and no reliable automated path across that version gap, the project combined reverse engineering, data migration, and the rebuilding of custom functionality in roughly equal measure."
+          "With no reliable automated path across that version gap, the project combined reverse engineering, data migration, and the rebuilding of custom functionality in roughly equal measure."
         ],
         "architecture": {
           "client": {
@@ -58,7 +58,7 @@
         ]
       },
       {
-        "heading": "Engineering decisions worth highlighting",
+        "heading": "Engineering decisions",
         "subsections": [
           {
             "title": "1. Reverse engineering features with no documentation",
@@ -111,7 +111,7 @@
         "heading": "背景",
         "paragraphs": [
           "在线商城运行在一个数年前的 OpenCart 版本上，落后当前两个大版本，且没有受支持的升级路径。多年间，自定义模块和主题改动持续叠加在核心之上，没有任何文档，最初的开发者也均已离开，因此大量自定义功能的具体实现已无文档可循。",
-          "作为唯一开发者，我主导了从 1.5.6.4 到 3.0.3.8 的升级，覆盖 2,000+ 商品和 70,000+ 历史订单，实现零数据丢失、业务不中断。在既无文档、跨大版本又无可靠自动化路径的情况下，这项工作主要由逆向分析、数据迁移和重建自定义功能三部分大致均衡地构成。"
+          "跨大版本又无可靠的自动化路径，这项工作主要由逆向分析、数据迁移和重建自定义功能三部分大致均衡地构成。"
         ],
         "architecture": {
           "client": {
@@ -152,7 +152,7 @@
         ]
       },
       {
-        "heading": "值得一提的工程决策",
+        "heading": "工程决策",
         "subsections": [
           {
             "title": "1. 在无文档情况下逆向功能",
