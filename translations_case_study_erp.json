@@ -51,7 +51,7 @@
             },
             {
               "label": "SQL Server",
-              "desc": "orders, inventory, builds, shipments",
+              "desc": "shared operational schema",
               "connector": "parameterized queries"
             },
             {
@@ -68,7 +68,7 @@
       {
         "heading": "Scale",
         "list": [
-          "One SQL Server database of 50+ tables covering orders, inventory, builds, and shipments, shared directly by the ERP and the warehouse application; lot-tracked materials live in a separate database on the same server",
+          "One SQL Server database of 50+ tables covering orders, inventory, materials, builds, and shipments, shared directly by the ERP and the warehouse application; the lot-tracked materials subsystem keeps its own database alongside it",
           "The audit table is the largest in the schema, past 1,000,000 rows",
           "20 to 30 internal users working in the system at the same time",
           "Any one work order is edited by a single person at a time, enforced by the lock table rather than left to convention",
@@ -163,7 +163,7 @@
             },
             {
               "label": "SQL Server",
-              "desc": "订单、库存、生产、发货",
+              "desc": "共用的运营数据库",
               "connector": "参数化查询"
             },
             {
@@ -180,7 +180,7 @@
       {
         "heading": "规模",
         "list": [
-          "单个 SQL Server 数据库，50+ 张表，覆盖订单、库存、生产和发货，由 ERP 和仓库应用直接共用；批次物料在同一台服务器上另有独立数据库",
+          "单个 SQL Server 数据库，50+ 张表，覆盖订单、库存、物料、生产和发货，由 ERP 和仓库应用直接共用；批次物料子系统在此之外另有独立数据库",
           "审计表是库中最大的一张，超过 100 万行",
           "20 到 30 名内部用户同时在系统中作业",
           "任何一张工单同一时刻只由一个人编辑，这由锁表强制保证，而不是靠约定",
