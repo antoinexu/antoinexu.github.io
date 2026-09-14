@@ -156,6 +156,8 @@
                 <p>Two roles, admin and normal user, checked at the top of every page against a server-side session. It is simple and fast to reason about, and it cannot express per-record rules. The day it needs to, the path is attribute-based access control, plus a shared session store if this ever runs on more than one server.</p>
                 <h3>5. Data-integrity discipline</h3>
                 <p>Bad operational data compounds quietly, so the platform catches it at the entry points: duplicate lot-number detection, negative-stock alerts, and reconciliation reports across materials and stock. Queries are parameterized throughout rather than assembled from concatenated strings. In a schema where every table is business-critical, that is not something to leave to discipline.</p>
+                <h3>6. Two item types, one lot-tracked</h3>
+                <p>The catalog splits in two, and most of the schema follows. Stock items are bought and resold as they are: one quantity, no production history. Built items are assembled in house and itemized against the raw materials they consume, and those materials are lot-tracked, so a finished unit traces back to a specific work order and the lots it drew on. Work orders therefore exist on only one side of the catalog, and lot tracking lives in its own subsystem rather than as a column on the stock table. Lot precision costs something to maintain, and only one item type earns it.</p>
             </div>
             <div class="cs-section">
                 <h2>Results</h2>

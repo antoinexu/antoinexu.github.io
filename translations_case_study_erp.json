@@ -97,6 +97,10 @@
           {
             "title": "5. Data-integrity discipline",
             "body": "Bad operational data compounds quietly, so the platform catches it at the entry points: duplicate lot-number detection, negative-stock alerts, and reconciliation reports across materials and stock. Queries are parameterized throughout rather than assembled from concatenated strings. In a schema where every table is business-critical, that is not something to leave to discipline."
+          },
+          {
+            "title": "6. Two item types, one lot-tracked",
+            "body": "The catalog splits in two, and most of the schema follows. Stock items are bought and resold as they are: one quantity, no production history. Built items are assembled in house and itemized against the raw materials they consume, and those materials are lot-tracked, so a finished unit traces back to a specific work order and the lots it drew on. Work orders therefore exist on only one side of the catalog, and lot tracking lives in its own subsystem rather than as a column on the stock table. Lot precision costs something to maintain, and only one item type earns it."
           }
         ]
       },
@@ -209,6 +213,10 @@
           {
             "title": "5. 数据完整性纪律",
             "body": "业务数据的错会悄悄累积，所以平台在入口处就拦下来：批号重复检测、负库存告警，以及覆盖物料与库存的对账报表。所有查询一律参数化，不拼字符串。在一套每张表都关乎业务的库上，这种事不能靠自觉。"
+          },
+          {
+            "title": "6. 两类物料，只有一类跟批次",
+            "body": "产品目录分成两半，整套表结构基本都跟着这道分界走。外购件买进来原样卖出去：一个数量，没有生产历史。自制件在厂内用原材料装配，每一台都要按消耗的物料逐项登记，而这些物料是跟批号的，所以一台成品能回溯到具体哪张工单、用了哪几个批次。工单因此只存在于目录的一侧，批次追溯也单独成一个子系统，而不是库存表上多加一列。批次精度是要持续付代价维护的，两类物料里只有一类配得上。"
           }
         ]
       },
