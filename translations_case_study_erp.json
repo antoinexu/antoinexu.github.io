@@ -100,7 +100,7 @@
           },
           {
             "title": "6. Two item types, one lot-tracked",
-            "body": "The catalog splits in two, and most of the schema follows. Stock items are bought and resold as they are: one quantity, no production history. Built items are assembled in house and itemized against the raw materials they consume, and those materials are lot-tracked, so a finished unit traces back to a specific work order and the lots it drew on. Work orders therefore exist on only one side of the catalog, and lot tracking lives in its own subsystem rather than as a column on the stock table. Lot precision costs something to maintain, and only one item type earns it."
+            "body": "The catalog splits in two. Stock items are bought and resold as they are: one quantity, no production history. Built items are assembled in house and itemized against the raw materials they consume, and those materials are lot-tracked, so a finished unit traces back to the work order and the lots it drew on. The split is per line item, not per order. One work order can carry both kinds, and it ships once every line is ready unless someone splits the shipment. That is why lot tracking lives in a subsystem of its own rather than as a column on the stock table. The precision costs something to maintain, and only one of the two item types earns it."
           }
         ]
       },
@@ -216,7 +216,7 @@
           },
           {
             "title": "6. 两类物料，只有一类跟批次",
-            "body": "产品目录分成两半，整套表结构基本都跟着这道分界走。外购件买进来原样卖出去：一个数量，没有生产历史。自制件在厂内用原材料装配，每一台都要按消耗的物料逐项登记，而这些物料是跟批号的，所以一台成品能回溯到具体哪张工单、用了哪几个批次。工单因此只存在于目录的一侧，批次追溯也单独成一个子系统，而不是库存表上多加一列。批次精度是要持续付代价维护的，两类物料里只有一类配得上。"
+            "body": "产品目录分成两半。外购件买进来原样卖出去：一个数量，没有生产历史。自制件在厂内用原材料装配，每一台都要按消耗的物料逐项登记，而这些物料是跟批号的，所以一台成品能回溯到工单和具体用了哪几个批次。这道线划在行项目上，不是划在整单上。一张工单可以两种行都有，要等所有行都齐了才发货，除非拆单发。批次追溯也因此单独成一个子系统，而不是库存表上多加一列。这份精度要持续付代价维护，两类物料里只有一类配得上。"
           }
         ]
       },

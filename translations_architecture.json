@@ -32,7 +32,7 @@
               "nodes": [
                 {
                   "label": "Internal ERP",
-                  "desc": "order entry, builds, shipments, reporting",
+                  "desc": "order entry, work orders, shipments, reporting",
                   "accent": true
                 }
               ]
@@ -46,7 +46,7 @@
                 },
                 {
                   "label": "MES",
-                  "desc": "work orders, lot traceability"
+                  "desc": "build execution, lot traceability"
                 }
               ]
             },
@@ -120,7 +120,7 @@
               "nodes": [
                 {
                   "label": "内部 ERP",
-                  "desc": "订单录入、生产、出货、报表",
+                  "desc": "订单录入、工单、出货、报表",
                   "accent": true
                 }
               ]
@@ -134,7 +134,7 @@
                 },
                 {
                   "label": "MES",
-                  "desc": "工单、批次追溯"
+                  "desc": "生产执行、批次追溯"
                 }
               ]
             },
