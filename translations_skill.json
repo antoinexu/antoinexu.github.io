@@ -20,8 +20,8 @@
     "database_pills": ["Microsoft SQL Server", "MySQL", "Schema Design", "Query Optimization", "Data Migration"],
     "infrastructure": "Infrastructure & Tools",
     "infrastructure_pills": ["Linux", "Apache", "cPanel/WHM", "Git/GitHub", "Bash", "AWS", "Claude Code", "Codex"],
-    "domain": "Business Systems",
-    "domain_pills": ["ERP / WMS / MES Systems", "OpenCart", "E-Commerce Platforms", "Manufacturing Operations Software"],
+    "business": "Business Systems",
+    "business_pills": ["ERP / WMS / MES Systems", "OpenCart", "E-Commerce Platforms", "Manufacturing Operations Software"],
     "integrations": "Integrations & Tracking",
     "integrations_pills": ["Google Tag Manager", "Google Ads Conversion Tracking", "Google Search Console", "Third-Party Product Data"]
   },
@@ -46,8 +46,8 @@
     "database_pills": ["Microsoft SQL Server", "MySQL", "库表设计", "查询优化", "数据迁移"],
     "infrastructure": "基础设施与工具",
     "infrastructure_pills": ["Linux", "Apache", "cPanel/WHM", "Git/GitHub", "Bash", "AWS", "Claude Code", "Codex"],
-    "domain": "业务系统",
-    "domain_pills": ["ERP / WMS / MES 系统", "OpenCart", "电商平台", "制造运营软件"],
+    "business": "业务系统",
+    "business_pills": ["ERP / WMS / MES 系统", "OpenCart", "电商平台", "制造运营软件"],
     "integrations": "第三方集成与跟踪",
     "integrations_pills": ["Google Tag Manager", "Google Ads 转化跟踪", "Google Search Console", "第三方产品数据接入"]
   }
