@@ -54,11 +54,11 @@
               "nodes": [
                 {
                   "label": "Inventory",
-                  "desc": "stock items, one quantity each"
+                  "desc": "finished-goods stock"
                 },
                 {
                   "label": "Production",
-                  "desc": "built items, assembled from materials"
+                  "desc": "builds against work orders"
                 }
               ]
             },
@@ -78,7 +78,7 @@
             "to": 1,
             "label": "keyed back in by hand"
           },
-          "aria": "Systems diagram: e-commerce and purchase-order channels are keyed into the internal ERP by hand. The ERP shares one database with the WMS and MES. The WMS drives inventory of stock items, which carry one quantity each, and the MES drives production of built items, assembled from materials. Low stock sends an email alert, a buyer places the order in QuickBooks, and the order is keyed back into the ERP by hand."
+          "aria": "Systems diagram: e-commerce and purchase-order channels are keyed into the internal ERP by hand. The ERP shares one database with the WMS and MES, which drive inventory and production. Low stock sends an email alert, a buyer places the order in QuickBooks, and the order is keyed back into the ERP by hand."
         }
       }
     ],
@@ -142,11 +142,11 @@
               "nodes": [
                 {
                   "label": "库存",
-                  "desc": "外购件，单一数量"
+                  "desc": "成品库存"
                 },
                 {
                   "label": "生产",
-                  "desc": "自制件，由物料装配"
+                  "desc": "按工单排产"
                 }
               ]
             },
@@ -167,7 +167,7 @@
             "label": "手工录回 ERP",
             "label_below": true
           },
-          "aria": "系统关系图：电商和采购单两个渠道的订单由人工录入内部 ERP。ERP 与 WMS、MES 共用同一套数据库；WMS 驱动外购件库存，每项只有单一数量，MES 驱动自制件生产，由物料装配而成。库存不足时系统发出邮件提醒，由采购在 QuickBooks 下单，再手工录回 ERP。"
+          "aria": "系统关系图：电商和采购单两个渠道的订单由人工录入内部 ERP。ERP 与 WMS、MES 共用同一套数据库，分别驱动库存与生产。库存不足时系统发出邮件提醒，由采购在 QuickBooks 下单，再手工录回 ERP。"
         }
       }
     ],
