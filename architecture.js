@@ -196,7 +196,7 @@
             boxes.forEach(function (box, j) {
                 drawNode(out, box.x, y, box.w, row.nodes[j], rowH);
             });
-            rects.push({ y: y, h: rowH });
+            rects.push({ y: y, h: rowH, centers: centers });
             y += rowH;
             prevCenters = centers;
         });
@@ -204,6 +204,7 @@
         const back = flow.feedback;
         let minX = 0;
         let vbW = W;
+        let extraH = 0;
         if (back && rects[back.from] && rects[back.to]) {
             const gutterX = -24;
             const src = rects[back.from];
@@ -214,13 +215,18 @@
             vline(out, gutterX, y1, y2);
             hline(out, gutterX, colX[0] - 8, y2);
             arrowHeadRight(out, colX[0], y2);
-            if (back.label) turnedLabel(out, gutterX, (y1 + y2) / 2, back.label);
+            if (back.label && back.label_below) {
+                edgeLabel(out, src.centers[0], src.y + src.h + 20, back.label);
+                extraH = 16;
+            } else if (back.label) {
+                turnedLabel(out, gutterX, (y1 + y2) / 2, back.label);
+            }
             minX = gutterX - 20;
             vbW = W - minX;
         }
 
         const svg = svgEl('svg', {
-            class: 'arch-svg', viewBox: minX + ' 0 ' + vbW + ' ' + (y + 16), role: 'img',
+            class: 'arch-svg', viewBox: minX + ' 0 ' + vbW + ' ' + (y + 16 + extraH), role: 'img',
             preserveAspectRatio: 'xMidYMid meet'
         });
         if (flow.aria) svg.setAttribute('aria-label', flow.aria);

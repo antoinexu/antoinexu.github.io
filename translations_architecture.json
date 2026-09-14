@@ -164,7 +164,8 @@
           "feedback": {
             "from": 4,
             "to": 1,
-            "label": "手工录回 ERP"
+            "label": "手工录回 ERP",
+            "label_below": true
           },
           "aria": "系统关系图：电商和采购单两个渠道的订单由人工录入内部 ERP。ERP 与 WMS、MES 共用同一套数据库，分别驱动库存与生产。库存不足时系统发出邮件提醒，由采购在 QuickBooks 下单，再手工录回 ERP。"
         }
