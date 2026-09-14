@@ -55,6 +55,19 @@
         into.push(svgEl('text', { class: 'arch-edge-label', x: x, y: y }, label));
     }
 
+    function arrowHeadRight(into, x, y) {
+        into.push(svgEl('polygon', {
+            class: 'arch-arrow',
+            points: (x - 8) + ',' + (y - 5) + ' ' + (x - 8) + ',' + (y + 5) + ' ' + x + ',' + y
+        }));
+    }
+
+    function turnedLabel(into, x, y, label) {
+        into.push(svgEl('text', {
+            class: 'arch-edge-label', x: x, y: y, transform: 'rotate(-90 ' + x + ' ' + y + ')'
+        }, label));
+    }
+
     function drawArrow(into, x, y1, y2, label) {
         vline(into, x, y1, y2 - 7);
         arrowHead(into, x, y2);
@@ -154,6 +167,7 @@
         }
 
         const out = [];
+        const rects = [];
         let y = 16;
         let prevCenters = null;
 
@@ -182,12 +196,31 @@
             boxes.forEach(function (box, j) {
                 drawNode(out, box.x, y, box.w, row.nodes[j], rowH);
             });
+            rects.push({ y: y, h: rowH });
             y += rowH;
             prevCenters = centers;
         });
 
+        const back = flow.feedback;
+        let minX = 0;
+        let vbW = W;
+        if (back && rects[back.from] && rects[back.to]) {
+            const gutterX = -24;
+            const src = rects[back.from];
+            const dst = rects[back.to];
+            const y1 = src.y + src.h / 2;
+            const y2 = dst.y + dst.h / 2;
+            hline(out, gutterX, colX[0], y1);
+            vline(out, gutterX, y1, y2);
+            hline(out, gutterX, colX[0] - 8, y2);
+            arrowHeadRight(out, colX[0], y2);
+            if (back.label) turnedLabel(out, gutterX, (y1 + y2) / 2, back.label);
+            minX = gutterX - 20;
+            vbW = W - minX;
+        }
+
         const svg = svgEl('svg', {
-            class: 'arch-svg', viewBox: '0 0 ' + W + ' ' + (y + 16), role: 'img',
+            class: 'arch-svg', viewBox: minX + ' 0 ' + vbW + ' ' + (y + 16), role: 'img',
             preserveAspectRatio: 'xMidYMid meet'
         });
         if (flow.aria) svg.setAttribute('aria-label', flow.aria);
@@ -228,6 +261,15 @@
             wrap.appendChild(group);
             prev = row;
         });
+
+        const back = flow.feedback;
+        if (back) {
+            const target = ((flow.rows || [])[back.to] || {}).nodes;
+            const parts = [];
+            if (target && target[0]) parts.push(target[0].label);
+            if (back.label) parts.push(back.label);
+            wrap.appendChild(el('p', 'flow-step', '↑' + (parts.length ? '  ' + parts.join('  ·  ') : '')));
+        }
 
         return wrap;
     }
