@@ -59,7 +59,8 @@ def render_body(sections, page_svgs, flow_html=None, body_indent="            ")
 
     for section in sections:
         out.append('%s<div class="cs-section">' % i1)
-        out.append("%s<h2>%s</h2>" % (i2, escape(section["heading"])))
+        if section.get("heading"):
+            out.append("%s<h2>%s</h2>" % (i2, escape(section["heading"])))
 
         for para in section.get("paragraphs", []):
             out.append("%s<p>%s</p>" % (i2, escape(para)))
