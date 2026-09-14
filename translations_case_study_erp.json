@@ -24,7 +24,7 @@
       {
         "heading": "Scope",
         "list": [
-          "Order management: order entry, line items, and a status flow from open to staged to built to shipped",
+          "Order management: order entry, line items, and a status flow from open to pulled to built to shipped",
           "Inventory: finished-goods stock levels, valuation, and manual adjustments, on the same schema the warehouse subsystem writes to",
           "Materials: raw-material procurement, lot-number tracking, consumption logging, and allocation by order",
           "Builds and work orders: production fulfillment tied to order line items",
@@ -140,7 +140,7 @@
       {
         "heading": "范围",
         "list": [
-          "订单管理：订单录入、明细行，以及从开单到备货、生产、发货的状态流转",
+          "订单管理：订单录入、明细行，以及从开单到分拣、生产、发货的状态流转",
           "库存：成品库存、估值和人工调整，与仓储子系统写入的是同一套数据表",
           "物料：原材料采购、批号追踪、消耗记录和按订单分配",
           "生产工单：与订单明细行关联的生产履约",
