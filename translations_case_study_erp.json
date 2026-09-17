@@ -17,7 +17,7 @@
       {
         "heading": "Context",
         "paragraphs": [
-          "The company already had an internal system, but it was slow: common lookups and reports took several seconds or worse. It also covered only part of the workflow, so the gaps were filled with spreadsheets and manual entry, and nothing reliably recorded who changed what.",
+          "The company already had an internal system, a VB.NET WinForms desktop application, but it was slow: common lookups and reports took several seconds or worse. It also covered only part of the workflow, so the gaps were filled with spreadsheets and manual entry, and nothing reliably recorded who changed what. It was also a desktop client installed per workstation, so every fix had to be packaged and redistributed, which kept changes rare. Being a desktop client, it also had no HTTP surface for the storefront or any other platform to integrate against.",
           "As the sole developer, I designed and built the replacement: more complete, and faster to query."
         ]
       },
@@ -133,7 +133,7 @@
       {
         "heading": "背景",
         "paragraphs": [
-          "公司原本有一套内部系统，但很慢：常用的查询和报表动辄要等上好几秒。它也只覆盖了一部分流程，剩下的缺口靠电子表格和人工录入来补，谁改过什么也没有可靠的记录。",
+          "公司原本有一套内部系统，是用 VB.NET WinForms 写的桌面程序，但很慢：常用的查询和报表动辄要等上好几秒。它也只覆盖了一部分流程，剩下的缺口靠电子表格和人工录入来补，谁改过什么也没有可靠的记录。它还是按台安装的桌面客户端，每修一次都要重新打包分发到每台机器，改动因此很少发生。作为桌面客户端，它也没有任何 HTTP 接口，店面或其他平台无从与它对接。",
           "作为唯一开发者，我设计并构建了替代它的平台：覆盖更全，查询更快。"
         ]
       },

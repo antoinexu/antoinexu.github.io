@@ -16,7 +16,7 @@
       {
         "heading": "Context",
         "paragraphs": [
-          "The online store ran on a years-old release of OpenCart, two major versions behind current, with no supported upgrade path. Custom modules and theme changes had accumulated on top of the core over several years, no documentation existed, and the original developers had left, so the behavior of much of the custom functionality was effectively undocumented.",
+          "The online store ran on a years-old release of OpenCart, two major versions behind current, with no supported upgrade path. Custom modules and theme changes had accumulated on top of the core over several years with no documentation, so the behavior of much of the custom functionality was effectively unknown.",
           "With no reliable automated path across that version gap, the project combined reverse engineering, data migration, and the rebuilding of custom functionality in roughly equal measure."
         ],
         "architecture": {
@@ -62,7 +62,7 @@
         "subsections": [
           {
             "title": "1. Reverse engineering features with no documentation",
-            "body": "The store carried years of undocumented customization, and the original developers were no longer available. I read the legacy controllers, models, and template overrides to reconstruct what each feature actually did before deciding how to rebuild it. This ensured that behavior the business depended on was not inadvertently lost."
+            "body": "The store carried years of undocumented customization. I read the legacy controllers, models, and template overrides to reconstruct what each feature actually did before deciding how to rebuild it. This ensured that behavior the business depended on was not inadvertently lost."
           },
           {
             "title": "2. Adopt or build, without editing the core",
@@ -110,7 +110,7 @@
       {
         "heading": "背景",
         "paragraphs": [
-          "在线商城运行在一个数年前的 OpenCart 版本上，落后当前两个大版本，且没有受支持的升级路径。多年间，自定义模块和主题改动持续叠加在核心之上，没有任何文档，最初的开发者也均已离开，因此大量自定义功能的具体实现已无文档可循。",
+          "在线商城运行在一个数年前的 OpenCart 版本上，落后当前两个大版本，且没有受支持的升级路径。多年间，自定义模块和主题改动持续叠加在核心之上，没有任何文档，大量自定义功能的具体实现无从查起。",
           "跨大版本又无可靠的自动化路径，这项工作主要由逆向分析、数据迁移和重建自定义功能三部分大致均衡地构成。"
         ],
         "architecture": {
@@ -156,7 +156,7 @@
         "subsections": [
           {
             "title": "1. 在无文档情况下逆向功能",
-            "body": "商城积累了多年的自定义改动，没有文档，最初的开发者也均已离开。我通过阅读旧的控制器、模型和模板覆盖，先还原每个功能的实际行为，再决定如何重建，以确保不会遗漏业务实际依赖的功能。"
+            "body": "商城积累了多年的自定义改动，没有任何文档。我通过阅读旧的控制器、模型和模板覆盖，先还原每个功能的实际行为，再决定如何重建，以确保不会遗漏业务实际依赖的功能。"
           },
           {
             "title": "2. 采用或自建，但均不改动核心",
