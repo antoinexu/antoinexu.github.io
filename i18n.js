@@ -241,6 +241,7 @@ function setDocumentLanguage(lang, strings) {
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
     translateChrome(lang);
     applyPageMeta(strings);
+    applyImageAlt(lang);
     applyCanonicalLanguage(lang);
     syncUrlLanguage(lang);
 }
@@ -283,6 +284,14 @@ function applyPageMeta(strings) {
     }
 }
 
+function applyImageAlt(lang) {
+    const t = chromeStrings[lang] || chromeStrings.en;
+    if (!t.image_alt) return;
+
+    setMetaContent('meta[property="og:image:alt"]', t.image_alt);
+    setMetaContent('meta[name="twitter:image:alt"]', t.image_alt);
+}
+
 function setMetaContent(selector, value) {
     const el = document.querySelector(selector);
     if (el) el.setAttribute('content', value);
@@ -306,7 +315,8 @@ const chromeStrings = {
         email_label: 'Email Bowei Xu',
         github_label: 'Bowei Xu on GitHub',
         linkedin_label: 'Bowei Xu on LinkedIn',
-        rights: 'All rights reserved.'
+        rights: 'All rights reserved.',
+        image_alt: 'Bowei Xu, Business Systems and Backend Engineer, next to a three-tier architecture diagram'
     },
     zh: {
         skip_link: '跳到主内容',
@@ -325,7 +335,8 @@ const chromeStrings = {
         email_label: '给徐博伟发邮件',
         github_label: '徐博伟的 GitHub',
         linkedin_label: '徐博伟的 LinkedIn',
-        rights: '保留所有权利。'
+        rights: '保留所有权利。',
+        image_alt: '徐博伟，业务系统与后端工程师，旁边是一张三层系统架构图'
     }
 };
 
