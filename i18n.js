@@ -74,6 +74,41 @@ function setAlt(target, value, label) {
     return true;
 }
 
+function i18nOriginalAttr(target, attribute) {
+    const el = i18nResolve(target);
+    if (!el) return '';
+
+    let record = i18nOriginals.get(el);
+    if (!record) {
+        record = {};
+        i18nOriginals.set(el, record);
+    }
+    const key = '@' + attribute;
+    if (!(key in record)) {
+        record[key] = el.getAttribute(attribute) || '';
+    }
+    return record[key];
+}
+
+function setLabel(target, value, label) {
+    const el = i18nResolve(target);
+    const name = i18nLabel(target, label);
+    if (!el) {
+        i18nWarn('no element for "' + name + '"');
+        return false;
+    }
+
+    const original = i18nOriginalAttr(el, 'aria-label');
+    if (typeof value !== 'string' || value === '') {
+        i18nWarn('missing label for "' + name + '", keeping the original');
+        if (original) el.setAttribute('aria-label', original);
+        return false;
+    }
+
+    el.setAttribute('aria-label', value);
+    return true;
+}
+
 function setPills(target, values, label) {
     const el = i18nResolve(target);
     const name = i18nLabel(target, label);
@@ -237,12 +272,20 @@ function applyPageMeta(strings) {
 
     if (strings.page_title) {
         document.title = strings.page_title;
+        setMetaContent('meta[property="og:title"]', strings.page_title);
+        setMetaContent('meta[name="twitter:title"]', strings.page_title);
     }
 
-    const description = document.querySelector('meta[name="description"]');
-    if (description && strings.page_description) {
-        description.setAttribute('content', strings.page_description);
+    if (strings.page_description) {
+        setMetaContent('meta[name="description"]', strings.page_description);
+        setMetaContent('meta[property="og:description"]', strings.page_description);
+        setMetaContent('meta[name="twitter:description"]', strings.page_description);
     }
+}
+
+function setMetaContent(selector, value) {
+    const el = document.querySelector(selector);
+    if (el) el.setAttribute('content', value);
 }
 
 const chromeStrings = {
@@ -256,6 +299,7 @@ const chromeStrings = {
         experiences: 'Experience',
         projects: 'Projects',
         skills: 'Skills',
+        architecture: 'Architecture',
         about: 'About',
         contact: 'Contact',
         connect_heading: 'Connect',
@@ -274,6 +318,7 @@ const chromeStrings = {
         experiences: '经历',
         projects: '项目',
         skills: '技能',
+        architecture: '系统架构',
         about: '关于',
         contact: '联系',
         connect_heading: '联系方式',

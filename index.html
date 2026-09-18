@@ -171,7 +171,7 @@
              </div>
 
              <nav class="home-cases" aria-labelledby="cases-heading">
-                 <h2 id="cases-heading">Selected case studies</h2>
+                 <h2 id="cases-heading">Selected work</h2>
                  <ul>
                      <li><a href="/architecture.html" id="case-link-architecture">Systems Architecture: how the systems connect</a></li>
                      <li><a href="/case-study-erp.html" id="case-link-erp">Internal Operations Platform (ERP / WMS / MES)</a></li>
@@ -224,6 +224,8 @@
             setText('home-bio', t.bio);
             setText('download-en-cv', t.download_cv);
             setText('download-zh-cv', t.download_zh_cv);
+
+            setLabel('.home-highlights', t.highlights_label, 'highlights label');
 
             const metrics = Array.isArray(t.metrics) ? t.metrics : [];
             [1, 2, 3].forEach(n => {
