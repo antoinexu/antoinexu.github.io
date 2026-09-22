@@ -16,7 +16,7 @@
       {
         "heading": "Context",
         "paragraphs": [
-          "The online store ran on a years-old release of OpenCart, two major versions behind current, with no supported upgrade path. Custom modules and theme changes had accumulated on top of the core over several years with no documentation, so the behavior of much of the custom functionality was effectively unknown.",
+          "The online store ran on OpenCart 1.5, two major versions behind the 3.x line it needed to reach, with no supported upgrade path. Custom modules and theme changes had accumulated on top of the core over several years with no documentation, so the behavior of much of the custom functionality was effectively unknown.",
           "With no reliable automated path across that version gap, the project combined reverse engineering, data migration, and the rebuilding of custom functionality in roughly equal measure."
         ],
         "architecture": {
@@ -46,7 +46,7 @@
       {
         "heading": "Approach",
         "paragraphs": [
-          "The two versions differ in database schema, templating, and module systems, so a direct in-place upgrade was not viable. I approached it as a rebuild on the new version paired with a controlled data migration, developed and rehearsed on a staging copy before any production cutover."
+          "The gap between the two versions is a set of breaking changes rather than an increment. The template engine moves from native PHP files to Twig, the extension system from vQmod to OCMod, the directory layout is reorganized, and a number of database tables are restructured. A direct in-place upgrade was not viable, so I approached it as a rebuild on the new version paired with a controlled data migration, developed and rehearsed on a staging copy before any production cutover."
         ],
         "list": [
           "Set up a clean target-version installation on staging",
@@ -73,22 +73,23 @@
             "body": "The two schemas differ in table layout and relationships, so I wrote SQL scripts to clean, map, and rebuild the data rather than relying on an automated importer. Relational data such as product accessories, SEO URLs, and zone-to-geo-zone mappings had to be remapped table by table to fit the new structure."
           },
           {
-            "title": "4. Staging-first, validated cutover",
-            "body": "The entire migration was built and rehearsed on a staging copy of the live store. I reconciled migrated record counts and spot-checked data against the source before switching over, so the production cutover was completed with zero data loss and no business downtime."
+            "title": "4. Reconciling the migration before cutover",
+            "body": "The entire migration was built and rehearsed on a staging copy of the live store, and nothing moved to production until the copy reconciled against the source three ways: row counts table by table, summed order totals, and manual spot-checks on sampled records. The catalog is what made the third pass necessary. Products carry multi-dimension variants with their own price, SKU, weight, and stock per combination, and part of the catalog sells through a quote-only path rather than through checkout, so a mismatch that counts and totals both clear would surface later as a wrong price or an unsellable product. Order IDs were carried across unchanged rather than renumbered, so the order references customers and the support team already held stayed valid. The production cutover was completed with zero data loss and no business downtime."
           },
           {
-            "title": "5. Frontend and backend rebuild",
-            "body": "The storefront theme was rebuilt on the new template engine, with mobile responsiveness improved in the process. On the admin side, customizations and third-party module compatibility were re-implemented and resolved so the team's daily workflows continued without interruption."
+            "title": "5. Rebuilding the templates by hand",
+            "body": "The old templates are native PHP and the new ones are Twig, and the data passed into them changed shape at the same time. A conversion script would have left every file to be corrected by hand anyway, and the number of customized templates sat below the point where writing one would pay for itself, so I rebuilt them individually. Each one meant working out what the customization depended on in the old engine before reimplementing it on the new one. Mobile responsiveness was improved in the process. On the admin side, customizations and third-party module compatibility were re-implemented so the team's daily workflows continued without interruption."
           }
         ]
       },
       {
         "heading": "Results",
         "list": [
-          "Upgraded the store from 1.5.6.4 to 3.0.3.8 across 2,000+ products and 70,000+ historical orders, with zero data loss and no business interruption",
+          "Upgraded the store from 1.5.6.4 to 3.0.3.8 across 2,000+ products and 70,000+ historical orders, with zero data loss and order volume holding steady through the rebuild and the cutover",
+          "Carried order IDs across unchanged rather than renumbering, so the order references customers and the support team already held stayed valid after the cutover",
+          "Kept two purchase paths running on one catalog, standard checkout and a quote-only path, alongside a multi-dimension variant model with price, SKU, weight, and stock per combination",
           "Reconstructed and re-implemented years of undocumented custom functionality by reading the legacy code",
-          "Migrated customizations onto the modification system, so the store no longer depends on edited core files and can be updated more safely",
-          "Improved mobile responsiveness and resolved third-party module compatibility issues"
+          "Migrated customizations onto the modification system, so the store no longer depends on edited core files and can be updated more safely"
         ]
       }
     ]
@@ -110,7 +111,7 @@
       {
         "heading": "背景",
         "paragraphs": [
-          "在线商城运行在一个数年前的 OpenCart 版本上，落后当前两个大版本，且没有受支持的升级路径。多年间，自定义模块和主题改动持续叠加在核心之上，没有任何文档，大量自定义功能的具体实现无从查起。",
+          "在线商城运行在 OpenCart 1.5 上，落后目标的 3.x 两个大版本，且没有受支持的升级路径。多年间，自定义模块和主题改动持续叠加在核心之上，没有任何文档，大量自定义功能的具体实现无从查起。",
           "跨大版本又无可靠的自动化路径，这项工作主要由逆向分析、数据迁移和重建自定义功能三部分大致均衡地构成。"
         ],
         "architecture": {
@@ -140,7 +141,7 @@
       {
         "heading": "迁移思路",
         "paragraphs": [
-          "两个版本在数据库结构、模板体系和模块机制上均不相同，原地直接升级并不可行。我将其作为在新版本上的重建来处理，并配以一套受控的数据迁移，全部先在 staging 副本上搭建与演练，确认无误后再切至生产。"
+          "两个版本之间是一组破坏性变更，而不是一次增量升级。模板引擎从原生 PHP 文件换成 Twig，扩展机制从 vQmod 换成 OCMod，目录结构重新组织，若干数据库表的结构也发生了变化。原地直接升级并不可行，因此我将其作为在新版本上的重建来处理，并配以一套受控的数据迁移，全部先在 staging 副本上搭建与演练，确认无误后再切至生产。"
         ],
         "list": [
           "在 staging 上搭建一个干净的目标版本环境",
@@ -167,22 +168,23 @@
             "body": "新旧两套库在表结构和关联关系上均不相同，因此我编写 SQL 脚本来清洗、映射并重建数据，而非依赖自动导入工具。商品配件、SEO URL、区域到地理区域映射等关联数据，需逐表重新映射，才能适配新结构。"
           },
           {
-            "title": "4. 以 staging 为先，经校验后再切换",
-            "body": "整个迁移都在生产商城的 staging 副本上搭建与演练。切换前，我将迁移后的记录数与源数据对账并抽查，因此切换至生产时实现了零数据丢失、业务零停机。"
+            "title": "4. 切换前的数据对账",
+            "body": "整个迁移都在生产商城的 staging 副本上搭建与演练，副本必须通过三道对账才允许切到生产：逐表核对记录总数、汇总订单金额、以及对抽样记录做人工核对。第三道是目录逼出来的。商品带多维度规格，每个规格组合有各自的价格、SKU、重量和库存，目录中还有一部分商品走的是仅报价路径而非标准结账，因此前两道都能放行的错位，会在日后表现为价格错误或商品不可售。订单号原样保留，没有重新编号，因此客户和客服手上已有的订单号在切换后依然有效。切换至生产时实现了零数据丢失、业务零停机。"
           },
           {
-            "title": "5. 前端与后端重建",
-            "body": "店面主题在新的模板引擎上重建，并同步提升了移动端适配。后台方面，自定义功能与第三方模块兼容性均经过重做和修复，使团队的日常流程得以不中断地继续运转。"
+            "title": "5. 手工逐个重建模板",
+            "body": "旧模板是原生 PHP，新模板是 Twig，与此同时传入模板的数据结构也变了。写转换脚本，转出来的东西仍然要逐个手工修正，而被定制过的模板数量还够不上写转换器的划算阈值，所以我选择逐个重建。每一个都要先弄清这处定制在旧引擎里依赖什么，再在新引擎上重新实现一遍。移动端适配在这个过程中一并提升。后台方面，自定义功能与第三方模块兼容性同样经过重做，使团队的日常流程不中断地继续运转。"
           }
         ]
       },
       {
         "heading": "成果",
         "list": [
-          "将商城从 1.5.6.4 升级至 3.0.3.8，覆盖 2,000+ 商品和 70,000+ 历史订单，实现零数据丢失、业务不中断",
+          "将商城从 1.5.6.4 升级至 3.0.3.8，覆盖 2,000+ 商品和 70,000+ 历史订单，实现零数据丢失，订单量在整个重建与切换期间保持平稳",
+          "订单号原样保留而非重新编号，客户和客服手上已有的订单号在切换后依然有效",
+          "在同一套目录上保住两条下单路径（标准结账与仅报价），以及每个组合独立价格、SKU、重量和库存的多维度规格模型",
           "通过阅读旧代码，还原并重做了多年积累的、无文档的自定义功能",
-          "将自定义改动迁移至修改机制之上，商城不再依赖被修改的核心文件，今后可更安全地升级",
-          "提升了移动端适配，解决了多个第三方模块的兼容问题"
+          "将自定义改动迁移至修改机制之上，商城不再依赖被修改的核心文件，今后可更安全地升级"
         ]
       }
     ]
