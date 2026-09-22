@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#1d2329">
-    <meta name="description" content="Software projects by Bowei Xu: an internal operations platform (ERP/WMS/MES), its warehouse subsystem, and an OpenCart 1.5 to 3.0 upgrade.">
+    <meta name="description" content="Software projects by Bowei Xu: an internal operations platform (ERP/WMS/MES), its warehouse subsystem, and two e-commerce platform migrations.">
     <title>ERP, Inventory &amp; E-Commerce Projects - Bowei Xu</title>
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Bowei Xu">
     <meta property="og:title" content="ERP, Inventory &amp; E-Commerce Projects - Bowei Xu">
-    <meta property="og:description" content="Software projects by Bowei Xu: an internal operations platform (ERP/WMS/MES), its warehouse subsystem, and an OpenCart 1.5 to 3.0 upgrade.">
+    <meta property="og:description" content="Software projects by Bowei Xu: an internal operations platform (ERP/WMS/MES), its warehouse subsystem, and two e-commerce platform migrations.">
     <meta property="og:url" content="https://antoinexu.github.io/project.html">
     <meta property="og:image" content="https://antoinexu.github.io/pics/og-card.png">
     <meta property="og:image:alt" content="Bowei Xu, Business Systems and Backend Engineer, next to a three-tier architecture diagram">
@@ -19,7 +19,7 @@
     <meta property="og:locale:alternate" content="zh_CN">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ERP, Inventory &amp; E-Commerce Projects - Bowei Xu">
-    <meta name="twitter:description" content="Software projects by Bowei Xu: an internal operations platform (ERP/WMS/MES), its warehouse subsystem, and an OpenCart 1.5 to 3.0 upgrade.">
+    <meta name="twitter:description" content="Software projects by Bowei Xu: an internal operations platform (ERP/WMS/MES), its warehouse subsystem, and two e-commerce platform migrations.">
     <meta name="twitter:image" content="https://antoinexu.github.io/pics/og-card.png">
     <meta name="twitter:image:alt" content="Bowei Xu, Business Systems and Backend Engineer, next to a three-tier architecture diagram">
     <link rel="canonical" href="https://antoinexu.github.io/project.html">
@@ -40,7 +40,7 @@
                 "@id": "https://antoinexu.github.io/project.html#webpage",
                 "url": "https://antoinexu.github.io/project.html",
                 "name": "ERP, Inventory & E-Commerce Projects - Bowei Xu",
-                "description": "Software projects by Bowei Xu: an internal operations platform (ERP/WMS/MES), its warehouse subsystem, and an OpenCart 1.5 to 3.0 upgrade.",
+                "description": "Software projects by Bowei Xu: an internal operations platform (ERP/WMS/MES), its warehouse subsystem, and two e-commerce platform migrations.",
                 "isPartOf": {
                     "@id": "https://antoinexu.github.io/#website"
                 },
@@ -99,6 +99,18 @@
     <div class="projects-content">
         <h1 id="projects-title">Projects</h1>
         <div class="projects-grid">
+            <div class="project-item">
+                <h2 id="project-4-title">Shopify Migration - Fuel Cell Store</h2>
+                <span id="project-4-duration">Sep 2026 - Present</span>
+                <div class="project-tags" data-project-tags="4">
+                    <span>Shopify</span><span>OpenCart</span><span>AI Reverse Engineering</span><span>In Progress</span>
+                </div>
+                <p id="project-4-desc1">In progress. Migrating the company's storefront from OpenCart 3.0.3.8 to Shopify, covering the 2,000+ SKU catalog and the order history carried forward from the previous platform upgrade.</p>
+                <p id="project-4-desc2">Working from an export of the live source code and database rather than from documentation. I use AI-assisted reverse engineering to reconstruct what each custom module and template override actually does, then turn that reading into a migration plan before writing any Shopify code.</p>
+                <p id="project-4-desc3">Rebuilding the custom functionality that has no direct Shopify equivalent, deciding feature by feature between an app, a native capability, and a custom build.</p>
+                <p id="project-4-desc4">Rebuilding the storefront theme on Liquid and mapping the legacy product and category URLs to their Shopify equivalents so the store keeps its search rankings.</p>
+            </div>
+
             <div class="project-item">
                 <h2 id="project-3-title">Warehouse &amp; Inventory Subsystem (WMS) - Fuel Cell Store</h2>
                 <span id="project-3-duration">Oct 2024 - Present</span>
@@ -180,7 +192,7 @@
         function applyStrings(t) {
             setText('projects-title', t.projects_title);
 
-            [1, 2, 3].forEach(n => {
+            [1, 2, 3, 4].forEach(n => {
                 setText(`project-${n}-title`, t[`project_${n}_title`]);
                 setPills(`[data-project-tags="${n}"]`, t[`project_${n}_tags`], `project ${n} tags`);
 
