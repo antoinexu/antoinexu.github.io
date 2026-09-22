@@ -8,7 +8,7 @@
     "about": "About",
     "contact": "Contact",
     "page_title": "Case Study: OpenCart 1.5 to 3.0 Migration - Bowei Xu",
-    "page_description": "How I migrated a live store from OpenCart 1.5.6.4 to 3.0.3.8: 2,000+ products and 70,000+ orders with zero data loss and no business interruption.",
+    "page_description": "How I migrated a live store from OpenCart 1.5.6.4 to 3.0.3.8: 2,000+ products and 70,000+ orders, reconciled table by table, with no business interruption.",
     "back": "Back to Projects",
     "title": "E-Commerce Platform Upgrade (OpenCart 1.5 to 3.0)",
     "disclaimer": "A sanitized write-up of the e-commerce platform upgrade I led as the sole developer at Fuel Cell Store. Product details and proprietary code are omitted. It describes the approach and engineering decisions only.",
@@ -74,7 +74,7 @@
           },
           {
             "title": "4. Reconciling the migration before cutover",
-            "body": "The entire migration was built and rehearsed on a staging copy of the live store, and nothing moved to production until the copy reconciled against the source three ways: row counts table by table, summed order totals, and manual spot-checks on sampled records. The catalog is what made the third pass necessary. Products carry multi-dimension variants with their own price, SKU, weight, and stock per combination, and part of the catalog sells through a quote-only path rather than through checkout, so a mismatch that counts and totals both clear would surface later as a wrong price or an unsellable product. Order IDs were carried across unchanged rather than renumbered, so the order references customers and the support team already held stayed valid. The production cutover was completed with zero data loss and no business downtime."
+            "body": "The entire migration was built and rehearsed on a staging copy of the live store, and nothing moved to production until the copy reconciled against the source three ways: row counts table by table, summed order totals, and manual spot-checks on sampled records. The catalog is what made the third pass necessary. Products carry multi-dimension variants with their own price, SKU, weight, and stock per combination, and part of the catalog sells through a quote-only path rather than through checkout, so a mismatch that counts and totals both clear would surface later as a wrong price or an unsellable product. Order IDs were carried across unchanged rather than renumbered, so the order references customers and the support team already held stayed valid. The production cutover was completed with no business downtime."
           },
           {
             "title": "5. Rebuilding the templates by hand",
@@ -85,9 +85,9 @@
       {
         "heading": "Results",
         "list": [
-          "Upgraded the store from 1.5.6.4 to 3.0.3.8 across 2,000+ products and 70,000+ historical orders, with zero data loss and order volume holding steady through the rebuild and the cutover",
+          "Upgraded the store from 1.5.6.4 to 3.0.3.8 across 2,000+ products and 70,000+ historical orders, reconciled table by table, with order volume holding steady through the rebuild and the cutover",
           "Carried order IDs across unchanged rather than renumbering, so the order references customers and the support team already held stayed valid after the cutover",
-          "Kept two purchase paths running on one catalog, standard checkout and a quote-only path, alongside a multi-dimension variant model with price, SKU, weight, and stock per combination",
+          "Rewrote the store's custom features on 3.0 instead of porting the old code, preserving existing behavior such as standard checkout, the quote-only flow, and per-combination variant pricing and stock, while fixing legacy bugs and adding new functionality",
           "Reconstructed and re-implemented years of undocumented custom functionality by reading the legacy code",
           "Migrated customizations onto the modification system, so the store no longer depends on edited core files and can be updated more safely"
         ]
@@ -103,7 +103,7 @@
     "about": "关于",
     "contact": "联系",
     "page_title": "案例研究：OpenCart 1.5 到 3.0 迁移 - 徐博伟",
-    "page_description": "我如何将线上商店从 OpenCart 1.5.6.4 迁移到 3.0.3.8：2000 多个商品、7 万多条历史订单，零数据丢失且业务不中断。",
+    "page_description": "我如何将线上商店从 OpenCart 1.5.6.4 迁移到 3.0.3.8：2000 多个商品、7 万多条历史订单，逐表对账，业务不中断。",
     "back": "返回项目",
     "title": "电商平台升级（OpenCart 1.5 到 3.0）",
     "disclaimer": "这是一份脱敏的案例分析。我作为唯一开发者，在 Fuel Cell Store 主导了这次电商平台升级。产品细节和专有代码均已省略，此处仅描述思路与工程决策。",
@@ -169,7 +169,7 @@
           },
           {
             "title": "4. 切换前的数据对账",
-            "body": "整个迁移都在生产商城的 staging 副本上搭建与演练，副本必须通过三道对账才允许切到生产：逐表核对记录总数、汇总订单金额、以及对抽样记录做人工核对。第三道是目录逼出来的。商品带多维度规格，每个规格组合有各自的价格、SKU、重量和库存，目录中还有一部分商品走的是仅报价路径而非标准结账，因此前两道都能放行的错位，会在日后表现为价格错误或商品不可售。订单号原样保留，没有重新编号，因此客户和客服手上已有的订单号在切换后依然有效。切换至生产时实现了零数据丢失、业务零停机。"
+            "body": "整个迁移都在生产商城的 staging 副本上搭建与演练，副本必须通过三道对账才允许切到生产：逐表核对记录总数、汇总订单金额、以及对抽样记录做人工核对。第三道是目录逼出来的。商品带多维度规格，每个规格组合有各自的价格、SKU、重量和库存，目录中还有一部分商品走的是仅报价路径而非标准结账，因此前两道都能放行的错位，会在日后表现为价格错误或商品不可售。订单号原样保留，没有重新编号，因此客户和客服手上已有的订单号在切换后依然有效。切换至生产时业务零停机。"
           },
           {
             "title": "5. 手工逐个重建模板",
@@ -180,9 +180,9 @@
       {
         "heading": "成果",
         "list": [
-          "将商城从 1.5.6.4 升级至 3.0.3.8，覆盖 2,000+ 商品和 70,000+ 历史订单，实现零数据丢失，订单量在整个重建与切换期间保持平稳",
+          "将商城从 1.5.6.4 升级至 3.0.3.8，覆盖 2,000+ 商品和 70,000+ 历史订单，逐表对账，订单量在整个重建与切换期间保持平稳",
           "订单号原样保留而非重新编号，客户和客服手上已有的订单号在切换后依然有效",
-          "在同一套目录上保住两条下单路径（标准结账与仅报价），以及每个组合独立价格、SKU、重量和库存的多维度规格模型",
+          "在 3.0 上重写商城的定制功能，而非移植旧代码，尽量保留原有行为（标准结账、仅报价流程、按规格组合设定的价格和库存），同时修复遗留 bug 并新增功能",
           "通过阅读旧代码，还原并重做了多年积累的、无文档的自定义功能",
           "将自定义改动迁移至修改机制之上，商城不再依赖被修改的核心文件，今后可更安全地升级"
         ]

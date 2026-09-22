@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#1d2329">
-    <meta name="description" content="How I migrated a live store from OpenCart 1.5.6.4 to 3.0.3.8: 2,000+ products and 70,000+ orders with zero data loss and no business interruption.">
+    <meta name="description" content="How I migrated a live store from OpenCart 1.5.6.4 to 3.0.3.8: 2,000+ products and 70,000+ orders, reconciled table by table, with no business interruption.">
     <title>Case Study: OpenCart 1.5 to 3.0 Migration - Bowei Xu</title>
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Bowei Xu">
     <meta property="og:title" content="Case Study: OpenCart 1.5 to 3.0 Migration - Bowei Xu">
-    <meta property="og:description" content="How I migrated a live store from OpenCart 1.5.6.4 to 3.0.3.8: 2,000+ products and 70,000+ orders with zero data loss and no business interruption.">
+    <meta property="og:description" content="How I migrated a live store from OpenCart 1.5.6.4 to 3.0.3.8: 2,000+ products and 70,000+ orders, reconciled table by table, with no business interruption.">
     <meta property="og:url" content="https://antoinexu.github.io/case-study-opencart.html">
     <meta property="og:image" content="https://antoinexu.github.io/pics/og-card.png">
     <meta property="og:image:alt" content="Bowei Xu, Business Systems and Backend Engineer, next to a three-tier architecture diagram">
@@ -19,7 +19,7 @@
     <meta property="og:locale:alternate" content="zh_CN">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Case Study: OpenCart 1.5 to 3.0 Migration - Bowei Xu">
-    <meta name="twitter:description" content="How I migrated a live store from OpenCart 1.5.6.4 to 3.0.3.8: 2,000+ products and 70,000+ orders with zero data loss and no business interruption.">
+    <meta name="twitter:description" content="How I migrated a live store from OpenCart 1.5.6.4 to 3.0.3.8: 2,000+ products and 70,000+ orders, reconciled table by table, with no business interruption.">
     <meta name="twitter:image" content="https://antoinexu.github.io/pics/og-card.png">
     <meta name="twitter:image:alt" content="Bowei Xu, Business Systems and Backend Engineer, next to a three-tier architecture diagram">
     <link rel="canonical" href="https://antoinexu.github.io/case-study-opencart.html">
@@ -39,7 +39,7 @@
                 "@type": "Article",
                 "@id": "https://antoinexu.github.io/case-study-opencart.html#article",
                 "headline": "E-Commerce Platform Upgrade (OpenCart 1.5 to 3.0)",
-                "description": "How I migrated a live store from OpenCart 1.5.6.4 to 3.0.3.8: 2,000+ products and 70,000+ orders with zero data loss and no business interruption.",
+                "description": "How I migrated a live store from OpenCart 1.5.6.4 to 3.0.3.8: 2,000+ products and 70,000+ orders, reconciled table by table, with no business interruption.",
                 "url": "https://antoinexu.github.io/case-study-opencart.html",
                 "author": {
                     "@id": "https://antoinexu.github.io/#person"
@@ -138,16 +138,16 @@
                 <h3>3. Cross-version data migration in hand-written SQL</h3>
                 <p>The two schemas differ in table layout and relationships, so I wrote SQL scripts to clean, map, and rebuild the data rather than relying on an automated importer. Relational data such as product accessories, SEO URLs, and zone-to-geo-zone mappings had to be remapped table by table to fit the new structure.</p>
                 <h3>4. Reconciling the migration before cutover</h3>
-                <p>The entire migration was built and rehearsed on a staging copy of the live store, and nothing moved to production until the copy reconciled against the source three ways: row counts table by table, summed order totals, and manual spot-checks on sampled records. The catalog is what made the third pass necessary. Products carry multi-dimension variants with their own price, SKU, weight, and stock per combination, and part of the catalog sells through a quote-only path rather than through checkout, so a mismatch that counts and totals both clear would surface later as a wrong price or an unsellable product. Order IDs were carried across unchanged rather than renumbered, so the order references customers and the support team already held stayed valid. The production cutover was completed with zero data loss and no business downtime.</p>
+                <p>The entire migration was built and rehearsed on a staging copy of the live store, and nothing moved to production until the copy reconciled against the source three ways: row counts table by table, summed order totals, and manual spot-checks on sampled records. The catalog is what made the third pass necessary. Products carry multi-dimension variants with their own price, SKU, weight, and stock per combination, and part of the catalog sells through a quote-only path rather than through checkout, so a mismatch that counts and totals both clear would surface later as a wrong price or an unsellable product. Order IDs were carried across unchanged rather than renumbered, so the order references customers and the support team already held stayed valid. The production cutover was completed with no business downtime.</p>
                 <h3>5. Rebuilding the templates by hand</h3>
                 <p>The old templates are native PHP and the new ones are Twig, and the data passed into them changed shape at the same time. A conversion script would have left every file to be corrected by hand anyway, and the number of customized templates sat below the point where writing one would pay for itself, so I rebuilt them individually. Each one meant working out what the customization depended on in the old engine before reimplementing it on the new one. Mobile responsiveness was improved in the process. On the admin side, customizations and third-party module compatibility were re-implemented so the team's daily workflows continued without interruption.</p>
             </div>
             <div class="cs-section">
                 <h2>Results</h2>
                 <ul>
-                    <li>Upgraded the store from 1.5.6.4 to 3.0.3.8 across 2,000+ products and 70,000+ historical orders, with zero data loss and order volume holding steady through the rebuild and the cutover</li>
+                    <li>Upgraded the store from 1.5.6.4 to 3.0.3.8 across 2,000+ products and 70,000+ historical orders, reconciled table by table, with order volume holding steady through the rebuild and the cutover</li>
                     <li>Carried order IDs across unchanged rather than renumbering, so the order references customers and the support team already held stayed valid after the cutover</li>
-                    <li>Kept two purchase paths running on one catalog, standard checkout and a quote-only path, alongside a multi-dimension variant model with price, SKU, weight, and stock per combination</li>
+                    <li>Rewrote the store's custom features on 3.0 instead of porting the old code, preserving existing behavior such as standard checkout, the quote-only flow, and per-combination variant pricing and stock, while fixing legacy bugs and adding new functionality</li>
                     <li>Reconstructed and re-implemented years of undocumented custom functionality by reading the legacy code</li>
                     <li>Migrated customizations onto the modification system, so the store no longer depends on edited core files and can be updated more safely</li>
                 </ul>

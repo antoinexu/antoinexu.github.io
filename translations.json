@@ -26,7 +26,7 @@
       },
       {
         "value": "70K+",
-        "label": "orders migrated, zero data loss"
+        "label": "orders migrated and reconciled"
       }
     ],
     "download_cv": "Download CV",
@@ -64,7 +64,7 @@
       },
       {
         "value": "7万+",
-        "label": "历史订单迁移，零数据丢失"
+        "label": "历史订单迁移并完成对账"
       }
     ],
     "download_cv": "下载英文简历",
