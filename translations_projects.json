@@ -37,7 +37,7 @@
     "project_4_duration": "Sep 2026 - Present",
     "project_4_tags": ["Shopify", "OpenCart", "AI Reverse Engineering", "In Progress"],
     "project_4_desc1": "In progress. Migrating the company's storefront from OpenCart 3.0.3.8 to Shopify, covering the 2,000+ SKU catalog and the order history carried forward from the previous platform upgrade.",
-    "project_4_desc2": "Working from an export of the live source code and database rather than from documentation. I use AI-assisted reverse engineering to reconstruct what each custom module and template override actually does, then turn that reading into a migration plan before writing any Shopify code.",
+    "project_4_desc2": "Working from the existing system itself rather than from documentation. I use AI-assisted reverse engineering to reconstruct what each custom module and template override actually does, then turn that reading into a migration plan before writing any Shopify code.",
     "project_4_desc3": "Rebuilding the custom functionality that has no direct Shopify equivalent, deciding feature by feature between an app, a native capability, and a custom build.",
     "project_4_desc4": "Rebuilding the storefront theme on Liquid and mapping the legacy product and category URLs to their Shopify equivalents so the store keeps its search rankings."
   },
@@ -79,7 +79,7 @@
     "project_4_duration": "2026年9月 - 至今",
     "project_4_tags": ["Shopify", "OpenCart", "AI 逆向工程", "进行中"],
     "project_4_desc1": "进行中。正在将公司店铺从 OpenCart 3.0.3.8 迁移到 Shopify，覆盖 2,000+ SKU 商品目录和从上一次平台升级沿用至今的订单历史。",
-    "project_4_desc2": "不依赖文档，而是直接从线上源码和数据库导出入手。用 AI 辅助逆向工程还原每个定制模块和模板覆写的真实行为，先形成迁移方案，再动手写 Shopify 代码。",
+    "project_4_desc2": "不依赖文档，而是直接从现有系统本身入手。用 AI 辅助逆向工程还原每个定制模块和模板覆写的真实行为，先形成迁移方案，再动手写 Shopify 代码。",
     "project_4_desc3": "重建在 Shopify 上没有直接对应物的定制功能，逐个功能判断该用应用、用平台原生能力，还是自己实现。",
     "project_4_desc4": "在 Liquid 上重建店铺主题，并将旧站的商品和分类 URL 映射到 Shopify 对应地址，保住既有搜索排名。"
   }
