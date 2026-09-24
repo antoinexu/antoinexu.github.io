@@ -79,6 +79,10 @@
           {
             "title": "5. Rebuilding the templates by hand",
             "body": "The old templates are native PHP and the new ones are Twig, and the data passed into them changed shape at the same time. A conversion script would have left every file to be corrected by hand anyway, and the number of customized templates sat below the point where writing one would pay for itself, so I rebuilt them individually. Each one meant working out what the customization depended on in the old engine before reimplementing it on the new one. Mobile responsiveness was improved in the process. On the admin side, customizations and third-party module compatibility were re-implemented so the team's daily workflows continued without interruption."
+          },
+          {
+            "title": "6. Keeping the store up during traffic spikes",
+            "body": "The store runs on a cPanel/WHM VPS that I manage directly. When the site suddenly slowed down, I went through the server's access logs to find the traffic causing the load and blocked it with server-level rules, so the slowdown did not turn into an outage."
           }
         ]
       },
@@ -174,6 +178,10 @@
           {
             "title": "5. 手工逐个重建模板",
             "body": "旧模板是原生 PHP，新模板是 Twig，与此同时传入模板的数据结构也变了。写转换脚本，转出来的东西仍然要逐个手工修正，而被定制过的模板数量还够不上写转换器的划算阈值，所以我选择逐个重建。每一个都要先弄清这处定制在旧引擎里依赖什么，再在新引擎上重新实现一遍。移动端适配在这个过程中一并提升。后台方面，自定义功能与第三方模块兼容性同样经过重做，使团队的日常流程不中断地继续运转。"
+          },
+          {
+            "title": "6. 流量突增时保持网站可用",
+            "body": "网站部署在我直接管理的 cPanel/WHM VPS 上。网站突然变慢时，我查看服务器访问日志，找出造成负载的流量，并在服务器层面加规则拦截，避免变慢演变成宕机。"
           }
         ]
       },
