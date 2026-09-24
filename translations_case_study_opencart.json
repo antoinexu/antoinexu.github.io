@@ -82,7 +82,7 @@
           },
           {
             "title": "6. Keeping the store up during traffic spikes",
-            "body": "The store runs on a cPanel/WHM VPS that I manage directly. When the site suddenly slowed down, I logged in over SSH, watched server load with top and htop, and worked through the Apache access logs with tail, grep, awk, and sort | uniq -c to rank requests by IP and user agent, cross-checking against cPanel's Raw Access logs and Metrics. I then blocked the offending traffic in layers: .htaccess rules for bad bots and probe patterns, cPanel's IP Blocker for individual addresses, and ModSecurity for rate limiting. Each layer catches what the others miss: .htaccess stops known patterns, the IP Blocker handles persistent sources, and ModSecurity limits traffic whose individual requests look normal but arrive too fast. The slowdown did not turn into an outage."
+            "body": "The store runs on a cPanel/WHM VPS that I manage directly. When our uptime monitor flagged the site slowing down, I logged in over SSH, watched server load with top and htop, and worked through the Apache access logs with tail, grep, awk, and sort | uniq -c to rank requests by IP and user agent, cross-checking against cPanel's Raw Access logs and Metrics. I then blocked the offending traffic in layers: .htaccess rules for bad bots and probe patterns, cPanel's IP Blocker for individual addresses, and ModSecurity for rate limiting. Each layer catches what the others miss: .htaccess stops known patterns, the IP Blocker handles persistent sources, and ModSecurity limits traffic whose individual requests look normal but arrive too fast. The slowdown did not turn into an outage."
           }
         ]
       },
@@ -181,7 +181,7 @@
           },
           {
             "title": "6. 流量突增时保持网站可用",
-            "body": "网站部署在我直接管理的 cPanel/WHM VPS 上。网站突然变慢时，我通过 SSH 登录服务器，用 top 和 htop 观察负载，用 tail、grep、awk 和 sort | uniq -c 分析 Apache 访问日志，按 IP 和 User-Agent 统计请求量，并对照 cPanel 的 Raw Access 日志和 Metrics 交叉确认。随后分层拦截异常流量：在 .htaccess 中写规则拦截恶意爬虫和探测请求，用 cPanel 的 IP Blocker 封禁单个地址，用 ModSecurity 做限速。每一层拦截其他层漏掉的流量：.htaccess 拦已知特征，IP Blocker 处理反复出现的来源，ModSecurity 限制那些单个请求看起来正常、但频率过高的流量。网站变慢没有演变成宕机。"
+            "body": "网站部署在我直接管理的 cPanel/WHM VPS 上。监控工具发出告警、显示网站变慢后，我通过 SSH 登录服务器，用 top 和 htop 观察负载，用 tail、grep、awk 和 sort | uniq -c 分析 Apache 访问日志，按 IP 和 User-Agent 统计请求量，并对照 cPanel 的 Raw Access 日志和 Metrics 交叉确认。随后分层拦截异常流量：在 .htaccess 中写规则拦截恶意爬虫和探测请求，用 cPanel 的 IP Blocker 封禁单个地址，用 ModSecurity 做限速。每一层拦截其他层漏掉的流量：.htaccess 拦已知特征，IP Blocker 处理反复出现的来源，ModSecurity 限制那些单个请求看起来正常、但频率过高的流量。网站变慢没有演变成宕机。"
           }
         ]
       },
