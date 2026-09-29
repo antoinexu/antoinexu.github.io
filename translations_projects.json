@@ -36,10 +36,10 @@
     "project_4_title": "Shopify Migration - Fuel Cell Store",
     "project_4_duration": "Sep 2026 - Present",
     "project_4_tags": ["Shopify", "OpenCart", "WordPress", "AI Reverse Engineering", "In Progress"],
-    "project_4_desc1": "In progress. Migrating two company sites to two separate Shopify stores: the OpenCart 3.0.3.8 storefront, with its 2,000+ SKU catalog and the order history carried forward from the previous platform upgrade, and the WordPress company site.",
+    "project_4_desc1": "In progress. Migrating three company sites to three separate Shopify stores: the OpenCart 3.0.3.8 storefront, with its 2,000+ SKU catalog and the order history carried forward from the previous platform upgrade, a smaller OpenCart 3 store, and the WordPress company site.",
     "project_4_desc2": "Working from the existing system itself rather than from documentation. I use AI-assisted reverse engineering to reconstruct what each custom module and template override actually does, then turn that reading into a migration plan before writing any Shopify code.",
     "project_4_desc3": "Rebuilding the custom functionality that has no direct Shopify equivalent, deciding feature by feature between an app, a native capability, and a custom build.",
-    "project_4_desc4": "Rebuilding each site's theme on Liquid and mapping its legacy URLs to their Shopify equivalents so both sites keep their search rankings."
+    "project_4_desc4": "Rebuilding each site's theme on Liquid and mapping its legacy URLs to their Shopify equivalents so all three sites keep their search rankings."
   },
   "zh": {
     "home": "首页",
@@ -78,9 +78,9 @@
     "project_4_title": "Shopify 迁移 - Fuel Cell Store",
     "project_4_duration": "2026年9月 - 至今",
     "project_4_tags": ["Shopify", "OpenCart", "WordPress", "AI 逆向工程", "进行中"],
-    "project_4_desc1": "进行中。正在把公司的两个网站分别迁移到两个独立的 Shopify 站点：一个是 OpenCart 3.0.3.8 电商站，包括 2,000+ SKU 商品目录和从上一次平台升级沿用至今的订单历史；另一个是 WordPress 公司官网。",
+    "project_4_desc1": "进行中。正在把公司的三个网站分别迁移到三个独立的 Shopify 站点：OpenCart 3.0.3.8 电商站，包括 2,000+ SKU 商品目录和从上一次平台升级沿用至今的订单历史；一个规模较小的 OpenCart 3 电商站；以及 WordPress 公司官网。",
     "project_4_desc2": "不依赖文档，而是直接从现有系统本身入手。用 AI 辅助逆向工程还原每个定制模块和模板覆写的真实行为，先形成迁移方案，再动手写 Shopify 代码。",
     "project_4_desc3": "重建在 Shopify 上没有直接对应物的定制功能，逐个功能判断该用应用、用平台原生能力，还是自己实现。",
-    "project_4_desc4": "在 Liquid 上分别重建两个站点的主题，并将各自旧站的 URL 映射到 Shopify 对应地址，保住两个站点既有的搜索排名。"
+    "project_4_desc4": "在 Liquid 上分别重建三个站点的主题，并将各自旧站的 URL 映射到 Shopify 对应地址，保住三个站点既有的搜索排名。"
   }
 }
