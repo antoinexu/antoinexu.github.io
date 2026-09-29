@@ -35,11 +35,11 @@
     "project_3_desc4": "Built directly on the platform's shared SQL Server schema rather than behind a sync layer, so stock reads and writes are immediate and cannot drift out of step with orders.",
     "project_4_title": "Shopify Migration - Fuel Cell Store",
     "project_4_duration": "Sep 2026 - Present",
-    "project_4_tags": ["Shopify", "OpenCart", "AI Reverse Engineering", "In Progress"],
-    "project_4_desc1": "In progress. Migrating the company's storefront from OpenCart 3.0.3.8 to Shopify, covering the 2,000+ SKU catalog and the order history carried forward from the previous platform upgrade.",
+    "project_4_tags": ["Shopify", "OpenCart", "WordPress", "AI Reverse Engineering", "In Progress"],
+    "project_4_desc1": "In progress. Migrating two company sites to two separate Shopify stores: the OpenCart 3.0.3.8 storefront, with its 2,000+ SKU catalog and the order history carried forward from the previous platform upgrade, and the WordPress company site.",
     "project_4_desc2": "Working from the existing system itself rather than from documentation. I use AI-assisted reverse engineering to reconstruct what each custom module and template override actually does, then turn that reading into a migration plan before writing any Shopify code.",
     "project_4_desc3": "Rebuilding the custom functionality that has no direct Shopify equivalent, deciding feature by feature between an app, a native capability, and a custom build.",
-    "project_4_desc4": "Rebuilding the storefront theme on Liquid and mapping the legacy product and category URLs to their Shopify equivalents so the store keeps its search rankings."
+    "project_4_desc4": "Rebuilding each site's theme on Liquid and mapping its legacy URLs to their Shopify equivalents so both sites keep their search rankings."
   },
   "zh": {
     "home": "首页",
@@ -77,10 +77,10 @@
     "project_3_desc4": "直接构建在平台共用的 SQL Server 数据表之上，而非通过同步层对接，因此库存读写即时生效，不会与订单数据产生偏差。",
     "project_4_title": "Shopify 迁移 - Fuel Cell Store",
     "project_4_duration": "2026年9月 - 至今",
-    "project_4_tags": ["Shopify", "OpenCart", "AI 逆向工程", "进行中"],
-    "project_4_desc1": "进行中。正在将公司店铺从 OpenCart 3.0.3.8 迁移到 Shopify，覆盖 2,000+ SKU 商品目录和从上一次平台升级沿用至今的订单历史。",
+    "project_4_tags": ["Shopify", "OpenCart", "WordPress", "AI 逆向工程", "进行中"],
+    "project_4_desc1": "进行中。正在把公司的两个网站分别迁移到两个独立的 Shopify 站点：一个是 OpenCart 3.0.3.8 电商站，包括 2,000+ SKU 商品目录和从上一次平台升级沿用至今的订单历史；另一个是 WordPress 公司官网。",
     "project_4_desc2": "不依赖文档，而是直接从现有系统本身入手。用 AI 辅助逆向工程还原每个定制模块和模板覆写的真实行为，先形成迁移方案，再动手写 Shopify 代码。",
     "project_4_desc3": "重建在 Shopify 上没有直接对应物的定制功能，逐个功能判断该用应用、用平台原生能力，还是自己实现。",
-    "project_4_desc4": "在 Liquid 上重建店铺主题，并将旧站的商品和分类 URL 映射到 Shopify 对应地址，保住既有搜索排名。"
+    "project_4_desc4": "在 Liquid 上分别重建两个站点的主题，并将各自旧站的 URL 映射到 Shopify 对应地址，保住两个站点既有的搜索排名。"
   }
 }
