@@ -100,27 +100,29 @@
         <h1 id="projects-title">Projects</h1>
         <div class="projects-grid">
             <div class="project-item">
-                <h2 id="project-4-title">Shopify Migration - Fuel Cell Store</h2>
+                <h2 id="project-4-title">Multi-Site Shopify Migration - Fuel Cell Store</h2>
                 <span id="project-4-duration">Sep 2026 - Present</span>
                 <div class="project-tags" data-project-tags="4">
-                    <span>Shopify</span><span>OpenCart</span><span>WordPress</span><span>AI Reverse Engineering</span><span>In Progress</span>
+                    <span>Shopify</span><span>OpenCart</span><span>WordPress</span><span>MySQL</span><span>AI Reverse Engineering</span><span>In Progress</span>
                 </div>
-                <p id="project-4-desc1">In progress. Migrating three company sites to three separate Shopify stores: the Fuel Cell Store storefront on OpenCart 3.0.3.8, with its 2,000+ SKU catalog and the order history carried forward from the previous platform upgrade, the smaller Fuel Cells Etc store on OpenCart 3, and the HTEC Education site on WordPress.</p>
-                <p id="project-4-desc2">Working from the existing system itself rather than from documentation. I use AI-assisted reverse engineering to reconstruct what each custom module and template override actually does, then turn that reading into a migration plan before writing any Shopify code.</p>
-                <p id="project-4-desc3">Rebuilding the custom functionality that has no direct Shopify equivalent, deciding feature by feature between an app, a native capability, and a custom build.</p>
-                <p id="project-4-desc4">Rebuilding each site's theme on Liquid and mapping its legacy URLs to their Shopify equivalents so all three sites keep their search rankings.</p>
+                <p id="project-4-desc1">Migrating the company's three sites to separate Shopify stores. The largest is the Fuel Cell Store storefront on OpenCart 3.0.3.8, with a 2,000+ SKU catalog and the order history carried forward from the previous platform upgrade; the other two are the smaller HTEC Education store on OpenCart 3 and the Fuel Cells Etc site on WordPress.</p>
+                <p id="project-4-desc2">Owning the data migration: mapping two OpenCart databases and a WordPress site onto Shopify's data model, and moving each site's products, customers, and order history into its new store.</p>
+                <p id="project-4-desc3">Working from the existing code rather than documentation, using AI-assisted reverse engineering to reconstruct what each custom module and template override actually does, and building a migration plan from that before writing any Shopify code.</p>
+                <p id="project-4-desc4">Deciding feature by feature how to carry over custom functionality with no direct Shopify equivalent: an app, a native capability, or a custom build.</p>
+                <p id="project-4-desc5">Rebuilding each site's theme on Shopify and mapping legacy URLs to their new addresses so all three sites keep their search rankings.</p>
             </div>
 
             <div class="project-item">
                 <h2 id="project-3-title">Warehouse &amp; Inventory Subsystem (WMS) - Fuel Cell Store</h2>
                 <span id="project-3-duration">Oct 2024 - Present</span>
                 <div class="project-tags" data-project-tags="3">
-                    <span>Inventory</span><span>WMS</span><span>Lot Traceability</span><span>Analytics</span>
+                    <span>PHP</span><span>SQL Server</span><span>Linux</span><span>WMS</span><span>Lot Traceability</span><span>QR Scanning</span>
                 </div>
-                <p id="project-3-desc1">Designed and built the warehouse and shop-floor side of the internal operations platform, covering stock tracking, receiving, supplier management, and purchase order lifecycle workflows.</p>
-                <p id="project-3-desc2">Created real-time analytics for inventory turnover, stock aging, and demand signals to support replenishment decisions.</p>
-                <p id="project-3-desc3">Implemented reorder alerts based on historical sales data and safety-stock thresholds.</p>
-                <p id="project-3-desc4">Built directly on the platform's shared SQL Server schema rather than behind a sync layer, so stock reads and writes are immediate and cannot drift out of step with orders.</p>
+                <p id="project-3-desc1">Built the warehouse and shop-floor half of the internal operations platform, alongside the ERP: stock, receiving and purchase orders, builds and bills of materials, waste, and physical counts across 2,000+ SKUs.</p>
+                <p id="project-3-desc2">Moved shop-floor work to scanning: operator badges, work orders, SKUs, and material lots are all identified by QR code, through either a hardware barcode gun or the browser camera.</p>
+                <p id="project-3-desc3">Added a discrepancy lock: when a physical count does not match the database, the SKU is blocked from pulling until the variance is resolved, so a quantity already known to be wrong stops moving.</p>
+                <p id="project-3-desc4">Rebuilt the lot-tracked materials subsystem from the ground up on its own database, retiring an unreliable legacy version without putting live inventory at risk.</p>
+                <p id="project-3-desc5">Built directly on the ERP's SQL Server schema rather than behind a sync layer, so stock reads and writes are immediate and cannot drift out of step with orders, and stock lookups and inventory reports return in under a second.</p>
                 <a href="/case-study-inventory.html" class="case-study-link" id="project-3-casestudy">Read case study</a>
             </div>
 
@@ -128,7 +130,7 @@
                 <h2 id="project-1-title">OpenCart Upgrade - Fuel Cell Store</h2>
                 <span id="project-1-duration">Mar 2024 - Sep 2024</span>
                 <div class="project-tags" data-project-tags="1">
-                    <span>OpenCart</span><span>SQL Migration</span><span>Reconciliation</span>
+                    <span>OpenCart</span><span>PHP</span><span>MySQL</span><span>Twig</span><span>SQL Migration</span><span>Reconciliation</span>
                 </div>
                 <p id="project-1-desc1">Led the company's e-commerce migration from OpenCart 1.5.6.4 to 3.0.3.8, covering 2,000+ SKUs and 70,000+ historical orders, reconciled table by table, with no business interruption.</p>
                 <p id="project-1-desc2">Wrote SQL migration scripts for data cleaning, field mapping, and relationship rebuilding across major version differences.</p>
@@ -142,12 +144,13 @@
                 <h2 id="project-2-title">Internal Operations Platform (ERP / WMS / MES) - Fuel Cell Store</h2>
                 <span id="project-2-duration">Aug 2023 - Present</span>
                 <div class="project-tags" data-project-tags="2">
-                    <span>ERP</span><span>WMS</span><span>MES</span><span>Automation</span>
+                    <span>PHP</span><span>SQL Server</span><span>Linux</span><span>ERP</span><span>WMS</span><span>MES</span>
                 </div>
-                <p id="project-2-desc1">Designed and developed the company's internal operations platform, covering order management, warehouse and inventory operations (WMS), shop-floor production execution (MES), shipment monitoring, and business reporting.</p>
-                <p id="project-2-desc2">Built dashboards that combine order, inventory, and shipment data to support faster operational decisions.</p>
-                <p id="project-2-desc3">Automated recurring report generation and scheduled analytics tasks to cut down manual reporting work.</p>
-                <p id="project-2-desc4">Implemented scheduled backups and recovery workflows to reduce system recovery time to minutes.</p>
+                <p id="project-2-desc1">Designed and built the company's internal operations platform as sole developer, replacing a slow, partial VB.NET WinForms desktop system with one web platform covering orders, inventory, materials, production work orders, and shipments.</p>
+                <p id="project-2-desc2">Modeled the business in a 50+ table SQL Server schema shared directly with the warehouse subsystem, used by 20 to 30 internal users at the same time; its audit table has passed 1,000,000 rows.</p>
+                <p id="project-2-desc3">Built 40+ reports that query live operational data and return in under a second, with no separate analytics stack to build or keep in sync.</p>
+                <p id="project-2-desc4">Prevented conflicting edits with work-order locking shared with the warehouse subsystem, and added a unified audit trail recording who changed what across every module.</p>
+                <p id="project-2-desc5">Implemented scheduled backups and recovery workflows to reduce system recovery time to minutes.</p>
                 <a href="/case-study-erp.html" class="case-study-link" id="project-2-casestudy">Read case study</a>
             </div>
         </div>
@@ -196,7 +199,7 @@
                 setText(`project-${n}-title`, t[`project_${n}_title`]);
                 setPills(`[data-project-tags="${n}"]`, t[`project_${n}_tags`], `project ${n} tags`);
 
-                ['duration', 'desc1', 'desc2', 'desc3', 'desc4'].forEach(field => {
+                ['duration', 'desc1', 'desc2', 'desc3', 'desc4', 'desc5'].forEach(field => {
                     const el = document.getElementById(`project-${n}-${field}`);
                     if (el) {
                         setText(el, t[`project_${n}_${field}`], `project ${n} ${field}`);
