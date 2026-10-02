@@ -21,7 +21,7 @@
     "infrastructure": "Infrastructure & Tools",
     "infrastructure_pills": ["Linux", "Apache", "cPanel/WHM", "Git/GitHub", "Bash", "AWS", "Claude Code", "Codex"],
     "business": "Business Systems",
-    "business_pills": ["ERP / WMS / MES Systems", "OpenCart", "E-Commerce Platforms", "Manufacturing Operations Software"],
+    "business_pills": ["ERP / WMS / MES Systems", "OpenCart", "Shopify", "E-Commerce Platforms", "Manufacturing Operations Software"],
     "integrations": "Integrations & Tracking",
     "integrations_pills": ["Google Tag Manager", "Google Ads Conversion Tracking", "Google Search Console", "Third-Party Product Data"]
   },
@@ -47,7 +47,7 @@
     "infrastructure": "基础设施与工具",
     "infrastructure_pills": ["Linux", "Apache", "cPanel/WHM", "Git/GitHub", "Bash", "AWS", "Claude Code", "Codex"],
     "business": "业务系统",
-    "business_pills": ["ERP / WMS / MES 系统", "OpenCart", "电商平台", "制造运营软件"],
+    "business_pills": ["ERP / WMS / MES 系统", "OpenCart", "Shopify", "电商平台", "制造运营软件"],
     "integrations": "第三方集成与跟踪",
     "integrations_pills": ["Google Tag Manager", "Google Ads 转化跟踪", "Google Search Console", "第三方产品数据接入"]
   }

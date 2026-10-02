@@ -27,7 +27,7 @@
           "opencart": "Led the live OpenCart 1.5 to 3.0 e-commerce migration for 2,000+ products and 70,000+ historical orders, including custom SQL migration scripts, UI redesign, and table-by-table reconciliation.",
           "google": "Integrated the OpenCart storefront with Google's platforms: instrumented the PHP templates to emit a dataLayer for Google Tag Manager and Google Ads conversion tracking, and resolved Search Console indexing and structured-data issues.",
           "vendor-catalog": "Onboarded manufacturer product lines onto the storefront, integrating vendor product data into the OpenCart catalog.",
-          "shopify": "In progress: migrating the company's three sites, two OpenCart stores and a WordPress site, to separate Shopify stores, and owning the data migration.",
+          "shopify": "Migrating the company's three sites, two OpenCart stores and a WordPress site, to separate Shopify stores, and owning the data migration; the first, the HTEC Education store, is live on Shopify, with the other two in progress.",
           "apis": "Built and maintained REST APIs, optimized SQL and reporting workflows, stabilized production systems, and used AI-assisted development tools to shorten delivery cycles.",
           "stakeholders": "Work directly with business stakeholders to translate manufacturing and operations requirements into software features that match how production actually runs.",
           "servers": "Maintain the production systems and servers behind it: Linux, a cPanel/WHM VPS, multi-site PHP and database version management, and OS and database major-version upgrades."
@@ -77,7 +77,7 @@
           "opencart": "主导线上电商平台从 OpenCart 1.5 升级到 3.0，迁移 2,000+ 商品和 70,000+ 历史订单，编写自定义 SQL 迁移脚本，完成界面重设计，并逐表对账。",
           "google": "将 OpenCart 店面与 Google 各平台打通：在 PHP 模板层改代码输出 dataLayer，接入 Google Tag Manager 与 Google Ads 转化跟踪，并排查修复 Search Console 的索引与结构化数据问题。",
           "vendor-catalog": "将厂商产品线接入店面，把供应商的产品数据整合进 OpenCart 商品库。",
-          "shopify": "进行中：将公司的三个网站（两个 OpenCart 电商站和一个 WordPress 网站）分别迁移到独立的 Shopify 站点，并负责数据迁移。",
+          "shopify": "将公司的三个网站（两个 OpenCart 电商站和一个 WordPress 网站）分别迁移到独立的 Shopify 站点，并负责数据迁移；第一个站点 HTEC Education 已在 Shopify 上线，其余两个仍在进行中。",
           "apis": "开发并维护 REST API，优化 SQL 查询和报表流程，诊断并稳定生产系统，同时结合 AI 辅助开发工具缩短功能交付周期。",
           "stakeholders": "与业务方直接沟通，将制造与运营需求转化为贴合真实生产流程的软件功能。",
           "servers": "负责支撑这些系统的生产服务器运维：Linux、cPanel/WHM VPS、多站点 PHP 与数据库版本管理，以及操作系统和数据库的大版本升级。"
