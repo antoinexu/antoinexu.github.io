@@ -19,7 +19,7 @@
               "nodes": [
                 {
                   "label": "E-commerce",
-                  "desc": "OpenCart storefront"
+                  "desc": "OpenCart and Shopify storefronts"
                 },
                 {
                   "label": "PO / Quote",
@@ -107,7 +107,7 @@
               "nodes": [
                 {
                   "label": "电商",
-                  "desc": "OpenCart 商城"
+                  "desc": "OpenCart 与 Shopify 商城"
                 },
                 {
                   "label": "采购单 / 报价",

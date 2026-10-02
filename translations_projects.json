@@ -42,7 +42,7 @@
     "project_4_desc2": "Owning the data migration: mapping two OpenCart databases and a WordPress site onto Shopify's data model, and moving each site's products, customers, and order history into its new store.",
     "project_4_desc3": "Working from the existing code rather than documentation, using AI-assisted reverse engineering to reconstruct what each custom module and template override actually does, and building a migration plan from that before writing any Shopify code.",
     "project_4_desc4": "Deciding feature by feature how to carry over custom functionality with no direct Shopify equivalent: an app, a native capability, or a custom build.",
-    "project_4_desc5": "Rebuilding each site's theme on Shopify and mapping legacy URLs to their new addresses so all three sites keep their search rankings.",
+    "project_4_desc5": "Running each site's cutover with no downtime: rebuilding the theme on Shopify, mapping legacy URLs to keep search rankings, and moving DNS with TTLs lowered in advance and mail records (MX, SPF, DKIM, DMARC) carried over.",
     "project_4_store": "Visit the HTEC Education store"
   },
   "zh": {
@@ -88,7 +88,7 @@
     "project_4_desc2": "负责数据迁移：把两个 OpenCart 数据库和一个 WordPress 网站的数据映射到 Shopify 的数据模型，并将各站点的商品、客户和订单历史迁入对应的新站点。",
     "project_4_desc3": "不依赖文档，直接从现有代码入手：用 AI 辅助逆向工程还原每个定制模块和模板覆写的实际行为，据此制定迁移方案，再动手写 Shopify 代码。",
     "project_4_desc4": "对于 Shopify 上没有直接对应的定制功能，逐个判断是用应用、平台原生能力，还是自行开发。",
-    "project_4_desc5": "在 Shopify 上重建各站点的主题，并把旧站 URL 映射到新地址，保住原有的搜索排名。",
+    "project_4_desc5": "负责各站点的切换上线，全程不停机：在 Shopify 上重建主题，把旧站 URL 映射到新地址以保住搜索排名，迁移 DNS 时提前调低 TTL，并保留邮件记录（MX、SPF、DKIM、DMARC）。",
     "project_4_store": "访问 HTEC Education 线上店铺"
   }
 }
