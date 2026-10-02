@@ -18,11 +18,11 @@
             {
               "nodes": [
                 {
-                  "label": "E-commerce",
+                  "label": "E-commerce (B2C)",
                   "desc": "OpenCart and Shopify storefronts"
                 },
                 {
-                  "label": "PO / Quote",
+                  "label": "PO / Quote (B2B)",
                   "desc": "customer purchase orders"
                 }
               ]
@@ -106,11 +106,11 @@
             {
               "nodes": [
                 {
-                  "label": "电商",
+                  "label": "电商（B2C）",
                   "desc": "OpenCart 与 Shopify 商城"
                 },
                 {
-                  "label": "采购单 / 报价",
+                  "label": "采购单 / 报价（B2B）",
                   "desc": "客户采购订单"
                 }
               ]

@@ -150,14 +150,6 @@ main {
     margin-top: .4rem;
 }
 
-.home-domain {
-    font-size: 1.6rem;
-    font-weight: 500;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.62);
-    margin-top: .6rem;
-}
-
 .home-greeting {
     font-size: 3.2rem;
     font-weight: 700;
@@ -167,6 +159,7 @@ main {
 .home-bio {
     font-size: 1.6rem;
     line-height: 1.8;
+    margin-top: 1rem;
     margin-bottom: 2rem;
 }
 
