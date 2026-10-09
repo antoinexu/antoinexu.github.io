@@ -27,7 +27,7 @@
           "opencart": "Independently ran the live OpenCart 1.5 to 3.0 e-commerce migration for 2,000+ products and 70,000+ historical orders, including custom SQL migration scripts, UI redesign, and table-by-table reconciliation.",
           "google": "Integrated the OpenCart storefront with Google's platforms: instrumented the PHP templates to emit a dataLayer for Google Tag Manager, GA4, and Google Ads conversion tracking, and resolved Search Console indexing and structured-data issues.",
           "vendor-catalog": "Onboarded manufacturer product lines onto the storefront, integrating vendor product data into the OpenCart catalog.",
-          "shopify": "Migrating the company's three sites (two OpenCart stores and a WordPress site) to separate Shopify stores, and owning the data migration. The first, the HTEC Education store, is live, and the Fuel Cells Etc site is in progress.",
+          "shopify": "Migrating the company's three sites (two OpenCart stores and a WordPress site) to separate Shopify stores, and owning the data migration. The HTEC Education store and the Fuel Cells Etc site are live, and the Fuel Cell Store comes next.",
           "stakeholders": "Work directly with business stakeholders to translate manufacturing and operations requirements into software features that match how production actually runs.",
           "servers": "Maintain the production systems and servers behind the platform and the stores: Linux, a cPanel/WHM VPS, multi-site PHP and database version management, and OS and database major-version upgrades."
         }
@@ -76,7 +76,7 @@
           "opencart": "独立完成线上电商平台从 OpenCart 1.5 升级到 3.0，迁移 2,000+ 商品和 70,000+ 历史订单，编写自定义 SQL 迁移脚本，完成界面重设计，并逐表对账。",
           "google": "将 OpenCart 店面与 Google 各平台打通：在 PHP 模板层改代码输出 dataLayer，接入 Google Tag Manager、GA4 与 Google Ads 转化跟踪，并排查修复 Search Console 的索引与结构化数据问题。",
           "vendor-catalog": "将厂商产品线接入店面，把供应商的产品数据整合进 OpenCart 商品库。",
-          "shopify": "将公司的三个网站（两个 OpenCart 电商站和一个 WordPress 网站）分别迁移到独立的 Shopify 站点，并负责数据迁移；第一个站点 HTEC Education 已在 Shopify 上线，Fuel Cells Etc 网站正在迁移中。",
+          "shopify": "将公司的三个网站（两个 OpenCart 电商站和一个 WordPress 网站）分别迁移到独立的 Shopify 站点，并负责数据迁移；HTEC Education 与 Fuel Cells Etc 两个站点已在 Shopify 上线，接下来迁移 Fuel Cell Store。",
           "stakeholders": "与业务方直接沟通，将制造与运营需求转化为贴合真实生产流程的软件功能。",
           "servers": "负责支撑平台与各电商站点的生产服务器运维：Linux、cPanel/WHM VPS、多站点 PHP 与数据库版本管理，以及操作系统和数据库的大版本升级。"
         }
