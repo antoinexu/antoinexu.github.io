@@ -95,7 +95,7 @@
             "body": "Two roles, admin and normal user, checked at the top of every page against a server-side session. It is simple and fast to reason about, and it cannot express per-record rules. The day it needs to, the path is attribute-based access control, plus a shared session store if this ever runs on more than one server."
           },
           {
-            "title": "5. Data-integrity discipline",
+            "title": "5. Catching bad data at the point of entry",
             "body": "Bad operational data compounds quietly, so the platform catches it at the entry points: duplicate lot-number detection, negative-stock alerts, and reconciliation reports across materials and stock. Queries are parameterized throughout rather than assembled from concatenated strings. In a schema where every table is business-critical, that is not something to leave to discipline."
           },
           {
@@ -211,7 +211,7 @@
             "body": "两个角色，管理员和普通用户，每个页面顶部对着服务端会话校验。简单、快、好推理，缺点是表达不了逐条记录的权限规则。真需要那天，路径是基于属性的访问控制；如果哪天部署到多台服务器，再加一个共享的会话存储。"
           },
           {
-            "title": "5. 数据完整性纪律",
+            "title": "5. 在录入环节拦截错误数据",
             "body": "业务数据的错会悄悄累积，所以平台在入口处就拦下来：批号重复检测、负库存告警，以及覆盖物料与库存的对账报表。所有查询一律参数化，不拼字符串。在一套每张表都关乎业务的库上，这种事不能靠自觉。"
           },
           {
