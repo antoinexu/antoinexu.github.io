@@ -520,14 +520,11 @@ main {
 .case-study-link {
     display: inline-block;
     margin-top: 1.4rem;
+    margin-right: 1.6rem;
     color: var(--main-color);
     font-size: 1.4rem;
     font-weight: 600;
     transition: color 0.3s ease;
-}
-
-.case-study-link + .case-study-link {
-    margin-left: 1.6rem;
 }
 
 .case-study-link:hover {
