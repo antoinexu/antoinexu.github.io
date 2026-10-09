@@ -23,7 +23,7 @@
     "business": "Business Systems",
     "business_pills": ["ERP / WMS / MES Systems", "OpenCart", "Shopify", "E-Commerce Platforms", "Manufacturing Operations Software"],
     "integrations": "Integrations & Tracking",
-    "integrations_pills": ["Google Tag Manager", "Google Ads Conversion Tracking", "Google Search Console", "Third-Party Product Data"]
+    "integrations_pills": ["Google Tag Manager", "Google Analytics 4", "Google Ads Conversion Tracking", "Google Search Console", "Third-Party Product Data"]
   },
   "zh": {
     "home": "首页",
@@ -49,6 +49,6 @@
     "business": "业务系统",
     "business_pills": ["ERP / WMS / MES 系统", "OpenCart", "Shopify", "电商平台", "制造运营软件"],
     "integrations": "第三方集成与跟踪",
-    "integrations_pills": ["Google Tag Manager", "Google Ads 转化跟踪", "Google Search Console", "第三方产品数据接入"]
+    "integrations_pills": ["Google Tag Manager", "Google Analytics 4", "Google Ads 转化跟踪", "Google Search Console", "第三方产品数据接入"]
   }
 }

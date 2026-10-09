@@ -109,7 +109,7 @@
                 <p id="project-4-desc2">Owning the data migration: mapping two OpenCart databases and a WordPress site onto Shopify's data model, and moving each site's products, customers, and order history into its new store.</p>
                 <p id="project-4-desc3">Working from the existing code rather than documentation, using AI-assisted reverse engineering to reconstruct what each custom module and template override actually does, and building a migration plan from that before writing any Shopify code.</p>
                 <p id="project-4-desc4">Deciding feature by feature how to carry over custom functionality with no direct Shopify equivalent: an app, a native capability, or a custom build.</p>
-                <p id="project-4-desc5">Running each site's cutover with no downtime: rebuilding the theme on Shopify, mapping legacy URLs to keep search rankings, and moving DNS with TTLs lowered in advance and mail records (MX, SPF, DKIM, DMARC) carried over.</p>
+                <p id="project-4-desc5">Running each site's cutover with no downtime: rebuilding the theme on Shopify, mapping legacy URLs to keep search rankings, and moving each domain's DNS off the old web host to a new DNS provider, with TTLs lowered in advance and mail records (MX, SPF, DKIM, DMARC) carried over. Next, carrying the GA4 and Google Ads conversion tracking from the OpenCart stores over to each Shopify store.</p>
                 <a href="https://h-tec-education.com" target="_blank" rel="noopener noreferrer" class="case-study-link" id="project-4-store">Visit the HTEC Education store</a>
             </div>
 
@@ -133,7 +133,7 @@
                 <div class="project-tags" data-project-tags="1">
                     <span>OpenCart</span><span>PHP</span><span>MySQL</span><span>Twig</span><span>SQL Migration</span><span>Reconciliation</span>
                 </div>
-                <p id="project-1-desc1">Led the company's e-commerce migration from OpenCart 1.5.6.4 to 3.0.3.8, covering 2,000+ SKUs and 70,000+ historical orders, reconciled table by table, with no business interruption.</p>
+                <p id="project-1-desc1">Independently ran the company's e-commerce migration from OpenCart 1.5.6.4 to 3.0.3.8, covering 2,000+ SKUs and 70,000+ historical orders, reconciled table by table, with no business interruption.</p>
                 <p id="project-1-desc2">Wrote SQL migration scripts for data cleaning, field mapping, and relationship rebuilding across major version differences.</p>
                 <p id="project-1-desc3">Rebuilt the storefront templates by hand across the template engine change, working out what each customization depended on in the old engine before reimplementing it. Improved mobile responsiveness in the process.</p>
                 <p id="project-1-desc4">Rewrote the store's custom features on 3.0 instead of porting the old code, preserving existing behavior such as standard checkout, the quote-only flow, and per-combination variant pricing and stock, while fixing legacy bugs and adding new functionality.</p>
@@ -151,7 +151,7 @@
                 <p id="project-2-desc2">Modeled the business in a 50+ table SQL Server schema shared directly with the warehouse subsystem, used by 20 to 30 internal users at the same time; its audit table has passed 1,000,000 rows.</p>
                 <p id="project-2-desc3">Built 40+ reports that query live operational data and return in under a second, with no separate analytics stack to build or keep in sync.</p>
                 <p id="project-2-desc4">Prevented conflicting edits with work-order locking shared with the warehouse subsystem, and added a unified audit trail recording who changed what across every module.</p>
-                <p id="project-2-desc5">Implemented scheduled backups and recovery workflows to reduce system recovery time to minutes.</p>
+                <p id="project-2-desc5">Set up scheduled backups and a recovery process that restores the system in minutes.</p>
                 <a href="/case-study-erp.html" class="case-study-link" id="project-2-casestudy">Read case study</a>
             </div>
         </div>
