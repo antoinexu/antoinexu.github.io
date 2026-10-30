@@ -11,7 +11,7 @@
     "page_description": "How I built the warehouse half of an internal operations platform: shared-schema stock tracking, receiving, lot-level traceability, and scan-driven counts.",
     "back": "Back to Projects",
     "title": "Warehouse & Inventory Subsystem (WMS)",
-    "disclaimer": "A sanitized write-up of the warehouse and shop-floor half of the internal operations platform I designed and built as the sole developer at Fuel Cell Store. It runs on the same database as the order-to-shipment half, which has its own write-up. Product details and proprietary code are omitted; what follows is architecture and engineering decisions.",
+    "disclaimer": "A sanitized write-up of the warehouse and shop-floor half of the internal operations platform I designed and built as the sole developer at Fuel Cell Store. It runs on the same database as the order-to-shipment half, which has its own write-up. Product details and proprietary code are omitted, leaving the architecture and engineering decisions.",
     "related": "Read the order-to-shipment half of this platform",
     "sections": [
       {
@@ -95,7 +95,7 @@
           },
           {
             "title": "5. Audit trail and historical snapshots",
-            "body": "Every state-changing operation records who did it, what changed, and the before and after values, all in one audit table. A scheduled job snapshots stock levels into a separate table on a fixed interval, and the trend charts read that snapshot, so reporting never competes with live operations."
+            "body": "Every state-changing operation records who did it, what changed, and the before and after values, all in one audit table. A scheduled job snapshots stock levels into a separate table at fixed intervals. Trend charts read those snapshots instead of the live tables, so they never compete with operations."
           }
         ]
       },
@@ -139,7 +139,7 @@
           "收货：采购订单在待到货、部分到货、已到货之间流转，到货即计入库存",
           "装配与物料清单：装配追踪，以及每次装配的物料消耗",
           "实物盘点：扫码清点后与数据库比对，差异单独记录",
-          "报废：报废计入库存，单独留痕",
+          "报废：记录报废数量并调整库存，保留独立审计记录",
           "物料子系统：按批号管理库存、每周快照、阈值告警",
           "报表与分析：库存趋势、采购对比用量、低库存与对账报表",
           "QR 码：批量生成，车间扫描库存、批号和操作员工牌"
@@ -174,7 +174,7 @@
         },
         "paragraphs_after": [
           "为什么是两套而不是一套？主系统是跟着 ERP 一起长出来的，和它共用数据表，读写都是即时的，也就没有 API 层要维护。物料子系统单独建库，是因为这类数据需要更严的权限、批号级的精度和自己的告警；把它隔开，我才能在不动线上库存的前提下把旧系统换掉。",
-          "两套应用都不用框架。一个人同时维护两套系统，一个页面就是一个文件，几个月后重新打开、看懂、改掉都是最快的；部署也一直只是往那台已经跑着 ERP 的服务器上拷文件。代价是鉴权和输入校验只能放在共享的 include 里，而不是中间件——如果有第二个人接手，这是最先要动的地方。"
+          "两套应用都不用框架。一个人同时维护两套系统，一个页面就是一个文件，几个月后重新打开、看懂、改掉都是最快的；部署也一直只是往那台已经跑着 ERP 的服务器上拷文件。代价是鉴权和输入校验只能放在共享的 include 里，而不是中间件。如果有第二个人接手，这是最先要动的地方。"
         ]
       },
       {
@@ -190,7 +190,7 @@
         "subsections": [
           {
             "title": "1. 跨系统的工单锁",
-            "body": "两名操作员同时对同一张工单领料会把库存数搞乱，而 ERP 也可能在同一时刻签出这张工单。扫工单时会在一张共享表里拿一把短时锁：保存时释放，离开页面时释放，定时任务清掉任何超过五分钟的锁。因为这张表是共享的，车间锁住的工单 ERP 签不出去——冲突在两套系统之间解决，而不是各自为政。"
+            "body": "两名操作员同时对同一张工单领料会把库存数搞乱，而 ERP 也可能在同一时刻签出这张工单。扫工单时会在一张共享表里拿一把短时锁：保存时释放，离开页面时释放，定时任务清掉任何超过五分钟的锁。因为这张表是共享的，车间锁住的工单，ERP 签不出去。冲突在两套系统之间解决，而不是在某一方内部。"
           },
           {
             "title": "2. 以扫码驱动的车间流程",
@@ -206,7 +206,7 @@
           },
           {
             "title": "5. 审计记录与历史快照",
-            "body": "每一次改变状态的操作，都会把操作者、改了什么、改动前后的值记进同一张审计表。定时任务按固定周期把库存水平快照到另一张表，趋势图读的是快照，所以报表不会和线上操作抢资源。"
+            "body": "每一次改变状态的操作，都会把操作者、改了什么、改动前后的值记进同一张审计表。定时任务按固定周期将库存快照保存到另一张表。趋势图直接读取历史快照，避免查询实时业务表。"
           }
         ]
       },

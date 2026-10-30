@@ -45,15 +45,15 @@
     "about": "关于",
     "contact": "联系",
     "page_title": "徐博伟 - 业务系统与后端工程师",
-    "page_description": "徐博伟是一家燃料电池制造企业唯一的工程师，独自建成并维护其 ERP、WMS、MES 与网上商城，端到端交付并运行于生产环境。",
+    "page_description": "徐博伟在一家燃料电池制造企业担任唯一的软件开发者，独自开发并运行其 ERP、WMS、MES 与网上商城。",
     "greeting": "你好，我是",
     "name": "徐博伟",
     "title": "业务系统与后端工程师",
-    "bio": "我是一家燃料电池制造企业 ERP、WMS、MES 和网上商城背后唯一的工程师，覆盖公司的 B2B 与 B2C 订单。从设计、开发到生产运行都由我负责，目前正在把商城从 OpenCart 迁往 Shopify。",
+    "bio": "我是一家燃料电池制造企业唯一的软件开发者，公司的 ERP、WMS、MES 和网上商城都由我一手搭建，覆盖 B2B 与 B2C 订单。从设计、开发到生产运行都由我负责，目前正在把商城从 OpenCart 迁往 Shopify。",
     "highlights_label": "职业亮点",
     "metrics": [
       {
-        "value": "2000+",
+        "value": "2,000+",
         "label": "个 SKU 由 WMS 追踪管理"
       },
       {

@@ -109,7 +109,7 @@
     <div class="case-study-content">
         <a href="/project.html" class="case-study-back" id="cs-back">Back to Projects</a>
         <h1 id="cs-title">Warehouse &amp; Inventory Subsystem (WMS)</h1>
-        <p class="case-study-disclaimer" id="cs-disclaimer">A sanitized write-up of the warehouse and shop-floor half of the internal operations platform I designed and built as the sole developer at Fuel Cell Store. It runs on the same database as the order-to-shipment half, which has its own write-up. Product details and proprietary code are omitted; what follows is architecture and engineering decisions.</p>
+        <p class="case-study-disclaimer" id="cs-disclaimer">A sanitized write-up of the warehouse and shop-floor half of the internal operations platform I designed and built as the sole developer at Fuel Cell Store. It runs on the same database as the order-to-shipment half, which has its own write-up. Product details and proprietary code are omitted, leaving the architecture and engineering decisions.</p>
         <div id="cs-body">
             <div class="cs-section">
                 <h2>Context</h2>
@@ -155,7 +155,7 @@
                 <h3>4. Discrepancy lock to stop drift</h3>
                 <p>When a physical count does not match the database, the SKU is flagged and pulling against it is blocked until the variance is resolved, and filing the discrepancy notifies the admins. A quantity already known to be wrong stops moving while someone looks into it.</p>
                 <h3>5. Audit trail and historical snapshots</h3>
-                <p>Every state-changing operation records who did it, what changed, and the before and after values, all in one audit table. A scheduled job snapshots stock levels into a separate table on a fixed interval, and the trend charts read that snapshot, so reporting never competes with live operations.</p>
+                <p>Every state-changing operation records who did it, what changed, and the before and after values, all in one audit table. A scheduled job snapshots stock levels into a separate table at fixed intervals. Trend charts read those snapshots instead of the live tables, so they never compete with operations.</p>
             </div>
             <div class="cs-section">
                 <h2>Results</h2>

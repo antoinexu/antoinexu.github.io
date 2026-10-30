@@ -123,7 +123,7 @@
                 <p id="project-3-desc2">Moved shop-floor work to scanning: operator badges, work orders, SKUs, and material lots are all identified by QR code, through either a hardware barcode gun or the browser camera.</p>
                 <p id="project-3-desc3">Added a discrepancy lock: when a physical count does not match the database, the SKU is blocked from pulling until the variance is resolved, so a quantity already known to be wrong stops moving.</p>
                 <p id="project-3-desc4">Rebuilt the lot-tracked materials subsystem from the ground up on its own database, retiring an unreliable legacy version without putting live inventory at risk.</p>
-                <p id="project-3-desc5">Built directly on the ERP's SQL Server schema rather than behind a sync layer, so stock reads and writes are immediate and cannot drift out of step with orders, and stock lookups and inventory reports return in under a second.</p>
+                <p id="project-3-desc5">Built directly on the ERP's SQL Server schema, so stock updates reach the ERP immediately and cannot drift out of step with orders. Stock lookups and inventory reports return in under a second.</p>
                 <a href="/case-study-inventory.html" class="case-study-link" id="project-3-casestudy">Read case study</a>
             </div>
 

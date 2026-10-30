@@ -11,7 +11,7 @@
     "page_description": "How I migrated a live store from OpenCart 1.5.6.4 to 3.0.3.8: 2,000+ products and 70,000+ orders, reconciled table by table, with no business interruption.",
     "back": "Back to Projects",
     "title": "E-Commerce Platform Upgrade (OpenCart 1.5 to 3.0)",
-    "disclaimer": "A sanitized write-up of the e-commerce platform upgrade I carried out as the sole developer at Fuel Cell Store. Product details and proprietary code are omitted. It describes the approach and engineering decisions only.",
+    "disclaimer": "A sanitized write-up of the e-commerce platform upgrade I carried out as the sole developer at Fuel Cell Store. Product details and proprietary code are omitted, leaving the approach and engineering decisions.",
     "sections": [
       {
         "heading": "Context",
@@ -110,13 +110,13 @@
     "page_description": "我如何将线上商店从 OpenCart 1.5.6.4 迁移到 3.0.3.8：2000 多个商品、7 万多条历史订单，逐表对账，业务不中断。",
     "back": "返回项目",
     "title": "电商平台升级（OpenCart 1.5 到 3.0）",
-    "disclaimer": "这是一份脱敏的案例分析。我作为唯一开发者，在 Fuel Cell Store 独立完成了这次电商平台升级。产品细节和专有代码均已省略，此处仅描述思路与工程决策。",
+    "disclaimer": "这是一份脱敏的案例分析。我作为唯一开发者，在 Fuel Cell Store 独立完成了这次电商平台升级。产品细节与专有代码已省略，这里只谈思路和工程决策。",
     "sections": [
       {
         "heading": "背景",
         "paragraphs": [
           "在线商城运行在 OpenCart 1.5 上，落后目标的 3.x 两个大版本，且没有受支持的升级路径。多年间，自定义模块和主题改动持续叠加在核心之上，没有任何文档，大量自定义功能的具体实现无从查起。",
-          "跨大版本又无可靠的自动化路径，这项工作主要由逆向分析、数据迁移和重建自定义功能三部分大致均衡地构成。"
+          "跨大版本又无可靠的自动化路径，这项工作由逆向分析、数据迁移和重建自定义功能三部分组成，分量大致相当。"
         ],
         "architecture": {
           "client": {
@@ -165,7 +165,7 @@
           },
           {
             "title": "2. 采用或自建，但均不改动核心",
-            "body": "对每个旧模块，我都做出明确取舍：有可靠的成熟扩展则采用，否则自行实现。两种情况下，改动都通过平台的修改机制叠加，而非直接修改核心文件，因此自定义改动叠加在核心之上，商城保持可升级，而不会再次被锁定在某个特定版本。"
+            "body": "对每个旧模块，我都做出明确取舍：有可靠的成熟扩展则采用，否则自行实现。两种情况下，改动都通过平台的修改机制挂在核心之上，而非直接修改核心文件，因此商城保持可升级，不会再次被锁定在某个版本。"
           },
           {
             "title": "3. 以手写 SQL 完成跨版本数据迁移",

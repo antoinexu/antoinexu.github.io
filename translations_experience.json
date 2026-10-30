@@ -8,7 +8,7 @@
     "about": "About",
     "contact": "Contact",
     "page_title": "ERP & Backend Engineering Experience - Bowei Xu",
-    "page_description": "Sole developer of an internal ERP/WMS/MES platform and an e-commerce migration at Fuel Cell Store, plus trading-platform engineering at DigiFinex.",
+    "page_description": "Sole developer of an internal ERP/WMS/MES platform and two e-commerce migrations at Fuel Cell Store, plus trading-platform engineering at DigiFinex.",
     "workExperienceTitle": "Work Experience",
     "workExperiences": {
       "fuel-cell-store": {
@@ -27,7 +27,7 @@
           "opencart": "Independently ran the live OpenCart 1.5 to 3.0 e-commerce migration for 2,000+ products and 70,000+ historical orders, including custom SQL migration scripts, UI redesign, and table-by-table reconciliation.",
           "google": "Integrated the OpenCart storefront with Google's platforms: instrumented the PHP templates to emit a dataLayer for Google Tag Manager, GA4, and Google Ads conversion tracking, and resolved Search Console indexing and structured-data issues.",
           "vendor-catalog": "Onboarded manufacturer product lines onto the storefront, integrating vendor product data into the OpenCart catalog.",
-          "shopify": "Migrating the company's three sites (two OpenCart stores and a WordPress site) to separate Shopify stores, and owning the data migration. The HTEC Education store and the Fuel Cells Etc site are live, and the Fuel Cell Store comes next.",
+          "shopify": "Migrating the company's three sites (two OpenCart stores and a WordPress site) to separate Shopify stores, and owning the data migration. The HTEC Education store and the Fuel Cells Etc site are live, and the main Fuel Cell Store site comes next.",
           "stakeholders": "Work directly with business stakeholders to translate manufacturing and operations requirements into software features that match how production actually runs.",
           "servers": "Maintain the production systems and servers behind the platform and the stores: Linux, a cPanel/WHM VPS, multi-site PHP and database version management, and OS and database major-version upgrades."
         }
@@ -57,7 +57,7 @@
     "about": "关于",
     "contact": "联系",
     "page_title": "ERP 与后端工程经历 - 徐博伟",
-    "page_description": "徐博伟的工作经历：在 Fuel Cell Store 独立开发企业内部 ERP/WMS/MES 平台并主导电商迁移，此前在 DigiFinex 参与交易平台研发。",
+    "page_description": "徐博伟的工作经历：在 Fuel Cell Store 独立开发企业内部 ERP/WMS/MES 平台并主导两次电商平台迁移，此前在 DigiFinex 参与交易平台研发。",
     "workExperienceTitle": "工作经历",
     "workExperiences": {
       "fuel-cell-store": {

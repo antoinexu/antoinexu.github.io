@@ -11,7 +11,7 @@
     "page_description": "How I built an internal operations platform (ERP/WMS/MES) as sole developer: a 50+ table schema, order tracking, material traceability, and automated reporting.",
     "back": "Back to Projects",
     "title": "Internal Operations Platform (ERP / WMS / MES)",
-    "disclaimer": "A sanitized write-up of the internal operations system I designed and built as the sole developer at Fuel Cell Store. It covers the order-to-shipment half of the platform; the warehouse and shop-floor half runs on the same database and has its own write-up. Product details and proprietary code are omitted; what follows is architecture and engineering decisions.",
+    "disclaimer": "A sanitized write-up of the internal operations system I designed and built as the sole developer at Fuel Cell Store. It covers the order-to-shipment half of the platform; the warehouse and shop-floor half runs on the same database and has its own write-up. Product details and proprietary code are omitted, leaving the architecture and engineering decisions.",
     "related": "Read the warehouse and materials half of this platform",
     "sections": [
       {
@@ -62,7 +62,7 @@
           "aria": "Architecture diagram: the browser talks over HTTP to a single internal Ubuntu Linux server running PHP, SQL Server, and local file storage."
         },
         "paragraphs_after": [
-          "Why a monolith rather than microservices? A small internal user base, a one-person team, and no uptime SLA to hit. At that scale, microservices buy operational overhead and little else. I optimized for how fast one person can build and maintain the thing, while staying clear on which parts would have to change first if that stopped being true."
+          "Why a monolith rather than microservices? A small internal user base, a one-person team, and no uptime SLA to hit. At that scale, microservices buy operational overhead and little else. I optimized for how fast one person can build and maintain it, while staying clear on which parts would have to change first if that stopped being true."
         ]
       },
       {
@@ -196,11 +196,11 @@
         "subsections": [
           {
             "title": "1. 以悲观锁实现并发控制",
-            "body": "两个人同时编辑同一张工单，会静默地覆盖掉对方的改动。现在打开工单会先查锁表，空闲就加锁，保存时释放。定时任务清掉任何超过五分钟的锁，被弃置的会话占不住工单。仓储子系统读写的是同一张表，所以车间锁住的工单在这边签不出去，冲突是在两套应用之间解决的，而不是各自为政。这里冲突代价高，所以用悲观锁；基于版本号的乐观锁更适合冲突少、吞吐高的场景。"
+            "body": "两个人同时编辑同一张工单，会静默地覆盖掉对方的改动。现在打开工单会先查锁表，空闲就加锁，保存时释放。定时任务清掉任何超过五分钟的锁，被弃置的会话占不住工单。仓储子系统读写的是同一张表，所以车间锁住的工单在这边签不出去，冲突是在两套应用之间解决的，而不是在某一方内部。这里冲突代价高，所以用悲观锁；基于版本号的乐观锁更适合冲突少、吞吐高的场景。"
           },
           {
             "title": "2. 统一的审计记录",
-            "body": "每一次新增、更新、删除都往同一张审计表写一行：操作者、时间戳、对象类型、对象 ID，外加一条能读懂的备注。所有模块共用一张表，“这条记录谁动过”才能一句 SQL 查出来。代价是每次业务写入都要捎上一次同步的审计写入，压力来自并发写而不是行数。真成了瓶颈，解法是把审计写入从请求路径上挪走：异步写，或者挪到独立文件组。按月分区帮的是归档查询，不是写入路径。"
+            "body": "每一次新增、更新、删除都往同一张审计表写一行：操作者、时间戳、对象类型、对象 ID，外加一条能读懂的备注。所有模块共用一张表，“这条记录谁动过”才能一句 SQL 查出来。代价是每次业务写入都要捎上一次同步的审计写入，压力来自并发写而不是行数。真成了瓶颈，解法是把审计写入从请求路径上挪走：异步写，或者挪到独立文件组。分区帮的是归档查询，不是写入路径。"
           },
           {
             "title": "3. 无需额外基础设施的实时报表",
@@ -216,7 +216,7 @@
           },
           {
             "title": "6. 两类物料，只有一类跟批次",
-            "body": "产品目录分成两半，整套表结构基本都跟着这道分界走。外购件买进来原样卖出去：一个数量，没有生产历史。自制件在厂内用原材料装配，每一台都要按消耗的物料逐项登记，而这些物料是跟批号的，所以一台成品能回溯到工单和具体用了哪几个批次。这道线划在行项目上，不是划在整单上，所以一张工单上两种行常常同时存在，每条行各走各的路径。批次精度因此只在一侧付费。它要持续付代价维护，而且只在真正发生了装配的地方才换得来追溯，所以它单独成一个子系统，而不是变成每一条库存记录都要背的一列。"
+            "body": "产品目录分成两半，整套表结构跟着这道分界走。外购件买进来原样卖出去：一个数量，没有生产历史。自制件在厂内用原材料装配，每一台都要按消耗的物料逐项登记，而这些物料是跟批号的，所以一台成品能回溯到工单和具体用了哪几个批次。这道线划在行项目上，不是划在整单上，所以一张工单上两种行常常同时存在，每条行各走各的路径。因此批次精度的成本只落在一侧。维护它要持续花力气，也只有真正发生装配的地方才换得来追溯，所以它单独成一个子系统，而不是变成每一条库存记录都要背的一列。"
           }
         ]
       },
