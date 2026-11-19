@@ -243,8 +243,13 @@ main {
 }
 
 .btn-secondary {
-    background: var(--accent-color);
-    box-shadow: 0 0 1rem rgba(243, 181, 98, 0.45);
+    background: transparent;
+    color: var(--main-color);
+    box-shadow: inset 0 0 0 1px var(--main-color);
+}
+
+.btn-secondary:hover {
+    background: rgba(18, 214, 200, 0.1);
 }
 
 .btn:hover {

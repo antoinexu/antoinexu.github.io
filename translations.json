@@ -28,6 +28,7 @@
         "label": "orders migrated and reconciled"
       }
     ],
+    "view_projects": "View projects",
     "download_cv": "Download CV",
     "download_zh_cv": "Chinese CV",
     "cases_heading": "Selected work",
@@ -65,6 +66,7 @@
         "label": "历史订单迁移并完成对账"
       }
     ],
+    "view_projects": "查看项目",
     "download_cv": "下载英文简历",
     "download_zh_cv": "下载中文简历",
     "cases_heading": "精选工作",
